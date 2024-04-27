@@ -11,5 +11,6 @@ git@github.com:42Paris/minilibx-linux.git
 
 I have to install the library needed on my ubuntu laptop
 ```
- sudo apt-get install libx11-dev
+ sudo apt-get install libx11-dev && sudo apt-get install libxext-dev
+
 ```
