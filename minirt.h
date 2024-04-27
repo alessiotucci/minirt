@@ -6,12 +6,15 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 16:11:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/27 16:56:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+# include "mlx/mlx.h"
+# include "libft/libft.h"
 
 /************************/
 /* Define keyboard code */ //TODO: check with Ubuntu codes
@@ -88,8 +91,5 @@ typedef struct s_mlx
 void	parsing_map(char *map);
 /* useful function to manage mlx */
 void	manage_mlx(t_mlx *obj);
-void	new_windows(t_mlx *help);
 int		window_close(void *param);
-# include "mlx/mlx.h"
-# include "libft/libft.h"
 #endif
