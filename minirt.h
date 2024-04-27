@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 14:30:49 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/27 15:41:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@
 # define DEFAULT_WIDTH 1280
 # define DEFAULT_HEIGHT 720
 
-# include "./libft/libft.h"
+void	parsing_map(char *map);
+void	manage_mlx(void);
+# include "mlx/mlx.h"
+# include "libft/libft.h"
 #endif
