@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 16:56:12 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/27 17:26:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static int	key_pressed(int keycode, void *param)
 	t_mlx	*help;
 
 	help = (t_mlx *) param;
-	if (keycode == ESCAPE)
+	if (keycode == ESC)
 		clean_close(help);
 	else if (keycode == PLUS)
 		test_function(help);
 	else if (keycode == MINUS)
 		test_function(help);
-	else if (keycode == SPACE)
+	else if (keycode == A)
 		test_function(help);
 	return (1);
 }
@@ -65,7 +65,7 @@ void	manage_mlx(t_mlx *obj)
 	obj->mlx = mlx_init();
 	ft_printf("%smlx_init has started%s\n", YELLOW, RESET);
 	if (obj->mlx == NULL)
-		return (ft_putstr_fd("mlx_init failuer\n", 2));
+		return (ft_putstr_fd("mlx_init fail...\n", 2));
 	obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
 	mlx_hook(obj->win, 2, 1, key_pressed, obj);
 	mlx_hook(obj->win, 17, 0L, window_close, obj);
