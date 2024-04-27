@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/04/27 14:05:54 by atucci           ###   ########.fr        #
+#    Updated: 2024/04/27 14:17:08 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ MLX_DIR = ./mlx
 # using the implicit rules of makefile, we will create the objs *
 # it is called "substitution reference"                         *
 # ***************************************************************
-OBJ = $(SOURCE:.cpp=.o)
+OBJ = $(SOURCE:.c=.o)
 
 # **************************************************************************** #
 # Color codes for echo commands to make the output more visually informative.  #
