@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/04/27 15:42:28 by atucci           ###   ########.fr        #
+#    Updated: 2024/04/27 16:50:22 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ HEADERS = ./minirt.h \
 # ***********************************************************
 # setting up the flag that will be used for the compilation *
 # ***********************************************************
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -O3
 
 
 # ***************************************************************
@@ -44,6 +44,19 @@ LIBFT = libft/libft.a
 # this is for mlx_dir *
 #**********************
 MLX_DIR = ./mlx
+
+#***************************************
+# Define the flags for the mlx library *
+#***************************************
+MLXFLAG = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+
+INCLUDES = -I/usr/include -I$(MLX_DIR)
+
+#************************************************************************
+#https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html *
+#************************************************************************
+#MLX = ./mlx/libmlx.a
+#MLX = ./mlx/libmlx_Linux.a
 
 # ***************************************************************
 # using the implicit rules of makefile, we will create the objs *
@@ -74,12 +87,12 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)Compiling mlx...$(RESET)\n"
 	$(MAKE) -C mlx
 	@echo "$(GREEN)Linking...$(RESET)\n"
-	$(CC) $(FLAG) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(FLAG) $(OBJ) $(LIBFT) $(MLXFLAG) -o $(NAME)
 	@echo "$(GREEN)Done!\n$(RESET)"
 
 %.o: %.c
 	@echo "$(CYAN)Compiling $<...$(RESET)"
-	$(CC) $(FLAG) -c $< -o $@
+	$(CC) $(FLAG) $(INCLUDES) -c $< -o $@
 	@echo "$(CYAN)Done compiling $<.$(RESET)\n"
 
 

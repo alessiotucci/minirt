@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 15:41:51 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/27 16:11:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,37 @@
 # define DEFAULT_WIDTH 1280
 # define DEFAULT_HEIGHT 720
 
+/************************************/
+/* color for printing on the screen */
+/************************************/
+# define COLOR_WHITE 0xFFFFFF
+# define COLOR_BLACK 0x000000
+# define COLOR_RED 0xFF0000
+# define COLOR_GREEN 0x00FF00
+# define COLOR_BLUE 0x0000FF
+# define COLOR_YELLOW 0xFFFF00
+# define COLOR_MAGENTA 0xFF00FF
+# define COLOR_CYAN 0x00FFFF
+/* Define the struct to use for managing windows, image a other stuff */
+typedef struct s_mlx
+{
+	char		*map_name;
+	int			width;
+	int			height;
+	void		*mlx;
+	void		*win;
+	void		*img_pointer;
+	int			bits;
+	int			lsize;
+	int			endian;
+	char		*img_string;
+}		t_mlx;
+
 void	parsing_map(char *map);
-void	manage_mlx(void);
+/* useful function to manage mlx */
+void	manage_mlx(t_mlx *obj);
+void	new_windows(t_mlx *help);
+int		window_close(void *param);
 # include "mlx/mlx.h"
 # include "libft/libft.h"
 #endif
