@@ -1,17 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 14:10:20 by atucci           ###   ########.fr       */
+/*   Created: 2023/01/17 12:03:23 by atucci            #+#    #+#             */
+/*   Updated: 2023/02/01 14:27:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef MINIRT_H
-# define MINIRT_H
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	char	*str;
 
-#include "./libft/libft.h"
-#endif
+	i = ft_strlen(s);
+	str = (char *)s;
+	while (i >= 0)
+	{
+		if (str[i] == (char) c)
+			return ((char *)(s + i));
+		i--;
+	}
+	return (NULL);
+}

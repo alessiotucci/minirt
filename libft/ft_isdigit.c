@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 14:10:20 by atucci           ###   ########.fr       */
+/*   Created: 2023/01/17 11:58:58 by atucci            #+#    #+#             */
+/*   Updated: 2023/01/28 16:17:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef MINIRT_H
-# define MINIRT_H
-
-#include "./libft/libft.h"
-#endif
+int	ft_isdigit(int argum)
+{
+	return (argum >= 48 && argum <= 57);
+}

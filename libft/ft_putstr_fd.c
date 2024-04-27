@@ -1,17 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 14:10:20 by atucci           ###   ########.fr       */
+/*   Created: 2023/01/17 12:12:34 by atucci            #+#    #+#             */
+/*   Updated: 2023/01/26 14:11:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "libft.h"
 
-#include "./libft/libft.h"
-#endif
+void	ft_putstr_fd(char *c, int fd)
+{
+	size_t	count;
+
+	count = 0;
+	if (c != 0)
+	{
+		while (c[count])
+		{
+			ft_putchar_fd(c[count], fd);
+			count++;
+		}
+	}
+}

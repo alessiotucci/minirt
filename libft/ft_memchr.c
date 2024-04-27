@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 14:10:20 by atucci           ###   ########.fr       */
+/*   Created: 2023/01/17 12:03:57 by atucci            #+#    #+#             */
+/*   Updated: 2023/10/01 10:35:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef MINIRT_H
-# define MINIRT_H
+void	*ft_memchr(const void *str, int c, size_t n)
+{
+	size_t			count;
+	unsigned char	*p;
 
-#include "./libft/libft.h"
-#endif
+	p = (unsigned char *)str;
+	count = 0;
+	while (count < n)
+	{
+		if (*p == (unsigned char)c)
+			return ((void *)p);
+		count++;
+		p++;
+	}
+	return (0);
+}

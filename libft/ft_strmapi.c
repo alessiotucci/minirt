@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 17:41:54 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/26 17:45:40 by atucci           ###   ########.fr       */
+/*   Created: 2023/01/17 12:10:59 by atucci            #+#    #+#             */
+/*   Updated: 2023/01/26 17:23:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))
 {
-	(void)av;
-	if (ac == 2)
+	unsigned int	i;
+	char			*new;
+
+	if (!s || !f)
 		return (0);
-	else
-		return (-1);
+	new = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (new == 0)
+		return (0);
+	i = 0;
+	while (s[i])
+	{
+		new[i] = f(i, s[i]);
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }

@@ -1,17 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 14:10:20 by atucci           ###   ########.fr       */
+/*   Created: 2023/03/08 13:47:28 by atucci            #+#    #+#             */
+/*   Updated: 2023/10/01 10:37:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef MINIRT_H
-# define MINIRT_H
+int	pt_putchar(char c)
+{
+	return (write(1, &c, 1));
+}
 
-#include "./libft/libft.h"
-#endif
+int	pt_strlen(const char *str)
+{
+	int	count;
+
+	count = 0;
+	while (str[count])
+		count++;
+	return (count);
+}
+
+int	pt_putstr(char *str)
+{
+	int	count;
+
+	count = 0;
+	if (str == NULL)
+		return (pt_putstr("(null)"));
+	while (str[count])
+	{
+		pt_putchar(str[count]);
+		count++;
+	}
+	return (count);
+}

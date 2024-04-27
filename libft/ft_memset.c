@@ -1,17 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 14:10:20 by atucci           ###   ########.fr       */
+/*   Created: 2023/01/17 12:00:41 by atucci            #+#    #+#             */
+/*   Updated: 2023/10/01 10:38:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef MINIRT_H
-# define MINIRT_H
+void	*ft_memset(void *dest, int v, size_t count)
+{
+	char	*char_dest;
+	size_t	c;
 
-#include "./libft/libft.h"
-#endif
+	char_dest = (char *) dest;
+	c = 0;
+	while (c < count)
+	{
+		char_dest[c] = v;
+		c++;
+	}
+	return (char_dest);
+}
