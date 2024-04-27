@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:27:38 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 15:32:43 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/27 15:36:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ typedef struct s_vector
 
 typedef struct s_ambient_light
 {
-	char	identifier;
+	char	*identifier;
 	double	ratio;
 	t_color	color;
 }	t_ambient_light;
 
 typedef struct s_camera
 {
-	char		identifier;
+	char		*identifier;
 	t_vector	viewpoint;
 	t_vector	orientation;
 	int			fov;
@@ -41,7 +41,7 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	char		identifier;
+	char		*identifier;
 	t_vector	position;
 	double		brightness;
 	t_color		color;
@@ -49,7 +49,7 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	char		identifier;
+	char		*identifier;
 	t_vector	center;
 	double		diameter;
 	t_color		color;
@@ -57,7 +57,7 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	char		identifier;
+	char		*identifier;
 	t_vector	point;
 	t_vector	normal;
 	t_color		color;
@@ -65,7 +65,7 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	char		identifier;
+	char		*identifier;
 	t_vector	center;
 	t_vector	axis;
 	double		diameter;
