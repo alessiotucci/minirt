@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 16:56:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/27 22:26:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_mlx
 	char		*img_string;
 }		t_mlx;
 
-void	parsing_map(char *map);
+int		parsing_map(char *map);
 /* useful function to manage mlx */
 void	manage_mlx(t_mlx *obj);
 int		window_close(void *param);

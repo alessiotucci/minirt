@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 16:53:39 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/27 22:25:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		parsing_map(av[1]);
+		if (parsing_map(av[1]))
+			return (-1 * ft_printf("%sWrong map: %s%s\n", RED, RESET, av[1]));
 		init_scene(&info_mlx, av[1]);
 		manage_mlx(&info_mlx);
 	}
