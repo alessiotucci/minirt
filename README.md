@@ -15,3 +15,4 @@ I have to install the library needed on my ubuntu laptop
  sudo apt-get install libxext-dev;
  sudo apt-get install libbsd-dev;
 ```
+You would already know all this stuff if you read the [`docs`](https://harm-smits.github.io/42docs/libs/minilibx)
