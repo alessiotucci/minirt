@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 17:26:43 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/28 13:15:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	clean_close(t_mlx *project)
 {
 	ft_printf("%sdestroying the windows\n%s\n", RED, RESET);
 	mlx_destroy_window(project->mlx, project->win);
-	return ;
+	//TODO: free all the memory
+	exit(0);
 }
 
 static void	test_function(t_mlx *info)
