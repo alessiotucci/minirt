@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 22:25:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/28 13:40:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	init_scene(t_mlx *info, char *mapname)
 	info->map_name = mapname;
 }
 
+//TODO: close the fd, the return of parsing_map();
 int	main(int ac, char **av)
 {
 	t_mlx	info_mlx;

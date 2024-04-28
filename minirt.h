@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 22:26:12 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/28 13:37:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include "mlx/mlx.h"
 # include "libft/libft.h"
+
+/***********************************************************************/
+/*The open and creat functions are declared in the header file fcntl.h */
+/* while close is declared in unistd.h.                               */
+/*https://www.gnu.org/software/libc/manual/html_node                   */
+/***********************************************************************/
+# include <fcntl.h>
+# include <unistd.h>
 
 /************************/
 /* Define keyboard code */ //TODO: check with Ubuntu codes
