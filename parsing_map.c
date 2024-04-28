@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 22:25:57 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/28 10:57:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	check_the_extension(char *filename, char *ext)
 
 	i = ft_strlen(ext);
 	j = ft_strlen(filename);
+	if (i >= j)
+		return (-1 * ft_printf("%sfilename too short%s\n", RED, RESET));
 	while (i > 0)
 	{
 		if (ext[i] != filename[j])
