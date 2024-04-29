@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/28 13:37:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/04/29 21:30:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,14 @@ typedef struct s_mlx
 }		t_mlx;
 
 int		parsing_map(char *map);
+/******************/
+/* utils function */
+/******************/
+int		my_strcmp(const char *str1, const char *str2);
+int		check_null_array(char **array);
+void	print_string_array(char **array);
+int		free_string_array(char **array);
+int		lenght_string_array(char **array);
 /* useful function to manage mlx */
 void	manage_mlx(t_mlx *obj);
 int		window_close(void *param);

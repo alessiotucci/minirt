@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/04/27 16:50:22 by atucci           ###   ########.fr        #
+#    Updated: 2024/04/29 21:31:13 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ NAME = miniRT
 SOURCE = ./main.c \
 		 ./manage_mlx.c \
 		 ./parsing_map.c \
+		 ./utils.c \
 
 HEADERS = ./minirt.h \
 
