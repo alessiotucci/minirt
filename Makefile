@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/04/29 21:31:13 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/01 15:16:29 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,9 @@ SOURCE = ./main.c \
 		 ./manage_mlx.c \
 		 ./parsing_map.c \
 		 ./utils.c \
+		 ./translations.c \
+		 ./rotations.c \
+		 ./scaling.c \
 
 HEADERS = ./minirt.h \
 
