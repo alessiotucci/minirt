@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/01 15:16:29 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/01 19:28:59 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,10 @@ SOURCE = ./main.c \
 		 ./translations.c \
 		 ./rotations.c \
 		 ./scaling.c \
+		 ./plane.c \
+		 ./sphere.c \
+		 ./cylinder.c \
+		 ./cone.c \
 
 HEADERS = ./minirt.h \
 
