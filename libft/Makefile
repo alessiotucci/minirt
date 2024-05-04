@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 14:12:05 by atucci            #+#    #+#              #
-#    Updated: 2024/05/01 11:08:33 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/04 14:46:06 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,11 @@ files 	   = ft_strlen \
 
 Compiler	= clang
 
-CmpFlags	= -Wall -Wextra -Werror
+# ************************************************************
+# this -fPIC is a flag: 
+# https://stackoverflow.com/questions/332767/recompile-with-fpic-option-but-the-option-is-already-in-the-makefile
+# ************************************************************
+CmpFlags	= -Wall -Wextra -Werror -fPIC
 
 OUTN	= $(Library).a
 

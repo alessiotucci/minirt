@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-my $dir = 'maps';
+my $dir = 'DIRmaps';
 my @maps = glob "$dir/*.rt";
 
 foreach my $map_file (@maps)

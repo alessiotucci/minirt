@@ -6,11 +6,17 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/28 13:40:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 15:10:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	error_msg(char *str)
+{
+	ft_printf("error\n");
+	ft_printf("Minirt: %s%s%s\n", RED, str, RESET);
+}
 
 static void	init_scene(t_mlx *info, char *mapname)
 {

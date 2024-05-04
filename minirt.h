@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/29 21:30:51 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 15:07:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int		parsing_map(char *map);
 /******************/
 /* utils function */
 /******************/
+void	error_msg(char *str);
 int		my_strcmp(const char *str1, const char *str2);
 int		check_null_array(char **array);
 void	print_string_array(char **array);
