@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/04 15:07:27 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 15:35:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@
 # define COLOR_YELLOW 0xFFFF00
 # define COLOR_MAGENTA 0xFF00FF
 # define COLOR_CYAN 0x00FFFF
+
+/**********************************************************************/
 /* Define the struct to use for managing windows, image a other stuff */
+/**********************************************************************/
 typedef struct s_mlx
 {
 	char		*map_name;
@@ -97,6 +100,7 @@ typedef struct s_mlx
 }		t_mlx;
 
 int		parsing_map(char *map);
+void	create_setting(char *line);
 /******************/
 /* utils function */
 /******************/

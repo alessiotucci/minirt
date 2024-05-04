@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:27:38 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/27 15:36:21 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 15:13:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ typedef struct s_vector
 	double	z;
 }	t_vector;
 
-typedef struct s_ambient_light
+typedef struct s_amb_light
 {
 	char	*identifier;
 	double	ratio;
 	t_color	color;
-}	t_ambient_light;
+}	t_amb_light;
 
 typedef struct s_camera
 {
@@ -75,7 +75,7 @@ typedef struct s_cylinder
 
 typedef struct s_setting
 {
-	t_ambient_light	*ambient_light;
+	t_amb_light	*amb_light;
 	t_camera		*camera;
 	t_light			**lights;
 	int				num_lights;

@@ -6,17 +6,26 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/04/29 21:32:41 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 15:43:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+//5 
 static void	split_line(char **matrix)
 {
-	print_string_array(matrix);
+	int	i;
+
+	i = 0;
+	while (matrix[i] != NULL)
+	{
+		create_setting(matrix[i]);
+		i++;
+	}
 	free_string_array(matrix);
 }
+
 //4
 static void	parse_map(int fd)
 {
@@ -25,7 +34,6 @@ static void	parse_map(int fd)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		ft_printf("line: [%s]\n", line);
 		split_line(ft_split(line, ' '));
 		line = get_next_line(fd);
 	}

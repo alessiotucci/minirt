@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:50:36 by atucci            #+#    #+#             */
-/*   Updated: 2023/03/27 11:26:15 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 15:28:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_putnbr(int n)
 	return (count);
 }
 
-int	ft_number_base(unsigned long long int nbr, char *base)
+int	ft_number_base(long long int nbr, char *base)
 {
 	unsigned long long int	n;
 	unsigned long long int	j;

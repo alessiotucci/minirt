@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:38:39 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 10:32:11 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 15:28:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		pt_putstr(char *str);
 int		ft_printf(const char *format, ...);
 int		ft_len_u(unsigned long n);
 int		ft_pointer(unsigned long nb);
-int		ft_number_base(unsigned long long int nbr, char *base);
+int		ft_number_base(long long int nbr, char *base);
 int		check_sign(int num);
 int		ft_putuns(unsigned int nbr);
 int		check_sign_flags(const char *str, int i);
