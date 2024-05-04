@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/04 17:28:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 23:04:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 static void	split_line(char **matrix, t_setting *set)
 {
 	(void)set;
+	//print_string_array(matrix);
+	create_setting(matrix, set);
 	free_string_array(matrix);
 }
+
 
 //4
 static void	parse_map(int fd, t_setting *set)

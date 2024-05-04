@@ -6,19 +6,17 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/04 17:29:59 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 23:09:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 //TODO:clearing up this mess
-void	create_setting(char *line, t_setting *set)
+void	create_setting(char **details, t_setting *set)
 {
-	char	**details;
 
 	(void)set;
-	details = ft_split(line, ' ');
 	if (my_strcmp(details[0], "A") == 0)
 		ft_printf("ambient lights\n");
 	else if (my_strcmp(details[0], "C") == 0)
@@ -35,10 +33,12 @@ void	create_setting(char *line, t_setting *set)
 		ft_printf("cones\n");
 	else
 	{
-		ft_printf(details[0]);
-		error_msg("not a valid identifier");
+		if (details[0][0] == '\n')
+			ft_printf("[%s\\n%s]\n", RED, RESET);
+		else
+			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
+		//error_msg("not a valid identifier");
 	}
-	free_string_array(details);
 }
 /*void	create_setting(char *line, t_setting *set)
 {
