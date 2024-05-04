@@ -6,42 +6,35 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/04 15:43:32 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/04 17:28:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-//5 
-static void	split_line(char **matrix)
+//5  TODO: I need to fix this
+static void	split_line(char **matrix, t_setting *set)
 {
-	int	i;
-
-	i = 0;
-	while (matrix[i] != NULL)
-	{
-		create_setting(matrix[i]);
-		i++;
-	}
+	(void)set;
 	free_string_array(matrix);
 }
 
 //4
-static void	parse_map(int fd)
+static void	parse_map(int fd, t_setting *set)
 {
 	char	*line;
 	
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		split_line(ft_split(line, ' '));
+		split_line(ft_split(line, ' '), set);
 		line = get_next_line(fd);
 	}
 	return ;
 }
 
 //3 
-int	open_map(char *filename)
+int	open_map(char *filename, t_setting *set)
 {
 	int	fd;
 
@@ -50,7 +43,7 @@ int	open_map(char *filename)
 		return (ft_printf("%sError map: %s%s\n", RED, filename, RESET));
 	else
 	{
-		parse_map(fd);
+		parse_map(fd, set);
 		return (close(fd), 0);
 	}
 	
@@ -77,10 +70,10 @@ static int	check_the_extension(char *filename, char *ext)
 }
 
 //1
-int	parsing_map(char *map)
+int	parsing_map(char *map, t_setting *set)
 {
 	if (check_the_extension(map, ".rt") == 0)
-		return (open_map(map));
+		return (open_map(map, set));
 	else
 		return (-1);
 }

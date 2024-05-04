@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/04 15:42:07 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/04 17:15:20 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SOURCE = ./main.c \
 		 ./manage_mlx.c \
 		 ./parsing_map.c \
 		 ./create_setting.c \
+		 ./start_shapes.c \
+		 ./start_scenes.c \
 		 ./utils.c \
 		 ./translations.c \
 		 ./rotations.c \
