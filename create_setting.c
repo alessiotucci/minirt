@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/04 23:09:02 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/05 15:47:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	create_setting(char **details, t_setting *set)
 		ft_printf("cones\n");
 	else
 	{
-		if (details[0][0] == '\n')
+		if (my_strcmp(details[0], "\n") == 0)
+		//if (details[0][0] == '\n')
 			ft_printf("[%s\\n%s]\n", RED, RESET);
 		else
 			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
