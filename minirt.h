@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/04 22:58:29 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/05 18:07:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,12 @@ void	start_cylinder(t_setting *set, char **details);
 void	start_spheres(t_setting *set, char **details);
 void	start_planes(t_setting *set, char **details);
 void	start_cones(t_setting *set, char **details);
+
+/***************************************************/
+/*Those function are going to parse the numbers    */
+/***************************************************/
+t_color		parse_color(char *str);
+t_vector	parse_vector(char *str);
 /******************/
 /* utils function */
 /******************/

@@ -6,13 +6,15 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/05 15:47:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/05 17:33:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 //TODO:clearing up this mess
+//
+/*
 void	create_setting(char **details, t_setting *set)
 {
 
@@ -41,12 +43,10 @@ void	create_setting(char **details, t_setting *set)
 		//error_msg("not a valid identifier");
 	}
 }
-/*void	create_setting(char *line, t_setting *set)
+ */
+void	create_setting(char **details, t_setting *set)
 {
-	char	**details;
 
-	(void)set;
-	details = ft_split(line, ' ');
 	if (my_strcmp(details[0], "A") == 0)
 		start_amb_light(set, details);
 	else if (my_strcmp(details[0], "C") == 0)
@@ -63,8 +63,11 @@ void	create_setting(char **details, t_setting *set)
 		start_cones(set, details);
 	else
 	{
-		error_msg("not a valid identifier");
-		ft_printf(details[0]);
+		if (my_strcmp(details[0], "\n") == 0)
+		//if (details[0][0] == '\n')
+			ft_printf("[%s\\n%s]\n", RED, RESET);
+		else
+			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
+		//error_msg("not a valid identifier");
 	}
-	free_string_array(details);
-}*/
+}

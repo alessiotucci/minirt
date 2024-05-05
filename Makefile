@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/04 17:15:20 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/05 17:41:48 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ NAME = miniRT
 SOURCE = ./main.c \
 		 ./manage_mlx.c \
 		 ./parsing_map.c \
+		 ./parsing_numbers.c \
 		 ./create_setting.c \
 		 ./start_shapes.c \
 		 ./start_scenes.c \
