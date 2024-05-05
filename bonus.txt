@@ -1,0 +1,12 @@
+BONUS
+
+cn 30.0,10.0,5.0 0.6,0.8,-0.2  15.0 25.0  255,128,0
+
+Explanation:
+
+- Identifier: cn
+- Center coordinates of the cone: 30.0,10.0,5.0
+- Normalized vector representing the direction of the cone's axis: 0.6,0.8,-0.2
+- Radius of the cone's base: 15.0
+- Height of the cone: 25.0
+- RGB colors for the cone: 255,128,0
