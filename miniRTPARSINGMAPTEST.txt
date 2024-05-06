@@ -1,0 +1,13 @@
+map without extension .rt
+map do not exist
+map that cannot be open
+empty map
+map with non valid identifiers
+map with invalid value: ratios
+map with invalid value: missing items
+map with invalid value: x,y,z
+map with invalid value: vectors
+map with invalid value: fov
+map with invalid value: light ration
+map with invalid value: size of objects
+map with invalid value: colors rgb
