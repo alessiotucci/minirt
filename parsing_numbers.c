@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/05 18:30:52 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/07 21:04:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_color	parse_color(char *str)
 {
 	t_color	color;
 	char	**matrix;
+
 	ft_printf("Parsing color (%s)\n", str);
 	matrix = ft_split(str, ',');
 	if (lenght_string_array(matrix) == 3)
@@ -36,6 +37,7 @@ t_vector	parse_vector(char *str)
 {
 	t_vector	vector;
 	char	**matrix;
+
 	ft_printf("Parsing vector (%s)\n", str);
 	matrix = ft_split(str, ',');
 	if (lenght_string_array(matrix) == 3)

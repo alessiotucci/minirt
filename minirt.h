@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/05 18:07:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/07 21:02:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,8 @@ int		check_null_array(char **array);
 void	print_string_array(char **array);
 int		free_string_array(char **array);
 int		lenght_string_array(char **array);
+void	remove_new_line(char **matrix, char replacement, char to_replace);
+void	replace_me(char *str, char replacement, char to_replace);
 /* useful function to manage mlx */
 void	manage_mlx(t_mlx *obj);
 int		window_close(void *param);

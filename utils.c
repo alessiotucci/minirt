@@ -6,11 +6,24 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 21:25:59 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/04 22:56:03 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/07 21:01:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+//6
+void	remove_new_line(char **matrix, char replacement, char to_replace)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		replace_me(matrix[i], replacement, to_replace);
+		i++;
+	}
+}
 
 //5
 int	my_strcmp(const char *str1, const char *str2)

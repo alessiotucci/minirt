@@ -6,14 +6,14 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/05 18:59:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/07 21:08:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 /* TODO: let's see if we can get rid of the \n char */
-char	*replace_me(char *str, char replacement, char to_replace)
+void	replace_me(char *str, char replacement, char to_replace)
 {
 	int		i;
 
@@ -24,13 +24,13 @@ char	*replace_me(char *str, char replacement, char to_replace)
 			str[i] = replacement;
 		i++;
 	}
-	return (str);
 }
 
 //5  TODO: I need to fix this
 static void	split_line(char **matrix, t_setting *set)
 {
 	(void)set;
+	remove_new_line(matrix, ' ', '\n');
 	//print_string_array(matrix);
 	create_setting(matrix, set);
 	free_string_array(matrix);
