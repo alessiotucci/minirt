@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/07 21:08:15 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/09 19:55:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	replace_me(char *str, char replacement, char to_replace)
 	int		i;
 
 	i = 0;
+	if (str == NULL)
+		return ;
 	while (str[i])
 	{
 		if (str[i] == to_replace)
@@ -26,12 +28,23 @@ void	replace_me(char *str, char replacement, char to_replace)
 	}
 }
 
+static void struct_status(t_setting *set)
+{
+	ft_printf("struct has [%d] lights \n", set->num_lights);
+	ft_printf("struct has [%d] spheres \n", set->num_spheres);
+	ft_printf("struct has [%d] planes \n", set->num_planes);
+	ft_printf("struct has [%d] cylinders\n", set->num_cylinders);
+	ft_printf("struct has [%d] cones bonus\n", set->num_cones);
+}
+
 //5  TODO: I need to fix this
 static void	split_line(char **matrix, t_setting *set)
 {
 	(void)set;
 	remove_new_line(matrix, ' ', '\n');
 	//print_string_array(matrix);
+	count_elements(matrix, set);
+	struct_status(set);
 	create_setting(matrix, set);
 	free_string_array(matrix);
 }
@@ -43,8 +56,10 @@ static void	parse_map(int fd, t_setting *set)
 	char	*line;
 	
 	line = get_next_line(fd);
+	//replace_me(line, ' ', '\n');
 	while (line != NULL)
 	{
+		//replace_me(line, ' ', '\n');
 		split_line(ft_split(line, ' '), set);
 		line = get_next_line(fd);
 	}

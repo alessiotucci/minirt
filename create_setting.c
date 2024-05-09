@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/05 17:33:20 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/09 19:49:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,20 @@
 
 //TODO:clearing up this mess
 //
-/*
-void	create_setting(char **details, t_setting *set)
+
+void	count_elements(char **details, t_setting *set)
 {
 
-	(void)set;
-	if (my_strcmp(details[0], "A") == 0)
-		ft_printf("ambient lights\n");
-	else if (my_strcmp(details[0], "C") == 0)
-		ft_printf("cameras\n");
-	else if (my_strcmp(details[0], "L") == 0)
-		ft_printf("lights\n");
+	if (my_strcmp(details[0], "L") == 0)
+		set->num_lights++;
 	else if (my_strcmp(details[0], "sp") == 0)
-		ft_printf("spheres\n");
+		set->num_spheres++;
 	else if (my_strcmp(details[0], "pl") == 0)
-		ft_printf("planes\n");
+		set->num_planes++;
 	else if (my_strcmp(details[0], "cy") == 0)
-		ft_printf("cilinders\n");
+		set->num_cylinders++;
 	else if (my_strcmp(details[0], "cn") == 0)
-		ft_printf("cones\n");
+		set->num_cones++;
 	else
 	{
 		if (my_strcmp(details[0], "\n") == 0)
@@ -43,10 +38,12 @@ void	create_setting(char **details, t_setting *set)
 		//error_msg("not a valid identifier");
 	}
 }
- */
+
 void	create_setting(char **details, t_setting *set)
 {
 
+	if (check_null_array(details))
+		return ;
 	if (my_strcmp(details[0], "A") == 0)
 		start_amb_light(set, details);
 	else if (my_strcmp(details[0], "C") == 0)

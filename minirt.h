@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/07 21:02:35 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/09 19:50:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ typedef struct s_setting
 	int				num_planes;
 	t_cylinder		**cylinders;
 	int				num_cylinders;
+	int				num_cones;
 }	t_setting;
 
 /**********************************************************************/
@@ -178,7 +179,7 @@ typedef struct s_mlx
 
 int		parsing_map(char *map, t_setting *set);
 void	create_setting(char **line, t_setting *set);
-
+void	count_elements(char **details, t_setting *set);
 /***************************************************/
 /*Those function are going to start the struct     */
 /***************************************************/
