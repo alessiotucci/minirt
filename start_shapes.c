@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 10:35:32 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:34:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	start_cylinder(t_setting *set, char **details)
 	new_cylinder.height = atof(details[4]);
 	new_cylinder.color = parse_color(details[5]);
 	//TODO: write this function
-	// add_cylinder_to_array(set, set->cylinder);
+	add_cylinder_to_array(&new_cylinder, set);
 
 }
 
@@ -40,7 +40,7 @@ void	start_spheres(t_setting *set, char **details)
 	new_sphere.diameter = atof(details[2]); //TODO: implement my own
 	new_sphere.color = parse_color(details[3]);
 	//TODO: write this function
-	// add_sphere_to_array(set, set->sphere);
+	add_sphere_to_array(&new_sphere, set);
 
 }
 
@@ -55,7 +55,7 @@ void	start_planes(t_setting *set, char **details)
 	new_plane.normal = parse_vector(details[2]); //TODO: Carefull with ranges
 	new_plane.color = parse_color(details[3]);
 	//TODO: write this function
-	// add_plane_to_array(set, set->plane);
+	add_plane_to_array(&new_plane, set);
 
 }
 

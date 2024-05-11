@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 10:50:45 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:38:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	replace_me(char *str, char replacement, char to_replace)
 }
 
 /* Helper function, I will delete this later on */
-static void struct_status(t_setting *set)
+void struct_status(t_setting *set)
 {
 	ft_printf("\n\n------STRUCT STATUS -------\n");
 	ft_printf("struct has [%d] planes \t  |\n", set->num_planes);

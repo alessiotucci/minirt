@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 17:02:57 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/05 18:25:56 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:34:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	start_lights(t_setting *set, char **details)
 	new_light.brightness = atof(details[2]); //TODO: implement my own
 	new_light.color = parse_color(details[3]);
 	//TODO: write this function
-	// add_light_to_array(set, set->light);
+	 add_light_to_array(&new_light, set);
 }

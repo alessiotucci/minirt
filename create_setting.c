@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 11:00:45 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:37:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void alloc_struct_elem(t_setting *setting)
 		return ;
 	ft_printf("set back %sSTRUCT%s zero again \n", YELLOW, RESET);
 	setback_zero(setting);
+	struct_status(setting);
 }
 
 void	count_elements(char **details, t_setting *set)

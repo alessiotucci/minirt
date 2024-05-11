@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 10:57:56 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:38:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ typedef struct s_cylinder
 
 typedef struct s_setting
 {
-	t_amb_light	*amb_light;
+	t_amb_light		*amb_light;
 	t_camera		*camera;
 	t_light			**lights;
 	int				num_lights;
@@ -188,7 +188,6 @@ void	alloc_struct_elem(t_setting *setting);
 void	start_amb_light(t_setting *set, char **details);
 void	start_camera(t_setting *set, char **details);
 void	start_lights(t_setting *set, char **details);
-
 void	start_cylinder(t_setting *set, char **details);
 void	start_spheres(t_setting *set, char **details);
 void	start_planes(t_setting *set, char **details);
@@ -199,9 +198,18 @@ void	start_cones(t_setting *set, char **details);
 /***************************************************/
 t_color		parse_color(char *str);
 t_vector	parse_vector(char *str);
+
+/***************************************************/
+/*Those function are going to add elem to arrays   */
+/***************************************************/
+void	add_light_to_array(t_light *to_add, t_setting *set);
+void	add_plane_to_array(t_plane *to_add, t_setting *set);
+void	add_sphere_to_array(t_sphere *to_add, t_setting *set);
+void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 /******************/
 /* utils function */
 /******************/
+void	struct_status(t_setting *set);
 void	error_msg(char *str);
 int		my_strcmp(const char *str1, const char *str2);
 int		check_null_array(char **array);
