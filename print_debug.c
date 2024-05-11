@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 12:28:11 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 12:40:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void struct_status(t_setting *set)
 	ft_printf("---------------------------\n\n");
 }
 
-static void	print_color(t_color color)
+void	print_color(t_color color)
 {
 	ft_printf("%sR: %d %s", RED, color.r, RESET);
 	ft_printf("%sG: %d %s", GREEN, color.g, RESET);
 	ft_printf("%sB: %d%s\n", BLUE, color.b, RESET);
 }
-static void	print_vector(t_vector vector)
+void	print_vector(t_vector vector)
 {
 	ft_printf("x: %d ", vector.x);
 	ft_printf("y: %d ", vector.y);

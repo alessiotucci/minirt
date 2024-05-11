@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/07 21:04:56 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 12:34:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ t_color	parse_color(char *str)
 	matrix = ft_split(str, ',');
 	if (lenght_string_array(matrix) == 3)
 	{
-	color.r = ft_atoi(matrix[0]);
-	color.g = ft_atoi(matrix[1]);
-	color.b = ft_atoi(matrix[2]);
+		color.r = ft_atoi(matrix[0]);
+		color.g = ft_atoi(matrix[1]);
+		color.b = ft_atoi(matrix[2]);
 	}
 	else
 	{

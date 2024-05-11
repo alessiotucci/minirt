@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 12:11:15 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 12:40:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,8 @@ void	start_cones(t_setting *set, char **details);
 /***************************************************/
 t_color		parse_color(char *str);
 t_vector	parse_vector(char *str);
-
+void		print_color(t_color color);
+void		print_vector(t_vector vector);
 /***************************************************/
 /*Those function are going to add elem to arrays   */
 /***************************************************/

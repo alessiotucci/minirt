@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 11:34:33 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 12:40:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	start_spheres(t_setting *set, char **details)
 	new_sphere.center = parse_vector(details[1]);
 	new_sphere.diameter = atof(details[2]); //TODO: implement my own
 	new_sphere.color = parse_color(details[3]);
+	ft_printf("debug!\n");
+	print_color(new_sphere.color);
 	//TODO: write this function
 	add_sphere_to_array(&new_sphere, set);
 
