@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/11 15:53:00 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/11 17:25:00 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ NAME = miniRT
 # setting up the variable that will be the source *
 # *************************************************
 SOURCE = ./main.c \
-		 ./my_atof.c \
 		 ./manage_mlx.c \
 		 ./parsing_map.c \
 		 ./parsing_numbers.c \
@@ -36,6 +35,7 @@ SOURCE = ./main.c \
 		 ./sphere.c \
 		 ./cylinder.c \
 		 ./cone.c \
+		 ./my_atof.c \
 
 HEADERS = ./minirt.h \
 

@@ -32,7 +32,20 @@ int main()
 		printf("my_atof: %f\n", my_result);
 		printf("\n");
 	}
-
+	float val;
+	float my_val;
+	char str[20];
+	
+	strcpy(str, "98993489");
+	val = atof(str);
+	my_val = my_atof(str);
+	printf("String value = %s, Float value = %f\n", str, val);
+	printf("MY:String value = %s, Float value = %f\n", str, my_val);
+	strcpy(str, "tutorialspoint.com");
+	val = atof(str);
+	my_val = atof(str);
+	printf("String value = %s, Float value = %f\n", str, val);
+	printf("MY:String value = %s, Float value = %f\n", str, my_val);
 	return 0;
 }
 
