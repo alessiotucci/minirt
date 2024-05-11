@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:04:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 16:00:34 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 17:04:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static double	process_fractional_part(const char *str, int *i)
 
 double	my_atof(const char *str)
 {
+	ft_printf("%sDEBUG: %s[%s]\t", RED, RESET, str);
 	double	result;
 	int		sign;
 	int		i;
@@ -64,5 +65,6 @@ double	my_atof(const char *str)
 		i++;
 	result = process_integer_part(str, &i);
 	result += process_fractional_part(str, &i);
+	ft_printf("%sRETURN: %s(%f)\n", RED, RESET, (sign * result));
 	return (sign * result);
 }

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 16:00:00 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 16:41:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_vector	parse_vector(char *str)
 		vector.x = my_atof(matrix[0]);
 		vector.y = my_atof(matrix[1]);
 		vector.z = my_atof(matrix[2]);
-		ft_printf("%sFIX THE BUG%s\t", BG_YELLOW, BG_RESET);
+		//ft_printf("%sFIX THE BUG%s\t", BG_YELLOW, BG_RESET);
 	}
 	else
 	{
