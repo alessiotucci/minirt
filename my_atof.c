@@ -6,11 +6,11 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:04:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 15:53:11 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 16:00:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h> // for isspace() and isdigit()
+#include "minirt.h"
 
 static double	process_integer_part(const char *str, int *i)
 {
