@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 12:40:43 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 13:03:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,50 @@
 void	start_cylinder(t_setting *set, char **details)
 {
 	ft_printf("setting up cylinder\n");
-	(void)set;
-	t_cylinder	new_cylinder;
-	(void)new_cylinder;
-	new_cylinder.identifier = ft_strdup(details[0]);
-	new_cylinder.center = parse_vector(details[1]);
-	new_cylinder.axis = parse_vector(details[2]); //TODO carefull with ranges
-	new_cylinder.diameter = atof(details[3]);
-	new_cylinder.height = atof(details[4]);
-	new_cylinder.color = parse_color(details[5]);
+	t_cylinder	*new_cylinder;
+	new_cylinder = malloc(sizeof(t_cylinder));;
+	if (!new_cylinder)
+		return ;//TODO add the check
+	new_cylinder->identifier = ft_strdup(details[0]);
+	new_cylinder->center = parse_vector(details[1]);
+	new_cylinder->axis = parse_vector(details[2]); //TODO carefull with ranges
+	new_cylinder->diameter = atof(details[3]);
+	new_cylinder->height = atof(details[4]);
+	new_cylinder->color = parse_color(details[5]);
 	//TODO: write this function
-	add_cylinder_to_array(&new_cylinder, set);
+	add_cylinder_to_array(new_cylinder, set);
 
 }
 
 void	start_spheres(t_setting *set, char **details)
 {
 	ft_printf("setting up spheres\n");
-	(void)set;
-	t_sphere	new_sphere;
-	(void)new_sphere;
-	new_sphere.identifier = ft_strdup(details[0]);
-	new_sphere.center = parse_vector(details[1]);
-	new_sphere.diameter = atof(details[2]); //TODO: implement my own
-	new_sphere.color = parse_color(details[3]);
-	ft_printf("debug!\n");
-	print_color(new_sphere.color);
+	t_sphere	*new_sphere;
+	new_sphere = malloc(sizeof(t_sphere));;
+	if (!new_sphere)
+		return ;//TODO add the check
+	new_sphere->identifier = ft_strdup(details[0]);
+	new_sphere->center = parse_vector(details[1]);
+	new_sphere->diameter = atof(details[2]); //TODO: implement my own
+	new_sphere->color = parse_color(details[3]);
 	//TODO: write this function
-	add_sphere_to_array(&new_sphere, set);
+	add_sphere_to_array(new_sphere, set);
 
 }
 
 void	start_planes(t_setting *set, char **details)
 {
 	ft_printf("setting up planes\n");
-	(void)set;
-	t_plane	new_plane;
-	(void)new_plane;
-	new_plane.identifier = ft_strdup(details[0]);
-	new_plane.point = parse_vector(details[1]);
-	new_plane.normal = parse_vector(details[2]); //TODO: Carefull with ranges
-	new_plane.color = parse_color(details[3]);
+	t_plane	*new_plane;
+	new_plane = malloc(sizeof(t_plane));;
+	if (!new_plane)
+		return ;//TODO add the check
+	new_plane->identifier = ft_strdup(details[0]);
+	new_plane->point = parse_vector(details[1]);
+	new_plane->normal = parse_vector(details[2]); //TODO: Carefull with ranges
+	new_plane->color = parse_color(details[3]);
 	//TODO: write this function
-	add_plane_to_array(&new_plane, set);
+	add_plane_to_array(new_plane, set);
 
 }
 

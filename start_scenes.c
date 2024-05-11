@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 17:02:57 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 11:34:19 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 13:02:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,16 @@ void	start_camera(t_setting *set, char **details)
 void	start_lights(t_setting *set, char **details)
 {
 	(void)set;
-	t_light	new_light;
+	t_light	*new_light;
+	new_light = malloc(sizeof(t_light));;
+	if (!new_light)
+		return ;//TODO add the check
 	(void)new_light;
 	ft_printf("\t**SETTING UP LIGHTS**\n");
-	new_light.identifier = ft_strdup(details[0]);
-	new_light.position = parse_vector(details[1]);
-	new_light.brightness = atof(details[2]); //TODO: implement my own
-	new_light.color = parse_color(details[3]);
+	new_light->identifier = ft_strdup(details[0]);
+	new_light->position = parse_vector(details[1]);
+	new_light->brightness = atof(details[2]); //TODO: implement my own
+	new_light->color = parse_color(details[3]);
 	//TODO: write this function
-	 add_light_to_array(&new_light, set);
+	 add_light_to_array(new_light, set);
 }
