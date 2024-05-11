@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 10:19:35 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 10:50:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	replace_me(char *str, char replacement, char to_replace)
 static void struct_status(t_setting *set)
 {
 	ft_printf("\n\n------STRUCT STATUS -------\n");
-	ft_printf("struct has [%d] lights\t  |\n", set->num_lights);
-	ft_printf("struct has [%d] spheres \t  |\n", set->num_spheres);
 	ft_printf("struct has [%d] planes \t  |\n", set->num_planes);
 	ft_printf("struct has [%d] cylinders  |\n", set->num_cylinders);
-	ft_printf("struct has [%d] cones bonus|\n", set->num_cones);
+	ft_printf("struct has [%d] spheres \t  |\n", set->num_spheres);
+	ft_printf("struct has [%d] lights\t  |\n", set->num_lights);
+	//ft_printf("struct has [%d] cones bonus|\n", set->num_cones);
 	ft_printf("---------------------------\n\n");
 }
 
@@ -73,6 +73,7 @@ static void	split_line(char **matrix, t_setting *set)
 	create_setting(matrix, set);
 	free_string_array(matrix);
 }
+
 //4
 static int parse_map(char *filename, t_setting *set)
 {
@@ -81,6 +82,9 @@ static int parse_map(char *filename, t_setting *set)
 
 	//first thing is counting right?
 	counting_123(filename, set);
+	ft_printf("%sfinished%s READING THE MAP 1 TIME\n", BG_GREEN, BG_RESET);
+	struct_status(set);
+	alloc_struct_elem(set);
 	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
 	//replace_me(line, ' ', '\n');
@@ -90,7 +94,6 @@ static int parse_map(char *filename, t_setting *set)
 		split_line(ft_split(line, ' '), set);
 		line = get_next_line(fd);
 	}
-	struct_status(set);
 	return (close(fd));
 }
 

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 09:19:49 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:00:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,24 @@
 
 //TODO:clearing up this mess
 //
-
+void alloc_struct_elem(t_setting *setting)
+{
+	ft_printf("%s\tallocation%s\n", YELLOW, RESET);
+	setting->lights = malloc(sizeof(t_light *) * setting->num_lights);
+	if (!setting->lights)
+		return ;
+	setting->spheres = malloc(sizeof(t_sphere *) * setting->num_spheres);
+	if (!setting->spheres)
+		return ;
+	setting->planes = malloc(sizeof(t_plane *) * setting->num_planes);
+	if (!setting->planes)
+		return ;
+	setting->cylinders = malloc(sizeof(t_cylinder *) * setting->num_cylinders);
+	if (!setting->cylinders)
+		return ;
+	ft_printf("set back %sSTRUCT%s zero again \n", YELLOW, RESET);
+	setback_zero(setting);
+}
 
 void	count_elements(char **details, t_setting *set)
 {

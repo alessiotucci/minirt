@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 10:06:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 10:58:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	error_msg(char *str)
 }
 
 /* function to set the counter of object in the setting to zero */
-void	starting_zero(t_setting *set)
+void	setback_zero(t_setting *set)
 {
 		set->num_lights = 0;
 		set->num_spheres = 0;
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 	t_mlx		info_mlx;
 	t_setting	new_setting;
 
-	starting_zero(&new_setting);
+	setback_zero(&new_setting);
 	if (ac == 2)
 	{
 		if (parsing_map(av[1], &new_setting))
