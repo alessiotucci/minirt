@@ -6,11 +6,12 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:04:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 18:09:44 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 19:00:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include <stdio.h>
 
 static double	process_integer_part(const char *str, int *i)
 {
@@ -51,7 +52,6 @@ double	my_atof(const char *str)
 	int		sign;
 	int		i;
 
-	ft_printf("%sDEBUG%s %s ", RED, RESET, str);
 	i = 0;
 	sign = 1;
 	while ((str[i]) == ' ')
@@ -64,9 +64,6 @@ double	my_atof(const char *str)
 	else if (str[i] == '+')
 		i++;
 	result = process_integer_part(str, &i);
-	ft_printf("\n1) result here: %f\n", result);
 	result += process_fractional_part(str, &i);
-	ft_printf("2) result here: %f\n", result);
-	ft_printf("%sRESULT%s %f\n",  RED, RESET,(sign * result));
 	return (sign * result);
 }
