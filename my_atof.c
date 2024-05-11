@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:04:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 17:27:48 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 18:09:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ double	my_atof(const char *str)
 	else if (str[i] == '+')
 		i++;
 	result = process_integer_part(str, &i);
+	ft_printf("\n1) result here: %f\n", result);
 	result += process_fractional_part(str, &i);
+	ft_printf("2) result here: %f\n", result);
 	ft_printf("%sRESULT%s %f\n",  RED, RESET,(sign * result));
 	return (sign * result);
 }
