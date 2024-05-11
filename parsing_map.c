@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/09 19:55:56 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 09:20:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	replace_me(char *str, char replacement, char to_replace)
 	}
 }
 
+/* Helper function, I will delete this later on */
 static void struct_status(t_setting *set)
 {
 	ft_printf("struct has [%d] lights \n", set->num_lights);
@@ -37,21 +38,17 @@ static void struct_status(t_setting *set)
 	ft_printf("struct has [%d] cones bonus\n", set->num_cones);
 }
 
-//5  TODO: I need to fix this
-static void	split_line(char **matrix, t_setting *set)
+//TODO: 123 change the file locations
+static void	split_line123(char **matrix, t_setting *set)
 {
 	(void)set;
 	remove_new_line(matrix, ' ', '\n');
-	//print_string_array(matrix);
 	count_elements(matrix, set);
-	struct_status(set);
-	create_setting(matrix, set);
+	//create_setting(matrix, set);
 	free_string_array(matrix);
 }
-
-
-//4
-static void	parse_map(int fd, t_setting *set)
+//TODO: 123 change the file locations
+static void	counting_123(int fd, t_setting *set)
 {
 	char	*line;
 	
@@ -60,9 +57,37 @@ static void	parse_map(int fd, t_setting *set)
 	while (line != NULL)
 	{
 		//replace_me(line, ' ', '\n');
+		split_line123(ft_split(line, ' '), set);
+		line = get_next_line(fd);
+	}
+	return ;
+}
+
+static void	split_line(char **matrix, t_setting *set)
+{
+	(void)set;
+	remove_new_line(matrix, ' ', '\n');
+	//count_elements(matrix, set);
+	struct_status(set);
+	create_setting(matrix, set);
+	free_string_array(matrix);
+}
+//4
+static void	parse_map(int fd, t_setting *set)
+{
+	char	*line;
+	
+	//first thing is counting right?
+	counting_123(fd, set);
+	line = get_next_line(fd);
+	//replace_me(line, ' ', '\n');
+	while (line != NULL)
+	{
+		//replace_me(line, ' ', '\n');
 		split_line(ft_split(line, ' '), set);
 		line = get_next_line(fd);
 	}
+	struct_status(set);
 	return ;
 }
 

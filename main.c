@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/05 18:24:20 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 09:19:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ void	error_msg(char *str)
 	ft_printf("Minirt: %s%s%s", RED, str, RESET);
 }
 
+void	starting_zero(t_setting *set)
+{
+		set->num_lights = 0;
+		set->num_spheres = 0;
+		set->num_planes = 0;
+		set->num_cylinders = 0;
+		set->num_cones = 0;
+}
 static void	init_scene(t_mlx *info, char *mapname)
 {
 	info->width = DEFAULT_WIDTH;
@@ -30,6 +38,8 @@ int	main(int ac, char **av)
 {
 	t_mlx		info_mlx;
 	t_setting	new_setting;
+
+	starting_zero(&new_setting);
 	if (ac == 2)
 	{
 		if (parsing_map(av[1], &new_setting))

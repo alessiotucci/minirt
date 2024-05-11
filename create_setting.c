@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/09 19:49:28 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 09:19:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 //TODO:clearing up this mess
 //
 
+
 void	count_elements(char **details, t_setting *set)
 {
-
 	if (my_strcmp(details[0], "L") == 0)
 		set->num_lights++;
 	else if (my_strcmp(details[0], "sp") == 0)
