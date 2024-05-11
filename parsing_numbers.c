@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 12:34:47 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 14:51:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,16 @@ t_vector	parse_vector(char *str)
 	matrix = ft_split(str, ',');
 	if (lenght_string_array(matrix) == 3)
 	{
-		vector.x = ft_atoi(matrix[0]);
-		vector.y = ft_atoi(matrix[1]);
-		vector.z = ft_atoi(matrix[2]);
+		vector.x = atof(matrix[0]);
+		vector.y = atof(matrix[1]);
+		vector.z = atof(matrix[2]);
+		ft_printf("%sFIX THE BUG%s\t", BG_YELLOW, BG_RESET);
 	}
 	else
 	{
 		error_msg("misconfiguation of vectors: ");
 		ft_printf("%s\n", matrix[lenght_string_array(matrix) - 1]);
 	}
-	return (free_string_array(matrix), vector);
+	return (free_string_array(matrix), print_vector(vector), vector);
 
 }

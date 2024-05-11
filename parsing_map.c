@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 12:10:29 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 14:36:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	split_line(char **matrix, t_setting *set)
 {
 	(void)set;
 	remove_new_line(matrix, ' ', '\n');
-	//count_elements(matrix, set);
 	create_setting(matrix, set);
 	free_string_array(matrix);
 }

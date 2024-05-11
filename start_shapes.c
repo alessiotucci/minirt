@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 13:03:59 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 15:01:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	start_cylinder(t_setting *set, char **details)
 {
-	ft_printf("setting up cylinder\n");
+	ft_printf("\t%s*SETTING UP CYLINDER*%s\n", GREEN, RESET);
 	t_cylinder	*new_cylinder;
 	new_cylinder = malloc(sizeof(t_cylinder));;
 	if (!new_cylinder)
@@ -25,14 +25,13 @@ void	start_cylinder(t_setting *set, char **details)
 	new_cylinder->diameter = atof(details[3]);
 	new_cylinder->height = atof(details[4]);
 	new_cylinder->color = parse_color(details[5]);
-	//TODO: write this function
 	add_cylinder_to_array(new_cylinder, set);
 
 }
 
 void	start_spheres(t_setting *set, char **details)
 {
-	ft_printf("setting up spheres\n");
+	ft_printf("\n\t%s*SETTING UP SPHERES*%s\n", RED, RESET);
 	t_sphere	*new_sphere;
 	new_sphere = malloc(sizeof(t_sphere));;
 	if (!new_sphere)
@@ -41,14 +40,13 @@ void	start_spheres(t_setting *set, char **details)
 	new_sphere->center = parse_vector(details[1]);
 	new_sphere->diameter = atof(details[2]); //TODO: implement my own
 	new_sphere->color = parse_color(details[3]);
-	//TODO: write this function
 	add_sphere_to_array(new_sphere, set);
 
 }
 
 void	start_planes(t_setting *set, char **details)
 {
-	ft_printf("setting up planes\n");
+	ft_printf("\n\t%s*SETTING UP PLANES*%s\n", BLUE, RESET);
 	t_plane	*new_plane;
 	new_plane = malloc(sizeof(t_plane));;
 	if (!new_plane)
@@ -57,7 +55,6 @@ void	start_planes(t_setting *set, char **details)
 	new_plane->point = parse_vector(details[1]);
 	new_plane->normal = parse_vector(details[2]); //TODO: Carefull with ranges
 	new_plane->color = parse_color(details[3]);
-	//TODO: write this function
 	add_plane_to_array(new_plane, set);
 
 }

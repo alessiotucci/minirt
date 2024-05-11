@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:10:38 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 12:49:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 14:57:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	add_plane_to_array(t_plane *to_add, t_setting *set)
 void	add_sphere_to_array(t_sphere *to_add, t_setting *set)
 {
 	set->spheres[set->num_spheres] = to_add;
-	print_color(set->spheres[set->num_spheres]->color);
+	//print_color(set->spheres[set->num_spheres]->color);
 	set->num_spheres++;
 }
 

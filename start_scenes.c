@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 17:02:57 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 13:02:27 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 14:59:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	start_amb_light(t_setting *set, char **details)
 {
-	ft_printf("\t**SETTING UP AMBIENT LIGHTING**\n");
+	ft_printf("\t*%sSETTING UP AMBIENT LIGHTING%s**\n", YELLOW, RESET);
 	set->amb_light = malloc(sizeof(t_amb_light));
 	if (set->amb_light == NULL)
 		return (error_msg("malloc failure\n"));
@@ -25,7 +25,7 @@ void	start_amb_light(t_setting *set, char **details)
 
 void	start_camera(t_setting *set, char **details)
 {
-	ft_printf("\t**SETTING UP CAMERA**\n");
+	ft_printf("\n\t%s*SETTING UP CAMERA%s*\n", CYAN, RESET);
 
 	set->camera = malloc(sizeof(t_camera));
 	if (set->camera == NULL)
@@ -45,7 +45,7 @@ void	start_lights(t_setting *set, char **details)
 	if (!new_light)
 		return ;//TODO add the check
 	(void)new_light;
-	ft_printf("\t**SETTING UP LIGHTS**\n");
+	ft_printf("\t*%sSETTING UP LIGHTS*%s\n", PURPLE, RESET);
 	new_light->identifier = ft_strdup(details[0]);
 	new_light->position = parse_vector(details[1]);
 	new_light->brightness = atof(details[2]); //TODO: implement my own
