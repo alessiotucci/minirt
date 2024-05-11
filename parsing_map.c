@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 11:38:44 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 12:10:29 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,6 @@ void	replace_me(char *str, char replacement, char to_replace)
 			str[i] = replacement;
 		i++;
 	}
-}
-
-/* Helper function, I will delete this later on */
-void struct_status(t_setting *set)
-{
-	ft_printf("\n\n------STRUCT STATUS -------\n");
-	ft_printf("struct has [%d] planes \t  |\n", set->num_planes);
-	ft_printf("struct has [%d] cylinders  |\n", set->num_cylinders);
-	ft_printf("struct has [%d] spheres \t  |\n", set->num_spheres);
-	ft_printf("struct has [%d] lights\t  |\n", set->num_lights);
-	//ft_printf("struct has [%d] cones bonus|\n", set->num_cones);
-	ft_printf("---------------------------\n\n");
 }
 
 //TODO: 123 change the file locations

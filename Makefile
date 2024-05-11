@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/11 11:33:24 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/11 11:46:19 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SOURCE = ./main.c \
 		 ./start_shapes.c \
 		 ./start_scenes.c \
 		 ./utils.c \
+		 ./print_debug.c \
 		 ./translations.c \
 		 ./rotations.c \
 		 ./scaling.c \
