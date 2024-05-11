@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 10:05:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 10:19:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,23 @@ static void	split_line123(char **matrix, t_setting *set)
 	(void)set;
 	remove_new_line(matrix, ' ', '\n');
 	count_elements(matrix, set);
-	//create_setting(matrix, set);
 	free_string_array(matrix);
 }
 //TODO: 123 change the file locations
-static void	counting_123(int fd, t_setting *set)
+static int counting_123(char *filename, t_setting *set)
 {
 	char	*line;
-	
+	int		fd;
+
+	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
-	//replace_me(line, ' ', '\n');
 	while (line != NULL)
 	{
-		//replace_me(line, ' ', '\n');
 		split_line123(ft_split(line, ' '), set);
 		line = get_next_line(fd);
 	}
-	return ;
+	//close(fd);TODO fix it
+	return (close(fd));
 }
 
 static void	split_line(char **matrix, t_setting *set)
@@ -70,17 +70,18 @@ static void	split_line(char **matrix, t_setting *set)
 	(void)set;
 	remove_new_line(matrix, ' ', '\n');
 	//count_elements(matrix, set);
-	struct_status(set);
 	create_setting(matrix, set);
 	free_string_array(matrix);
 }
 //4
-static void	parse_map(int fd, t_setting *set)
+static int parse_map(char *filename, t_setting *set)
 {
 	char	*line;
-	
+	int		fd;
+
 	//first thing is counting right?
-	counting_123(fd, set);
+	counting_123(filename, set);
+	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
 	//replace_me(line, ' ', '\n');
 	while (line != NULL)
@@ -90,7 +91,7 @@ static void	parse_map(int fd, t_setting *set)
 		line = get_next_line(fd);
 	}
 	struct_status(set);
-	return ;
+	return (close(fd));
 }
 
 //3 
@@ -103,7 +104,8 @@ int	open_map(char *filename, t_setting *set)
 		return (ft_printf("%sError map: %s%s\n", RED, filename, RESET));
 	else
 	{
-		parse_map(fd, set);
+		//parse_map(fd, set);
+		parse_map(filename, set);
 		return (close(fd), 0);
 	}
 	

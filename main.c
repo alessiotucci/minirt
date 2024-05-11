@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 09:19:43 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 10:06:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	error_msg(char *str)
 	ft_printf("Minirt: %s%s%s", RED, str, RESET);
 }
 
+/* function to set the counter of object in the setting to zero */
 void	starting_zero(t_setting *set)
 {
 		set->num_lights = 0;
