@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 18:58:57 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 19:34:52 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int ac, char **av)
 			return (-1 * ft_printf("%sWrong map: %s%s\n", RED, RESET, av[1]));
 		init_scene(&info_mlx, av[1]);
 		struct_full_status(&new_setting);//TODO: we are testing
+		free_struct(&new_setting);
 		manage_mlx(&info_mlx);
 	}
 	else

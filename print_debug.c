@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 18:51:01 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/12 10:41:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,28 @@ static void	print_lights(int n_lights, t_light **array)
 	}
 }
 
+static void	print_camera(t_camera *camera)
+{
+	printf("ViewPoint: ");
+	print_vector(camera->viewpoint);
+	printf("Orentation: ");
+	print_vector(camera->orientation);
+	printf("FOV:[%d]\n", camera->fov);
+}
+static void	print_ambient_light(t_amb_light *amb_light)
+{
+	printf("Ratio of ambient lights: %f\n", amb_light->ratio);
+	printf("Color of ambient lights: ");
+	print_color(amb_light->color);
+
+}
 void	struct_full_status(t_setting *set)
 {
 	printf("\n\n------STRUCT %sFULL %sSTATUS -------\n", PURPLE, RESET);
+	printf("\n*\t %sAMBIENT LIGHTS%s *\n", BLUE, RESET);
+	print_ambient_light(set->amb_light);
+	printf("\n*\t%sCAMERA STATS%s *\n", BLUE, RESET);
+	print_camera(set->camera);
 	printf("\n* n.[%s%d%s] PLANES \t\n", RED, set->num_planes, RESET);
 	print_planes(set->num_planes, set->planes);
 	printf("\n* n.[%s%d%s] CYLINDERS  |\n", RED, set->num_cylinders, RESET);

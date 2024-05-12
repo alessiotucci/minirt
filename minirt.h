@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 15:53:26 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/11 19:38:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,11 +207,19 @@ void	add_light_to_array(t_light *to_add, t_setting *set);
 void	add_plane_to_array(t_plane *to_add, t_setting *set);
 void	add_sphere_to_array(t_sphere *to_add, t_setting *set);
 void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
+
+/************************/
+/*freeing the function  */
+/************************/
+void	free_struct(t_setting *set);
+/************************/
+/* print debug function */
+/************************/
+void	struct_full_status(t_setting *set);
+void	struct_status(t_setting *set);
 /******************/
 /* utils function */
 /******************/
-void	struct_full_status(t_setting *set);
-void	struct_status(t_setting *set);
 void	error_msg(char *str);
 int		my_strcmp(const char *str1, const char *str2);
 double	my_atof(const char *str);
