@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 19:38:49 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/12 15:24:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 /***********************************************************************/
 # include <fcntl.h>
 # include <unistd.h>
+# include <math.h>
 
 /************************/
 /* Define keyboard code */ //TODO: check with Ubuntu codes
@@ -71,7 +72,7 @@
 # define DEFAULT_HEIGHT 720
 
 /************************************/
-/* color for printing on the screen */
+/* color for mlx images and library */
 /************************************/
 # define COLOR_WHITE 0xFFFFFF
 # define COLOR_BLACK 0x000000
@@ -177,21 +178,21 @@ typedef struct s_mlx
 	char		*img_string;
 }		t_mlx;
 
-int		parsing_map(char *map, t_setting *set);
-void	create_setting(char **line, t_setting *set);
-void	count_elements(char **details, t_setting *set);
-void	setback_zero(t_setting *set);
-void	alloc_struct_elem(t_setting *setting);
+int			parsing_map(char *map, t_setting *set);
+void		create_setting(char **line, t_setting *set);
+void		count_elements(char **details, t_setting *set);
+void		setback_zero(t_setting *set);
+void		alloc_struct_elem(t_setting *setting);
 /***************************************************/
 /*Those function are going to start the struct     */
 /***************************************************/
-void	start_amb_light(t_setting *set, char **details);
-void	start_camera(t_setting *set, char **details);
-void	start_lights(t_setting *set, char **details);
-void	start_cylinder(t_setting *set, char **details);
-void	start_spheres(t_setting *set, char **details);
-void	start_planes(t_setting *set, char **details);
-void	start_cones(t_setting *set, char **details);
+void		start_amb_light(t_setting *set, char **details);
+void		start_camera(t_setting *set, char **details);
+void		start_lights(t_setting *set, char **details);
+void		start_cylinder(t_setting *set, char **details);
+void		start_spheres(t_setting *set, char **details);
+void		start_planes(t_setting *set, char **details);
+void		start_cones(t_setting *set, char **details);
 
 /***************************************************/
 /*Those function are going to parse the numbers    */
@@ -203,11 +204,17 @@ void		print_vector(t_vector vector);
 /***************************************************/
 /*Those function are going to add elem to arrays   */
 /***************************************************/
-void	add_light_to_array(t_light *to_add, t_setting *set);
-void	add_plane_to_array(t_plane *to_add, t_setting *set);
-void	add_sphere_to_array(t_sphere *to_add, t_setting *set);
-void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
+void		add_light_to_array(t_light *to_add, t_setting *set);
+void		add_plane_to_array(t_plane *to_add, t_setting *set);
+void		add_sphere_to_array(t_sphere *to_add, t_setting *set);
+void		add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 
+/************************/
+/*   Math and vectors   */
+/************************/
+double		dot(t_vector v1, t_vector v2);
+t_vector	subtract(t_vector v1, t_vector v2);
+int	create_trgb(t_color color);
 /************************/
 /*freeing the function  */
 /************************/
@@ -229,7 +236,10 @@ int		free_string_array(char **array);
 int		lenght_string_array(char **array);
 void	remove_new_line(char **matrix, char replacement, char to_replace);
 void	replace_me(char *str, char replacement, char to_replace);
+/*********************************/
 /* useful function to manage mlx */
-void	manage_mlx(t_mlx *obj);
+/*********************************/
+void	manage_mlx(t_mlx *obj, t_setting *set);
 int		window_close(void *param);
+void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 #endif

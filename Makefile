@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/12 14:39:10 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/12 14:51:01 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SOURCE = ./main.c \
 		 ./cone.c \
 		 ./my_atof.c \
 		 ./freeing.c \
+		 ./vector_operations.c \
 
 HEADERS = ./minirt.h \
 

@@ -6,21 +6,31 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/12 14:25:35 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/12 15:31:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-/*
-static void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
+
+void	my_new_image(t_mlx *data)
+{
+
+	ft_printf("%sgetting address in img_data%s\n", BG_YELLOW, RESET);
+	data->img_pointer = mlx_new_image(data->mlx, data->width,
+		data->height);
+	data->img_string = mlx_get_data_addr(data->img_pointer, &(data->bits),
+		&(data->lsize), &(data->endian));
+
+}
+void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = data->img_string + (y * data->lsize + x * (data->bits / 8));
 	*(unsigned int *)dst = color;
 }
-*/
+
 
 /* This function perfom a cleana close and then exit*/
 static void	clean_close(t_mlx *project)
@@ -61,13 +71,17 @@ int	window_close(void *param)
 	return (0);
 }
 
-void	manage_mlx(t_mlx *obj)
+void	manage_mlx(t_mlx *obj, t_setting *set)
 {
+	(void)set; //TODO: just for now
 	obj->mlx = mlx_init();
 	ft_printf("%smlx_init has started%s\n", YELLOW, RESET);
 	if (obj->mlx == NULL)
 		return (ft_putstr_fd("mlx_init fail...\n", 2));
 	obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
+	my_new_image(obj);
+	//TODO: now draw on the image with some logic
+	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
 	mlx_hook(obj->win, 2, 1, key_pressed, obj);
 	mlx_hook(obj->win, 17, 0L, window_close, obj);
 	mlx_loop(obj->mlx);
