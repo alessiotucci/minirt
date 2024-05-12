@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 11:40:28 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/12 14:25:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	manage_mlx(t_mlx *obj)
 	mlx_hook(obj->win, 17, 0L, window_close, obj);
 	mlx_loop(obj->mlx);
 	/*
-	mlx_destroy_display();	//May not be present as a function in other libraries (e.g. for iOS)
+	mlx_destroy_display();
 	mlx_destroy_windows();
 	free();
 	free();
