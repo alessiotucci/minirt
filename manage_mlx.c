@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/12 15:48:50 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/12 17:43:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,40 @@ int	window_close(void *param)
 	return (0);
 }
 
-/*static void	my_test(t_mlx *obj, t_setting *set)
-{
 
+/*TODO: debug start here
+// Function to calculate the length (magnitude) of a vector
+static double magnitude(t_vector v) {
+    return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+}
+
+// Function to normalize a vector
+static t_vector normalize(t_vector v) {
+    double mag = magnitude(v);
+    t_vector result = {v.x / mag, v.y / mag, v.z / mag};
+    return result;
+}
+
+static t_vector calculate_direction(t_mlx *obj, t_camera *camera, int x, int y) {
+    // Calculate the position of the pixel on the image plane
+    double image_aspect_ratio = (double)obj->width / (double)obj->height;
+    double pixel_screen_x = (2 * ((x + 0.5) / obj->width) - 1) * tan(camera->fov / 2 * M_PI / 180) * image_aspect_ratio;
+    double pixel_screen_y = (1 - 2 * ((y + 0.5) / obj->height)) * tan(camera->fov / 2 * M_PI / 180);
+
+    // Create a vector for the pixel's position on the image plane
+    t_vector pixel_position = {pixel_screen_x, pixel_screen_y, -1}; // The image plane is placed at z = -1
+
+    // Subtract the camera's position to get the direction vector
+    t_vector direction = subtract(pixel_position, camera->viewpoint);
+
+    // Normalize the direction vector
+    direction = normalize(direction); // You need to implement this function
+
+    return direction;
+}
+
+static void	my_test(t_mlx *obj, t_setting *set)
+{
  // Iterate over each pixel
 	for (int y = 0; y < obj->height; y++)
 	{
@@ -81,7 +112,7 @@ int	window_close(void *param)
 		{
 			// The ray is defined by origin (O) and direction (dir)
 			t_vector O = set->camera->orientation;
-			t_vector dir = calculate_direction(set->camera, x, y); // You need to implement this function
+			t_vector dir = calculate_direction(obj, set->camera, x, y);//TODO: You need to implement this function
 
 			// The sphere is defined by its center (C) and radius (r)
 			t_vector C = set->spheres[0]->center;
