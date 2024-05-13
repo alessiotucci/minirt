@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/12 15:24:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/13 20:43:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
-
+//TODO: delete all printf
+# include <stdio.h>
 /************************/
 /* Define keyboard code */ //TODO: check with Ubuntu codes
 /************************/

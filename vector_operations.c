@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:48:17 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/12 17:59:28 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/13 20:41:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ t_vector	subtract(t_vector v1, t_vector v2)
 	return (result);
 }
 
+*/
 // Function to convert color struct to int
 int	create_trgb(t_color color)
 {
 	return (0 << 24 | color.r << 16 | color.g << 8 | color.b);
 }
-*/
 //TODO: STUDY THOSE OPERATIONS
 // 1. Vector Addition
 t_vector	add(t_vector v1, t_vector v2)

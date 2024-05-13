@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/12 17:43:42 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/13 20:45:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	window_close(void *param)
 }
 
 
-/*TODO: debug start here
+/*TODO: debug start here*/
 // Function to calculate the length (magnitude) of a vector
 static double magnitude(t_vector v) {
     return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
@@ -126,7 +126,8 @@ static void	my_test(t_mlx *obj, t_setting *set)
 
 			// Calculate the discriminant
 			double discriminant = b*b - 4*a*c;
-
+			printf("Discriminant[%f] = b*b[%f*%f] - 4*a[%f]*c[%f]\n", \
+			discriminant, b, b, a, c);
 			// If the discriminant is negative, the ray does not intersect the sphere
 			if (discriminant < 0)
 			{
@@ -142,7 +143,7 @@ static void	my_test(t_mlx *obj, t_setting *set)
 		}
 	}
 }
-*/
+
 void	manage_mlx(t_mlx *obj, t_setting *set)
 {
 	(void)set; //TODO: just for now
@@ -153,7 +154,7 @@ void	manage_mlx(t_mlx *obj, t_setting *set)
 	obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
 	my_new_image(obj);
 	//TODO: now draw on the image with some logic
-	//my_test(obj, set);
+	my_test(obj, set);
 	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
 	mlx_hook(obj->win, 2, 1, key_pressed, obj);
 	mlx_hook(obj->win, 17, 0L, window_close, obj);
