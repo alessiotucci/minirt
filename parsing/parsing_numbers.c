@@ -6,11 +6,11 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 16:41:20 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/14 21:04:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 t_color	parse_color(char *str)
 {

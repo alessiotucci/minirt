@@ -6,11 +6,11 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 14:36:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/14 21:05:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 /* TODO: let's see if we can get rid of the \n char */
 void	replace_me(char *str, char replacement, char to_replace)

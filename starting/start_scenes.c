@@ -6,11 +6,11 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 17:02:57 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/12 11:40:29 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/14 21:02:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 /* as you can see, there is a check on the lenght of the matrix details
  * I need to add a message in other case, were the lenght isn´t right! */

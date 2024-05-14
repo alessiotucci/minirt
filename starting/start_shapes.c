@@ -6,11 +6,11 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 15:01:45 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/14 21:02:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 void	start_cylinder(t_setting *set, char **details)
 {

@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/12 14:51:01 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/14 21:06:28 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,21 +20,21 @@ NAME = miniRT
 # *************************************************
 SOURCE = ./main.c \
 		 ./manage_mlx.c \
-		 ./parsing_map.c \
-		 ./parsing_numbers.c \
+		 ./parsing/parsing_map.c \
+		 ./parsing/parsing_numbers.c \
 		 ./create_setting.c \
 		 ./add_elem_array.c \
-		 ./start_shapes.c \
-		 ./start_scenes.c \
+		 ./starting/start_shapes.c \
+		 ./starting/start_scenes.c \
 		 ./utils.c \
 		 ./print_debug.c \
-		 ./translations.c \
-		 ./rotations.c \
-		 ./scaling.c \
+		 ./transformations/translations.c \
+		 ./transformations/rotations.c \
+		 ./transformations/scaling.c \
 		 ./plane.c \
 		 ./sphere.c \
 		 ./cylinder.c \
-		 ./cone.c \
+		 ./bonus/cone.c \
 		 ./my_atof.c \
 		 ./freeing.c \
 		 ./vector_operations.c \
