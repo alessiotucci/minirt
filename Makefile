@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/14 21:06:28 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/14 21:11:18 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,16 @@ SOURCE = ./main.c \
 		 ./add_elem_array.c \
 		 ./starting/start_shapes.c \
 		 ./starting/start_scenes.c \
-		 ./utils.c \
-		 ./print_debug.c \
+		 ./extra/utils.c \
+		 ./extra/print_debug.c \
+		 ./extra/my_atof.c \
 		 ./transformations/translations.c \
 		 ./transformations/rotations.c \
 		 ./transformations/scaling.c \
-		 ./plane.c \
-		 ./sphere.c \
-		 ./cylinder.c \
+		 ./shapes/plane.c \
+		 ./shapes/sphere.c \
+		 ./shapes/cylinder.c \
 		 ./bonus/cone.c \
-		 ./my_atof.c \
 		 ./freeing.c \
 		 ./vector_operations.c \
 

@@ -6,11 +6,11 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 21:25:59 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/07 21:01:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/14 21:10:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 //6
 void	remove_new_line(char **matrix, char replacement, char to_replace)

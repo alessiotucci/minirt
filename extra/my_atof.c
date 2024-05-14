@@ -6,11 +6,11 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:04:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 19:00:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/14 21:10:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 #include <stdio.h>
 
 static double	process_integer_part(const char *str, int *i)

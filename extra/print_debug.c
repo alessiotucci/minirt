@@ -6,11 +6,11 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/12 10:41:02 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/14 21:10:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 #include <stdio.h>
 /* Helper function, I will delete this later on */
 void struct_status(t_setting *set)
