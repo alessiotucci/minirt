@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/13 20:45:59 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/18 11:17:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,18 @@ int	window_close(void *param)
 
 /*TODO: debug start here*/
 // Function to calculate the length (magnitude) of a vector
-static double magnitude(t_vector v) {
+double magnitude(t_vector v) {
     return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
 }
 
 // Function to normalize a vector
-static t_vector normalize(t_vector v) {
+t_vector normalize(t_vector v) {
     double mag = magnitude(v);
     t_vector result = {v.x / mag, v.y / mag, v.z / mag};
     return result;
 }
 
-static t_vector calculate_direction(t_mlx *obj, t_camera *camera, int x, int y) {
+t_vector calculate_direction(t_mlx *obj, t_camera *camera, int x, int y) {
     // Calculate the position of the pixel on the image plane
     double image_aspect_ratio = (double)obj->width / (double)obj->height;
     double pixel_screen_x = (2 * ((x + 0.5) / obj->width) - 1) * tan(camera->fov / 2 * M_PI / 180) * image_aspect_ratio;
@@ -103,6 +103,7 @@ static t_vector calculate_direction(t_mlx *obj, t_camera *camera, int x, int y) 
     return direction;
 }
 
+/*
 static void	my_test(t_mlx *obj, t_setting *set)
 {
  // Iterate over each pixel
@@ -143,7 +144,7 @@ static void	my_test(t_mlx *obj, t_setting *set)
 		}
 	}
 }
-
+*/
 void	manage_mlx(t_mlx *obj, t_setting *set)
 {
 	(void)set; //TODO: just for now
@@ -154,7 +155,7 @@ void	manage_mlx(t_mlx *obj, t_setting *set)
 	obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
 	my_new_image(obj);
 	//TODO: now draw on the image with some logic
-	my_test(obj, set);
+	//my_test(obj, set);
 	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
 	mlx_hook(obj->win, 2, 1, key_pressed, obj);
 	mlx_hook(obj->win, 17, 0L, window_close, obj);
