@@ -40,6 +40,7 @@ using the filetype:pdf is helpful during google search
 <!---
 [![video 1](https://ytcards.demolab.com/?id= " ")]() |
 -->
+[extra notes](https://www.cs.sjtu.edu.cn/~shengbin/course/vr/slides/VR_Lecture8_ShengBin.pdf)
 
 | Lectures    | video | notes | 
 |-------------|-------|--------| 
@@ -60,9 +61,9 @@ using the filetype:pdf is helpful during google search
 |15) Ray Tracing                      |  [![video 15](https://ytcards.demolab.com/?id=Ahp6LDQnK4Y " ")](https://www.youtube.com/watch?v=Ahp6LDQnK4Y)    | |
 |16) Subdivision Surfaces Part 1      |  [![video 16](https://ytcards.demolab.com/?id=9uscFr2Hht0 " ")](https://www.youtube.com/watch?v=9uscFr2Hht0)    | [DOO-SABIN SURFACES ](https://www.cs.unc.edu/~dm/UNC/COMP258/LECTURES/Doo-Sabin.pdf)  [Advanced data structures, aka Pointer hell!](https://web.mat.upc.edu/toni.susin/files/IntroductionComputerGraphicsRenato.pdf) |
 |17) Subdivision Surfaces Part 2      |  [![video 17](https://ytcards.demolab.com/?id=THiF7-QxKXk " ")](https://www.youtube.com/watch?v=THiF7-QxKXk)    | [CATMULL-CLARK SURFACES](https://www.cs.unc.edu/~dm/UNC/COMP258/LECTURES/Catmull-Clark.pdf) [subdivision notes ](https://empslocal.ex.ac.uk/people/staff/reverson/uploads/COM3404/subdivision4.pdf)|
-|18) Shadows Part 1                   |  [![video 18](https://ytcards.demolab.com/?id=kmdRmXuOjIY " ")](https://www.youtube.com/watch?v=kmdRmXuOjIY)   | |
-|19) Shadows Part 2                   |  [![video 19](https://ytcards.demolab.com/?id=qiJhB0fOY6I " ")](https://www.youtube.com/watch?v=qiJhB0fOY6I)   | |
-|20) Camera Motion                    |  [![video 20](https://ytcards.demolab.com/?id=HAJv25Afsz8 " ")](https://www.youtube.com/watch?v=HAJv25Afsz8)   | |
+|18) Shadows Part 1                   |  [![video 18](https://ytcards.demolab.com/?id=kmdRmXuOjIY " ")](https://www.youtube.com/watch?v=kmdRmXuOjIY)   | [Ground Plane Shadows](https://www.cim.mcgill.ca/~langer/557/19-slides.pdf) [Volumes Shadows](https://www.cs.toronto.edu/~strider/docs/D18_AdvancedRayTracing.pdf) |
+|19) Shadows Part 2                   |  [![video 19](https://ytcards.demolab.com/?id=qiJhB0fOY6I " ")](https://www.youtube.com/watch?v=qiJhB0fOY6I)   | [Depth Buffer shadows](https://web.cse.ohio-state.edu/~shen.94/781/Site/Slides_files/shadow.pdf) |
+|20) Camera Motion                    |  [![video 20](https://ytcards.demolab.com/?id=HAJv25Afsz8 " ")](https://www.youtube.com/watch?v=HAJv25Afsz8)   | [Catmull-Rom curves](https://www.cs.utexas.edu/~fussell/courses/cs384g-spring2016/lectures/interpolating_curves.pdf) [Freguson curves](https://cg.cs.tsinghua.edu.cn/course/docs/chap5.pdf)|
 |21) Branches in Computer Graphics    |  [![video 21](https://ytcards.demolab.com/?id=NEIJW3ZJ1GE " ")](https://www.youtube.com/watch?v=NEIJW3ZJ1GE)    | |
  
  
