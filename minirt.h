@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/13 20:43:20 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/19 15:40:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,18 @@ typedef struct s_color
 	int	g;
 	int	b;
 }	t_color;
+
+typedef struct s_pixel
+{
+	int	x;
+	int	y;
+}	t_pixel;
+
+typedef struct s_point2d
+{
+	double	x;
+	double	y;
+}	t_point2d;
 
 typedef struct s_vector
 {

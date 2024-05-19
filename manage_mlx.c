@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/19 15:33:12 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/19 15:54:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,13 @@ static void	clean_close(t_mlx *project)
 	exit(0);
 }
 
+//TODO: interesting function!
 static void	test_function(t_mlx *info)
 {
-	mlx_string_put(info->mlx, info->win, 540, 30, COLOR_GREEN, "key pressed");
+	//TODO: The commented line would center the text
+	//mlx_string_put(info->mlx, info->win, info->width / 2, info->height / 2, COLOR_WHITE, "camera: ");
+	mlx_string_put(info->mlx, info->win, 10, info->height - 10, COLOR_WHITE, "camera: ");
+	mlx_string_put(info->mlx, info->win, 10, 10, COLOR_WHITE, "selected obj: ");
 }
 
 static int	key_pressed(int keycode, void *param)
@@ -53,10 +57,10 @@ static int	key_pressed(int keycode, void *param)
 	help = (t_mlx *) param;
 	if (keycode == ESC)
 		clean_close(help);
-	else if (keycode == PLUS)
-		test_function(help);
-	else if (keycode == MINUS)
-		test_function(help);
+//	else if (keycode == PLUS)
+//		test_function(help);
+//	else if (keycode == MINUS)
+//		test_function(help);
 	else if (keycode == A)
 		test_function(help);
 	return (1);

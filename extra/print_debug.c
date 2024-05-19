@@ -6,12 +6,12 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/14 21:10:33 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/19 15:34:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
-#include <stdio.h>
+#include <stdio.h>//TODO: printf is forbidden
 /* Helper function, I will delete this later on */
 void struct_status(t_setting *set)
 {
@@ -30,6 +30,7 @@ void	print_color(t_color color)
 	printf("%sG: %d %s", GREEN, color.g, RESET);
 	printf("%sB: %d%s\n", BLUE, color.b, RESET);
 }
+
 void	print_vector(t_vector vector)
 {
 	printf("x: %f ", vector.x);
