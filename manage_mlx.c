@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/18 11:17:53 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/19 15:33:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,80 +71,6 @@ int	window_close(void *param)
 	return (0);
 }
 
-
-/*TODO: debug start here*/
-// Function to calculate the length (magnitude) of a vector
-double magnitude(t_vector v) {
-    return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
-}
-
-// Function to normalize a vector
-t_vector normalize(t_vector v) {
-    double mag = magnitude(v);
-    t_vector result = {v.x / mag, v.y / mag, v.z / mag};
-    return result;
-}
-
-t_vector calculate_direction(t_mlx *obj, t_camera *camera, int x, int y) {
-    // Calculate the position of the pixel on the image plane
-    double image_aspect_ratio = (double)obj->width / (double)obj->height;
-    double pixel_screen_x = (2 * ((x + 0.5) / obj->width) - 1) * tan(camera->fov / 2 * M_PI / 180) * image_aspect_ratio;
-    double pixel_screen_y = (1 - 2 * ((y + 0.5) / obj->height)) * tan(camera->fov / 2 * M_PI / 180);
-
-    // Create a vector for the pixel's position on the image plane
-    t_vector pixel_position = {pixel_screen_x, pixel_screen_y, -1}; // The image plane is placed at z = -1
-
-    // Subtract the camera's position to get the direction vector
-    t_vector direction = subtract(pixel_position, camera->viewpoint);
-
-    // Normalize the direction vector
-    direction = normalize(direction); // You need to implement this function
-
-    return direction;
-}
-
-/*
-static void	my_test(t_mlx *obj, t_setting *set)
-{
- // Iterate over each pixel
-	for (int y = 0; y < obj->height; y++)
-	{
-		for (int x = 0; x < obj->width; x++)
-		{
-			// The ray is defined by origin (O) and direction (dir)
-			t_vector O = set->camera->orientation;
-			t_vector dir = calculate_direction(obj, set->camera, x, y);//TODO: You need to implement this function
-
-			// The sphere is defined by its center (C) and radius (r)
-			t_vector C = set->spheres[0]->center;
-			double r = set->spheres[0]->diameter / 2.0;
-
-			// Calculate the terms of the quadratic equation
-			t_vector OC = subtract(O, C);
-			double a = dot(dir, dir);
-			double b = 2.0 * dot(OC, dir);
-			double c = dot(OC, OC) - r*r;
-
-			// Calculate the discriminant
-			double discriminant = b*b - 4*a*c;
-			printf("Discriminant[%f] = b*b[%f*%f] - 4*a[%f]*c[%f]\n", \
-			discriminant, b, b, a, c);
-			// If the discriminant is negative, the ray does not intersect the sphere
-			if (discriminant < 0)
-			{
-				// Color the pixel with the background color
-				my_mlx_pixel_put(obj, x, y, COLOR_WHITE);
-			}
-			else
-			{
-				// The ray intersects the sphere, color the pixel with the sphere's color
-				int color = create_trgb(set->spheres[0]->color);
-				my_mlx_pixel_put(obj, x, y, color);
-			}
-		}
-	}
-}
-*/
 void	manage_mlx(t_mlx *obj, t_setting *set)
 {
 	(void)set; //TODO: just for now
