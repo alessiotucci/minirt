@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/19 15:40:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/19 17:41:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,11 @@
 # define COLOR_MAGENTA 0xFF00FF
 # define COLOR_CYAN 0x00FFFF
 
+/*TODO:ADDITIONAL STRUCTS
+* Ray Struct: Represents a ray in the scene.
+* Intersection Struct: Represents the result of a ray-object intersection
+* Material Struct: Represents the material properties of objects
+*/
 typedef struct s_color
 {
 	int	r;
