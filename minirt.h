@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/19 17:41:49 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/21 17:04:54 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
-typedef struct s_pixel
+/*typedef struct s_pixel
 {
 	int	x;
 	int	y;
@@ -107,12 +107,15 @@ typedef struct s_point2d
 	double	x;
 	double	y;
 }	t_point2d;
+*/
 
+//TODO: small update with the 'w'
 typedef struct s_vector
 {
 	double	x;
 	double	y;
 	double	z;
+	double	w;
 }	t_vector;
 
 typedef struct s_amb_light
