@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/23 13:42:20 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/23 15:40:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,21 +235,25 @@ void		add_plane_to_array(t_plane *to_add, t_setting *set);
 void		add_sphere_to_array(t_sphere *to_add, t_setting *set);
 void		add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 
+int			create_trgb(t_color color);
 /******************************/
 /* Comparing is not that easy */
 /******************************/
-int	comparing_vector(t_vector a, t_vector b);
-int	comparing_double(double a, double b);
-/************************/
-/*   Math and vectors   */
-/************************/
+int			comparing_vector(t_vector a, t_vector b);
+int			comparing_double(double a, double b);
 int			is_a_point(t_vector vect);
 int			is_a_vector(t_vector vect);
+t_vector	negate(t_vector vect);
 t_vector	create_point(double x, double y, double z);
 t_vector	create_vector(double x, double y, double z);
-double		dot(t_vector v1, t_vector v2);
+/********************/
+/* Math and vectors */
+/********************/
+t_vector	add(t_vector v1, t_vector v2);
 t_vector	subtract(t_vector v1, t_vector v2);
-int			create_trgb(t_color color);
+t_vector	multiplication(t_vector v, double scalar);
+t_vector	division(t_vector v, double scalar);
+double		dot(t_vector v1, t_vector v2);
 /************************/
 /*freeing the function  */
 /************************/

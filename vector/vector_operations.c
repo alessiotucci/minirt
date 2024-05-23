@@ -6,26 +6,24 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:48:17 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/23 11:18:42 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/23 15:40:52 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-// Function to convert color struct to int
-int	create_trgb(t_color color)
-{
-	return (0 << 24 | color.r << 16 | color.g << 8 | color.b);
-}
 //TODO: STUDY THOSE OPERATIONS
 // 1. Vector Addition
 t_vector	add(t_vector v1, t_vector v2)
 {
 	t_vector	result;
 
+	if (is_a_point(v1) && is_a_point(v2))
+		return (ft_printf("bad usage adding 2 point\n"), result);
 	result.x = v1.x + v2.x;
 	result.y = v1.y + v2.y;
 	result.z = v1.z + v2.z;
+	result.w = v1.w + v2.w;
 	return (result);
 }
 
@@ -34,23 +32,39 @@ t_vector	subtract(t_vector v1, t_vector v2)
 {
 	t_vector	result;
 
+	if (is_a_vector(v1) && is_a_point(v2))
+		return (ft_printf("bad subtract vector to a point\n"), result);
 	result.x = v1.x - v2.x;
 	result.y = v1.y - v2.y;
 	result.z = v1.z - v2.z;
+	result.w = v1.w - v2.w;
 	return (result);
 }
 
 // 3. Scalar Multiplication
-t_vector	scalar_mul(t_vector v, double scalar)
+t_vector	multiplication(t_vector v, double scalar)
 {
 	t_vector	result;
 
 	result.x = v.x * scalar;
 	result.y = v.y * scalar;
 	result.z = v.z * scalar;
+	result.w = v.w * scalar;
 	return (result);
 }
 
+t_vector	division(t_vector v, double scalar)
+{
+	t_vector	result;
+
+	if (scalar <= 0.0)
+		return (ft_printf("trying to divide by zero\n"), result);
+	result.x = v.x / scalar;
+	result.y = v.y / scalar;
+	result.z = v.z / scalar;
+	result.w = v.w / scalar;
+	return (result);
+}
 // 4. Dot Product
 double	dot(t_vector v1, t_vector v2)
 {
