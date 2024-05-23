@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/23 11:54:34 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/23 13:42:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,11 @@
 # define COLOR_YELLOW 0xFFFF00
 # define COLOR_MAGENTA 0xFF00FF
 # define COLOR_CYAN 0x00FFFF
+
+/***************************************/
+/* defining this for comparing doubles */
+/***************************************/
+# define EPSILON 0.00001
 
 /*TODO:ADDITIONAL STRUCTS
 * Ray Struct: Represents a ray in the scene.
@@ -230,6 +235,11 @@ void		add_plane_to_array(t_plane *to_add, t_setting *set);
 void		add_sphere_to_array(t_sphere *to_add, t_setting *set);
 void		add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 
+/******************************/
+/* Comparing is not that easy */
+/******************************/
+int	comparing_vector(t_vector a, t_vector b);
+int	comparing_double(double a, double b);
 /************************/
 /*   Math and vectors   */
 /************************/

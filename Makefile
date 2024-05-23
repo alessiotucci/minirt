@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/23 11:18:32 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/23 13:39:01 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SOURCE = ./main.c \
 		 ./extra/utils.c \
 		 ./extra/print_debug.c \
 		 ./extra/my_atof.c \
+		 ./extra/comparing.c \
 		 ./transformations/translations.c \
 		 ./transformations/rotations.c \
 		 ./transformations/scaling.c \
@@ -38,6 +39,7 @@ SOURCE = ./main.c \
 		 ./bonus/cone.c \
 		 ./freeing.c \
 		 ./vector/vector_operations.c \
+
 
 HEADERS = ./minirt.h \
 
