@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/14 21:04:39 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/23 11:08:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ t_color	parse_color(char *str)
 	return (free_string_array(matrix), color);
 }
 
-t_vector	parse_vector(char *str)
+/* difference between tuple and vector,
+ * w = 0 for vectors	
+ * w = 1 for tuple;*/
+t_vector	parse_vector(char *str, double flag)
 {
 	t_vector	vector;
 	char	**matrix;
@@ -45,6 +48,7 @@ t_vector	parse_vector(char *str)
 		vector.x = my_atof(matrix[0]);
 		vector.y = my_atof(matrix[1]);
 		vector.z = my_atof(matrix[2]);
+		vector.w = flag;
 		//ft_printf("%sFIX THE BUG%s\t", BG_YELLOW, BG_RESET);
 	}
 	else

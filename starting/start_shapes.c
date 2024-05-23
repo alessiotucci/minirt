@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/14 21:02:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/23 11:12:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	start_cylinder(t_setting *set, char **details)
 	if (!new_cylinder)
 		return ;//TODO add the check
 	new_cylinder->identifier = ft_strdup(details[0]);
-	new_cylinder->center = parse_vector(details[1]);
-	new_cylinder->axis = parse_vector(details[2]); //TODO carefull with ranges
+	new_cylinder->center = parse_vector(details[1], 1.0);
+	new_cylinder->axis = parse_vector(details[2], 0.0); //TODO carefull with ranges
 	new_cylinder->diameter = atof(details[3]);
 	new_cylinder->height = atof(details[4]);
 	new_cylinder->color = parse_color(details[5]);
@@ -37,7 +37,7 @@ void	start_spheres(t_setting *set, char **details)
 	if (!new_sphere)
 		return ;//TODO add the check
 	new_sphere->identifier = ft_strdup(details[0]);
-	new_sphere->center = parse_vector(details[1]);
+	new_sphere->center = parse_vector(details[1], 1.0);
 	new_sphere->diameter = atof(details[2]); //TODO: implement my own
 	new_sphere->color = parse_color(details[3]);
 	add_sphere_to_array(new_sphere, set);
@@ -52,8 +52,8 @@ void	start_planes(t_setting *set, char **details)
 	if (!new_plane)
 		return ;//TODO add the check
 	new_plane->identifier = ft_strdup(details[0]);
-	new_plane->point = parse_vector(details[1]);
-	new_plane->normal = parse_vector(details[2]); //TODO: Carefull with ranges
+	new_plane->point = parse_vector(details[1], 1.0);
+	new_plane->normal = parse_vector(details[2], 0.0); //TODO: Carefull with ranges
 	new_plane->color = parse_color(details[3]);
 	add_plane_to_array(new_plane, set);
 

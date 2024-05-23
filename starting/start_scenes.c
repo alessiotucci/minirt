@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 17:02:57 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/14 21:02:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/23 11:10:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	start_camera(t_setting *set, char **details)
 	if (lenght_string_array(details) == 4)
 	{
 		set->camera->identifier = ft_strdup(details[0]);
-		set->camera->viewpoint = parse_vector(details[1]);
-		set->camera->orientation = parse_vector(details[2]);
+		set->camera->viewpoint = parse_vector(details[1], 1.0);
+		set->camera->orientation = parse_vector(details[2], 0.0); //this is a vector
 		set->camera->fov = ft_atoi(details[3]);
 	}
 
@@ -57,7 +57,7 @@ void	start_lights(t_setting *set, char **details)
 	if (lenght_string_array(details) == 4)
 	{
 		new_light->identifier = ft_strdup(details[0]);
-		new_light->position = parse_vector(details[1]);
+		new_light->position = parse_vector(details[1], 1.0);
 		new_light->brightness = my_atof(details[2]);
 		new_light->color = parse_color(details[3]);
 		add_light_to_array(new_light, set);
