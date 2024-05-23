@@ -6,11 +6,11 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:48:17 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/21 16:29:24 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/23 11:18:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 // Function to convert color struct to int
 int	create_trgb(t_color color)

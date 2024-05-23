@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/23 11:08:11 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/23 11:54:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,18 +233,22 @@ void		add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 /************************/
 /*   Math and vectors   */
 /************************/
+int			is_a_point(t_vector vect);
+int			is_a_vector(t_vector vect);
+t_vector	create_point(double x, double y, double z);
+t_vector	create_vector(double x, double y, double z);
 double		dot(t_vector v1, t_vector v2);
 t_vector	subtract(t_vector v1, t_vector v2);
-int	create_trgb(t_color color);
+int			create_trgb(t_color color);
 /************************/
 /*freeing the function  */
 /************************/
-void	free_struct(t_setting *set);
+void		free_struct(t_setting *set);
 /************************/
 /* print debug function */
 /************************/
-void	struct_full_status(t_setting *set);
-void	struct_status(t_setting *set);
+void		struct_full_status(t_setting *set);
+void		struct_status(t_setting *set);
 /******************/
 /* utils function */
 /******************/

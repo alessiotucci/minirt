@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/14 21:11:18 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/23 11:18:32 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SOURCE = ./main.c \
 		 ./shapes/cylinder.c \
 		 ./bonus/cone.c \
 		 ./freeing.c \
-		 ./vector_operations.c \
+		 ./vector/vector_operations.c \
 
 HEADERS = ./minirt.h \
 
