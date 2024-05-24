@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/23 15:40:19 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/23 15:57:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,7 +253,13 @@ t_vector	add(t_vector v1, t_vector v2);
 t_vector	subtract(t_vector v1, t_vector v2);
 t_vector	multiplication(t_vector v, double scalar);
 t_vector	division(t_vector v, double scalar);
+/**********************/
+/* Complex operations */
+/**********************/
+t_vector	normalization(t_vector vector);
+double		magnitude(t_vector vector);
 double		dot(t_vector v1, t_vector v2);
+t_vector	cross(t_vector v1, t_vector v2);
 /************************/
 /*freeing the function  */
 /************************/
