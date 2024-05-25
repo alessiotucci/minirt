@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 18:49:23 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 19:21:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/25 20:13:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	copy_row_value(double destination[4], double source[4])
 double	**value_matrix(double a[4], double b[4], double c[4], double d[4])
 {
 	double	**new;
-	int		i;
-	int		j;
 
-	i = 0;
 	new = create_matrix(4, 4);
 	init_heap_matrix(4, 4, new);
 	copy_row_value(new[0], a);
@@ -40,6 +37,31 @@ double	**value_matrix(double a[4], double b[4], double c[4], double d[4])
 	return (new);
 }
 
+// 1 is true
+int	comparing_heap_matrix(double **a, double **b)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < rows)
+	{
+		j = 0;
+		while (j < cols)
+		{
+			if (a[i][j] != b[i][j])
+				return (1); // are different
+			j++;
+		}
+		i++;
+	}
+	return (0); // are equals
+}
+
+}
+/*
+ * to test the code: 'gcc initialize_matrix.c matrix.c -o test'
+ *
 int	main(void)
 {
 	double	a[4];
@@ -66,3 +88,4 @@ int	main(void)
 	print_int_matrix(4, 4, value_matrix(a, b, c, d));
 	return (0);
 }
+*/

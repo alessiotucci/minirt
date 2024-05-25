@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 18:41:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/25 19:46:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,9 @@ double		**create_matrix(int rows, int col);
 void		init_matrix(int rows, int cols, double matrix[rows][cols]);
 void		init_heap_matrix(int rows, int cols, double **matrix);
 void		print_int_matrix(int rows, int cols, double **matrix);
+// prolly will need some more
+void		copy_row_value(double destination[4], double source[4]);
+double		**value_matrix(double a[4], double b[4], double c[4], double d[4]);
 /************************/
 /*freeing the function  */
 /************************/

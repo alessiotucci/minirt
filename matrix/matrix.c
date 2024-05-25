@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 16:25:08 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 18:42:30 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/25 19:54:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_heap_matrix(double **matrix, int rows)
 	free(matrix);
 }
 
-//4
+//4) you can decide rows and cols!
 double	**create_matrix(int rows, int col)
 {
 	double	**new_matrix;
@@ -51,7 +51,7 @@ void	print_int_matrix(int rows, int cols, double **matrix)
 		j = 0;
 		while (j < cols)
 		{
-			printf("[%f] ", matrix[i][j]);
+			printf(" | %f | ", matrix[i][j]);
 			j++;
 		}
 	printf("\n");
@@ -80,6 +80,7 @@ void	init_matrix(int rows, int cols, double matrix[rows][cols])
 	}
 }
 
+/* you can decide rows and cols! */
 void	init_heap_matrix(int rows, int cols, double **matrix)
 {
 	int	i;
@@ -99,6 +100,8 @@ void	init_heap_matrix(int rows, int cols, double **matrix)
 }
 
 /*
+ * to test the code: 'gcc matrix.c -o test'
+ *
 int main()
 {
 	// Declare the matrix with automatic storage duration (stack-allocated)
@@ -118,7 +121,7 @@ int main()
 		j = 0;
 		while (j < 4)
 		{
-			printf("[%f] ", my_matrix[i][j]);
+			printf(" | %f | ", my_matrix[i][j]);
 			j++;
 		}
 		printf("\n");
