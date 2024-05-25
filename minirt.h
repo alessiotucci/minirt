@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/23 15:57:07 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/25 09:45:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,6 +236,7 @@ void		add_sphere_to_array(t_sphere *to_add, t_setting *set);
 void		add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 
 int			create_trgb(t_color color);
+int			my_clamp(int value, int min_val, int max_val);
 /******************************/
 /* Comparing is not that easy */
 /******************************/
