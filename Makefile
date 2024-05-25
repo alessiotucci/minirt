@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/25 09:45:34 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/25 18:42:06 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SOURCE = ./main.c \
 		 ./colors/clamp.c \
 		 ./colors/colors.c \
 		 ./colors/operation_color.c \
+		 ./matrix/matrix.c \
 
 
 HEADERS = ./minirt.h \
