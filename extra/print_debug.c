@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/23 11:16:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/25 15:38:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void struct_status(t_setting *set)
 
 void	print_color(t_color color)
 {
-	printf("%sR: %d %s", RED, color.r, RESET);
+	printf("\n%sR: %d %s", RED, color.r, RESET);
 	printf("%sG: %d %s", GREEN, color.g, RESET);
-	printf("%sB: %d%s\n", BLUE, color.b, RESET);
+	printf("%sB: %d%s\n\n", BLUE, color.b, RESET);
 }
 
 void	print_vector(t_vector vector)
 {
-	printf("x: %f ", vector.x);
+	printf("\nx: %f ", vector.x);
 	printf("y: %f ", vector.y);
 	printf("z: %f ",vector.z);
-	printf("%sw:%s %f\n", BLUE, RESET, vector.w);
+	printf("%sw:%s %f\n\n", BLUE, RESET, vector.w);
 }
 
 static void	print_single_plane(t_plane *one_plane)
