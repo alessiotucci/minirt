@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 18:49:23 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 20:13:24 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/25 20:14:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ double	**value_matrix(double a[4], double b[4], double c[4], double d[4])
 }
 
 // 1 is true
-int	comparing_heap_matrix(double **a, double **b)
+int	comparing_heap_matrix(int rows, int cols, double **a, double **b)
 {
 	int	i;
 	int	j;
@@ -58,7 +58,6 @@ int	comparing_heap_matrix(double **a, double **b)
 	return (0); // are equals
 }
 
-}
 /*
  * to test the code: 'gcc initialize_matrix.c matrix.c -o test'
  *
