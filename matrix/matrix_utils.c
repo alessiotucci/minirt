@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 16:25:08 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 19:54:47 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/27 11:50:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	print_int_matrix(int rows, int cols, double **matrix)
 
 //2
 // Function to create and initialize a matrix of given size
-void	init_matrix(int rows, int cols, double matrix[rows][cols])
+void	init_zero_matrix(int rows, int cols, double matrix[rows][cols])
 {
 	int	i;
 	int	j;
@@ -111,7 +111,7 @@ int main()
 	double	**other_matrix;
 
 	other_matrix = create_matrix(4, 4);
-	init_matrix(4, 4, my_matrix);
+	init_zero_matrix(4, 4, my_matrix);
 	my_matrix[1][2] = 42.2;
 	init_heap_matrix(4, 4, other_matrix);
 	other_matrix[1][2] = -1.1;
