@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 20:54:32 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/27 18:59:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,7 +273,12 @@ void		print_int_matrix(int rows, int cols, double **matrix);
 // prolly will need some more
 void		copy_row_value(double destination[4], double source[4]);
 double		**value_matrix(double a[4], double b[4], double c[4], double d[4]);
+// matrix operations pt 2
 int			comparing_heap_matrix(int rows, int cols, double **a, double **b);
+double		**multiply_matrix(int cols_a, int rows_b, double **a, double **b);
+t_vector	matrix_x_vector(double **a, t_vector b);
+void		create_identity_matrix(double	**ret);
+double		**transposing(int rows, int cols, double **matrix);
 /************************/
 /*freeing the function  */
 /************************/
