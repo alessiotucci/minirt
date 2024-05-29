@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:39:46 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/29 14:22:28 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/29 14:58:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ double	determinant_n(double **matrix, int size)
 	return (result);
 
 }
-//Main to test out the function
+/*Main to test out the function
 int main()
 {
 	double	**a;
@@ -161,6 +161,7 @@ int main()
 	printf("DEBUG: cofactor of matrix Y: {%f}\n", cofactor(0, 0, y, 4));
 	return (0);
 }
+*/
 //TO run the main for testing purpose
 //gcc *.c ../libft/libft.a ../extra/comparing.c ../extra/print_debug.c
 

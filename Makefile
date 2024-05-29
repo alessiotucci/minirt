@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/27 12:08:09 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/29 16:38:54 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,9 @@ SOURCE = ./main.c \
 		 ./colors/operation_color.c \
 		 ./matrix/matrix_utils.c \
 		 ./matrix/initialize_matrix.c \
-		./matrix/operations_matrix.c \
+		 ./matrix/operations_matrix.c \
+		 ./matrix/determinant.c \
+		 ./matrix/inversing.c \
 
 HEADERS = ./minirt.h \
 
