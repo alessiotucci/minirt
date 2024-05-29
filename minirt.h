@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/27 18:59:41 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/29 14:10:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,6 +279,12 @@ double		**multiply_matrix(int cols_a, int rows_b, double **a, double **b);
 t_vector	matrix_x_vector(double **a, t_vector b);
 void		create_identity_matrix(double	**ret);
 double		**transposing(int rows, int cols, double **matrix);
+// othe 2
+double	determinant(double **matrix, int size);
+double		determinant_two(double **matrix);
+double	determinant_n(double **matrix, int size);
+double		minor(int row, int col, double **matrix, int size);
+double		**submatrix(int index_rows, int index_cols, double **matrix, int size);
 /************************/
 /*freeing the function  */
 /************************/
