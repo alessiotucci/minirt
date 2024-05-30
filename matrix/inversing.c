@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/29 16:37:57 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/29 19:24:54 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ double	**inversing_matrix(int size, double **source)
 	return (inversed);
 }
 /* main to test out the function */
-/*
 int	main()
 {
 	printf("** matrix y ***\n");
@@ -112,6 +111,7 @@ int	main()
 	else
 		printf("It cannot be reverse\n");
 	
+	printf("%sTEST 1%s\n", RED, RESET);
 	double	**k;
 	k = create_matrix(4, 4);
 	init_heap_matrix(4, 4, k);
@@ -123,6 +123,32 @@ int	main()
 	printf("determinant k: [%f]\n", determinant(k, 4));
 	double **inversed = inversing_matrix(4, k);
 	print_int_matrix(4, 4, inversed);
+
+	printf("%sTEST 2%s\n", RED, RESET);
+	double	**r;
+	r = create_matrix(4, 4);
+	init_heap_matrix(4, 4, r);
+	r[0][0] = 8.0; r[0][1] = -5.0; r[0][2] = 9.0; r[0][3] = 2.0;
+	r[1][0] = 7.0; r[1][1] = 5.0; r[1][2] = 6.0; r[1][3] = 1.0;
+	r[2][0] = -6.0; r[2][1] = 0.0; r[2][2] = 9.0; r[2][3] = 6.0;
+	r[3][0] = -3.0; r[3][1] = 0.0; r[3][2] = -9.0; r[3][3] = -4.0;
+	printf("determinant r: [%f]\n", determinant(r, 4));
+	double **inversed1 = inversing_matrix(4, r);
+	print_int_matrix(4, 4, inversed1);
+
+
+	printf("%sTEST 3%s\n", RED, RESET);
+	double	**e;
+	e = create_matrix(4, 4);
+	init_heap_matrix(4, 4, e);
+	e[0][0] = -5.0; e[0][1] = 2.0; e[0][2] = 6.0; e[0][3] = -8.0;
+	e[1][0] = 1.0; e[1][1] = -5.0; e[1][2] = 1.0; e[1][3] = 8.0;
+	e[2][0] = 7.0; e[2][1] = 7.0; e[2][2] = -6.0; e[2][3] = -7.0;
+	e[3][0] = 1.0; e[3][1] = -3.0; e[3][2] = 7.0; e[3][3] = 4.0;
+	printf("determinant e: [%f]\n", determinant(e, 4));
+	double **inversed2 = inversing_matrix(4, e);
+	print_int_matrix(4, 4, inversed2);
+
+
 	return (0);
 }
-*/
