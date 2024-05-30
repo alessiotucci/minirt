@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 20:52:18 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/27 18:59:02 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/30 16:41:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,28 +98,6 @@ void	create_identity_matrix(double	**ret)
 }
 
 //5
-double	**transposing(int rows, int cols, double **matrix)
-{
-	double	**ret;
-	int		i;
-	int		j;
-
-	ret = create_matrix(rows, cols);
-	init_heap_matrix(rows, cols, ret);
-	i = 0;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			ret[i][j] = matrix[j][i];
-			j++;
-		}
-		i++;
-	}
-	return (ret);
-}
-
 /*Main to test out the function
 int main()
 {

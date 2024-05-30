@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/30 14:18:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/30 16:41:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,28 @@ int	is_matrix_invertible(int size, double **matrix)
 		return (0);
 	else
 		return (1);
+}
+
+double	**divide_matrix(int size, double **source, double det)
+{
+	double	**new;
+	int		i;
+	int		j;
+
+	new = create_matrix(size, size);
+	init_heap_matrix(size, size, new);
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			new[i][j] = source[i][j] / det;
+			j++;
+		}
+		i++;
+	}
+	return (new);
 }
 
 double	**matrix_of_cofactors(int size, double **matrix)
@@ -44,26 +66,26 @@ double	**matrix_of_cofactors(int size, double **matrix)
 	return (new);
 }
 
-double	**divide_matrix(int size, double **source, double det)
+double	**transposing(int rows, int cols, double **matrix)
 {
-	double	**new;
+	double	**ret;
 	int		i;
 	int		j;
 
-	new = create_matrix(size, size);
-	init_heap_matrix(size, size, new);
+	ret = create_matrix(rows, cols);
+	init_heap_matrix(rows, cols, ret);
 	i = 0;
-	while (i < size)
+	while (i < rows)
 	{
 		j = 0;
-		while (j < size)
+		while (j < cols)
 		{
-			new[i][j] = source[i][j] / det;
+			ret[i][j] = matrix[j][i];
 			j++;
 		}
 		i++;
 	}
-	return (new);
+	return (ret);
 }
 
 double	**inversing_matrix(int size, double **source)
