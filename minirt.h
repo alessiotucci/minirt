@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/29 16:23:15 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/30 16:26:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,6 +287,10 @@ double		minor(int row, int col, double **matrix, int size);
 double		cofactor(int row, int col, double **matrix, int size);
 double		**submatrix(int index_rows, int index_cols, double **matrix, int size);
 //
+int		is_matrix_invertible(int size, double **matrix);
+double	**matrix_of_cofactors(int size, double **matrix);
+double	**divide_matrix(int size, double **source, double det);
+double	**inversing_matrix(int size, double **source);
 /************************/
 /*freeing the function  */
 /************************/

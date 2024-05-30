@@ -6,12 +6,12 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:42:04 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 09:46:53 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/30 14:49:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
-
+#include <math.h>
 //TODO; Should I check first if the param is a vector and not a point
 // 2. Normalization
 t_vector	normalization(t_vector vector)

@@ -6,11 +6,12 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 18:49:23 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 20:58:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/30 14:41:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
+
 
 void	copy_row_value(double destination[4], double source[4])
 {
