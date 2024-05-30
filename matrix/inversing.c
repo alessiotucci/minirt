@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/29 19:24:54 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/30 14:18:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ double	**inversing_matrix(int size, double **source)
 	mat_cofact = matrix_of_cofactors(size, source);
 	trans = transposing(size, size, mat_cofact);
 	inversed = divide_matrix(size, trans, determinant(source, size));
-	print_int_matrix(4, 4, inversed);
 	return (inversed);
 }
 /* main to test out the function */
+/*
 int	main()
 {
 	printf("** matrix y ***\n");
@@ -112,6 +112,7 @@ int	main()
 		printf("It cannot be reverse\n");
 	
 	printf("%sTEST 1%s\n", RED, RESET);
+	printf("Calculating the inverse of another matrix: [k]\n");
 	double	**k;
 	k = create_matrix(4, 4);
 	init_heap_matrix(4, 4, k);
@@ -119,12 +120,13 @@ int	main()
 	k[1][0] = 1.0; k[1][1] = -5.0; k[1][2] = 1.0; k[1][3] = 8.0;
 	k[2][0] = 7.0; k[2][1] = 7.0; k[2][2] = -6.0; k[2][3] = -7.0;
 	k[3][0] = 1.0; k[3][1] = -3.0; k[3][2] = 7.0; k[3][3] = 4.0;
-
+	print_int_matrix(4, 4, k);
 	printf("determinant k: [%f]\n", determinant(k, 4));
 	double **inversed = inversing_matrix(4, k);
 	print_int_matrix(4, 4, inversed);
 
-	printf("%sTEST 2%s\n", RED, RESET);
+	printf("%sTEST: 2%s\n", RED, RESET);
+	printf("Calculating the inverse of another matrix: [r]\n");
 	double	**r;
 	r = create_matrix(4, 4);
 	init_heap_matrix(4, 4, r);
@@ -132,23 +134,60 @@ int	main()
 	r[1][0] = 7.0; r[1][1] = 5.0; r[1][2] = 6.0; r[1][3] = 1.0;
 	r[2][0] = -6.0; r[2][1] = 0.0; r[2][2] = 9.0; r[2][3] = 6.0;
 	r[3][0] = -3.0; r[3][1] = 0.0; r[3][2] = -9.0; r[3][3] = -4.0;
+	print_int_matrix(4, 4, r);
 	printf("determinant r: [%f]\n", determinant(r, 4));
 	double **inversed1 = inversing_matrix(4, r);
 	print_int_matrix(4, 4, inversed1);
 
 
 	printf("%sTEST 3%s\n", RED, RESET);
+	printf("Calculating the inverse of another matrix: [e]\n");
 	double	**e;
 	e = create_matrix(4, 4);
 	init_heap_matrix(4, 4, e);
-	e[0][0] = -5.0; e[0][1] = 2.0; e[0][2] = 6.0; e[0][3] = -8.0;
-	e[1][0] = 1.0; e[1][1] = -5.0; e[1][2] = 1.0; e[1][3] = 8.0;
-	e[2][0] = 7.0; e[2][1] = 7.0; e[2][2] = -6.0; e[2][3] = -7.0;
-	e[3][0] = 1.0; e[3][1] = -3.0; e[3][2] = 7.0; e[3][3] = 4.0;
+	e[0][0] = 9.0; e[0][1] = 3.0; e[0][2] = 0.0; e[0][3] = 9.0;
+	e[1][0] = -5.0; e[1][1] = -2.0; e[1][2] = -6.0; e[1][3] = -3.0;
+	e[2][0] = -4.0; e[2][1] = 9.0; e[2][2] = 6.0; e[2][3] = 4.0;
+	e[3][0] = -7.0; e[3][1] = 6.0; e[3][2] = 6.0; e[3][3] = 2.0;
+	print_int_matrix(4, 4, e);
 	printf("determinant e: [%f]\n", determinant(e, 4));
 	double **inversed2 = inversing_matrix(4, e);
 	print_int_matrix(4, 4, inversed2);
 
 
+	printf("%sTEST 3 %s multiplying a product by its inverse\n", GREEN, RESET);
+	printf("Given the following 4x4 matrix a1\n");
+	double	**a1;
+	a1 = create_matrix(4, 4);
+	init_heap_matrix(4, 4, a1);
+	a1[0][0] = 9.0; a1[0][1] = 3.0; a1[0][2] = 0.0; a1[0][3] = 9.0;
+	a1[1][0] = -5.0; a1[1][1] = -2.0; a1[1][2] = -6.0; a1[1][3] = -3.0;
+	a1[2][0] = -4.0; a1[2][1] = 9.0; a1[2][2] = 6.0; a1[2][3] = 4.0;
+	a1[3][0] = -7.0; a1[3][1] = 6.0; a1[3][2] = 6.0; a1[3][3] = 2.0;
+	print_int_matrix(4, 4, a1);
+
+	printf("And the following matrix 4x4 b1\n");
+	double	**b1;
+	b1 = create_matrix(4, 4);
+	init_heap_matrix(4, 4, b1);
+	b1[0][0] = 9.0; b1[0][1] = 3.0; b1[0][2] = 0.0; b1[0][3] = 9.0;
+	b1[1][0] = -5.0; b1[1][1] = -2.0; b1[1][2] = -6.0; b1[1][3] = -3.0;
+	b1[2][0] = -4.0; b1[2][1] = 9.0; b1[2][2] = 6.0; b1[2][3] = 4.0;
+	b1[3][0] = -7.0; b1[3][1] = 6.0; b1[3][2] = 6.0; b1[3][3] = 2.0;
+	print_int_matrix(4, 4, b1);
+
+	printf("The matrix C1 is the result of a1 * b1\n");
+	double **c1 = multiply_matrix(4, 4, a1, b1);
+	print_int_matrix(4, 4, c1);
+
+	printf("Then the c1 * inverse(B) is going to be equal to a1\n");
+	double **inverse_b1 = inversing_matrix(4, b1);
+	double **result = multiply_matrix(4, 4, c1, inverse_b1);
+	printf("comparing matrix result with a1: ");
+	if (comparing_heap_matrix(4, 4, result, a1))
+		printf("they different!\n");
+	else
+		printf("they the same\n");
 	return (0);
 }
+*/
