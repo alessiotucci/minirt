@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/29 16:38:54 by atucci           ###   ########.fr        #
+#    Updated: 2024/05/31 11:44:25 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SOURCE = ./main.c \
 		 ./matrix/operations_matrix.c \
 		 ./matrix/determinant.c \
 		 ./matrix/inversing.c \
+		 ./matrix/void.c \
 
 HEADERS = ./minirt.h \
 

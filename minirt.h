@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/30 16:26:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/31 11:47:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,27 +270,45 @@ double		**create_matrix(int rows, int col);
 void		init_matrix(int rows, int cols, double matrix[rows][cols]);
 void		init_heap_matrix(int rows, int cols, double **matrix);
 void		print_int_matrix(int rows, int cols, double **matrix);
-// prolly will need some more
+/******************************/
+/*prolly will need some more */
+/******************************/
 void		copy_row_value(double destination[4], double source[4]);
 double		**value_matrix(double a[4], double b[4], double c[4], double d[4]);
-// matrix operations pt 2
+double		**copy_matrix(int rows, int cols, double **source);
+/*************************/
+/* matrix operations pt 2*/
+/*************************/
 int			comparing_heap_matrix(int rows, int cols, double **a, double **b);
 double		**multiply_matrix(int cols_a, int rows_b, double **a, double **b);
 t_vector	matrix_x_vector(double **a, t_vector b);
 void		create_identity_matrix(double	**ret);
 double		**transposing(int rows, int cols, double **matrix);
-// othe 2
+/*********************/
+// othe 2            */
+/*********************/
 double		determinant(double **matrix, int size);
 double		determinant_two(double **matrix);
 double		determinant_n(double **matrix, int size);
 double		minor(int row, int col, double **matrix, int size);
 double		cofactor(int row, int col, double **matrix, int size);
 double		**submatrix(int index_rows, int index_cols, double **matrix, int size);
-//
+/*********************/
+/*                   */
+/*********************/
 int		is_matrix_invertible(int size, double **matrix);
 double	**matrix_of_cofactors(int size, double **matrix);
 double	**divide_matrix(int size, double **source, double det);
 double	**inversing_matrix(int size, double **source);
+
+/**************************/
+/* VOID! check this stuff */
+/**************************/
+void	divide_matrix_void(int size, double **source, double det);
+void	matrix_of_cofactors_void(int size, double **matrix);
+void	transposing_void(int rows, int cols, double **matrix);
+void	inversing_matrix_void(int size, double **source);
+
 /************************/
 /*freeing the function  */
 /************************/

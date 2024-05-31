@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.c                                           :+:      :+:    :+:   */
+/*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 16:25:08 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/27 11:50:50 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/31 11:45:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,24 @@ double	**create_matrix(int rows, int col)
 {
 	double	**new_matrix;
 	int	i;
+	int	j;
 
 	i = 0;
 	new_matrix = (double **)malloc(rows * sizeof(double *));
 	while (i < rows)
 	{
 		new_matrix[i] = (double *)malloc(col * sizeof(double));
+		i++;
+	}
+	i = 0;
+	while (i < rows)
+	{
+		j = 0;
+		while (j < col)
+		{
+			new_matrix[i][j] = 0.0;
+			j++;
+		}
 		i++;
 	}
 	return (new_matrix);

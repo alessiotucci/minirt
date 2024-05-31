@@ -6,17 +6,12 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:45:36 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/30 16:48:08 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/31 11:48:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../minirt.h"
-
-void	divide_matrix_void(int size, double **source, double det);
-void	matrix_void_of_cofactors(int size, double **matrix);
-void	transposing(int rows, int cols, double **matrix);
-void	inversing_matrix_void(int size, double **source);
 
 void	divide_matrix_void(int size, double **source, double det)
 {
@@ -36,7 +31,7 @@ void	divide_matrix_void(int size, double **source, double det)
 	}
 }
 
-void	matrix_void_of_cofactors(int size, double **matrix)
+void	matrix_of_cofactors_void(int size, double **matrix)
 {
 	int		i;
 	int		j;
@@ -56,7 +51,7 @@ void	matrix_void_of_cofactors(int size, double **matrix)
 	}
 }
 
-void	transposing(int rows, int cols, double **matrix)
+void	transposing_void(int rows, int cols, double **matrix)
 {
 	int		i;
 	int		j;
@@ -86,7 +81,7 @@ void	inversing_matrix_void(int size, double **source)
 		printf("Cannot reverse it!\n");
 		return;
 	}
-	matrix_void_of_cofactors(size, source);
+	matrix_of_cofactors_void(size, source);
 	transposing(size, size, source);
 	det = determinant(source, size);
 	divide_matrix_void(size, source, det);

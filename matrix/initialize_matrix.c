@@ -6,12 +6,33 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 18:49:23 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/30 14:41:31 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/31 11:31:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
+//This function create a new copy of a matrix, it allocates memory on the heap
+double	**copy_matrix(int rows, int cols, double **source)
+{
+	double	**destination;
+	int		i;
+	int		j;
+
+	destination = create_matrix(rows, cols);
+	i = 0;
+	while (i < rows)
+	{
+		j = 0;
+		while (j < cols)
+		{
+			destination[i][j] = source[i][j];
+			j++;
+		}
+		i++;
+	}
+	return (destination);
+}
 
 void	copy_row_value(double destination[4], double source[4])
 {
