@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/31 11:47:41 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/31 12:13:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,7 +305,7 @@ double	**inversing_matrix(int size, double **source);
 /* VOID! check this stuff */
 /**************************/
 void	divide_matrix_void(int size, double **source, double det);
-void	matrix_of_cofactors_void(int size, double **matrix);
+void	matrix_of_cofactors_void(int size, double **matrix, double **new);
 void	transposing_void(int rows, int cols, double **matrix);
 void	inversing_matrix_void(int size, double **source);
 

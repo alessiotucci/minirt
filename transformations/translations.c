@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:15:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/30 16:31:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/05/31 11:56:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,23 @@ t_vector	translations(t_vector move, t_vector origin)
 
 t_vector	inverse_translations(t_vector move, t_vector origin)
 {
-	//1) Create an identity matrix
 	double	**matrix;
 	double	**rev_matrix;
 
 	matrix = create_matrix(4, 4);
 	create_identity_matrix(matrix);
-	//2) add the value to the last columns
 	last_cols_value(4, matrix, move);
-	// 3) reverse the matrix
 	rev_matrix = inversing_matrix(4, matrix);
+	inversing_matrix_void(4, matrix);
+	printf("VOID\n");
+	print_int_matrix(4, 4, matrix);
+	printf("***\n");
+	printf("DOUBLE **\n");
+	print_int_matrix(4, 4, rev_matrix);
 	//4) Multiply the origin by the reverse matrix
 	return (matrix_x_vector(rev_matrix, origin));
 }
 
-/*
 int	main()
 {
 	printf("%sTEST 1%s\n", RED, RESET);
@@ -72,6 +74,5 @@ int	main()
 	printf("the result of the operations is ");
 	print_vector(result2);
 }
-*/
 // gcc ../matrix/*.c ../vector/*.c translations.c  ../extra/comparing.c ../extra/print_debug.c  ../libft/libft.a -lm
 
