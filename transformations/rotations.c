@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:16:40 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 14:54:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/01 18:36:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,3 +82,5 @@ int	main()
 }
 */
 // gcc ../matrix/*.c ../vector/*.c rotations.c  ../extra/comparing.c ../extra/print_debug.c  ../libft/libft.a -lm  
+//TODO: CHECK THE LEAKS WITH THIS COMMANDS
+//valgrind   --leak-check=full --show-leak-kinds=all ./a.out

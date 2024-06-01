@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:39:46 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/29 14:58:31 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/01 18:37:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,4 +164,5 @@ int main()
 */
 //TO run the main for testing purpose
 //gcc *.c ../libft/libft.a ../extra/comparing.c ../extra/print_debug.c
-
+//TODO: CHECK THE LEAKS WITH THIS COMMANDS
+//valgrind   --leak-check=full --show-leak-kinds=all ./a.out

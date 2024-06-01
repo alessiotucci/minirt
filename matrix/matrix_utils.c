@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 16:25:08 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/31 11:45:44 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/01 18:37:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,3 +145,5 @@ int main()
 	return (0);
 }
 */
+//TODO: CHECK THE LEAKS WITH THIS COMMANDS
+//valgrind   --leak-check=full --show-leak-kinds=all ./a.out
