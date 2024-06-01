@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:15:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/31 12:43:59 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/01 14:42:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ t_vector	translations(t_vector move, t_vector origin)
 t_vector	inverse_translations(t_vector move, t_vector origin)
 {
 	double	**matrix;
-//	double	**rev_matrix;
+	//double	**rev_matrix;
 
 	matrix = create_matrix(4, 4);
 	create_identity_matrix(matrix);
 	last_cols_value(4, matrix, move);
-	rev_matrix = inversing_matrix(4, matrix);
+	//rev_matrix = inversing_matrix(4, matrix);
 	inversing_matrix_void(4, matrix);
 //	printf("VOID\n");
 //	print_int_matrix(4, 4, matrix);

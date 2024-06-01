@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/31 12:13:44 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/01 14:59:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,6 +308,24 @@ void	divide_matrix_void(int size, double **source, double det);
 void	matrix_of_cofactors_void(int size, double **matrix, double **new);
 void	transposing_void(int rows, int cols, double **matrix);
 void	inversing_matrix_void(int size, double **source);
+
+/**********************************/
+/* Transformations/translations.c */
+/**********************************/
+t_vector	translations(t_vector move, t_vector origin);
+t_vector	inverse_translations(t_vector move, t_vector origin);
+/*****************************/
+/* Transformations/scaling.c */
+/*****************************/
+void		identity_value_matrix(double **matrix, t_vector source);
+t_vector	scaling(t_vector move, t_vector origin);
+t_vector	scaling_inverse(t_vector move, t_vector origin);
+/*******************************/
+/* Transformations/rotations.c */
+/*******************************/
+t_vector	rotation_x(t_vector origin, double radians);
+t_vector	rotation_y(t_vector origin, double radians);
+t_vector	rotation_z(t_vector origin, double radians);
 
 /************************/
 /*freeing the function  */

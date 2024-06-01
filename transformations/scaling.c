@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:17:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/31 14:52:55 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/01 14:58:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_vector	scaling_inverse(t_vector move, t_vector origin)
 	//return (matrix_x_vector(matrix, origin));
 	return (matrix_x_vector(inversed, origin));
 }
+/*
 int	main()
 {
 	t_vector point = create_point(-4, 6, 8);
@@ -60,7 +61,7 @@ int	main()
 	print_vector(result1);
 
 	return (0);
-
 }
+*/
 //gcc ../matrix/*.c ../vector/*.c scaling.c  ../extra/comparing.c ../extra/print_debug.c  ../libft/libft.a -lm
 
