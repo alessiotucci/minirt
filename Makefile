@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/06/02 13:42:28 by atucci           ###   ########.fr        #
+#    Updated: 2024/06/02 16:27:47 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SOURCE = ./main.c \
 		 ./matrix/determinant.c \
 		 ./matrix/inversing.c \
 		 ./matrix/void.c \
+		 ./raycasting/create_ray.c \
 
 HEADERS = ./minirt.h \
 
