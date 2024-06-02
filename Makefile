@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/05/31 11:44:25 by atucci           ###   ########.fr        #
+#    Updated: 2024/06/02 13:42:28 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SOURCE = ./main.c \
 		 ./transformations/translations.c \
 		 ./transformations/rotations.c \
 		 ./transformations/scaling.c \
+		 ./transformations/shearing.c \
 		 ./shapes/plane.c \
 		 ./shapes/sphere.c \
 		 ./shapes/cylinder.c \

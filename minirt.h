@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 14:59:26 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/02 14:10:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,6 +326,10 @@ t_vector	scaling_inverse(t_vector move, t_vector origin);
 t_vector	rotation_x(t_vector origin, double radians);
 t_vector	rotation_y(t_vector origin, double radians);
 t_vector	rotation_z(t_vector origin, double radians);
+/******************************/
+/* Transformations/shearing.c */
+/******************************/
+t_vector	shearing(t_vector origin, double value[6]);
 
 /************************/
 /*freeing the function  */
