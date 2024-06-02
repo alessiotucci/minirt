@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:45:36 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 18:37:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/02 17:00:52 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	divide_matrix_void(int size, double **source, double det)
 	}
 }
 
-void	matrix_of_cofactors_void(int size, double **matrix, double **new)
+void	matrix_of_cofactors_void(int size, double **matrix, double **n)
 {
 	int		i;
 	int		j;
@@ -44,7 +44,7 @@ void	matrix_of_cofactors_void(int size, double **matrix, double **new)
 		while (j < size)
 		{
 			cof = cofactor(i, j, matrix, size);
-			new[i][j] = cof;
+			n[i][j] = cof;
 			j++;
 		}
 		i++;

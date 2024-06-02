@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/02 16:34:55 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/02 17:02:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -311,7 +311,7 @@ double	**inversing_matrix(int size, double **source);
 /* VOID! check this stuff */
 /**************************/
 void	divide_matrix_void(int size, double **source, double det);
-void	matrix_of_cofactors_void(int size, double **matrix, double **new);
+void	matrix_of_cofactors_void(int size, double **matrix, double **n);
 void	transposing_void(int rows, int cols, double **matrix);
 void	inversing_matrix_void(int size, double **source);
 
@@ -336,6 +336,11 @@ t_vector	rotation_z(t_vector origin, double radians);
 /* Transformations/shearing.c */
 /******************************/
 t_vector	shearing(t_vector origin, double value[6]);
+
+/*******************/
+/* shapes/sphear.c */
+/*******************/
+t_sphere	create_sphere(char *id, t_vector center, double d, t_color c);
 
 /************************/
 /*freeing the function  */
