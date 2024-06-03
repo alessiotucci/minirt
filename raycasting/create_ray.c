@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:27:05 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/02 16:49:43 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/03 11:01:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_vector	position_ray(t_ray ray, double t)
 	return (final_result);
 }
 /* main to test out the function */
+/*
 int	main()
 {
 	printf("%s FIRST TEST!%s (1) \n", RED, RESET);
@@ -70,6 +71,7 @@ int	main()
 
 	return (0);
 }
+*/
 //gcc ../matrix/*.c ../vector/*.c create_ray.c  ../extra/comparing.c ../extra/print_debug.c  ../libft/libft.a -lm
 
 //TODO: CHECK THE LEAKS WITH THIS COMMANDS

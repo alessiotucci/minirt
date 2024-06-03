@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/02 17:02:03 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/03 12:51:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,13 @@ typedef struct s_ray
 	t_vector	origin;
 	t_vector	direction;
 }	t_ray;
+
+/* let's see if it is usefult */
+typedef struct s_intersection
+{
+	int		count;
+	double	t[2];
+}	t_intersection;
 
 typedef struct s_amb_light
 {
@@ -337,6 +344,12 @@ t_vector	rotation_z(t_vector origin, double radians);
 /******************************/
 t_vector	shearing(t_vector origin, double value[6]);
 
+/***************************/
+/* Raycasting/create_ray.c */
+/***************************/
+t_ray		create_ray(t_vector origin, t_vector direction);
+void		print_ray(t_ray ray);
+t_vector	position_ray(t_ray ray, double t);
 /*******************/
 /* shapes/sphear.c */
 /*******************/

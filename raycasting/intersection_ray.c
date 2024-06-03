@@ -6,21 +6,68 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/02 18:21:08 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/03 13:38:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-double	*intersect_sphere(t_sphere sphere, t_ray ray)
+t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)
 {
-
+	return (subtract(ray.origin, sphere.center));
 }
 
+double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)
+{
+	double	a;
+	double	b;
+	double	c;
 
+	a = dot(ray.direction, ray.direction);
+	b = 2.0 * dot(ray.direction, sphere_to_ray);
+	c = dot(sphere_to_ray, sphere_to_ray) - diameter * diameter ;
+	return ((b * b) - 4 * a * c);
+}
+
+t_intersection	intersect_sphere(t_sphere sphere, t_ray ray)
+{
+	t_intersection	intersection;
+	t_vector		sphere_to_ray;
+	double			discriminant;
+	double			t[2];
+
+	sphere_to_ray = get_sphere_to_ray(sphere, ray);
+	discriminant = get_discriminant(sphere_to_ray, ray, sphere.diameter);//TODO:
+	if (discriminant < 0)
+		intersection.count = 0;
+	else
+	{
+		t[0] = (-2.0 * dot(sphere_to_ray, ray.direction) - sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
+		t[1] = (-2.0 * dot(sphere_to_ray, ray.direction) + sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
+		intersection.t[0] = t[0];//add(ray.origin, multiplication(ray.direction, t[0]));
+		intersection.t[1] = t[1];//add(ray.origin, multiplication(ray.direction, t[1]));
+		//intersection.count = (t[0] == t[1]) ? 1 : 2;
+		if (comparing_double(t[0], t[1]))
+			intersection.count = 1;
+		else
+			intersection.count = 2;
+	}
+	return (intersection);
+}
+
+void	print_intersection(t_intersection i, t_sphere s)
+{
+	printf("intersection (%s%d%s) with the sphere [%s]\n", RED, i.count, RESET, s.identifier);
+	if (i.count != 0)
+	{
+		printf("values[0]%f\n", i.t[0]);
+		printf("values[1]%f\n", i.t[1]);
+	}
+}
 /* Main to test out the function */
 int	main()
 {
+	printf("TEST 1\n\n");
 	t_color bogus;
 	bogus.r = 0; bogus.g = 0; bogus.b = 0;
 	t_vector p = create_point(0, 0, 0);
@@ -29,61 +76,16 @@ int	main()
 	t_vector origin = create_point(0, 0, -5);
 	t_vector direction = create_vector(0, 0, 1);
 	t_ray ray = create_ray(origin, direction); // created a ray here
-	intersect_sphere(a, ray);
+	t_intersection test = intersect_sphere(a, ray);
+	print_intersection(test, a);
+
+	printf("TEST 2\n\n");
+	t_vector origin1 = create_point(0, 1, -5);
+	t_vector direction1 = create_vector(0, 0, 1);
+	t_ray ray1 = create_ray(origin1, direction1); // created a ray here
+	t_intersection test1 = intersect_sphere(a, ray);
+	print_intersection(test1, a);
+
 }
 
-
-/*
- *
- *
-	typedef struct s_intersection
-{
-	int		count;
-	t_vector	point[2];
-}	t_intersection;
-
- *t_vector	get_oc(t_sphere sphere, t_ray ray)
-{
-	return (subtract(ray.origin, sphere.center));
-}
-
-double	get_discriminant(t_vector oc, t_ray ray, double diameter)
-{
-	double	a;
-	double	b;
-	double	c;
-
-	a = dot_product(ray.direction, ray.direction);
-	b = 2.0 * dot_product(oc, ray.direction);
-	c = dot_product(oc, oc) - diameter * diameter / 4.0;
-	return (b * b - 4 * a * c);
-}
-
-t_intersection	*intersect_sphere(t_sphere sphere, t_ray ray)
-{
-	t_intersection	*intersection;
-	t_vector	oc;
-	double		discriminant;
-	double		t[2];
-
-	intersection = (t_intersection *)malloc(sizeof(t_intersection));
-	if (!intersection)
-		return (NULL);
-	oc = get_oc(sphere, ray);
-	discriminant = get_discriminant(oc, ray, sphere.diameter);
-	if (discriminant < 0)
-	{
-		intersection->count = 0;
-	}
-	else
-	{
-		t[0] = (-2.0 * dot_product(oc, ray.direction) - sqrt(discriminant)) / (2.0 * dot_product(ray.direction, ray.direction));
-		t[1] = (-2.0 * dot_product(oc, ray.direction) + sqrt(discriminant)) / (2.0 * dot_product(ray.direction, ray.direction));
-		intersection->point[0] = add(ray.origin, multiply(ray.direction, t[0]));
-		intersection->point[1] = add(ray.origin, multiply(ray.direction, t[1]));
-		intersection->count = (t[0] == t[1]) ? 1 : 2;
-	}
-	return (intersection);
-}
-
- * */
+// gcc ../matrix/*.c ../vector/*.c create_ray.c intersection_ray.c  ../extra/comparing.c ../extra/print_debug.c ../shapes/sphere.c  ../libft/libft.a -lm
