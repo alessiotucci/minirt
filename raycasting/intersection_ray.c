@@ -6,12 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/03 13:38:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/03 14:01:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
+/* The vector from the sphere's center, to the ray origin */
 t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)
 {
 	return (subtract(ray.origin, sphere.center));
@@ -67,7 +68,7 @@ void	print_intersection(t_intersection i, t_sphere s)
 /* Main to test out the function */
 int	main()
 {
-	printf("TEST 1\n\n");
+	printf("\nTEST 1\n");
 	t_color bogus;
 	bogus.r = 0; bogus.g = 0; bogus.b = 0;
 	t_vector p = create_point(0, 0, 0);
@@ -79,12 +80,33 @@ int	main()
 	t_intersection test = intersect_sphere(a, ray);
 	print_intersection(test, a);
 
-	printf("TEST 2\n\n");
+	printf("\n\nTEST 2\n");
 	t_vector origin1 = create_point(0, 1, -5);
 	t_vector direction1 = create_vector(0, 0, 1);
 	t_ray ray1 = create_ray(origin1, direction1); // created a ray here
-	t_intersection test1 = intersect_sphere(a, ray);
+	t_intersection test1 = intersect_sphere(a, ray1);
 	print_intersection(test1, a);
+
+	printf("\n\nTEST 3\n");
+	t_vector origin2 = create_point(0, 2, -5);
+	t_vector direction2 = create_vector(0, 0, 1);
+	t_ray ray2 = create_ray(origin2, direction2); // created a ray here
+	t_intersection test2 = intersect_sphere(a, ray2);
+	print_intersection(test2, a);
+
+	printf("\n\nTEST 4\n");
+	t_vector origin3 = create_point(0, 0, 0);
+	t_vector direction3 = create_vector(0, 0, 1);
+	t_ray ray3 = create_ray(origin3, direction3); // created a ray here
+	t_intersection test3 = intersect_sphere(a, ray3);
+	print_intersection(test3, a);
+
+	printf("\n\nTEST 5\n");
+	t_vector origin4 = create_point(0, 0, 5);
+	t_vector direction4 = create_vector(0, 0, 1);
+	t_ray ray4 = create_ray(origin4, direction4); // created a ray here
+	t_intersection test4 = intersect_sphere(a, ray4);
+	print_intersection(test4, a);
 
 }
 
