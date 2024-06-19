@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:14 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/14 16:39:04 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ static void	split_line123(char **matrix, t_setting *set)
 	count_elements(matrix, set);
 	free_string_array(matrix);
 }
+
 //TODO: 123 change the file locations
-static int counting_123(char *filename, t_setting *set)
+static int	counting_123(char *filename, t_setting *set)
 {
 	char	*line;
 	int		fd;
@@ -62,7 +63,7 @@ static void	split_line(char **matrix, t_setting *set)
 }
 
 //4
-static int parse_map(char *filename, t_setting *set)
+static int	parse_map(char *filename, t_setting *set)
 {
 	char	*line;
 	int		fd;
@@ -98,7 +99,6 @@ int	open_map(char *filename, t_setting *set)
 		parse_map(filename, set);
 		return (close(fd), 0);
 	}
-	
 }
 
 //2

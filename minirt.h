@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/03 12:51:24 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/18 18:56:46 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ typedef struct s_mlx
 	int			lsize;
 	int			endian;
 	char		*img_string;
+	t_setting 	*setting;
 }		t_mlx;
 
 int			parsing_map(char *map, t_setting *set);
@@ -382,4 +383,9 @@ void	replace_me(char *str, char replacement, char to_replace);
 void	manage_mlx(t_mlx *obj, t_setting *set);
 int		window_close(void *param);
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
+
+
+void send_to_centre(t_setting *set); //pprima
+int mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
+void	my_new_image(t_mlx *data);
 #endif

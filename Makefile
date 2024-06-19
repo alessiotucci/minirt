@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/06/02 16:27:47 by atucci           ###   ########.fr        #
+#    Updated: 2024/06/18 15:05:59 by ftroise          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SOURCE = ./main.c \
 		 ./matrix/inversing.c \
 		 ./matrix/void.c \
 		 ./raycasting/create_ray.c \
+		 ./centering.c \
 
 HEADERS = ./minirt.h \
 

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   print_debug.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 15:38:49 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/14 16:39:11 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 #include <stdio.h>//TODO: printf is forbidden
 /* Helper function, I will delete this later on */
-void struct_status(t_setting *set)
+void	struct_status(t_setting *set)
 {
 	printf("\n\n------STRUCT STATUS -------\n");
 	printf("struct has [%d] planes \t  |\n", set->num_planes);

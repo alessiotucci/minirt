@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/18 19:24:54 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/18 15:26:39 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int ac, char **av)
 		init_scene(&info_mlx, av[1]);
 		struct_full_status(&new_setting);//TODO: we are testing
 		//free_struct(&new_setting);//TODO: implement the right free
+		info_mlx.setting = &new_setting;
 		manage_mlx(&info_mlx, &new_setting);
 	}
 	else

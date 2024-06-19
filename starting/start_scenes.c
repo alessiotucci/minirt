@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_scenes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 17:02:57 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/23 11:10:43 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/14 12:20:58 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	start_camera(t_setting *set, char **details)
 		set->camera->identifier = ft_strdup(details[0]);
 		set->camera->viewpoint = parse_vector(details[1], 1.0);
 		set->camera->orientation = parse_vector(details[2], 0.0); //this is a vector
-		set->camera->fov = ft_atoi(details[3]);
+		set->camera->fov = ft_atoi(details[3]); // atof 
 	}
 
 }
@@ -49,7 +49,7 @@ void	start_lights(t_setting *set, char **details)
 {
 	(void)set;
 	t_light	*new_light;
-	new_light = malloc(sizeof(t_light));;
+	new_light = malloc(sizeof(t_light));
 	if (!new_light)
 		return ;//TODO add the check
 	(void)new_light;
