@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/18 18:56:46 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/06/20 05:34:48 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,33 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
+typedef enum e_intersect
+{
+	T_SFERA,
+	T_CILINDR,
+	T_PIANO
+
+} t_intersect;
+
 /* let's see if it is usefult */
 typedef struct s_intersection
 {
+	
 	int		count;
 	double	t[2];
+    t_intersection2* intersections;
+	
 }	t_intersection;
+
+
+typedef struct s_intersection2
+{
+	
+	int		count;
+	double	t[2];
+	t_intersect obj_inter[2];
+	
+}	t_intersection2;
 
 typedef struct s_amb_light
 {
