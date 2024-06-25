@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/03 14:01:25 by atucci           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:13:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)
 	return (subtract(ray.origin, sphere.center));
 }
 
+/* function to get the discriminant */
 double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)
 {
 	double	a;
