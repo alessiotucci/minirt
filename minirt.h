@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/22 11:59:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/22 16:52:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,10 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
+/*****************************************************************************/
+/*******************************/
+//TODO: implement english name */
+/*******************************/
 typedef enum e_intersect
 {
 	T_SFERA,
@@ -137,6 +141,7 @@ typedef enum e_intersect
 
 } t_intersect;
 
+//TODO: a intersection can have more object than 2 right?
 typedef struct s_intersection2
 {
 	
@@ -145,7 +150,6 @@ typedef struct s_intersection2
 	t_intersect obj_inter[2];
 	
 }	t_intersection2;
-
 
 /* let's see if it is usefult */
 typedef struct s_intersection
@@ -156,7 +160,7 @@ typedef struct s_intersection
     t_intersection2* intersections;
 	
 }	t_intersection;
-
+/*****************************************************************************/
 
 typedef struct s_amb_light
 {
