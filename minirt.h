@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/20 05:34:48 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/22 11:59:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,16 @@ typedef enum e_intersect
 
 } t_intersect;
 
+typedef struct s_intersection2
+{
+	
+	int		count;
+	double	t[2];
+	t_intersect obj_inter[2];
+	
+}	t_intersection2;
+
+
 /* let's see if it is usefult */
 typedef struct s_intersection
 {
@@ -147,15 +157,6 @@ typedef struct s_intersection
 	
 }	t_intersection;
 
-
-typedef struct s_intersection2
-{
-	
-	int		count;
-	double	t[2];
-	t_intersect obj_inter[2];
-	
-}	t_intersection2;
 
 typedef struct s_amb_light
 {
