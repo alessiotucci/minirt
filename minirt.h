@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/20 05:34:48 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/22 18:08:31 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,16 +138,7 @@ typedef enum e_intersect
 } t_intersect;
 
 /* let's see if it is usefult */
-typedef struct s_intersection
-{
-	
-	int		count;
-	double	t[2];
-    t_intersection2* intersections;
-	
-}	t_intersection;
-
-
+/*
 typedef struct s_intersection2
 {
 	
@@ -155,7 +146,23 @@ typedef struct s_intersection2
 	double	t[2];
 	t_intersect obj_inter[2];
 	
-}	t_intersection2;
+}	t_intersection;
+
+typedef struct s_intersection
+{
+	
+	int		count;
+	double	t[2];
+    t_intersection* intersections;
+	
+}	t_intersection;*/
+typedef struct s_intersection
+{
+    int count;                    // Numero totale di intersezioni
+    int obj_count;                // Numero di oggetti per ciascuna intersezione (ad esempio, sfera, piano, ecc.)
+    double t[2];                  // Tempi di intersezione (per due punti di intersezione)
+    t_intersect obj_inter[2];    // Oggetti associati a ciascun tempo di intersezione
+} t_intersection;
 
 typedef struct s_amb_light
 {
@@ -186,6 +193,8 @@ typedef struct s_sphere
 	t_vector	center;
 	double		diameter;
 	t_color		color;
+	double **transform;
+	
 }	t_sphere;
 
 typedef struct s_plane
@@ -406,7 +415,17 @@ int		window_close(void *param);
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 
 
-void send_to_centre(t_setting *set); //pprima
-int mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
-void	my_new_image(t_mlx *data);
+void			send_to_centre(t_setting *set); //pprima
+int				mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
+void			my_new_image(t_mlx *data);
+void			set_transform(t_sphere *sphere, double **matrix);
+void			init_identity_matrix(int rows, int cols, double **matrix);
+void			transform_sphere(t_sphere *sphere, double **matrix);
+void			sphere_test(t_sphere *sphere, double **translation_matrix);
+t_color** 		create_canvas(int width, int height);
+void 			render_sphere_image(t_sphere sphere);
+t_intersection intersect_sphere(t_sphere sphere, t_ray ray);
+t_intersection* hit(t_intersection xs);
+
+
 #endif
