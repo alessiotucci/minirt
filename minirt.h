@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/22 16:52:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/22 16:54:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -409,9 +409,8 @@ void	replace_me(char *str, char replacement, char to_replace);
 void	manage_mlx(t_mlx *obj, t_setting *set);
 int		window_close(void *param);
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
-
-
-void send_to_centre(t_setting *set); //pprima
-int mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
 void	my_new_image(t_mlx *data);
+
+void	send_to_centre(t_setting *set); //prima
+int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
 #endif
