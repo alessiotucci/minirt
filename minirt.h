@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/22 18:08:31 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/22 18:53:15 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,16 @@ typedef enum e_intersect
 
 } t_intersect;
 
+typedef struct s_intersection2
+{
+	
+	int		count;
+	double	t[2];
+	t_intersect obj_inter[2];
+	
+}	t_intersection2;
+
+
 /* let's see if it is usefult */
 /*
 typedef struct s_intersection2
@@ -148,21 +158,15 @@ typedef struct s_intersection2
 	
 }	t_intersection;
 
-typedef struct s_intersection
+
+typedef struct s_intersection2
 {
 	
 	int		count;
 	double	t[2];
-    t_intersection* intersections;
+	t_intersect obj_inter[2];
 	
-}	t_intersection;*/
-typedef struct s_intersection
-{
-    int count;                    // Numero totale di intersezioni
-    int obj_count;                // Numero di oggetti per ciascuna intersezione (ad esempio, sfera, piano, ecc.)
-    double t[2];                  // Tempi di intersezione (per due punti di intersezione)
-    t_intersect obj_inter[2];    // Oggetti associati a ciascun tempo di intersezione
-} t_intersection;
+}	t_intersection2;
 
 typedef struct s_amb_light
 {
