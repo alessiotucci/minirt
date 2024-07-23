@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/22 18:12:25 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/23 16:59:40 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)
 	return ((b * b) - 4 * a * c);
 }
 /*
-t_intersection	intersect_sphere(t_sphere sphere, t_ray ray)
+t_intersection2	intersect_sphere(t_sphere sphere, t_ray ray)
 {
-	t_intersection	intersection;
+	t_intersection2	intersection;
 	t_vector		sphere_to_ray;
 	double			discriminant;
 	double			t[2];
@@ -58,9 +58,9 @@ t_intersection	intersect_sphere(t_sphere sphere, t_ray ray)
 */
 
 // shapes/sphere.c
-t_intersection intersect_sphere(t_sphere sphere, t_ray ray)
+t_intersection2 intersect_sphere(t_sphere sphere, t_ray ray)
 {
-    t_intersection result;
+    t_intersection2 result;
     t_vector sphere_to_ray = create_vector(ray.origin.x - sphere.center.x, ray.origin.y - sphere.center.y, ray.origin.z - sphere.center.z);
     double radius = sphere.diameter / 2;
     double a = ray.direction.x * ray.direction.x + ray.direction.y * ray.direction.y + ray.direction.z * ray.direction.z;
@@ -86,7 +86,7 @@ t_intersection intersect_sphere(t_sphere sphere, t_ray ray)
 
 
 
-void print_intersection(t_intersection i, t_sphere s)
+void print_intersection2(t_intersection2 i, t_sphere s)
 {
     printf("intersection (%s%d%s) with the sphere [%s]\n", RED, i.count, RESET, s.identifier);
     if (i.count != 0)
@@ -111,36 +111,36 @@ int	main()
 	t_vector origin = create_point(0, 0, -5);
 	t_vector direction = create_vector(0, 0, 1);
 	t_ray ray = create_ray(origin, direction); // created a ray here
-	t_intersection test = intersect_sphere(a, ray);
-	print_intersection(test, a);
+	t_intersection2 test = intersect_sphere(a, ray);
+	print_intersection2(test, a);
 
 	printf("\n\nTEST 2\n");
 	t_vector origin1 = create_point(0, 1, -5);
 	t_vector direction1 = create_vector(0, 0, 1);
 	t_ray ray1 = create_ray(origin1, direction1); // created a ray here
-	t_intersection test1 = intersect_sphere(a, ray1);
-	print_intersection(test1, a);
+	t_intersection2 test1 = intersect_sphere(a, ray1);
+	print_intersection2(test1, a);
 
 	printf("\n\nTEST 3\n");
 	t_vector origin2 = create_point(0, 2, -5);
 	t_vector direction2 = create_vector(0, 0, 1);
 	t_ray ray2 = create_ray(origin2, direction2); // created a ray here
-	t_intersection test2 = intersect_sphere(a, ray2);
-	print_intersection(test2, a);
+	t_intersection2 test2 = intersect_sphere(a, ray2);
+	print_intersection2(test2, a);
 
 	printf("\n\nTEST 4\n");
 	t_vector origin3 = create_point(0, 0, 0);
 	t_vector direction3 = create_vector(0, 0, 1);
 	t_ray ray3 = create_ray(origin3, direction3); // created a ray here
-	t_intersection test3 = intersect_sphere(a, ray3);
-	print_intersection(test3, a);
+	t_intersection2 test3 = intersect_sphere(a, ray3);
+	print_intersection2(test3, a);
 
 	printf("\n\nTEST 5\n");
 	t_vector origin4 = create_point(0, 0, 5);
 	t_vector direction4 = create_vector(0, 0, 1);
 	t_ray ray4 = create_ray(origin4, direction4); // created a ray here
-	t_intersection test4 = intersect_sphere(a, ray4);
-	print_intersection(test4, a);
+	t_intersection2 test4 = intersect_sphere(a, ray4);
+	print_intersection2(test4, a);
 
 }
 */
@@ -155,36 +155,36 @@ int main()
     t_vector origin = create_point(0, 0, -5);
 	t_vector direction = create_vector(0, 0, 1);
 	t_ray ray = create_ray(origin, direction); // created a ray here
-	t_intersection test = intersect_sphere(a, ray);
-    print_intersection(test, a);
+	t_intersection2 test = intersect_sphere(a, ray);
+    print_intersection2(test, a);
 
     printf("\n\nTEST 2\n");
     t_vector origin1 = create_point(0, 1, -5);
     t_vector direction1 = create_vector(0, 0, 1);
     t_ray ray1 = create_ray(origin1, direction1); // created a ray here
-    t_intersection test1 = intersect_sphere(a, ray1);
-    print_intersection(test1, a);
+    t_intersection2 test1 = intersect_sphere(a, ray1);
+    print_intersection2(test1, a);
 
     printf("\n\nTEST 3\n");
     t_vector origin2 = create_point(0, 2, -5);
     t_vector direction2 = create_vector(0, 0, 1);
     t_ray ray2 = create_ray(origin2, direction2); // created a ray here
-    t_intersection test2 = intersect_sphere(a, ray2);
-    print_intersection(test2, a);
+    t_intersection2 test2 = intersect_sphere(a, ray2);
+    print_intersection2(test2, a);
 
     printf("\n\nTEST 4\n");
     t_vector origin3 = create_point(0, 0, 0);
     t_vector direction3 = create_vector(0, 0, 1);
     t_ray ray3 = create_ray(origin3, direction3); // created a ray here
-    t_intersection test3 = intersect_sphere(a, ray3);
-    print_intersection(test3, a);
+    t_intersection2 test3 = intersect_sphere(a, ray3);
+    print_intersection2(test3, a);
 
     printf("\n\nTEST 5\n");
     t_vector origin4 = create_point(0, 0, 5);
     t_vector direction4 = create_vector(0, 0, 1);
     t_ray ray4 = create_ray(origin4, direction4); // created a ray here
-    t_intersection test4 = intersect_sphere(a, ray4);
-    print_intersection(test4, a);
+    t_intersection2 test4 = intersect_sphere(a, ray4);
+    print_intersection2(test4, a);
 
     return 0;
 }

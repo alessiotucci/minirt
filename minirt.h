@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/22 18:53:15 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/23 17:01:09 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ typedef struct s_intersection2
 {
 	
 	int		count;
+	int obj_count;
 	double	t[2];
 	t_intersect obj_inter[2];
 	
@@ -148,25 +149,7 @@ typedef struct s_intersection2
 
 
 /* let's see if it is usefult */
-/*
-typedef struct s_intersection2
-{
-	
-	int		count;
-	double	t[2];
-	t_intersect obj_inter[2];
-	
-}	t_intersection;
 
-
-typedef struct s_intersection2
-{
-	
-	int		count;
-	double	t[2];
-	t_intersect obj_inter[2];
-	
-}	t_intersection2;
 
 typedef struct s_amb_light
 {
@@ -428,8 +411,8 @@ void			transform_sphere(t_sphere *sphere, double **matrix);
 void			sphere_test(t_sphere *sphere, double **translation_matrix);
 t_color** 		create_canvas(int width, int height);
 void 			render_sphere_image(t_sphere sphere);
-t_intersection intersect_sphere(t_sphere sphere, t_ray ray);
-t_intersection* hit(t_intersection xs);
+t_intersection2 intersect_sphere(t_sphere sphere, t_ray ray);
+t_intersection2* hit(t_intersection2 xs);
 
 
 #endif

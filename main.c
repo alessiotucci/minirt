@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/22 17:18:03 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/23 17:05:02 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,6 @@ int main(int ac, char **av) {
         sphere.transform = NULL; // Inizialmente senza trasformazioni
 
         sphere_test(&sphere, create_matrix(4, 4));
-
-        // Rendering dell'immagine della sfera
-        render_sphere_image(sphere);
 
         // Liberazione della memoria e gestione MLX
         //free_struct(&new_setting);  // TODO: implement the right free
