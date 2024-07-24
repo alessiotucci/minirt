@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 12:02:15 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 12:07:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,28 +142,6 @@ typedef struct s_all_intersection
 	int	count;
 } t_all_intersection;
 
-/*****************************************************************************/
-/*******************************/                                            //
-//TODO: implement english name */                                            //
-/*******************************/                                            //
-typedef enum e_intersect
-{
-	T_SFERA,
-	T_CILINDR,
-	T_PIANO
-
-} t_intersect;
-
-//TODO: a intersection can have more object than 2 right?
-typedef struct s_intersection2
-{
-	
-	int		count;
-	double	t[2];
-	t_intersect obj_inter[2];
-	
-}	t_intersection2;
-
 /* let's see if it is usefult */                                             //
 typedef struct s_intersection
 {
@@ -171,7 +149,6 @@ typedef struct s_intersection
 	int		count;
 	double	t[2];
 	t_intersect	obj_inter[2];
-	//t_intersection2*	intersections;
 	
 }	t_intersection;
 /*****************************************************************************/
