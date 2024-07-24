@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/22 16:54:39 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 11:23:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,9 +130,9 @@ typedef struct s_ray
 }	t_ray;
 
 /*****************************************************************************/
-/*******************************/
-//TODO: implement english name */
-/*******************************/
+/*******************************/                                            //
+//TODO: implement english name */                                            //
+/*******************************/                                            //
 typedef enum e_intersect
 {
 	T_SFERA,
@@ -151,7 +151,7 @@ typedef struct s_intersection2
 	
 }	t_intersection2;
 
-/* let's see if it is usefult */
+/* let's see if it is usefult */                                             //
 typedef struct s_intersection
 {
 	
