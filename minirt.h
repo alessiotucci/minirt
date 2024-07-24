@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 12:07:31 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 12:42:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,18 +129,22 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
-//TODO: last updates!
-typedef struct s_single_intersect
+// Define the enum for the object types
+typedef enum
 {
-	double	t;
-	void	*object; // pointer to the intersected object
-}	t_single_intersect;
+	CAMERA,
+	LIGHT,
+	SPHERE,
+	PLANE,
+	CYLINDER
+}	type;
 
-typedef struct s_all_intersection
+// Define the struct that will hold the object type and the void pointer
+typedef struct s_object
 {
-	t_single_intersect	*intersections;
-	int	count;
-} t_all_intersection;
+	type	type;
+	void	*obj;
+}	t_object;
 
 /* let's see if it is usefult */                                             //
 typedef struct s_intersection
@@ -148,8 +152,7 @@ typedef struct s_intersection
 	
 	int		count;
 	double	t[2];
-	t_intersect	obj_inter[2];
-	
+	t_object	obj;
 }	t_intersection;
 /*****************************************************************************/
 
@@ -404,4 +407,8 @@ void	my_new_image(t_mlx *data);
 
 void	send_to_centre(t_setting *set); //prima
 int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
+/********************************************************/
+/* started to create complex obj to track intersections */
+/********************************************************/
+void	print_type(t_object obj);
 #endif
