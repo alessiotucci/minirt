@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 15:31:50 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 16:57:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	print_intersection(t_intersection i)//, t_sphere s)
 		printf("no hits\n");
 }
 
-// Main to test out the function
+/* Main to test out the function
 int	main()
 {
 	printf("\nTEST 1\n");
@@ -117,5 +117,6 @@ int	main()
 	print_intersection(test4);//, a);
 
 }
+*/
  
 // gcc ../matrix/*.c ../vector/*.c create_ray.c intersection_ray.c  ../extra/comparing.c ../extra/print_debug.c ../shapes/sphere.c  ../libft/libft.a -lm

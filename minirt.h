@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 15:03:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 16:56:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,12 @@ typedef struct s_intersection
 	double	t[2];
 	t_object	obj;
 }	t_intersection;
+
+typedef struct s_intersection_list
+{
+	t_intersection	*intersections;
+	int count;
+}	t_intersection_list;
 /*****************************************************************************/
 
 typedef struct s_amb_light
@@ -415,4 +421,11 @@ void	print_single_sphere(t_sphere *one_sphere);
 void	print_single_cylinder(t_cylinder *one_cylinder);
 void	print_single_plane(t_plane *one_plane);
 
+/************************************/
+/* intersection/intersection_list.c */
+/************************************/
+t_intersection	create_intersection(double t, t_object object);
+t_intersection_list	*create_intersection_list(int count);
+void	add_intersection(t_intersection_list *l, int index, t_intersection i);
+void	free_intersection_list(t_intersection_list *list);
 #endif

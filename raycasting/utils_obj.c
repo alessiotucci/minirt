@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 12:29:36 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 15:35:25 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 15:40:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	print_type(t_object obj)
 	if (obj.type == T_SPHERE)
 	{
 		printf("%sSPHERE%s\n", RED, RESET);
-		print_single_sphere((t_sphere *)obj.obj);
+		//print_single_sphere((t_sphere *)obj.obj);
 	}
 	if (obj.type == T_PLANE)
 	{
 		printf("%sPLANE%s\n", YELLOW, RESET);
-		print_single_plane((t_plane *)obj.obj);
+		//print_single_plane((t_plane *)obj.obj);
 	}
 	if (obj.type == T_CYLINDER)
 	{
 		printf("%sCYLINDER%s\n", BLUE, RESET);
-		print_single_cylinder((t_cylinder *)obj.obj);
+		//print_single_cylinder((t_cylinder *)obj.obj);
 	}
 	else
 		printf("value: %d, do not MATCH\n", obj.type);
