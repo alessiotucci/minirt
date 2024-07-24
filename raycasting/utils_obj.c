@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 12:29:36 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 12:44:49 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 15:35:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,32 @@
 /* just a function that print the type of the object based of the enums */
 void	print_type(t_object obj)
 {
-	if (obj->type == SPHERE)
-		print_single_sphere((t_sphere *)obj->obj);
-	if (obj->type == PLANE)
-		print_single_plane((t_plane *)obj->obj);
-	if (obj->type == CYLINDER)
-		print_single_cylinder((t_cylinder *)obj->obj);
+	printf("INTERSECTION OBJECT RECOGNITION: ");
+	if (obj.type == T_SPHERE)
+	{
+		printf("%sSPHERE%s\n", RED, RESET);
+		print_single_sphere((t_sphere *)obj.obj);
+	}
+	if (obj.type == T_PLANE)
+	{
+		printf("%sPLANE%s\n", YELLOW, RESET);
+		print_single_plane((t_plane *)obj.obj);
+	}
+	if (obj.type == T_CYLINDER)
+	{
+		printf("%sCYLINDER%s\n", BLUE, RESET);
+		print_single_cylinder((t_cylinder *)obj.obj);
+	}
 	else
-		printf("value: %d, do not MATCH\n", obj->type);
+		printf("value: %d, do not MATCH\n", obj.type);
 }
+
+/*
+int main()
+{
+	printf("%s WASTING TIME%s\n", RED, RESET);
+	return (0);
+}
+*/
+
+// gcc utils_obj.c ../extra/print_debug.c

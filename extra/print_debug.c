@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/14 16:39:11 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/24 15:03:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_vector(t_vector vector)
 	printf("%sw:%s %f\n\n", BLUE, RESET, vector.w);
 }
 
-static void	print_single_plane(t_plane *one_plane)
+void	print_single_plane(t_plane *one_plane)
 {
 		printf("colors : ");
 		print_color(one_plane->color);
@@ -62,7 +62,7 @@ static void	print_planes(int n_planes, t_plane **array)
 	}
 }
 
-static void	print_single_cylinder(t_cylinder *one_cylinder)
+void	print_single_cylinder(t_cylinder *one_cylinder)
 {
 		printf("colors : ");
 		print_color(one_cylinder->color);
@@ -86,7 +86,7 @@ static void	print_cylinders(int n_cylinders, t_cylinder **array)
 	}
 }
 
-static void	print_single_sphere(t_sphere *one_sphere)
+void	print_single_sphere(t_sphere *one_sphere)
 {
 		printf("colors : ");
 		print_color(one_sphere->color);

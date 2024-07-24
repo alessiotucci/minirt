@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 12:42:41 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 15:03:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,19 +130,19 @@ typedef struct s_ray
 }	t_ray;
 
 // Define the enum for the object types
-typedef enum
+typedef enum e_type
 {
-	CAMERA,
-	LIGHT,
-	SPHERE,
-	PLANE,
-	CYLINDER
-}	type;
+	T_CAMERA,
+	T_LIGHT,
+	T_SPHERE,
+	T_PLANE,
+	T_CYLINDER
+}	t_type;
 
 // Define the struct that will hold the object type and the void pointer
 typedef struct s_object
 {
-	type	type;
+	t_type	type;
 	void	*obj;
 }	t_object;
 
@@ -411,4 +411,8 @@ int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
 /* started to create complex obj to track intersections */
 /********************************************************/
 void	print_type(t_object obj);
+void	print_single_sphere(t_sphere *one_sphere);
+void	print_single_cylinder(t_cylinder *one_cylinder);
+void	print_single_plane(t_plane *one_plane);
+
 #endif
