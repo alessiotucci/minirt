@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 11:23:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 12:02:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,19 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
+//TODO: last updates!
+typedef struct s_single_intersect
+{
+	double	t;
+	void	*object; // pointer to the intersected object
+}	t_single_intersect;
+
+typedef struct s_all_intersection
+{
+	t_single_intersect	*intersections;
+	int	count;
+} t_all_intersection;
+
 /*****************************************************************************/
 /*******************************/                                            //
 //TODO: implement english name */                                            //
@@ -157,7 +170,8 @@ typedef struct s_intersection
 	
 	int		count;
 	double	t[2];
-    t_intersection2* intersections;
+	t_intersect	obj_inter[2];
+	//t_intersection2*	intersections;
 	
 }	t_intersection;
 /*****************************************************************************/
