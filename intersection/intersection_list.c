@@ -6,22 +6,36 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 16:56:01 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 17:23:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-/* 1) */
-//t_intersection	create_intersection(double t, void object)
-t_intersection	create_intersection(double t, t_object object)
+t_intersection	new_create_intersection(double t, t_type type, void *object)
+{
+	t_intersection	intersection;
+	t_object	temp_obj;
+
+	intersection.t[0] = t; // need to check2
+	temp_obj.type = type;
+	temp_obj.obj = object;
+	intersection.obj = temp_obj;
+	return (intersection);
+}
+
+/* 1)
+t_intersection	create_intersection(double t, void *object)
+//t_intersection	create_intersection(double t, t_object object)
 {
 	t_intersection	intersection;
 
+	(void)object;
 	intersection.t[0] = t;
-	intersection.obj = object;
+	//intersection.obj = object;
 	return (intersection);
 }
+*/
 
 /* 2) */
 t_intersection_list	*create_intersection_list(int count)

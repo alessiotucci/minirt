@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 16:57:06 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/24 17:15:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)
 	return ((b * b) - 4 * a * c);
 }
 
+/* this function create the intersection, need to be updated */
 t_intersection	intersect_sphere(t_sphere sphere, t_ray ray)
 {
 	t_intersection	inter;
@@ -57,6 +58,47 @@ t_intersection	intersect_sphere(t_sphere sphere, t_ray ray)
 	inter.obj.type = T_SPHERE;
 	inter.obj.obj = &sphere;
 	return (inter);
+}
+//TODO: UPDATED version, need to be tested as well to check if it's working
+t_intersection_list *new_intersect_sphere(t_sphere sphere, t_ray ray)
+{
+	t_vector	sphere_to_ray;
+	t_intersection_list	*list;
+	double	t0;
+	double	t1;
+	double	discriminant;
+	t_intersection	inter1;
+	t_intersection	inter2;
+
+	sphere_to_ray = get_sphere_to_ray(sphere, ray);
+	discriminant = get_discriminant(sphere_to_ray, ray, sphere.diameter);
+	if (discriminant < 0)
+	{
+		list = create_intersection_list(0);
+		return (list);
+	}
+	list = create_intersection_list(2);
+	if (!list)
+	{
+		printf("Memory allocation for the list failed\n");
+		return (NULL);
+	}
+	t0 = (-2.0 * dot(sphere_to_ray, ray.direction) - sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
+	t1 = (-2.0 * dot(sphere_to_ray, ray.direction) + sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
+	inter1 = create_intersection(t0, &sphere);
+	inter2 = create_intersection(t1, &sphere);
+	if (comparing_double(t0, t1))
+	{
+		list->count = 1;
+		add_intersection(list, 0, inter1);
+	}
+	else
+	{
+		list->count = 2;
+		add_intersection(list, 0, inter1);
+		add_intersection(list, 1, inter2);
+	}
+	return (list);
 }
 
 void	print_intersection(t_intersection i)//, t_sphere s)
