@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 15:53:46 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:16:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,13 @@ t_intersection_list *intersect_sphere(t_sphere sphere, t_ray ray)
 }
 
 /* Main to test out the function */
-/*
 int	main()
 {
 	printf("\nTEST 1\n");
 	t_color bogus;
 	bogus.r = 0; bogus.g = 0; bogus.b = 0;
 	t_vector p = create_point(0, 0, 0);
-	t_sphere a = create_sphere("a", p, 1.0, bogus); // create unit sphere
+	t_sphere a = create_sphere("sp", p, 1.0, bogus); // create unit sphere
 
 	t_vector origin = create_point(0, 0, -5);
 	t_vector direction = create_vector(0, 0, 1);
@@ -152,6 +151,5 @@ int	main()
 	print_intersection_list(test4);
 	free_intersection_list(test4);
 }
-*/
  
 // gcc ../matrix/*.c ../vector/*.c create_ray.c intersection_ray.c  ../extra/comparing.c ../extra/print_debug.c ../shapes/sphere.c  ../libft/libft.a -lm

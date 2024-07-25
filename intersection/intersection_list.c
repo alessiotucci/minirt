@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 15:57:10 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:10:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ void	print_intersection_list(t_intersection_list *lis)
 }
 
 /* main to test out the functionality */
+	/*
 int	main()
 {
 	printf("%sTEST:%s aggregating intersections\n", RED, RESET);
-	/*
 	t_color	bogus;
 	bogus.r = 0; bogus.g = 0; bogus.b = 0;
 
@@ -103,9 +103,9 @@ int	main()
 	// then print out the list
 	print_intersection_list(new_list);
 
-	*/
 	return (0);
 }
+	*/
 // gcc ../matrix/*.c ../vector/*.c   ../extra/comparing.c ../extra/print_debug.c ../shapes/sphere.c  ../libft/libft.a ../raycasting/intersection_ray.c ../raycasting/create_ray.c  ../raycasting/utils_obj.c  intersection_list.c -lm
 
 

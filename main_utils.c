@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:05:38 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 16:06:05 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:10:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ void	setback_zero(t_setting *set)
 		set->num_planes = 0;
 		set->num_cylinders = 0;
 		set->num_cones = 0;
-}
-
-void	init_scene(t_mlx *info, char *mapname)
-{
-	info->width = DEFAULT_WIDTH;
-	info->height = DEFAULT_HEIGHT;
-	info->map_name = mapname;
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 15:42:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:18:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,7 +417,7 @@ int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
 /********************************************************/
 void	print_intersection(t_intersection i);
 void	print_intersection_list(t_intersection_list *lis);
-void	print_type(t_object obj);
+int		print_type(t_object obj);
 void	print_single_sphere(t_sphere *one_sphere);
 void	print_single_cylinder(t_cylinder *one_cylinder);
 void	print_single_plane(t_plane *one_plane);

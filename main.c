@@ -6,12 +6,20 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 16:07:03 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:10:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
+
+
+void	init_scene(t_mlx *info, char *mapname)
+{
+	info->width = DEFAULT_WIDTH;
+	info->height = DEFAULT_HEIGHT;
+	info->map_name = mapname;
+}
 
 //TODO: close the fd, the return of parsing_map();
 int	main(int ac, char **av)
