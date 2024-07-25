@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 11:53:17 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 12:31:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -416,6 +416,8 @@ int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
 /********************************************************/
 /* started to create complex obj to track intersections */
 /********************************************************/
+void	print_intersection(t_intersection i);
+void	print_intersection_list(t_intersection_list *lis);
 void	print_type(t_object obj);
 void	print_single_sphere(t_sphere *one_sphere);
 void	print_single_cylinder(t_cylinder *one_cylinder);
@@ -429,4 +431,7 @@ t_intersection	create_intersection(double t, void *object);
 t_intersection_list	*create_intersection_list(int count);
 void	add_intersection(t_intersection_list *l, int index, t_intersection i);
 void	free_intersection_list(t_intersection_list *list);
+
+/* this function create the intersection, need to be updated */
+t_intersection	intersect_sphere(t_sphere sphere, t_ray ray);
 #endif
