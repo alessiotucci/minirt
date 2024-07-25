@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 17:15:57 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 11:52:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,15 @@ t_intersection_list *new_intersect_sphere(t_sphere sphere, t_ray ray)
 	return (list);
 }
 
-void	print_intersection(t_intersection i)//, t_sphere s)
+void	print_intersection(t_intersection i)
 {
 	//TODO later to add the print of the obj
 	print_type(i.obj);
 	if (i.count != 0)
 	{
-		printf("values[0]: %f, object: /*&d*/\n", i.t[0]);// , i.obj_inter[0]);
+		printf("values[0]: %f\n", i.t[0]);
 		if (i.count > 1)
-			printf("values[1]: %f, object: /*&d*/\n", i.t[1]);//, i.obj_inter[1]);
+			printf("values[1]: %f\n", i.t[1]);
 	}
 	else
 		printf("no hits\n");

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 17:23:37 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 11:28:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_intersection	new_create_intersection(double t, t_type type, void *object)
 	return (intersection);
 }
 
-/* 1)
+/* 1)*/
 t_intersection	create_intersection(double t, void *object)
 //t_intersection	create_intersection(double t, t_object object)
 {
@@ -35,7 +35,7 @@ t_intersection	create_intersection(double t, void *object)
 	//intersection.obj = object;
 	return (intersection);
 }
-*/
+
 
 /* 2) */
 t_intersection_list	*create_intersection_list(int count)

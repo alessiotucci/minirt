@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 17:21:50 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 11:53:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ typedef struct s_object
 	void	*obj;
 }	t_object;
 
-/* let's see if it is usefult */                                             //
+/* let's see if it is usefult ***********************************************/
 typedef struct s_intersection
 {
 	
