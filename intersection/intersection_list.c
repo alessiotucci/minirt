@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 16:10:14 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:23:08 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	free_intersection_list(t_intersection_list *list)
 void	print_intersection(t_intersection i)
 {
 	print_type(i.obj);
+	printf("pointer: %p\n", i.obj.obj);
 	printf("value: %f\n", i.t);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 16:16:14 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:45:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,38 +37,9 @@ double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)
 	return ((b * b) - 4 * a * c);
 }
 
-/* this function create the intersection, need to be updated */
-/*
-t_intersection	intersect_sphere(t_sphere sphere, t_ray ray)
-{
-	t_intersection	inter;
-	t_vector		sphere_to_ray;
-	double			discriminant;
-	double			t[2];
-
-	sphere_to_ray = get_sphere_to_ray(sphere, ray);
-	discriminant = get_discriminant(sphere_to_ray, ray, sphere.diameter);//TODO:
-	if (discriminant < 0)
-		return (inter); //inter.count = 0;
-	else
-	{
-		t[0] = (-2.0 * dot(sphere_to_ray, ray.direction) - sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
-		t[1] = (-2.0 * dot(sphere_to_ray, ray.direction) + sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
-		//inter.t[0] = t[0];
-		//inter.t[1] = t[1];
-		if (comparing_double(t[0], t[1]))
-			printf("same");//inter.count = 1;
-		else
-			printf("different");//inter.count = 2;
-	}
-	//TODO: Create an helper function to  Update the obj field in the structure
-	inter.obj.type = T_SPHERE;
-	inter.obj.obj = &sphere;
-	return (inter);
-}
-*/
-
-
+//TODO:
+//MODIFICIATION
+//1) function intersection() return a t_intersection object
 t_intersection_list *intersect_sphere(t_sphere sphere, t_ray ray)
 {
 	t_vector			sphere_to_ray;
@@ -104,6 +75,7 @@ t_intersection_list *intersect_sphere(t_sphere sphere, t_ray ray)
 }
 
 /* Main to test out the function */
+/*
 int	main()
 {
 	printf("\nTEST 1\n");
@@ -151,5 +123,5 @@ int	main()
 	print_intersection_list(test4);
 	free_intersection_list(test4);
 }
- 
+*/ 
 // gcc ../matrix/*.c ../vector/*.c create_ray.c intersection_ray.c  ../extra/comparing.c ../extra/print_debug.c ../shapes/sphere.c  ../libft/libft.a -lm
