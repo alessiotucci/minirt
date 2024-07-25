@@ -6,34 +6,12 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 14:35:25 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:07:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
-
-void	error_msg(char *str)
-{
-	ft_printf("error\n");
-	ft_printf("Minirt: %s%s%s", RED, str, RESET);
-}
-
-/* function to set the counter of object in the setting to zero */
-void	setback_zero(t_setting *set)
-{
-		set->num_lights = 0;
-		set->num_spheres = 0;
-		set->num_planes = 0;
-		set->num_cylinders = 0;
-		set->num_cones = 0;
-}
-static void	init_scene(t_mlx *info, char *mapname)
-{
-	info->width = DEFAULT_WIDTH;
-	info->height = DEFAULT_HEIGHT;
-	info->map_name = mapname;
-}
 
 //TODO: close the fd, the return of parsing_map();
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/07/25 14:51:58 by atucci           ###   ########.fr        #
+#    Updated: 2024/07/25 16:08:47 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ NAME = miniRT
 # setting up the variable that will be the source *
 # *************************************************
 SOURCE = ./main.c \
+		 ./main_utils.c \
 		 ./manage_mlx.c \
 		 ./parsing/parsing_map.c \
 		 ./parsing/parsing_numbers.c \
@@ -131,6 +132,18 @@ $(NAME): $(OBJ)
 	$(CC) $(FLAG) $(INCLUDES) -c $< -o $@
 	@echo "$(CYAN)Done compiling $<.$(RESET)\n"
 
+
+TEST_SOURCE = $(filter-out ./main.c, $(SOURCE))
+TEST_OBJ = $(TEST_SOURCE:.c=.o)
+
+test: $(TEST_OBJ)
+	@echo "$(RED)Compiling libft...$(RESET)\n"
+	$(MAKE) -C libft
+	@echo "$(RED)Compiling mlx...$(RESET)\n"
+	$(MAKE) -C mlx
+	@echo "$(RED)Linking...$(RESET)\n"
+	$(CC) $(FLAG) $(TEST_OBJ) $(LIBFT) $(MLXFLAG) -o test
+	@echo "$(YELLOW)Done!\n$(RESET)"
 
 # ****************************************
 #  Rule for cleaning up the object files *
