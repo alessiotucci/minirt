@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 12:31:14 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 15:42:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,11 +147,10 @@ typedef struct s_object
 }	t_object;
 
 /* let's see if it is usefult ***********************************************/
+//TODO:
 typedef struct s_intersection
 {
-	
-	int		count;
-	double	t[2];
+	double	t;
 	t_object	obj;
 }	t_intersection;
 
@@ -423,15 +422,22 @@ void	print_single_sphere(t_sphere *one_sphere);
 void	print_single_cylinder(t_cylinder *one_cylinder);
 void	print_single_plane(t_plane *one_plane);
 
+//TODO
+/* this function create the intersection, need to be updated */
+t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
+
+/*******************************/
+/* intersection/intersection.c */
+/*******************************/
+t_type			string_to_type(char *type);
+t_object		create_object(char *type, void *object);
+t_intersection	intersection(double t, char *type, void *object);
+
 /************************************/
 /* intersection/intersection_list.c */
 /************************************/
-t_intersection new_create_intersection(double t, t_type type, void *object);
-t_intersection	create_intersection(double t, void *object);
 t_intersection_list	*create_intersection_list(int count);
-void	add_intersection(t_intersection_list *l, int index, t_intersection i);
-void	free_intersection_list(t_intersection_list *list);
+void				add_intersection(t_intersection_list *l, int index, t_intersection i);
+void				free_intersection_list(t_intersection_list *list);
 
-/* this function create the intersection, need to be updated */
-t_intersection	intersect_sphere(t_sphere sphere, t_ray ray);
 #endif

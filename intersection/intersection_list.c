@@ -6,42 +6,17 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 12:51:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 15:54:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-/*typedef struct s_intersection_list
-{
-	t_intersection	*intersections;
-	int count;
-}	t_intersection_list;
-*/
-t_intersection	new_create_intersection(double t, t_type type, void *object)
-{
-	t_intersection	intersection;
-	t_object	temp_obj;
-
-	intersection.t[0] = t; // need to check2
-	temp_obj.type = type;
-	temp_obj.obj = object;
-	intersection.obj = temp_obj;
-	return (intersection);
-}
-
-/* 1) this function need to be checked, because it has issues*/
-t_intersection	create_intersection(double t, void *object)
-//t_intersection	create_intersection(double t, t_object object)
-{
-	t_intersection	intersection;
-
-	(void)object;
-	intersection.t[0] = t;
-	//intersection.obj = object;
-	return (intersection);
-}
-
+//typedef struct s_intersection_list
+//{
+//	t_intersection	*intersections;
+//	int count;
+//}	t_intersection_list;
 
 /* 2) */
 t_intersection_list	*create_intersection_list(int count)
@@ -78,16 +53,8 @@ void	free_intersection_list(t_intersection_list *list)
 
 void	print_intersection(t_intersection i)
 {
-	//TODO later to add the print of the obj
 	print_type(i.obj);
-	if (i.count != 0)
-	{
-		printf("values[0]: %f\n", i.t[0]);
-		if (i.count > 1)
-			printf("values[1]: %f\n", i.t[1]);
-	}
-	else
-		printf("no hits\n");
+	printf("value: %f\n", i.t);
 }
 
 void	print_intersection_list(t_intersection_list *lis)
@@ -104,8 +71,9 @@ void	print_intersection_list(t_intersection_list *lis)
 		count++;
 	}
 }
-//HOW TO COMPILE IT?
-t_intersection	intersect_sphere(t_sphere sphere, t_ray ray);
+
+/* main to test out the functionality */
+	/*
 int	main()
 {
 	printf("%sTEST:%s aggregating intersections\n", RED, RESET);
@@ -137,6 +105,7 @@ int	main()
 
 	return (0);
 }
+	*/
 // gcc ../matrix/*.c ../vector/*.c   ../extra/comparing.c ../extra/print_debug.c ../shapes/sphere.c  ../libft/libft.a ../raycasting/intersection_ray.c ../raycasting/create_ray.c  ../raycasting/utils_obj.c  intersection_list.c -lm
 
 

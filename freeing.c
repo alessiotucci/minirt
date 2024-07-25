@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:35:20 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/12 11:42:29 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/25 14:36:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,4 @@ void	free_struct(t_setting *set)
 	free(set->camera);
 	//free(set->light);
 }
+// ok

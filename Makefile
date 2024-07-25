@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+         #
+#    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/07/24 16:40:39 by atucci           ###   ########.fr        #
+#    Updated: 2024/07/25 14:51:58 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SOURCE = ./main.c \
 		 ./raycasting/create_ray.c \
 		 ./raycasting/intersection_ray.c \
 		 ./raycasting/utils_obj.c \
+		 ./intersection/intersection.c \
 		 ./intersection/intersection_list.c \
 		 ./centering.c \
 
