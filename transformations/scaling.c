@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:17:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/18 14:53:53 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/26 10:11:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ void	identity_value_matrix(double **matrix, t_vector source)
 	matrix[0][0] = source.x;
 	matrix[1][1] = source.y;
 	matrix[2][2] = source.z;
+}
+
+/*TODO: this has to be done for each transformation */
+double	**create_scaling_matrix(t_vector move)
+{
+	double		**matrix;
+
+	matrix = create_matrix(4, 4);
+	identity_value_matrix(matrix, move);
+	return (matrix);
 }
 
 t_vector	scaling(t_vector move, t_vector origin)

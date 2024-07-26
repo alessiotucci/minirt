@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 16:18:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 10:12:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,16 +348,19 @@ void	matrix_of_cofactors_void(int size, double **matrix, double **n);
 void	transposing_void(int rows, int cols, double **matrix);
 void	inversing_matrix_void(int size, double **source);
 
+//TODO: The transformation need to return matrix sometimes!
 /**********************************/
 /* Transformations/translations.c */
 /**********************************/
 t_vector	translations(t_vector move, t_vector origin);
+double		**create_translation_matrix(t_vector move);
 t_vector	inverse_translations(t_vector move, t_vector origin);
 /*****************************/
 /* Transformations/scaling.c */
 /*****************************/
 void		identity_value_matrix(double **matrix, t_vector source);
 t_vector	scaling(t_vector move, t_vector origin);
+double		**create_scaling_matrix(t_vector move);
 t_vector	scaling_inverse(t_vector move, t_vector origin);
 /*******************************/
 /* Transformations/rotations.c */

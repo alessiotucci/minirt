@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:15:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 18:36:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 09:59:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ void	last_cols_value(int size, double **matrix, t_vector source)
 	matrix[0][size - 1] = source.x;
 	matrix[1][size - 1] = source.y;
 	matrix[2][size - 1] = source.z;
+}
+
+double	**create_translation_matrix(t_vector move)
+{
+	double	**matrix;
+
+	matrix = create_matrix(4, 4);
+	create_identity_matrix(matrix);
+	last_cols_value(4, matrix, move);
+
+	return (matrix);
 }
 
 t_vector	translations(t_vector move, t_vector origin)
