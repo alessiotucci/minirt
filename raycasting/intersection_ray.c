@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 16:45:50 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 15:46:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)
 //TODO:
 //MODIFICIATION
 //1) function intersection() return a t_intersection object
-t_intersection_list *intersect_sphere(t_sphere sphere, t_ray ray)
+t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)
 {
 	t_vector			sphere_to_ray;
 	double				discriminant;
@@ -48,7 +48,9 @@ t_intersection_list *intersect_sphere(t_sphere sphere, t_ray ray)
 	t_intersection_list	*list;
 	t_intersection		inter1;
 	t_intersection		inter2;
+	t_ray				ray;
 
+	ray = transform_ray(old_ray, inversing_matrix(4, sphere.transform));
 	sphere_to_ray = get_sphere_to_ray(sphere, ray);
 	discriminant = get_discriminant(sphere_to_ray, ray, sphere.diameter / 2.0); // diameter/2 for radius
 	if (discriminant < 0)

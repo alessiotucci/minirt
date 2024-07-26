@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 09:41:01 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 12:28:08 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 16:00:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	set_sphere_transformations(t_sphere *sphere, double **new)
 	sphere->transform = new;
 }
 
+/*
 int	main()
 {
 	// Test: Translating a ray
@@ -76,14 +77,20 @@ int	main()
 	printf("sphere [a] has setted the NEW matrix\n");
 	print_int_matrix(4, 4, a.transform);
 
+	// create unit sphere
+	t_color bogus;
+	bogus.r = 0; bogus.g = 0; bogus.b = 0;
+	t_vector p = create_point(0, 0, 0);
+	t_sphere a = create_sphere("sp", p, 1.0, bogus);
+	t_vector move2 = create_vector(2, 2, 2);
+	set_sphere_transformations(&a, (create_scaling_matrix(move2)));
+
 	printf("\n\n%sSCENARIO:%sIntersecting a scaled sphere with a ray\n", RED, RESET);
 	t_vector	o = create_point(0, 0, -5);
 	t_vector	d = create_vector(0, 0, 1);
 	t_ray		ri = create_ray(o, d);
-	t_vector move2 = create_vector(2, 2, 2);
-	set_sphere_transformations(&a, (create_scaling_matrix(move2)));
-	printf("Intersection list value ...\n");
 	t_intersection_list *res1 = intersect_sphere(a, ri);
+	printf("Intersection list value ...\n");
 	print_intersection_list(res1);
 	printf("❌ %sTEST FAILED%s❌\n", BG_RED, BG_RESET);
 	//printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
@@ -94,8 +101,9 @@ int	main()
 	printf("Intersection list value ...\n");
 	t_intersection_list *res2 = intersect_sphere(a, ri);
 	print_intersection_list(res2);
-	printf("❌ %sTEST FAILED%s❌\n", BG_RED, BG_RESET);
-	//printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
+	//printf("❌ %sTEST FAILED%s❌\n", BG_RED, BG_RESET);
+	printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
 
 	return (0);
 }
+*/

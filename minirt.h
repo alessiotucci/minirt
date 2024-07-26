@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 10:31:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 15:47:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,6 +381,11 @@ t_vector	shearing(t_vector origin, double value[6]);
 t_ray		create_ray(t_vector origin, t_vector direction);
 void		print_ray(t_ray ray);
 t_vector	position_ray(t_ray ray, double t);
+/***************************/
+/* Raycasting/create_ray.c */
+/***************************/
+t_ray	transform_ray(t_ray original, double **matrix);
+void	set_sphere_transformations(t_sphere *sphere, double **new);
 /*******************/
 /* shapes/sphear.c */
 /*******************/
