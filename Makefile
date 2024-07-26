@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/07/25 17:23:01 by atucci           ###   ########.fr        #
+#    Updated: 2024/07/26 09:11:32 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,7 +133,10 @@ $(NAME): $(OBJ)
 	$(CC) $(FLAG) $(INCLUDES) -c $< -o $@
 	@echo "$(CYAN)Done compiling $<.$(RESET)\n"
 
-
+# *****************************************************************************
+# UNIT TEST: this rules allow me to compile the whole project and test        *
+# single functions, I use a main inside the function and exclude the main     *
+# *****************************************************************************
 TEST_SOURCE = $(filter-out ./main.c, $(SOURCE))
 TEST_OBJ = $(TEST_SOURCE:.c=.o)
 
@@ -146,6 +149,9 @@ test: $(TEST_OBJ)
 	$(CC) $(FLAG) $(TEST_OBJ) $(LIBFT) $(MLXFLAG) -o test
 	@echo "$(YELLOW)Done!\n$(RESET)"
 
+clean_test: fclean
+	@echo "removing test\t"
+	rm -f test
 # ****************************************
 #  Rule for cleaning up the object files *
 # ****************************************
