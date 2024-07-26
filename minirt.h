@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 10:12:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 10:31:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,8 @@ typedef struct s_sphere
 	t_vector	center;
 	double		diameter;
 	t_color		color;
+	double		**transform;//THIS IS LAST CHANGE
+
 }	t_sphere;
 
 typedef struct s_plane

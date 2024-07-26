@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 09:41:01 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 10:14:20 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 12:02:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ t_ray	transform_ray(t_ray original, double **matrix)
 	return (new);
 }
 
+void	set_sphere_transformations(t_sphere *sphere, double **new)
+{
+	if (sphere->transform)
+		free_heap_matrix(sphere->transform, 4);
+	sphere->transform = new;
+}
 
 int	main()
 {
@@ -52,6 +58,28 @@ int	main()
 	// Clean up
 	free_heap_matrix(matrix_t, 4);
 	free_heap_matrix(matrix_s, 4);
+
+	// create unit sphere
+	t_color bogus;
+	bogus.r = 0; bogus.g = 0; bogus.b = 0;
+	t_vector p = create_point(0, 0, 0);
+	t_sphere a = create_sphere("sp", p, 1.0, bogus);
+
+
+	printf("\n\n%sSCENARIO:%sA sphere default transformations\n", RED, RESET);
+	printf("sphere [a] has default matrix\n");
+	print_int_matrix(4, 4, a.transform);
+
+	printf("\n\n%sSCENARIO:%sChanging a sphere default transformation\n", RED, RESET);
+	double **matrix = create_translation_matrix(move1);
+	set_sphere_transformations(&a, matrix);
+	printf("sphere [a] has setted the NEW matrix\n");
+	print_int_matrix(4, 4, a.transform);
+
+	printf("\n\n%sSCENARIO:%sIntersecting a scaled sphere with a ray\n", RED, RESET);
+	printf("Intersection list value ...\n");
+
+	printf("\n\n%sSCENARIO:%sIntersecting a translated sphere with a ray\n", RED, RESET);
+	printf("Intersection list value ...\n");
 	return (0);
 }
-

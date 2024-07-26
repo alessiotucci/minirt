@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_debug.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/24 15:03:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 11:42:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ void	print_single_sphere(t_sphere *one_sphere)
 		printf("Center of the Sphere: ");
 		print_vector(one_sphere->center);
 		printf("Diameter: %f\n", one_sphere->diameter);
+		printf("Sphere Matrix: ");
+		print_int_matrix(4, 4, one_sphere->transform);
 
 }
 static void	print_spheres(int n_spheres, t_sphere **array)
