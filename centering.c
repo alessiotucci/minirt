@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:01:23 by ftroise           #+#    #+#             */
-/*   Updated: 2024/07/22 16:55:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 17:17:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	test(t_camera *camera)
 	center_viewpoint(camera, DEFAULT_WIDTH, DEFAULT_HEIGHT );
 
 	// Output delle nuove coordinate del viewpoint
-	printf("Viewpoint centrato:\n");
+	printf("Viewpoint centered:\n");
 	printf("x: %lf\n", camera->viewpoint.x);
 	printf("y: %lf\n", camera->viewpoint.y);
 	printf("z: %lf\n", camera->viewpoint.z);
@@ -61,8 +61,7 @@ int	mouse_click(int button, int x, int y, t_mlx *mlx)
 	my_mlx_pixel_put(mlx, x, y, COLOR_GREEN);
 	// Qui puoi implementare la logica per reagire al click del mouse
 	// Ad esempio, cambiando il colore di un pixel, disegnando qualcosa, ecc.
-
-	return 0;
+	return (0);
 }
 
 void	send_to_centre(t_setting *set)
@@ -71,3 +70,17 @@ void	send_to_centre(t_setting *set)
 	print_vector(set->camera->viewpoint);
 	test(set->camera);
 }
+
+
+//TODO: first implementation, need to be worked on
+void center_sphere(t_sphere *sphere, int window_width, int window_height)
+{
+	double	center_x;
+	double	center_y;
+
+	center_x = window_width / 2.0;
+	center_y = window_height / 2.0;
+	sphere->center.x = center_x + sphere->center.x;
+	sphere->center.y = center_y - sphere->center.y;
+}
+

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 15:47:17 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 17:51:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,11 +381,23 @@ t_vector	shearing(t_vector origin, double value[6]);
 t_ray		create_ray(t_vector origin, t_vector direction);
 void		print_ray(t_ray ray);
 t_vector	position_ray(t_ray ray, double t);
-/***************************/
-/* Raycasting/create_ray.c */
-/***************************/
+
+/********************/
+/* Raycasting/hit.c */
+/********************/
+t_intersection	*hit(t_intersection_list *list);
+
+/*********************************/
+/* Raycasting/intersection_ray.c */
+/*********************************/
+t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
+
+/***********************************/
+/* Raycasting/transformation_ray.c */
+/***********************************/
 t_ray	transform_ray(t_ray original, double **matrix);
 void	set_sphere_transformations(t_sphere *sphere, double **new);
+
 /*******************/
 /* shapes/sphear.c */
 /*******************/
@@ -421,6 +433,9 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	my_new_image(t_mlx *data);
 
 void	send_to_centre(t_setting *set); //prima
+//TODO: this is to center the sphere
+void center_sphere(t_sphere *sphere, int window_width, int window_height);
+
 int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
 /********************************************************/
 /* started to create complex obj to track intersections */
@@ -432,9 +447,6 @@ void	print_single_sphere(t_sphere *one_sphere);
 void	print_single_cylinder(t_cylinder *one_cylinder);
 void	print_single_plane(t_plane *one_plane);
 
-//TODO
-/* this function create the intersection, need to be updated */
-t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
 
 /*******************************/
 /* intersection/intersection.c */
@@ -446,6 +458,7 @@ t_intersection	intersection(double t, char *type, void *object);
 /************************************/
 /* intersection/intersection_list.c */
 /************************************/
+void	add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src);
 t_intersection_list	*create_intersection_list(int count);
 void				add_intersection(t_intersection_list *l, int index, t_intersection i);
 void				free_intersection_list(t_intersection_list *list);

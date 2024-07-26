@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 12:19:28 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 17:50:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@
 //	int count;
 //}	t_intersection_list;
 
+//TODO: GPT gave this to me 
+void	add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src)
+{
+	for (int i = 0; i < src->count; i++)
+	{
+		if (dest->count < src->count)
+		{
+			dest->intersections[dest->count] = src->intersections[i];
+			dest->count++;
+		}
+	}
+}
 /* 2) */
 t_intersection_list	*create_intersection_list(int count)
 {
