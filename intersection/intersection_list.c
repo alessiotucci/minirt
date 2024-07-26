@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 16:23:08 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 12:19:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	print_intersection_list(t_intersection_list *lis)
 	int	count;
 
 	printf("\n\t%sLIST OF INTERSECTION!%s\n", GREEN, RESET);
+	printf("intersection.count: [%d]\n", lis->count);
 	count = 0;
 	while (count < lis->count)
 	{

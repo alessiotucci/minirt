@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 09:41:01 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 12:02:18 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/26 12:28:08 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,25 @@ int	main()
 	print_int_matrix(4, 4, a.transform);
 
 	printf("\n\n%sSCENARIO:%sIntersecting a scaled sphere with a ray\n", RED, RESET);
+	t_vector	o = create_point(0, 0, -5);
+	t_vector	d = create_vector(0, 0, 1);
+	t_ray		ri = create_ray(o, d);
+	t_vector move2 = create_vector(2, 2, 2);
+	set_sphere_transformations(&a, (create_scaling_matrix(move2)));
 	printf("Intersection list value ...\n");
-
+	t_intersection_list *res1 = intersect_sphere(a, ri);
+	print_intersection_list(res1);
+	printf("❌ %sTEST FAILED%s❌\n", BG_RED, BG_RESET);
+	//printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
+	
 	printf("\n\n%sSCENARIO:%sIntersecting a translated sphere with a ray\n", RED, RESET);
+	t_vector move3 = create_vector(5, 0, 0);
+	set_sphere_transformations(&a, (create_translation_matrix(move3)));
 	printf("Intersection list value ...\n");
+	t_intersection_list *res2 = intersect_sphere(a, ri);
+	print_intersection_list(res2);
+	printf("❌ %sTEST FAILED%s❌\n", BG_RED, BG_RESET);
+	//printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
+
 	return (0);
 }
