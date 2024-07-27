@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/27 09:49:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/27 12:01:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,46 @@ t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int heig
 {
 	t_ray	ray;
 	ray.origin = camera->viewpoint;
-	printf("\n%sDEBUG HERE:%s manage_mlx.c/create_ray_from_camera\n", YELLOW, RESET);
+	//printf("\n%sDEBUG HERE:%s manage_mlx.c/create_ray_from_camera\n", YELLOW, RESET);
 	ray.direction = normalization(create_vector(x - width / 2.0, height / 2.0 - y, camera->orientation.z));
 	return (ray);
 }
 
+/*
+t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int height)
+{
+	t_ray ray;
+	t_vector pixel_position;
+
+	ray.origin = camera->viewpoint;
+
+	// Compute the pixel position in camera space
+	double aspect_ratio = (double)width / (double)height;
+	double fov_adjustment = tan((camera->fov / 2.0) * (M_PI / 180.0));
+
+	// Pixel coordinates normalized to [-1, 1]
+	double pixel_ndc_x = (x + 0.5) / (double)width;
+	double pixel_ndc_y = (y + 0.5) / (double)height;
+
+	// Transform to screen space [-1, 1]
+	double pixel_screen_x = 2 * pixel_ndc_x - 1;
+	double pixel_screen_y = 1 - 2 * pixel_ndc_y;
+
+	// Transform to camera space
+	pixel_position.x = pixel_screen_x * aspect_ratio * fov_adjustment;
+	pixel_position.y = pixel_screen_y * fov_adjustment;
+	pixel_position.z = -1;  // Assuming the camera is pointing towards -z
+	pixel_position.w = 0.0;
+
+	printf("Ray Direction Before Normalization: x: %f y: %f z: %f w: %f\n", pixel_position.x, pixel_position.y, pixel_position.z, pixel_position.w);
+
+	ray.direction = normalization(pixel_position);
+
+	printf("Ray Direction After Normalization: x: %f y: %f z: %f w: %f\n", ray.direction.x, ray.direction.y, ray.direction.z, ray.direction.w);
+
+	return ray;
+}
+*/
 int	calculate_sphere_color(t_intersection *intersection)
 {
 	t_sphere	*sphere;
@@ -256,7 +291,7 @@ void manage_mlx(t_mlx *obj, t_setting *set)
 	//wallpaper(obj);
 	draw_scene(obj);
 	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
-	mlx_mouse_hook(obj->win, mouse_click, obj);
+	//mlx_mouse_hook(obj->win, mouse_click, obj);
 	mlx_hook(obj->win, 2, 1, key_pressed, obj); 
 	mlx_hook(obj->win, 17, 0L, window_close, obj); 
 	mlx_loop(obj->mlx);
