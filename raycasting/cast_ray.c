@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/27 15:38:30 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/27 16:33:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int heig
 	//printf("\n%sDEBUG HERE:%s manage_mlx.c/create_ray_from_camera\n", YELLOW, RESET);
 	//printf("x: %d, y: %d, WIDTH: %d, HEIGHT: %d\n", x, y, width, height);
 	ray.direction = normalization(create_vector(x - width / 2.0, height / 2.0 - y, camera->orientation.z));
+	printf("\nray.direction x: %lf, y: %lf, z: %lf\n", x - width / 2.0, height / 2.0 - y, camera->orientation.z);
+	//print_ray(ray);
 	return (ray);
 }
 
@@ -37,6 +39,7 @@ t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int heig
 	double		screen_x;
 	double		screen_y;
 
+	printf("x: %d, y: %d, WIDTH: %d, HEIGHT: %d\n", x, y, width, height);
 	ray.origin = camera->viewpoint;
 	// Calculate normalized device coordinates
 	double ndc_x = (x + 0.5) / width;
@@ -47,6 +50,7 @@ t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int heig
 	// Calculate ray direction
 	direction = create_vector(screen_x, screen_y, -1); // assuming camera looks down -Z axis
 	ray.direction = normalization(direction);
+	print_ray(ray);
 	return (ray);
 }
 
