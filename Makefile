@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/07/26 09:56:22 by atucci           ###   ########.fr        #
+#    Updated: 2024/07/27 13:29:11 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ NAME = miniRT
 SOURCE = ./main.c \
 		 ./main_utils.c \
 		 ./manage_mlx.c \
+		 ./draw_scene.c \
 		 ./parsing/parsing_map.c \
 		 ./parsing/parsing_numbers.c \
 		 ./create_setting.c \
@@ -57,6 +58,7 @@ SOURCE = ./main.c \
 		 ./raycasting/utils_obj.c \
 		 ./raycasting/hit.c \
 		 ./raycasting/transformation_ray.c \
+		 ./raycasting/cast_ray.c \
 		 ./intersection/intersection.c \
 		 ./intersection/intersection_list.c \
 		 ./centering.c \

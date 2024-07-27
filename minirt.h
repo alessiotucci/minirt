@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 17:51:18 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/27 13:35:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -387,6 +387,11 @@ t_vector	position_ray(t_ray ray, double t);
 /********************/
 t_intersection	*hit(t_intersection_list *list);
 
+/*************************/
+/* Raycasting/cast_ray.c */
+/*************************/
+t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int height);
+void	cast_rays(t_mlx *data);
 /*********************************/
 /* Raycasting/intersection_ray.c */
 /*********************************/
@@ -402,7 +407,7 @@ void	set_sphere_transformations(t_sphere *sphere, double **new);
 /* shapes/sphear.c */
 /*******************/
 t_sphere	create_sphere(char *id, t_vector center, double d, t_color c);
-
+int			calculate_sphere_color(t_intersection *intersection);
 /************************/
 /*freeing the function  */
 /************************/
@@ -458,9 +463,14 @@ t_intersection	intersection(double t, char *type, void *object);
 /************************************/
 /* intersection/intersection_list.c */
 /************************************/
-void	add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src);
+void				add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src);
 t_intersection_list	*create_intersection_list(int count);
 void				add_intersection(t_intersection_list *l, int index, t_intersection i);
 void				free_intersection_list(t_intersection_list *list);
+
+/***************************/
+/* draw_scene/draw_scene.c */
+/***************************/
+void	draw_scene(t_mlx *data);
 
 #endif
