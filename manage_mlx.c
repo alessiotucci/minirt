@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 17:59:53 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/27 09:49:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int heig
 {
 	t_ray	ray;
 	ray.origin = camera->viewpoint;
-	printf("\n%sDEBUG HERE:%s create_ray_from_camera/manage_mlx.c\n", YELLOW, RESET);
+	printf("\n%sDEBUG HERE:%s manage_mlx.c/create_ray_from_camera\n", YELLOW, RESET);
 	ray.direction = normalization(create_vector(x - width / 2.0, height / 2.0 - y, camera->orientation.z));
 	return (ray);
 }
@@ -96,40 +96,48 @@ int	calculate_sphere_color(t_intersection *intersection)
 	return (create_trgb(sphere->color));
 }
 //TODO: LAST VERSION OF GPT
-/*
- *void cast_rays(t_mlx *data) {
-    int x, y;
-    t_ray ray;
-    t_intersection_list *all_intersections;
-    t_intersection *closest_intersection;
+//
+void	cast_rays(t_mlx *data)
+{
+	int					x;
+	int					y;
+	int					i;
+	t_ray				ray;
+	t_intersection_list	*all_intersections;
+	t_intersection		*closest_intersection;
+	t_intersection_list	*sphere_intersections;
 
-    for (y = 0; y < data->height; y++) {
-        for (x = 0; x < data->width; x++) {
-            ray = create_ray_from_camera(data->setting->camera, x, y, data->width, data->height);
-            all_intersections = malloc(sizeof(t_intersection_list));
-            all_intersections->count = 0;
-            all_intersections->intersections = malloc(sizeof(t_intersection) * data->setting->num_spheres * 2);
-
-            for (int i = 0; i < data->setting->num_spheres; i++) {
-                t_intersection_list *sphere_intersections = intersect_sphere(*data->setting->spheres[i], ray);
-                if (sphere_intersections) {
-                    add_intersections_to_list(all_intersections, sphere_intersections);
-                }
-            }
-
-            closest_intersection = hit(all_intersections);
-            if (closest_intersection != NULL) {
-                my_mlx_pixel_put(data, x, y, calculate_sphere_color(closest_intersection));
-            } else {
-                my_mlx_pixel_put(data, x, y, 0x000000);  // Background color
-            }
-
-            free(all_intersections->intersections);
-            free(all_intersections);
-        }
-    }
+	y = 0;
+	while(y < data->height)
+	{
+		x = 0;
+		while (x < data->width)
+		{
+			ray = create_ray_from_camera(data->setting->camera, x, y, data->width, data->height);
+			all_intersections = malloc(sizeof(t_intersection_list));
+			all_intersections->count = 0;
+			all_intersections->intersections = malloc(sizeof(t_intersection) * data->setting->num_spheres * 2);
+			i = 0;
+			while (i < data->setting->num_spheres)
+			{
+				sphere_intersections = intersect_sphere(*data->setting->spheres[i], ray);
+				if (sphere_intersections)
+					add_intersections_to_list(all_intersections, sphere_intersections);
+			i++;
+			}
+			closest_intersection = hit(all_intersections);
+			if (closest_intersection != NULL)
+				my_mlx_pixel_put(data, x, y, calculate_sphere_color(closest_intersection));
+			else
+				my_mlx_pixel_put(data, x, y, 0x000000);  // Background color
+			free(all_intersections->intersections);
+			free(all_intersections);
+		x++;
+		}
+	y++;
+	}
 }
- */
+/*
 void cast_rays(t_mlx *data)
 {
 	int		x;
@@ -160,7 +168,7 @@ void cast_rays(t_mlx *data)
 		}
 	}
 }
-
+*/
 void	draw_scene(t_mlx *data)
 {
 	clock_t	start_time;
@@ -241,7 +249,8 @@ void manage_mlx(t_mlx *obj, t_setting *set)
 	obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
 	my_new_image(obj); 
 
-	send_to_centre(set);
+	//send_to_centre(set);
+	(void)set;
 
 	// Disegna la scena
 	//wallpaper(obj);
