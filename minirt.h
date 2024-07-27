@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/27 13:35:02 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/27 15:23:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,8 @@ typedef struct s_camera
 	t_vector	viewpoint;
 	t_vector	orientation;
 	int			fov;
+	double		image_plane_height;
+	double		image_plane_width;
 }	t_camera;
 
 typedef struct s_light
