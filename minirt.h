@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/27 16:18:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/28 10:25:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -392,7 +392,7 @@ t_intersection	*hit(t_intersection_list *list);
 /*************************/
 /* Raycasting/cast_ray.c */
 /*************************/
-t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int height);
+t_ray	create_ray_from_camera(t_mlx *data, int x, int y);
 void	cast_rays(t_mlx *data);
 /*********************************/
 /* Raycasting/intersection_ray.c */
