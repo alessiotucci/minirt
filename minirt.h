@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/28 11:26:52 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/28 15:10:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -372,6 +372,13 @@ t_vector	scaling_inverse(t_vector move, t_vector origin);
 t_vector	rotation_x(t_vector origin, double radians);
 t_vector	rotation_y(t_vector origin, double radians);
 t_vector	rotation_z(t_vector origin, double radians);
+/**************************************/
+/* Transformations/matrix_rotations.c */
+/**************************************/
+double		**matrix_rotation_x(double radians);
+double		**matrix_rotation_y(double radians);
+double		**matrix_rotation_z(double radians);
+
 /******************************/
 /* Transformations/shearing.c */
 /******************************/

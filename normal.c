@@ -6,20 +6,27 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/28 14:46:03 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/28 16:01:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
 // You may assume that the point will always be on the surface of the sphere
-t_vector	normal_at(t_sphere sphere, t_vector point)
+t_vector	normal_at(t_sphere sphere, t_vector world_point)
 {
-	(void)sphere;
-	t_vector	t;
+	t_vector	object_point;
+	t_vector	object_normal;
+	t_vector	world_normal;
+	t_vector	point;
 
-	t = create_point(0, 0, 0);
-	return (normalization(subtract(point, t)));
+	object_point = matrix_x_vector(inversing_matrix(4, sphere.transform) , world_point);
+	point = create_point(0, 0, 0);
+	object_normal = subtract(object_point, point);
+	world_normal = matrix_x_vector(transposing(4, 4, inversing_matrix(4, sphere.transform)), object_normal);
+	world_normal.w = 0;
+	return (normalization(world_normal));
+
 }
 
 int	main()
@@ -53,4 +60,22 @@ int	main()
 	printf("---");
 
 	printf("\n\n%sScenario: 5%s The normal is a normalized vector\n", RED, RESET);
+	if (comparing_vector(result4, normalization(result4)))
+		printf("vector from normal is indeed normal\n");
+
+	printf("\n\n%sScenario: 6%s Computing the normal on a translated sphere \n", RED, RESET);
+	// sphere s;
+	set_sphere_transformations(&s, create_translation_matrix(create_point(0, 1, 0)));
+	t_vector point5 = create_point(0, 1.70711, -0.70711);
+	t_vector result5 = normal_at(s, point5);
+	print_vector(result5);
+
+
+	printf("\n\n%sScenario: 7%s Computing the normal on a transformed sphere \n", RED, RESET);
+	double **m = multiply_matrix(4, 4, create_scaling_matrix(create_point(1, 0.5, 1)), matrix_rotation_z(M_PI / 5)) ;
+	set_sphere_transformations(&s, m);
+	t_vector point6 = create_point(0, sqrt(2) / 2, sqrt(2) / -2);
+	t_vector result6 = normal_at(s, point6);
+	print_vector(result6);
+
 }

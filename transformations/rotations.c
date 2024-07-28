@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:16:40 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 18:36:06 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/28 15:16:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,23 @@ t_vector	rotation_x(t_vector origin, double radians)
 {
 	double	**matrix;
 
-	matrix = create_matrix(4, 4);
-	create_identity_matrix(matrix);
-	matrix[1][1] = cos(radians);
-	matrix[1][2] = -1 * sin(radians);
-	matrix[2][1] = sin(radians);
-	matrix[2][2] = cos(radians);
+	matrix = matrix_rotation_x(radians);
 	return (matrix_x_vector(matrix, origin));
 }
 
 t_vector	rotation_y(t_vector origin, double radians)
 {
 	double	**matrix;
-	matrix = create_matrix(4, 4);
-	create_identity_matrix(matrix);
-	matrix[0][0] = cos(radians);
-	matrix[0][2] = sin(radians);
-	matrix[2][0] = -1 * sin(radians);
-	matrix[2][2] = cos(radians);
+
+	matrix = matrix_rotation_y(radians);
 	return (matrix_x_vector(matrix, origin));
 }
 
 t_vector	rotation_z(t_vector origin, double radians)
 {
 	double	**matrix;
-	matrix = create_matrix(4, 4);
-	create_identity_matrix(matrix);
-	matrix[0][0] = cos(radians);
-	matrix[0][1] = -1 * sin(radians);
-	matrix[1][0] = sin(radians);
-	matrix[1][1] = cos(radians);
+
+	matrix = matrix_rotation_z(radians);
 	return (matrix_x_vector(matrix, origin));
 }
 
