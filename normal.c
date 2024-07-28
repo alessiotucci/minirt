@@ -6,11 +6,29 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/28 16:01:06 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/28 16:20:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
+
+#include "../minirt.h"
+
+// Function to calculate the reflection of a vector
+/*
+t_vector reflect(t_vector in, t_vector normal)
+{
+	// reflection = in - normal * 2 * dot(in, normal)
+	double		dot_product = dot(in, normal);
+	t_vector	scaled_normal = multiplication(normal, 2 * dot_product);
+	t_vector	reflection = subtract(in, scaled_normal);
+	return (reflection);
+}
+*/
+t_vector	reflect(t_vector in, t_vector normal)
+{
+	return (subtract(in, multiplication(normal, 2 * dot(in, normal))));
+}
 
 // You may assume that the point will always be on the surface of the sphere
 t_vector	normal_at(t_sphere sphere, t_vector world_point)
@@ -77,5 +95,19 @@ int	main()
 	t_vector point6 = create_point(0, sqrt(2) / 2, sqrt(2) / -2);
 	t_vector result6 = normal_at(s, point6);
 	print_vector(result6);
+
+	printf("\n%sNext test\t*\t*\t*%s\n", GREEN, RESET);
+
+	printf("\n\n%sScenario: 1%s Reflecting a vector appraching at 45degrees\n", RED, RESET);
+	t_vector v1 = create_vector(1, -1, 0);
+	t_vector n1 = create_vector(0, 1, 0);
+	t_vector res1 = reflect(v1, n1);
+	print_vector(res1);
+
+	printf("\n\n%sScenario: 2%s Reflecting a vector off a slanted surfaces\n", RED, RESET);
+	t_vector v2 = create_vector(0, -1, 0);
+	t_vector n2 = create_vector(sqrt(2) / 2, sqrt(2) / 2, 0);
+	t_vector res2 = reflect(v2, n2);
+	print_vector(res2);
 
 }
