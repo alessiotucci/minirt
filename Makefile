@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/07/27 13:29:11 by atucci           ###   ########.fr        #
+#    Updated: 2024/07/28 14:42:20 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ SOURCE = ./main.c \
 		 ./intersection/intersection.c \
 		 ./intersection/intersection_list.c \
 		 ./centering.c \
+		 ./normal.c \
 
 HEADERS = ./minirt.h \
 
