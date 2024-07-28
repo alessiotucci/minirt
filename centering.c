@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:01:23 by ftroise           #+#    #+#             */
-/*   Updated: 2024/07/26 17:17:21 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/28 12:05:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	test(t_camera *camera)
 	printf("w: %lf\n", camera->viewpoint.w);
 }
 
-static	void update_camera(t_mlx *mlx, int x, int y)
+void update_camera(t_mlx *mlx, int x, int y)
 {
 	mlx->setting->camera->viewpoint.x = (float)x;
 	mlx->setting->camera->viewpoint.y = (float)y;
@@ -53,17 +53,6 @@ static	void update_camera(t_mlx *mlx, int x, int y)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img_pointer, 0, 0);
 
 }
-
-int	mouse_click(int button, int x, int y, t_mlx *mlx)
-{
-	printf("Mouse click: button %d, x = %d, y = %d\n", button, x, y);
-	update_camera(mlx, x, y);
-	my_mlx_pixel_put(mlx, x, y, COLOR_GREEN);
-	// Qui puoi implementare la logica per reagire al click del mouse
-	// Ad esempio, cambiando il colore di un pixel, disegnando qualcosa, ecc.
-	return (0);
-}
-
 void	send_to_centre(t_setting *set)
 {
 	printf("before centering");
