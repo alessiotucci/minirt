@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/28 10:51:27 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/28 11:33:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 // The z component of the vector is the same as the z component of the camera's direction.
 // The resulting vector is then normalized to ensure its length is 1.
 
+/*
 t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
 {
 	t_ray	ray;
@@ -31,9 +32,9 @@ t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
 	return (ray);
 }
 
+*/
 
 
-/*
 //t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int height)
 t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
 {
@@ -58,7 +59,6 @@ t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
 	//print_ray(ray);
 	return (ray);
 }
-*/
 
 
 //TODO: LAST VERSION OF GPT
@@ -85,7 +85,7 @@ void	cast_rays(t_mlx *data)
 			i = 0;
 			while (i < data->setting->num_spheres)
 			{
-				//printf("%sDEBUG%s sphere intersection\n", RED, RESET);
+				printf("%sDEBUG%s sphere intersection[%d], please wait...\n", RED, RESET, i);
 				sphere_intersections = intersect_sphere(*data->setting->spheres[i], ray);
 				if (sphere_intersections)
 					add_intersections_to_list(all_intersections, sphere_intersections);
@@ -95,13 +95,16 @@ void	cast_rays(t_mlx *data)
 			if (closest_intersection != NULL)
 			{
 				//printf("%sDEBUG%s closes intersection\n", BG_RED, BG_RESET);
-				printf("\n");
+				/*printf("\n");
 				print_intersection(*closest_intersection);
-				printf("\n");
+				printf("\n");*/
 				my_mlx_pixel_put(data, x, y, calculate_sphere_color(closest_intersection));
 			}
 			else
+			{
+				//printf("%sDEBUG%s closes intersection is null\n", BG_RED, BG_RESET);
 				my_mlx_pixel_put(data, x, y, 0x000000);  // Background color
+			}
 			free(all_intersections->intersections);
 			free(all_intersections);
 		x++;

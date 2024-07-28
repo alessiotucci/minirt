@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 15:46:19 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/28 11:32:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)
 	sphere_to_ray = get_sphere_to_ray(sphere, ray);
 	discriminant = get_discriminant(sphere_to_ray, ray, sphere.diameter / 2.0); // diameter/2 for radius
 	if (discriminant < 0)
+	{
+		//printf("no intersection... \t");
 		return (create_intersection_list(0)); // No intersections
+	}
 	t[0] = (-2.0 * dot(sphere_to_ray, ray.direction) - sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
 	t[1] = (-2.0 * dot(sphere_to_ray, ray.direction) + sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
 	inter1 = intersection(t[0], sphere.identifier, &sphere);
