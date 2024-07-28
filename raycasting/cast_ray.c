@@ -6,36 +6,12 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/28 11:33:53 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/28 11:56:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-// This function creates a ray from the camera's viewpoint towards a specific pixel on the screen.
-// The ray is used in ray tracing to determine what object, if any, is seen by the camera at that pixel.
-// The direction of the ray is a vector pointing from the camera's viewpoint towards the pixel on the screen.
-// The x and y components of the vector are calculated by subtracting the coordinates of the pixel from the center of the screen.
-// The z component of the vector is the same as the z component of the camera's direction.
-// The resulting vector is then normalized to ensure its length is 1.
-
-/*
-t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
-{
-	t_ray	ray;
-	ray.origin = data->setting->camera->viewpoint;
-	//printf("\n%sDEBUG HERE:%s manage_mlx.c/create_ray_from_camera\n", YELLOW, RESET);
-	//printf("x: %d, y: %d, WIDTH: %d, HEIGHT: %d\n", x, y, data->width, data->height);
-	ray.direction = normalization(create_vector(x - data->width / 2.0, data->height / 2.0 - y, data->setting->camera->orientation.z));
-	//printf("\nray.direction x: %lf, y: %lf, z: %lf\n", x - width / 2.0, height / 2.0 - y, camera->orientation.z);
-	//print_ray(ray);
-	return (ray);
-}
-
-*/
-
-
-//t_ray	create_ray_from_camera(t_camera *camera, int x, int y, int width, int height)
 t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
 {
 	t_ray		ray;
