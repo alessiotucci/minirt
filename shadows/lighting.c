@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:56:06 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 18:47:28 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 19:05:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,75 @@ t_light	point_light(t_vector pos, t_color c)
 	new.color = c;
 	return (new);
 }
+t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal)
+{
+	// Effective color: material color multiplied by light color
+	t_color effective_color = multiply_colors(mat.color, light.color);
+	printf("Effective Color:");
+	print_color(effective_color);
+
+	// Light vector: from light position to the point
+	t_vector light_v = normalization(subtract(light.position, point));
+	printf("Light Vector:");
+	print_vector(light_v);
+
+	// Ambient contribution
+	t_color ambient = multiply_color_by_scalar(effective_color, mat.ambient);
+	printf("Ambient:");
+	print_color(ambient);
+
+	// Light dot normal
+	double light_dot_normal = dot(light_v, normal);
+	printf("Light Dot Normal: %lf\n", light_dot_normal);
+
+	t_color diffuse, specular;
+	if (light_dot_normal < 0)
+	{
+		diffuse = create_color(0, 0, 0); // black
+		specular = create_color(0, 0, 0); // black
+		printf("Light behind the surface. Diffuse and Specular set to black.\n");
+	}
+	else
+	{
+		// Diffuse contribution
+		diffuse = multiply_color_by_scalar(multiply_color_by_scalar(effective_color, mat.diffuse), light_dot_normal);
+		printf("Diffuse:");
+		print_color(diffuse);
+
+		// Reflection vector
+		t_vector reflect_v = reflect(negate(light_v), normal);
+		printf("Reflect Vector:");
+		print_vector(reflect_v);
+
+		// Reflect dot eye
+		double reflect_dot_eye = dot(reflect_v, eye);
+		printf("Reflect Dot Eye: %lf\n", reflect_dot_eye);
+
+		if (reflect_dot_eye <= 0)
+		{
+			specular = create_color(0, 0, 0); // black
+			printf("Reflect Dot Eye <= 0. Specular set to black.\n");
+		}
+		else
+		{
+			// Specular contribution
+			double factor = pow(reflect_dot_eye, mat.shininess);
+			specular = multiply_color_by_scalar(multiply_color_by_scalar(light.color, mat.specular), factor);
+			printf("Specular:");
+			print_color(specular);
+		}
+	}
+
+	// Final color
+	t_color final_color = add_colors(add_colors(ambient, diffuse), specular);
+	printf("Final Color:");
+	print_color(final_color);
+	return final_color;
+}
 
 
-//THIS is my first try: ignore that is not norminetted yet
+
+/*THIS is my first try: ignore that is not norminetted yet
 t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal)
 {
 	//(void)mat;(void)light;(void)point;(void)eye;(void)normal;
@@ -79,6 +145,7 @@ t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_
 	return (add_colors(add_colors(ambient, diffuse), specular));
 	//return (c);
 }
+*/
 
 /* given the assumption */
 int	main()
