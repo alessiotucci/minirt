@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 15:48:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 18:46:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,9 +279,17 @@ void		add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 /***********************/
 /*Where are the colors?*/
 /***********************/
-t_color		create_color(int r, int g, int b);
 int			create_trgb(t_color color);
 int			my_clamp(int value, int min_val, int max_val);
+
+/****************************/
+/* Colors/operation_color.c */
+/****************************/
+t_color		add_colors(t_color c1, t_color c2);
+t_color		subtract_colors(t_color c1, t_color c2);
+t_color		multiply_color_by_scalar(t_color c, float scalar);
+t_color		multiply_colors(t_color c1, t_color c2);
+t_color		create_color(int r, int g, int b);
 /******************************/
 /* Comparing is not that easy */
 /******************************/
@@ -482,6 +490,12 @@ void				free_intersection_list(t_intersection_list *list);
 /* draw_scene/draw_scene.c */
 /***************************/
 void				draw_scene(t_mlx *data);
+
+/************/
+/* normal.c */
+/************/
+t_vector	reflect(t_vector in, t_vector normal);
+t_vector	normal_at(t_sphere sphere, t_vector world_point);
 
 /**********************/
 /* Shadows/material.c */

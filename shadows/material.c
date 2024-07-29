@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:55:51 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 15:57:29 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 16:55:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ void	print_material(t_material mat)
 }
 
 
-static void	assign_material_sphere(t_sphere *s, t_material new)
+void	assign_material_sphere(t_sphere *s, t_material new)
 {
 	s->material = new;
 }
 
+/*
 int	main()
 {
 	t_color bogus = create_color(0, 0, 0);
@@ -65,3 +66,4 @@ int	main()
 	printf("---");
 }
 
+*/
