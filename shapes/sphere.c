@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:26:21 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/27 12:20:02 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 15:45:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_sphere	create_sphere(char *id, t_vector center, double d, t_color c)
 	new_sphere.center = center;
 	new_sphere.diameter = d;
 	new_sphere.transform = def;
-	//(void)c;
 	new_sphere.color = c;
+	new_sphere.material = material();
 	return (new_sphere);
 }
 

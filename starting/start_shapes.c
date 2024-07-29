@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 10:46:37 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 15:44:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	start_spheres(t_setting *set, char **details)
 	new_sphere->diameter = my_atof(details[2]);
 	new_sphere->color = parse_color(details[3]);
 	new_sphere->transform = def;//TODO: this is last
+	new_sphere->material = material();
 	add_sphere_to_array(new_sphere, set);
 
 }

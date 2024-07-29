@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 16:09:25 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 15:48:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	print_single_sphere(t_sphere *one_sphere)
 {
 		printf("colors : ");
 		print_color(one_sphere->color);
+		printf("material : ");
+		print_material(one_sphere->material);
 		printf("Center of the Sphere: ");
 		print_vector(one_sphere->center);
 		printf("Diameter: %f\n", one_sphere->diameter);

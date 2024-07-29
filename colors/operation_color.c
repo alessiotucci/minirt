@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:28:35 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/25 09:52:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 15:16:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_color	multiply_color_by_scalar(t_color c, float scalar)
 }
 
 // Multiplying two colors (Hadamard product)
-t_color multiply_colors(t_color c1, t_color c2)
+t_color	multiply_colors(t_color c1, t_color c2)
 {
 	t_color	result;
 
@@ -54,4 +54,14 @@ t_color multiply_colors(t_color c1, t_color c2)
 	result.g = my_clamp((int)((c1.g / 255.0) * (c2.g / 255.0) * 255), 0, 255);
 	result.b = my_clamp((int)((c1.b / 255.0) * (c2.b / 255.0) * 255), 0, 255);
 	return (result);
+}
+
+t_color	create_color(int r, int g, int b)
+{
+	t_color	new;
+
+	new.r = my_clamp(r, 0, 255);
+	new.g = my_clamp(g, 0, 255);
+	new.b = my_clamp(b, 0, 255);
+	return (new);
 }
