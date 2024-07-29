@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/28 16:20:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 14:55:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 /*
 t_vector reflect(t_vector in, t_vector normal)
 {
-	// reflection = in - normal * 2 * dot(in, normal)
 	double		dot_product = dot(in, normal);
 	t_vector	scaled_normal = multiplication(normal, 2 * dot_product);
 	t_vector	reflection = subtract(in, scaled_normal);
 	return (reflection);
 }
 */
+// reflection = in - normal * 2 * dot(in, normal)
 t_vector	reflect(t_vector in, t_vector normal)
 {
 	return (subtract(in, multiplication(normal, 2 * dot(in, normal))));
@@ -47,6 +47,7 @@ t_vector	normal_at(t_sphere sphere, t_vector world_point)
 
 }
 
+/*
 int	main()
 {
 	t_color bogus; bogus.r = 0; bogus.g = 0; bogus.b = 0;
@@ -111,3 +112,4 @@ int	main()
 	print_vector(res2);
 
 }
+*/

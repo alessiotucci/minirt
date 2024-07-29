@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/07/28 15:40:19 by atucci           ###   ########.fr        #
+#    Updated: 2024/07/29 14:58:13 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,14 @@ NAME = miniRT
 SOURCE = ./main.c \
 		 ./main_utils.c \
 		 ./manage_mlx.c \
+		 ./freeing.c \
 		 ./draw_scene.c \
-		 ./parsing/parsing_map.c \
-		 ./parsing/parsing_numbers.c \
+		 ./centering.c \
+		 ./normal.c \
 		 ./create_setting.c \
 		 ./add_elem_array.c \
+		 ./parsing/parsing_map.c \
+		 ./parsing/parsing_numbers.c \
 		 ./starting/start_shapes.c \
 		 ./starting/start_scenes.c \
 		 ./extra/utils.c \
@@ -41,7 +44,6 @@ SOURCE = ./main.c \
 		 ./shapes/sphere.c \
 		 ./shapes/cylinder.c \
 		 ./bonus/cone.c \
-		 ./freeing.c \
 		 ./vector/vector_operations.c \
 		 ./vector/utils_vectors.c \
 		 ./vector/complex_operations.c \
@@ -62,8 +64,9 @@ SOURCE = ./main.c \
 		 ./raycasting/cast_ray.c \
 		 ./intersection/intersection.c \
 		 ./intersection/intersection_list.c \
-		 ./centering.c \
-		 ./normal.c \
+		 ./shadows/lighting.c \
+		 ./shadows/material.c \
+
 
 HEADERS = ./minirt.h \
 

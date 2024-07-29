@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/28 15:10:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 14:59:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -481,5 +481,13 @@ void				free_intersection_list(t_intersection_list *list);
 /* draw_scene/draw_scene.c */
 /***************************/
 void	draw_scene(t_mlx *data);
+
+/**********************/
+/* Shadows/material.c */
+/**********************/
+
+/**********************/
+/* Shadows/lighting.c */
+/**********************/
 
 #endif
