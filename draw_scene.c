@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:24:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/27 15:36:44 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/29 19:32:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 void	fov_calculation(t_camera *cam, double *image_plane_width)
 {
 	double	fov_rad;
-	double	distance;
+//	double	distance;
 
 	fov_rad = cam->fov * (M_PI / 180.0); // Convert FOV from degrees to radians
-	distance = 1.0;// Assuming the distance from the camera to the image plane is 1 unit
-	*image_plane_width = 2.0 * distance * tan(fov_rad / 2.0);// Calculate the width of the image plane
+	//distance = 1.0;// Assuming the distance from the camera to the image plane is 1 unit
+	*image_plane_width = 2.0 * tan(fov_rad / 2.0);// Calculate the width of the image plane
 }
 
 //Aspect Ratio: Calculate the aspect ratio of your canvas (width/height).
