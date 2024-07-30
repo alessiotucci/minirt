@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 18:46:02 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 13:20:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@
 */
 typedef struct s_color
 {
-	int	r;
-	int	g;
-	int	b;
+	double	r;
+	double	g;
+	double	b;
 }	t_color;
 
 typedef struct s_material
@@ -280,7 +280,7 @@ void		add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 /*Where are the colors?*/
 /***********************/
 int			create_trgb(t_color color);
-int			my_clamp(int value, int min_val, int max_val);
+double			my_clamp(double value, double min_val, double max_val);
 
 /****************************/
 /* Colors/operation_color.c */
@@ -289,7 +289,7 @@ t_color		add_colors(t_color c1, t_color c2);
 t_color		subtract_colors(t_color c1, t_color c2);
 t_color		multiply_color_by_scalar(t_color c, float scalar);
 t_color		multiply_colors(t_color c1, t_color c2);
-t_color		create_color(int r, int g, int b);
+t_color		create_color(double r, double g, double b);
 /******************************/
 /* Comparing is not that easy */
 /******************************/

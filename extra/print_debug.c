@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 15:48:26 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 13:13:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	struct_status(t_setting *set)
 
 void	print_color(t_color color)
 {
-	printf("\n%sR: %d %s", RED, color.r, RESET);
-	printf("%sG: %d %s", GREEN, color.g, RESET);
-	printf("%sB: %d%s\n\n", BLUE, color.b, RESET);
+	printf("\n%sR: %lf %s", RED, color.r, RESET);
+	printf("%sG: %lf %s", GREEN, color.g, RESET);
+	printf("%sB: %lf%s\n\n", BLUE, color.b, RESET);
 }
 
 void	print_vector(t_vector vector)
