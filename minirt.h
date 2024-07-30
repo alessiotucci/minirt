@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 13:20:48 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 14:19:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,6 +281,13 @@ void		add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 /***********************/
 int			create_trgb(t_color color);
 double			my_clamp(double value, double min_val, double max_val);
+/**********************/
+/*Colors/converting.c */
+/**********************/
+int			convert_component(float component);
+t_color		convert_color(t_color old);
+float		convert_component_inverse(int component);
+t_color		convert_color_inverse(t_color color);
 
 /****************************/
 /* Colors/operation_color.c */
@@ -457,7 +464,7 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	my_new_image(t_mlx *data);
 
 void	send_to_centre(t_setting *set); //prima
-//TODO: this is to center the sphere
+//TODO:delete this WE DONT NEED TO to center the sphere
 void center_sphere(t_sphere *sphere, int window_width, int window_height);
 
 int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda

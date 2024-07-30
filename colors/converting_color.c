@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 12:43:40 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 13:24:50 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 14:16:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_color	convert_color(t_color old)
 	color.b = convert_component(old.b);
 	return (color);
 }
+
 // Function to convert color components from [0, 255] range to [0, 1] range
 float	convert_component_inverse(int component)
 {
@@ -49,7 +50,7 @@ t_color	convert_color_inverse(t_color color)
 	return (result);
 }
 
-
+/*
 int main()
 {
 	printf("values, %lf, %lf, %lf\n", 0.5, 0.4, 0.1);
@@ -73,3 +74,4 @@ int main()
 	return 0;
  
 }
+*/
