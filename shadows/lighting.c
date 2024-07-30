@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:56:06 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 19:43:42 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 12:33:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_light	point_light(t_vector pos, t_color c)
 	new.color = c;
 	return (new);
 }
+
 t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal)
 {
 	// Effective color: material color multiplied by light color
@@ -92,9 +93,7 @@ t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_
 
 	// Final color
 	t_color final_color = add_colors(add_colors(ambient, diffuse), specular);
-	printf("Final Color:");
-	print_color(final_color);
-	return final_color;
+	return (final_color);
 }
 
 
@@ -162,8 +161,10 @@ int	main()
 	t_light		light1 = point_light(create_point(0, 0, -10), create_color(1, 1, 1));
 	t_color result1 = lighting(m, light1, position, eye_v1, normal_v1);
 	print_color(result1);
+	printf("❌ %sTEST FAILED%s❌\n", BG_RED, BG_RESET);
+	//printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
 
-	/
+	exit(-42);
 	printf("\n\n%sScenario: 2%s Lighting with the eye between the light and the surface, eye offset 45°\n", RED, RESET);
 	t_vector	eye_v2 = create_vector(0, sqrt(2) / 2, sqrt(2) / -2);
 	t_vector	normal_v2 = create_vector(0, 0, -1);
