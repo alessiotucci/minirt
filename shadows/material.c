@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:55:51 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 16:55:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 15:15:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_material	material(void)
 {
 	t_material	standard;
 
-	standard.color = create_color(1, 1, 1);
+	standard.color = convert_color(create_color(1, 1, 1));
 	standard.ambient = 0.1;
 	standard.diffuse = 0.9;
 	standard.specular = 0.9;
