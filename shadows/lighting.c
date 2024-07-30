@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:56:06 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 15:53:33 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:08:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_
 */
 
 /* given the assumption */
+/*
 int	main()
 {
 	printf("Given the assumption of material and point\n");
@@ -220,3 +221,4 @@ int	main()
 	printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
 	//
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 16:25:08 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 18:37:01 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 17:43:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	print_int_matrix(int rows, int cols, double **matrix)
 	int	i;
 	int	j;
 
+	if (matrix == NULL)
+		return ;
 	i = 0;
 	while (i < rows)
 	{

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/25 16:19:07 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 18:13:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,13 @@ t_type	string_to_type(char *type)
 		return (T_CAMERA); // THIS IS TO COMPILE
 }
 
-t_object	create_object(char *type, void *object)
-{
-	t_object	new;
-
-	new.type = string_to_type(type);
-	new.obj = object;
-	return (new);
-}
-
 t_intersection	intersection(double t, char *type, void *object)
 {
 	t_intersection	new;
 
 	new.t = t;
-	new.obj = create_object(type, object);
+	new.obj.type = string_to_type(type);
+	new.obj.obj = object;
+	printf("\t\t%sintersection func%s %p\n", YELLOW, RESET, object);
 	return (new);
 }

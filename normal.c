@@ -6,13 +6,44 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 14:55:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 17:45:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-#include "../minirt.h"
+t_vector v2normal_at(t_object *obj, t_vector world_point)
+{
+	if (obj->type == T_SPHERE)
+	{
+		printf("%sKO: (calling the normal at sphere function)%s\n", YELLOW, RESET);
+		return normal_at_sphere((t_sphere *)obj->obj, world_point);
+		//return normal_at(*(t_sphere *)obj->obj, world_point);
+	}
+	printf("v2normal failure\n");
+	exit(-42);
+}
+
+t_vector normal_at_sphere(t_sphere *sphere, t_vector world_point)
+{
+	(void)sphere;(void)world_point;
+	printf("\n\n%sSEG FAULT coming soon!%s\n", RED, RESET);
+	printf("sphere address: %p\n", sphere);
+	printf("sphere matrix: %p\n", sphere->transform);
+	printf("\n\n%sKO!%s", RED, RESET);
+	//print_int_matrix(4, 4, sphere->transform);
+	t_vector object_point = matrix_x_vector(inversing_matrix(4, sphere->transform), world_point);
+	printf("%s1) object_point KO!%s", RED, RESET);
+	print_vector(object_point);
+	//t_vector object_normal = subtract(object_point, create_point(0, 0, 0));
+	printf("%s2) object_normal KO!%s", RED, RESET);
+	//t_vector world_normal = matrix_x_vector(transposing(4, 4, inversing_matrix(4, sphere->transform)), object_normal);
+	printf("%s3) world_normal KO!%s", RED, RESET);
+	//world_normal.w = 0;
+	printf("%s4) SEG FAULT KO!%s", RED, RESET);
+	//return normalization(world_normal);
+	return (create_vector(1, 1, 1));
+}
 
 // Function to calculate the reflection of a vector
 /*

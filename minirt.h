@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 14:19:41 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:52:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -503,6 +503,9 @@ void				draw_scene(t_mlx *data);
 /************/
 t_vector	reflect(t_vector in, t_vector normal);
 t_vector	normal_at(t_sphere sphere, t_vector world_point);
+//TODO
+t_vector v2normal_at(t_object *obj, t_vector world_point);
+t_vector normal_at_sphere(t_sphere *sphere, t_vector world_point);
 
 /**********************/
 /* Shadows/material.c */
@@ -512,4 +515,6 @@ void	print_material(t_material mat);
 /**********************/
 /* Shadows/lighting.c */
 /**********************/
+//TODO norminetted!!
+t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
 #endif
