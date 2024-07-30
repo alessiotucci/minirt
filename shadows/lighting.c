@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:56:06 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 15:34:02 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/30 15:53:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,13 +202,13 @@ int	main()
 	printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
 
 	printf("\n\n%sScenario: 4%s Lighting with the eye in the path of the reflection vector\n", RED, RESET);
-	t_vector	eye_v4 = create_vector(sqrt(2) / -2, sqrt(2) / -2, -1);
+	t_vector	eye_v4 = create_vector(0, sqrt(2) / -2, sqrt(2) / -2);
 	t_vector	normal_v4 = create_vector(0, 0, -1);
-	t_light		light4 = point_light(create_point(0, 0, -10), create_color(1, 1, 1));
+	t_light		light4 = point_light(create_point(0, 10, -10), create_color(1, 1, 1));
 	t_color result4 = lighting(m, light4, position, eye_v4, normal_v4);
 	printf("Result 4:");
 	print_color(result4);
-	printf("❌ %sTEST FAILED%s❌\n", BG_RED, BG_RESET);
+	printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
 
 	printf("\n\n%sScenario: 5%s Lighting with the light behind the surface\n", RED, RESET);
 	t_vector	eye_v5 = create_vector(0, 0, -1);
