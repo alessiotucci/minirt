@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:56:06 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/31 15:25:07 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/31 16:42:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_
 	// Ambient contribution
 	t_color ambient = multiply_color_by_scalar(effective_color, mat.ambient);
 
+	/* Debugging the vectors
+	printf("Point: ");
+	print_vector(point);
+	printf("Light Position: ");
+	print_vector(light.position);
+	printf("Normal Vector: ");
+	print_vector(normal);
+	printf("Light Vector: ");
+	print_vector(light_v);
+	*/
 	//TODO
 	print_single_light(&light);
 	// Light dot normal
