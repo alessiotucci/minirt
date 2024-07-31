@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:26:21 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 15:45:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/31 11:17:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ int	calculate_sphere_color(t_intersection *intersection)
 {
 	t_sphere	*sphere;
 
-	sphere = (t_sphere *)intersection->obj.obj;
+	sphere = (t_sphere *)intersection->obj.address;
 	return (create_trgb(sphere->color));
 }

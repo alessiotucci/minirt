@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 17:45:45 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/31 11:17:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_vector v2normal_at(t_object *obj, t_vector world_point)
 	if (obj->type == T_SPHERE)
 	{
 		printf("%sKO: (calling the normal at sphere function)%s\n", YELLOW, RESET);
-		return normal_at_sphere((t_sphere *)obj->obj, world_point);
+		return normal_at_sphere((t_sphere *)obj->address, world_point);
 		//return normal_at(*(t_sphere *)obj->obj, world_point);
 	}
 	printf("v2normal failure\n");

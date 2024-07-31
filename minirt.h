@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 16:52:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/31 11:17:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ typedef enum e_type
 typedef struct s_object
 {
 	t_type	type;
-	void	*obj;
+	void	*address;
 }	t_object;
 
 /* let's see if it is usefult ***********************************************/
