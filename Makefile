@@ -6,7 +6,7 @@
 #    By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/07/22 17:35:02 by ftroise          ###   ########.fr        #
+#    Updated: 2024/06/18 15:05:59 by ftroise          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,12 +52,7 @@ SOURCE = ./main.c \
 		 ./matrix/inversing.c \
 		 ./matrix/void.c \
 		 ./raycasting/create_ray.c \
-		 ./raycasting/hit.c \
-		 ./raycasting/intersection_ray.c \
-		 ./raycasting/ray_transformation.c \
 		 ./centering.c \
-		 ./transformations/transform.c \
-		 
 
 HEADERS = ./minirt.h \
 

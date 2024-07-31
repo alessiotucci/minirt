@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/18 19:12:57 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/22 17:10:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 		&(data->lsize), &(data->endian));
 
 }*/
-void	my_new_image(t_mlx *data)// é la stessa cosa solo che usiamo la funzione mlx_new_imge per creare la finestra ritornando un putatore ad essa 
+
+void	my_new_image(t_mlx *data)
 {
 	ft_printf("%sgetting address in img_data%s\n", BG_YELLOW, RESET);
 	data->img_pointer = mlx_new_image(data->mlx, data->width, data->height);
@@ -39,7 +40,8 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static void	sfondo(t_mlx *data)// t_setting *set)// colora lo sfondo non so se servira ma al moemnto é qualcosa,statica  tanto la usiamo solo qui al momenrto
+//TODO: to be deleted
+void	wallpaper(t_mlx *data)
 {
 	int			x;
 	int			y;
@@ -142,21 +144,23 @@ void	manage_mlx(t_mlx *obj, t_setting *set)
 
 void manage_mlx(t_mlx *obj, t_setting *set)
 {
-    obj->mlx = mlx_init();
+	obj->mlx = mlx_init();
 	ft_printf("%smlx_init has started%s\n", YELLOW, RESET);
 	if (obj->mlx == NULL)
 		return (ft_putstr_fd("mlx_init fail...\n", 2));
-    obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
-    my_new_image(obj); 
-    send_to_centre(set);
+	obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
+	my_new_image(obj); 
+	send_to_centre(set);
 
-    // Disegna la scena
-    sfondo(obj);
+	// Disegna la scena
+	//wallpaper(obj);
+	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
+	mlx_mouse_hook(obj->win, mouse_click, obj);
+	mlx_hook(obj->win, 2, 1, key_pressed, obj); 
+	mlx_hook(obj->win, 17, 0L, window_close, obj); 
+	mlx_loop(obj->mlx);
+	mlx_destroy_display(obj->mlx);
+	mlx_destroy_window(obj->mlx, obj->win);
+	//TODO: fix the leaks free();
 
-    
-    mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
-    mlx_mouse_hook(obj->win, mouse_click, obj);
-    mlx_hook(obj->win, 2, 1, key_pressed, obj); 
-    mlx_hook(obj->win, 17, 0L, window_close, obj); 
-    mlx_loop(obj->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:26:21 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/23 17:04:50 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/06/18 18:48:11 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,15 @@ typedef struct s_sphere
 	t_color		color;
 }	t_sphere;
 */
+
+t_sphere	create_sphere(char *id, t_vector center, double d, t_color c)
+{
+	t_sphere	new_sphere;
+
+	new_sphere.identifier = id;
+	new_sphere.center = center;
+	new_sphere.diameter = d;
+	(void)c;
+	//new_shere.color = c;
+	return (new_sphere);
+}
