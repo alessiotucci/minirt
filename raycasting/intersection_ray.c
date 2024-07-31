@@ -6,7 +6,11 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/07/22 16:46:38 by atucci           ###   ########.fr       */
+=======
+/*   Updated: 2024/07/31 14:49:11 by atucci           ###   ########.fr       */
+>>>>>>> 2acdff4 (fixed the segfault)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +45,30 @@ t_intersection	intersect_sphere(t_sphere sphere, t_ray ray)
 	sphere_to_ray = get_sphere_to_ray(sphere, ray);
 	discriminant = get_discriminant(sphere_to_ray, ray, sphere.diameter);//TODO:
 	if (discriminant < 0)
+<<<<<<< HEAD
 		intersection.count = 0;
+=======
+	{
+		//printf("no intersection... \t");
+		return (create_intersection_list(0)); // No intersections
+	}
+	t[0] = (-2.0 * dot(sphere_to_ray, ray.direction) - sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
+	t[1] = (-2.0 * dot(sphere_to_ray, ray.direction) + sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
+	//printf("\n\nVERBOSE LOG:\n⚠️ Inside the intersect_sphere, printing out the address of the sphere (&sphere):⚠️  ADDRESS; %p\n", &sphere);
+	//printf("⚠️ printing out the ADDRESS of the sphere.transform matrix, (&sphere.transform) ⚠️  ADDRESS; %p\n", &sphere.transform);
+	//printf("⚠️ printing out the VALUES of the sphere.transform matrix\n");
+	//print_int_matrix(4, 4, sphere.transform);
+	//printf("*** end of verbose LOG... moving on the next function***\n");
+	inter1 = intersection(t[0], sphere.identifier, &sphere);
+	inter2 = intersection(t[1], sphere.identifier, &sphere);
+	if (comparing_double(t[0], t[1]))
+	{
+		list = create_intersection_list(1);
+		list->count = 1;
+		add_intersection(list, 0, inter1);
+		return (list);
+	}
+>>>>>>> 2acdff4 (fixed the segfault)
 	else
 	{
 		t[0] = (-2.0 * dot(sphere_to_ray, ray.direction) - sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));

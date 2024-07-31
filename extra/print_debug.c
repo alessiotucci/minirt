@@ -6,7 +6,11 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/06/14 16:39:11 by ftroise          ###   ########.fr       */
+=======
+/*   Updated: 2024/07/31 15:06:13 by atucci           ###   ########.fr       */
+>>>>>>> 2acdff4 (fixed the segfault)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +112,7 @@ static void	print_spheres(int n_spheres, t_sphere **array)
 	}
 }
 
-static void	print_single_light(t_light *one_light)
+void	print_single_light(t_light *one_light)
 {
 		printf("colors : ");
 		print_color(one_light->color);

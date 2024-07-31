@@ -6,7 +6,11 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/07/22 16:54:39 by atucci           ###   ########.fr       */
+=======
+/*   Updated: 2024/07/31 15:06:13 by atucci           ###   ########.fr       */
+>>>>>>> 2acdff4 (fixed the segfault)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -413,4 +417,58 @@ void	my_new_image(t_mlx *data);
 
 void	send_to_centre(t_setting *set); //prima
 int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
+<<<<<<< HEAD
+=======
+/********************************************************/
+/* started to create complex obj to track intersections */
+/********************************************************/
+void				print_intersection(t_intersection i);
+void				print_intersection_list(t_intersection_list *lis);
+int					print_type(t_object obj);
+void				print_single_sphere(t_sphere *one_sphere);
+void				print_single_cylinder(t_cylinder *one_cylinder);
+void				print_single_plane(t_plane *one_plane);
+
+/*******************************/
+/* intersection/intersection.c */
+/*******************************/
+t_type				string_to_type(char *type);
+t_object			create_object(char *type, void *object);
+t_intersection		intersection(double t, char *type, void *object);
+
+/************************************/
+/* intersection/intersection_list.c */
+/************************************/
+void				add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src);
+t_intersection_list	*create_intersection_list(int count);
+void				add_intersection(t_intersection_list *l, int index, t_intersection i);
+void				free_intersection_list(t_intersection_list *list);
+
+/***************************/
+/* draw_scene/draw_scene.c */
+/***************************/
+void				draw_scene(t_mlx *data);
+
+/************/
+/* normal.c */
+/************/
+t_vector	reflect(t_vector in, t_vector normal);
+t_vector	normal_at(t_sphere sphere, t_vector world_point);
+//TODO
+t_vector v2normal_at(t_object obj, t_vector world_point);
+t_vector normal_at_sphere(t_sphere *sphere, t_vector world_point);
+
+//TODO
+void	print_single_light(t_light *one_light);
+/**********************/
+/* Shadows/material.c */
+/**********************/
+t_material			material(void);
+void	print_material(t_material mat);
+/**********************/
+/* Shadows/lighting.c */
+/**********************/
+//TODO norminetted!!
+t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
+>>>>>>> 2acdff4 (fixed the segfault)
 #endif
