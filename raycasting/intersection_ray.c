@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 18:09:41 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/31 14:49:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)
 	}
 	t[0] = (-2.0 * dot(sphere_to_ray, ray.direction) - sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
 	t[1] = (-2.0 * dot(sphere_to_ray, ray.direction) + sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
-	printf("\n\n⚠️ Debugging a segfault:⚠️  ADDRESS; %p\n", &sphere);
-	printf("⚠️ transform matrix ⚠️  ADDRESS; %p\n", &sphere.transform);
-	print_int_matrix(4, 4, sphere.transform);
-	printf("***\n");
+	//printf("\n\nVERBOSE LOG:\n⚠️ Inside the intersect_sphere, printing out the address of the sphere (&sphere):⚠️  ADDRESS; %p\n", &sphere);
+	//printf("⚠️ printing out the ADDRESS of the sphere.transform matrix, (&sphere.transform) ⚠️  ADDRESS; %p\n", &sphere.transform);
+	//printf("⚠️ printing out the VALUES of the sphere.transform matrix\n");
+	//print_int_matrix(4, 4, sphere.transform);
+	//printf("*** end of verbose LOG... moving on the next function***\n");
 	inter1 = intersection(t[0], sphere.identifier, &sphere);
 	inter2 = intersection(t[1], sphere.identifier, &sphere);
 	if (comparing_double(t[0], t[1]))

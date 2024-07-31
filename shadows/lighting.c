@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:56:06 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 16:08:12 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/31 15:25:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,22 @@ t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_
 	// Ambient contribution
 	t_color ambient = multiply_color_by_scalar(effective_color, mat.ambient);
 
+	//TODO
+	print_single_light(&light);
 	// Light dot normal
 	double light_dot_normal = dot(light_v, normal);
-	//printf("Light Dot Normal: %lf\n", light_dot_normal);
+	printf("Light Dot Normal: %lf\n", light_dot_normal);
 
-	t_color diffuse, specular;
+	t_color diffuse;
+	t_color specular;
+
 	if (light_dot_normal < 0)
 	{
 		//printf("%sDiffuse is black%s\n", BG_RED, BG_RESET);
 		//printf("%sSpecular is black%s\n", BG_RED, BG_RESET);
 		diffuse = create_color(0, 0, 0); // black
 		specular = create_color(0, 0, 0); // black
-		//printf("Light behind the surface. Diffuse and Specular set to black.\n");
+		printf("Light behind the surface. Diffuse and Specular set to black.\n");
 	}
 	else
 	{
@@ -73,9 +77,9 @@ t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_
 
 		if (reflect_dot_eye <= 0)
 		{
-			//printf("%sSpecular is black%s\n", BG_RED, BG_RESET);
+			printf("Reflect Dot Eye <= 0. Specular set to black.\n");
+			printf("%sSpecular is black%s\n", BG_RED, BG_RESET);
 			specular = create_color(0, 0, 0); // black
-			//printf("Reflect Dot Eye <= 0. Specular set to black.\n");
 		}
 		else
 		{
@@ -85,7 +89,7 @@ t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_
 		}
 	}
 
-	/*
+	printf("%s--------------------------------------------%s\n", BG_GREEN, BG_RESET);
 	printf("Ambient: %sOK%s", BG_GREEN, BG_RESET);
 	print_color(convert_color_inverse(ambient));
 
@@ -94,21 +98,20 @@ t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_
 
 	printf("specular: %sOK%s", BG_GREEN, BG_RESET);
 	print_color(convert_color_inverse(specular));
-	*/
 	// Final color
 	//t_color final_color = add_colors(add_colors(ambient, diffuse), specular);
 	t_color final_color;
 
 	// First addition: ambient + diffuse
 	t_color ambient_plus_diffuse = add_colors(ambient, diffuse);
-	//printf("Ambient + Diffuse:");
-	//print_color(ambient_plus_diffuse);
+	printf("Ambient + Diffuse:");
+	print_color(ambient_plus_diffuse);
 
 	// Second addition: (ambient + diffuse) + specular
 	final_color = add_colors(ambient_plus_diffuse, specular);
-	//printf("Final Color:");
-	//print_color(final_color);
-
+	printf("Final Color:");
+	print_color(final_color);
+	printf("%s--------------------------------------------%s\n", BG_GREEN, BG_RESET);
 	return (final_color);
 }
 

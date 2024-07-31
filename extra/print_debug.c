@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 17:53:28 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/31 15:06:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static void	print_spheres(int n_spheres, t_sphere **array)
 	}
 }
 
-static void	print_single_light(t_light *one_light)
+void	print_single_light(t_light *one_light)
 {
 		printf("colors : ");
 		print_color(one_light->color);

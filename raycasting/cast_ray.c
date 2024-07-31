@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 17:22:35 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/31 15:18:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,22 +70,23 @@ void	cast_rays(t_mlx *data)
 			closest_intersection = hit(all_intersections);
 			if (closest_intersection != NULL)
 			{
-				printf("%sDEBUG%s closes intersection\n", BG_RED, BG_RESET);
-				printf("pixel values: [%d, %d]\n", x, y);
-				print_intersection(*closest_intersection);
+				printf("%sDEBUG%s VERBOSE LOG:\t⚠️ Inside the cast_ray function \n", BG_RED, BG_RESET);
+				//printf("pixel values: [%d, %d]\n Now printing out the intersection STRUCT VALUES...\n", x, y);
+				//print_intersection(*closest_intersection);
 				//printf("\n");
 				t_vector point = position_ray(ray, closest_intersection->t);
-				t_vector normal = v2normal_at(&closest_intersection->obj, point);
+				t_vector normal = v2normal_at(closest_intersection->obj, point);
 				//printf("\t\there, after normal_at v2!\n");
 				t_vector eye = negate(ray.direction);
 				t_material m = material(); // Default material
 				t_color color = lighting(m, *data->setting->lights[0], point, eye, normal);
+				print_color(color);
 				my_mlx_pixel_put(data, x, y, create_trgb(color));
 				//my_mlx_pixel_put(data, x, y, calculate_sphere_color(closest_intersection));
 			}
 			else
 			{
-				//printf("%sDEBUG%s closes intersection is null\n", BG_RED, BG_RESET);
+				printf("%sDEBUG%s closes intersection is null\n", BG_RED, BG_RESET);
 				my_mlx_pixel_put(data, x, y, 0x000000);  // Background color
 			}
 			free(all_intersections->intersections);
