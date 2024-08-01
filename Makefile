@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/07/30 12:48:18 by atucci           ###   ########.fr        #
+#    Updated: 2024/08/01 15:40:56 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SOURCE = ./main.c \
 		 ./raycasting/hit.c \
 		 ./raycasting/transformation_ray.c \
 		 ./raycasting/cast_ray.c \
+		 ./raycasting/cast_ray_helper.c \
 		 ./intersection/intersection.c \
 		 ./intersection/intersection_list.c \
 		 ./shadows/lighting.c \

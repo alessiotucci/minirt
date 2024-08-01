@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 11:24:10 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:47:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
 	// Calculate ray direction
 	direction = create_vector(screen_x, screen_y, -1); // assuming camera looks down -Z axis
 	ray.direction = normalization(direction);
-	//print_ray(ray);
 	return (ray);
 }
 
@@ -83,11 +82,12 @@ void	cast_rays(t_mlx *data)
 {
 	int					x;
 	int					y;
-	int					i;
-	t_ray				ray;
-	t_intersection_list	*all_intersections;
-	t_intersection		*closest_intersection;
-	t_intersection_list	*sphere_intersections;
+
+//	t_ray				ray;
+//
+//	t_intersection_list	*all_intersections;
+//	t_intersection		*closest_intersection;
+//	t_intersection_list	*sphere_intersections;
 
 	y = 0;
 	while(y < data->height)
@@ -95,7 +95,8 @@ void	cast_rays(t_mlx *data)
 		x = 0;
 		while (x < data->width)
 		{
-			ray = create_ray_from_camera(data, x, y);//(data->setting->camera, x, y, data->width, data->height);
+			each_pixel_calculation(data, x, y);
+			/*ray = create_ray_from_camera(data, x, y);
 			all_intersections = malloc(sizeof(t_intersection_list));
 			all_intersections->count = 0;
 			all_intersections->intersections = malloc(sizeof(t_intersection) * data->setting->num_spheres * 2);
@@ -133,6 +134,7 @@ void	cast_rays(t_mlx *data)
 			}
 			free(all_intersections->intersections);
 			free(all_intersections);
+			*/
 		x++;
 		}
 	y++;
