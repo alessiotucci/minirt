@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/28 12:04:45 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:21:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	mouse_click(int button, int x, int y, t_mlx *mlx)
 	printf("Mouse click: button %d, x = %d, y = %d\n", button, x, y);
 	(void)mlx;
 	//update_camera(mlx, x, y);
-	//my_mlx_pixel_put(mlx, x, y, COLOR_GREEN);
+	my_mlx_pixel_put(mlx, x, y, COLOR_GREEN);
 	// Qui puoi implementare la logica per reagire al click del mouse
 	// Ad esempio, cambiando il colore di un pixel, disegnando qualcosa, ecc.
 	return (0);

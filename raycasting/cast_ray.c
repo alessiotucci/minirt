@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/31 17:37:12 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/01 11:24:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	cast_rays(t_mlx *data)
 			else
 			{
 				//printf("%sDEBUG%s closes intersection is null\n", BG_RED, BG_RESET);
-				printf(" | miss: [%d, %d] |\n", x, y);
+				//printf(" | miss: [%d, %d] |\n", x, y);
 				my_mlx_pixel_put(data, x, y, COLOR_BLACK);  // Background color
 			}
 			free(all_intersections->intersections);

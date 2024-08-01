@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:56:06 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 11:01:37 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/01 11:26:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ t_light	point_light(t_vector pos, t_color c)
 t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal)
 {
 	// Effective color: material color multiplied by light color
+	printf("mat.color\n");
+	print_color(mat.color);
+	printf("light.color\n");
+	print_color(light.color);
 	t_color effective_color = multiply_colors(mat.color, light.color);
 
 	// Light vector: from light position to the point
@@ -122,13 +126,14 @@ t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_
 
 	// Second addition: (ambient + diffuse) + specular
 	final_color = add_colors(ambient_plus_diffuse, specular);
-	//printf("Final Color:");
-	//print_color(final_color);
+	printf("Final Color:\n");
+	print_color(final_color);
 	//printf("%s--------------------------------------------%s\n", BG_GREEN, BG_RESET);
 	return (final_color);
 }
 
 /* given the assumption */
+/*
 int	main()
 {
 	printf("Given the assumption of material and point\n");
@@ -191,3 +196,4 @@ int	main()
 	//
 }
 
+*/
