@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/31 15:06:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/01 10:42:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,9 +284,9 @@ double			my_clamp(double value, double min_val, double max_val);
 /**********************/
 /*Colors/converting.c */
 /**********************/
-int			convert_component(float component);
+double		convert_component(double component);
 t_color		convert_color(t_color old);
-float		convert_component_inverse(int component);
+double		convert_component_inverse(double component);
 t_color		convert_color_inverse(t_color color);
 
 /****************************/
