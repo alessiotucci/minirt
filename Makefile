@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+         #
+#    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/06/18 15:05:59 by ftroise          ###   ########.fr        #
+#    Updated: 2024/08/01 15:59:18 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,16 @@ NAME = miniRT
 # setting up the variable that will be the source *
 # *************************************************
 SOURCE = ./main.c \
+		 ./main_utils.c \
 		 ./manage_mlx.c \
-		 ./parsing/parsing_map.c \
-		 ./parsing/parsing_numbers.c \
+		 ./freeing.c \
+		 ./draw_scene.c \
+		 ./centering.c \
+		 ./normal.c \
 		 ./create_setting.c \
 		 ./add_elem_array.c \
+		 ./parsing/parsing_map.c \
+		 ./parsing/parsing_numbers.c \
 		 ./starting/start_shapes.c \
 		 ./starting/start_scenes.c \
 		 ./extra/utils.c \
@@ -32,19 +37,20 @@ SOURCE = ./main.c \
 		 ./extra/comparing.c \
 		 ./transformations/translations.c \
 		 ./transformations/rotations.c \
+		 ./transformations/matrix_rotations.c \
 		 ./transformations/scaling.c \
 		 ./transformations/shearing.c \
 		 ./shapes/plane.c \
 		 ./shapes/sphere.c \
 		 ./shapes/cylinder.c \
 		 ./bonus/cone.c \
-		 ./freeing.c \
 		 ./vector/vector_operations.c \
 		 ./vector/utils_vectors.c \
 		 ./vector/complex_operations.c \
 		 ./colors/clamp.c \
 		 ./colors/colors.c \
 		 ./colors/operation_color.c \
+		 ./colors/converting_color.c \
 		 ./matrix/matrix_utils.c \
 		 ./matrix/initialize_matrix.c \
 		 ./matrix/operations_matrix.c \
@@ -52,7 +58,19 @@ SOURCE = ./main.c \
 		 ./matrix/inversing.c \
 		 ./matrix/void.c \
 		 ./raycasting/create_ray.c \
-		 ./centering.c \
+		 ./raycasting/intersection_ray.c \
+		 ./raycasting/utils_obj.c \
+		 ./raycasting/hit.c \
+		 ./raycasting/transformation_ray.c \
+		 ./raycasting/cast_ray.c \
+		 ./raycasting/cast_ray_helper.c \
+		 ./intersection/intersection.c \
+		 ./intersection/intersection_list.c \
+		 ./shadows/lighting.c \
+		 ./shadows/material.c \
+		 ./shadows/lambert_reflection_model.c \
+		 ./shadows/phong_reflection_model.c \
+
 
 HEADERS = ./minirt.h \
 
@@ -127,7 +145,25 @@ $(NAME): $(OBJ)
 	$(CC) $(FLAG) $(INCLUDES) -c $< -o $@
 	@echo "$(CYAN)Done compiling $<.$(RESET)\n"
 
+# *****************************************************************************
+# UNIT TEST: this rules allow me to compile the whole project and test        *
+# single functions, I use a main inside the function and exclude the main     *
+# *****************************************************************************
+TEST_SOURCE = $(filter-out ./main.c, $(SOURCE))
+TEST_OBJ = $(TEST_SOURCE:.c=.o)
 
+test: $(TEST_OBJ)
+	@echo "$(RED)Compiling libft...$(RESET)\n"
+	$(MAKE) -C libft
+	@echo "$(RED)Compiling mlx...$(RESET)\n"
+	$(MAKE) -C mlx
+	@echo "$(RED)Linking...$(RESET)\n"
+	$(CC) $(FLAG) $(TEST_OBJ) $(LIBFT) $(MLXFLAG) -o test
+	@echo "$(YELLOW)Done!\n$(RESET)"
+
+clean_test: fclean
+	@echo "removing test\t"
+	rm -f test
 # ****************************************
 #  Rule for cleaning up the object files *
 # ****************************************

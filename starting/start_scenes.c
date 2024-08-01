@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 17:02:57 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/14 12:20:58 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/27 15:24:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	start_camera(t_setting *set, char **details)
 		set->camera->viewpoint = parse_vector(details[1], 1.0);
 		set->camera->orientation = parse_vector(details[2], 0.0); //this is a vector
 		set->camera->fov = ft_atoi(details[3]); // atof 
+		set->camera->image_plane_height = 0.0;
+		set->camera->image_plane_width = 0.0;
 	}
 
 }

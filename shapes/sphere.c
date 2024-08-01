@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:26:21 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/18 18:48:11 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/07/31 11:17:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,23 @@ typedef struct s_sphere
 t_sphere	create_sphere(char *id, t_vector center, double d, t_color c)
 {
 	t_sphere	new_sphere;
+	double		**def;
 
+	def = create_matrix(4, 4);
+	create_identity_matrix(def);
 	new_sphere.identifier = id;
 	new_sphere.center = center;
 	new_sphere.diameter = d;
-	(void)c;
-	//new_shere.color = c;
+	new_sphere.transform = def;
+	new_sphere.color = c;
+	new_sphere.material = material();
 	return (new_sphere);
+}
+
+int	calculate_sphere_color(t_intersection *intersection)
+{
+	t_sphere	*sphere;
+
+	sphere = (t_sphere *)intersection->obj.address;
+	return (create_trgb(sphere->color));
 }

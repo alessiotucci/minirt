@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/07/22 16:54:39 by atucci           ###   ########.fr       */
-=======
-/*   Updated: 2024/07/31 15:06:13 by atucci           ###   ########.fr       */
->>>>>>> 2acdff4 (fixed the segfault)
+/*   Updated: 2024/08/01 17:16:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,27 +92,24 @@
 /*TODO:ADDITIONAL STRUCTS
 * Ray Struct: Represents a ray in the scene.
 * Intersection Struct: Represents the result of a ray-object intersection
-* Material Struct: Represents the material properties of objects
+* Material Struct: Represents the material properties of objects:TODO BONUS!
 */
 typedef struct s_color
 {
-	int	r;
-	int	g;
-	int	b;
+	double	r;
+	double	g;
+	double	b;
 }	t_color;
 
-/*typedef struct s_pixel
+typedef struct s_material
 {
-	int	x;
-	int	y;
-}	t_pixel;
+	t_color	color;
+	double	ambient;
+	double	diffuse;
+	double	specular;
+	double	shininess;
 
-typedef struct s_point2d
-{
-	double	x;
-	double	y;
-}	t_point2d;
-*/
+}	t_material;
 
 //TODO: small update with the 'w'
 typedef struct s_vector
@@ -133,37 +126,36 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
-/*****************************************************************************/
-/*******************************/
-//TODO: implement english name */
-/*******************************/
-typedef enum e_intersect
+// Define the enum for the object types
+typedef enum e_type
 {
-	T_SFERA,
-	T_CILINDR,
-	T_PIANO
+	T_CAMERA,
+	T_LIGHT,
+	T_SPHERE,
+	T_PLANE,
+	T_CYLINDER
+}	t_type;
 
-} t_intersect;
-
-//TODO: a intersection can have more object than 2 right?
-typedef struct s_intersection2
+// Define the struct that will hold the object type and the void pointer
+typedef struct s_object
 {
-	
-	int		count;
-	double	t[2];
-	t_intersect obj_inter[2];
-	
-}	t_intersection2;
+	t_type	type;
+	void	*address;
+}	t_object;
 
-/* let's see if it is usefult */
+/* let's see if it is usefult ***********************************************/
+//TODO:
 typedef struct s_intersection
 {
-	
-	int		count;
-	double	t[2];
-    t_intersection2* intersections;
-	
+	double	t;
+	t_object	obj;
 }	t_intersection;
+
+typedef struct s_intersection_list
+{
+	t_intersection	*intersections;
+	int count;
+}	t_intersection_list;
 /*****************************************************************************/
 
 typedef struct s_amb_light
@@ -179,6 +171,8 @@ typedef struct s_camera
 	t_vector	viewpoint;
 	t_vector	orientation;
 	int			fov;
+	double		image_plane_height;
+	double		image_plane_width;
 }	t_camera;
 
 typedef struct s_light
@@ -195,6 +189,9 @@ typedef struct s_sphere
 	t_vector	center;
 	double		diameter;
 	t_color		color;
+	double		**transform;
+	t_material	material;//THIS IS LAST CHANGE
+
 }	t_sphere;
 
 typedef struct s_plane
@@ -279,8 +276,27 @@ void		add_plane_to_array(t_plane *to_add, t_setting *set);
 void		add_sphere_to_array(t_sphere *to_add, t_setting *set);
 void		add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 
+/***********************/
+/*Where are the colors?*/
+/***********************/
 int			create_trgb(t_color color);
-int			my_clamp(int value, int min_val, int max_val);
+double			my_clamp(double value, double min_val, double max_val);
+/**********************/
+/*Colors/converting.c */
+/**********************/
+double		convert_component(double component);
+t_color		convert_color(t_color old);
+double		convert_component_inverse(double component);
+t_color		convert_color_inverse(t_color color);
+
+/****************************/
+/* Colors/operation_color.c */
+/****************************/
+t_color		add_colors(t_color c1, t_color c2);
+t_color		subtract_colors(t_color c1, t_color c2);
+t_color		multiply_color_by_scalar(t_color c, float scalar);
+t_color		multiply_colors(t_color c1, t_color c2);
+t_color		create_color(double r, double g, double b);
 /******************************/
 /* Comparing is not that easy */
 /******************************/
@@ -353,16 +369,19 @@ void	matrix_of_cofactors_void(int size, double **matrix, double **n);
 void	transposing_void(int rows, int cols, double **matrix);
 void	inversing_matrix_void(int size, double **source);
 
+//TODO: The transformation need to return matrix sometimes!
 /**********************************/
 /* Transformations/translations.c */
 /**********************************/
 t_vector	translations(t_vector move, t_vector origin);
+double		**create_translation_matrix(t_vector move);
 t_vector	inverse_translations(t_vector move, t_vector origin);
 /*****************************/
 /* Transformations/scaling.c */
 /*****************************/
 void		identity_value_matrix(double **matrix, t_vector source);
 t_vector	scaling(t_vector move, t_vector origin);
+double		**create_scaling_matrix(t_vector move);
 t_vector	scaling_inverse(t_vector move, t_vector origin);
 /*******************************/
 /* Transformations/rotations.c */
@@ -370,6 +389,13 @@ t_vector	scaling_inverse(t_vector move, t_vector origin);
 t_vector	rotation_x(t_vector origin, double radians);
 t_vector	rotation_y(t_vector origin, double radians);
 t_vector	rotation_z(t_vector origin, double radians);
+/**************************************/
+/* Transformations/matrix_rotations.c */
+/**************************************/
+double		**matrix_rotation_x(double radians);
+double		**matrix_rotation_y(double radians);
+double		**matrix_rotation_z(double radians);
+
 /******************************/
 /* Transformations/shearing.c */
 /******************************/
@@ -381,11 +407,39 @@ t_vector	shearing(t_vector origin, double value[6]);
 t_ray		create_ray(t_vector origin, t_vector direction);
 void		print_ray(t_ray ray);
 t_vector	position_ray(t_ray ray, double t);
+
+/********************/
+/* Raycasting/hit.c */
+/********************/
+t_intersection	*hit(t_intersection_list *list);
+
+/*************************/
+/* Raycasting/cast_ray.c */
+/*************************/
+t_ray	create_ray_from_camera(t_mlx *data, int x, int y);
+void	cast_rays(t_mlx *data);
+
+/********************************/
+/* Raycasting/cast_ray_helper.c */
+/********************************/
+void	each_pixel_calculation(t_mlx *data, int x, int y);
+
+/*********************************/
+/* Raycasting/intersection_ray.c */
+/*********************************/
+t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
+
+/***********************************/
+/* Raycasting/transformation_ray.c */
+/***********************************/
+t_ray	transform_ray(t_ray original, double **matrix);
+void	set_sphere_transformations(t_sphere *sphere, double **new);
+
 /*******************/
 /* shapes/sphear.c */
 /*******************/
 t_sphere	create_sphere(char *id, t_vector center, double d, t_color c);
-
+int			calculate_sphere_color(t_intersection *intersection);
 /************************/
 /*freeing the function  */
 /************************/
@@ -416,9 +470,10 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	my_new_image(t_mlx *data);
 
 void	send_to_centre(t_setting *set); //prima
+//TODO:delete this WE DONT NEED TO to center the sphere
+void center_sphere(t_sphere *sphere, int window_width, int window_height);
+
 int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
-<<<<<<< HEAD
-=======
 /********************************************************/
 /* started to create complex obj to track intersections */
 /********************************************************/
@@ -470,5 +525,6 @@ void	print_material(t_material mat);
 /**********************/
 //TODO norminetted!!
 t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
->>>>>>> 2acdff4 (fixed the segfault)
+
+t_color	lambert_formula(t_color color, t_light light, t_vector point, t_vector normal);
 #endif

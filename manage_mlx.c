@@ -3,27 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   manage_mlx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/22 17:10:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:21:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-
-/*void	my_new_image(t_mlx *data)
-{
-
-	ft_printf("%sgetting address in img_data%s\n", BG_YELLOW, RESET);
-	data->img_pointer = (data->mlx, data->width,
-		data->height);
-	data->img_string = mlx_get_data_addr(data->img_pointer, &(data->bits),
-		&(data->lsize), &(data->endian));
-
-}*/
-
+#include <time.h>
+//1
 void	my_new_image(t_mlx *data)
 {
 	ft_printf("%sgetting address in img_data%s\n", BG_YELLOW, RESET);
@@ -32,6 +21,7 @@ void	my_new_image(t_mlx *data)
 		&(data->lsize), &(data->endian));
 }
 
+//2
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 {
 	char	*dst;
@@ -48,6 +38,7 @@ void	wallpaper(t_mlx *data)
 	int		color;
 	//int		ray;
 	
+	clock_t start_time = clock();
 	y = 0;
 
 	while (y < data->height)
@@ -55,19 +46,22 @@ void	wallpaper(t_mlx *data)
 		x = 0;
 		while (x < data->width)
 		{
-			color = (x * 255 / data->width) << 16 | (y * 255 / data->height) << 8; // sfondo multicolore 
-			//color = 0xFFFFLL;// sfondo singolo colore
-			//ray = create_ray(set -> camera, x, y, data-> width, data->height)
+			//color = (x * 255 / data->width) << 16 | (y * 255 / data->height) << 8;
+			color = 0xFFFFLL;
+			//TODO: here I supposed to cast a ray to see if there is a intersection
 			my_mlx_pixel_put(data, x, y, color);
 			x++;
 		}
 		y++;
 	}
 	my_mlx_pixel_put(data, data->setting->camera->viewpoint.x, data->setting->camera->viewpoint.y, COLOR_BLACK);
+
+	clock_t end_time = clock();
+	double time_taken = ((double)end_time - start_time) / CLOCKS_PER_SEC;
+	printf("\n\tThe while loop took %s%.2f seconds%s to execute.\n", YELLOW, time_taken, RESET);
 }
 
-
-
+//3
 /* This function perfom a cleana close and then exit*/
 static void	clean_close(t_mlx *project)
 {
@@ -77,6 +71,7 @@ static void	clean_close(t_mlx *project)
 	exit(0);
 }
 
+//4
 //TODO: interesting function!
 static void	test_function(t_mlx *info)
 {
@@ -117,30 +112,18 @@ int	window_close(void *param)
 	clean_close(help);
 	return (0);
 }
-/*
-void	manage_mlx(t_mlx *obj, t_setting *set)
+
+int	mouse_click(int button, int x, int y, t_mlx *mlx)
 {
-	(void)set; //TODO: just for now
-	obj->mlx = mlx_init();
-	ft_printf("%smlx_init has started%s\n", YELLOW, RESET);
-	if (obj->mlx == NULL)
-		return (ft_putstr_fd("mlx_init fail...\n", 2));
-	obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
-	my_new_image(obj);
-	//TODO: now draw on the image with some logic
-	//my_test(obj, set);
-	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
-	mlx_hook(obj->win, 2, 1, key_pressed, obj);
-	mlx_hook(obj->win, 17, 0L, window_close, obj);
-	mlx_loop(obj->mlx);
-	
-	mlx_destroy_display();
-	mlx_destroy_windows();
-	free();
-	free();
-	 //TODO: fix the leaks 
-	return ;
-}*/
+	printf("Mouse click: button %d, x = %d, y = %d\n", button, x, y);
+	(void)mlx;
+	//update_camera(mlx, x, y);
+	my_mlx_pixel_put(mlx, x, y, COLOR_GREEN);
+	// Qui puoi implementare la logica per reagire al click del mouse
+	// Ad esempio, cambiando il colore di un pixel, disegnando qualcosa, ecc.
+	return (0);
+}
+
 
 void manage_mlx(t_mlx *obj, t_setting *set)
 {
@@ -150,10 +133,13 @@ void manage_mlx(t_mlx *obj, t_setting *set)
 		return (ft_putstr_fd("mlx_init fail...\n", 2));
 	obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
 	my_new_image(obj); 
-	send_to_centre(set);
+
+	//send_to_centre(set);
+	(void)set;
 
 	// Disegna la scena
 	//wallpaper(obj);
+	draw_scene(obj);
 	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
 	mlx_mouse_hook(obj->win, mouse_click, obj);
 	mlx_hook(obj->win, 2, 1, key_pressed, obj); 

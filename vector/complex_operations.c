@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:42:04 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/30 14:49:06 by atucci           ###   ########.fr       */
+/*   Updated: 2024/07/27 11:47:52 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ t_vector	normalization(t_vector vector)
 {
 	t_vector	new_vector;
 
-	if (magnitude(vector) > 0) //TODO: check this comparison
-		return (ft_printf("magnitude is zero!\n"), vector);
+	if (magnitude(vector) == 0) //TODO: check this comparison
+		{
+			ft_printf("%smagnitude is zero!%s\n", RED, RESET);
+			print_vector(vector);
+			//return(vector);
+			exit(-1);
+		}
 	new_vector.x = vector.x / magnitude(vector);
 	new_vector.y = vector.y / magnitude(vector);
 	new_vector.z = vector.z / magnitude(vector);

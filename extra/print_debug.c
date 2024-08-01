@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_debug.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/14 16:39:11 by ftroise          ###   ########.fr       */
-=======
-/*   Updated: 2024/07/31 15:06:13 by atucci           ###   ########.fr       */
->>>>>>> 2acdff4 (fixed the segfault)
+/*   Updated: 2024/08/01 17:22:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +26,20 @@ void	struct_status(t_setting *set)
 
 void	print_color(t_color color)
 {
-	printf("\n%sR: %d %s", RED, color.r, RESET);
-	printf("%sG: %d %s", GREEN, color.g, RESET);
-	printf("%sB: %d%s\n\n", BLUE, color.b, RESET);
+	printf("%sR: %lf %s", RED, color.r, RESET);
+	printf("%sG: %lf %s", GREEN, color.g, RESET);
+	printf("%sB: %lf%s\n", BLUE, color.b, RESET);
 }
 
 void	print_vector(t_vector vector)
 {
-	printf("\nx: %f ", vector.x);
+	printf("x: %f ", vector.x);
 	printf("y: %f ", vector.y);
 	printf("z: %f ",vector.z);
-	printf("%sw:%s %f\n\n", BLUE, RESET, vector.w);
+	printf("%sw:%s %f\n", BLUE, RESET, vector.w);
 }
 
-static void	print_single_plane(t_plane *one_plane)
+void	print_single_plane(t_plane *one_plane)
 {
 		printf("colors : ");
 		print_color(one_plane->color);
@@ -66,7 +62,7 @@ static void	print_planes(int n_planes, t_plane **array)
 	}
 }
 
-static void	print_single_cylinder(t_cylinder *one_cylinder)
+void	print_single_cylinder(t_cylinder *one_cylinder)
 {
 		printf("colors : ");
 		print_color(one_cylinder->color);
@@ -90,15 +86,20 @@ static void	print_cylinders(int n_cylinders, t_cylinder **array)
 	}
 }
 
-static void	print_single_sphere(t_sphere *one_sphere)
+void	print_single_sphere(t_sphere *one_sphere)
 {
-		printf("colors : ");
-		print_color(one_sphere->color);
-		printf("Center of the Sphere: ");
-		print_vector(one_sphere->center);
-		printf("Diameter: %f\n", one_sphere->diameter);
-
+	printf("Address: %p\n", one_sphere);
+	printf("colors : ");
+	print_color(one_sphere->color);
+	printf("material : ");
+	print_material(one_sphere->material);
+	printf("Center of the Sphere: ");
+	print_vector(one_sphere->center);
+	printf("Diameter: %f\n", one_sphere->diameter);
+	printf("\tSphere Matrix:\t%p\n", one_sphere->transform);
+	print_int_matrix(4, 4, one_sphere->transform);
 }
+
 static void	print_spheres(int n_spheres, t_sphere **array)
 {
 	int	i;
