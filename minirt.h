@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 15:47:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/01 17:16:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -525,4 +525,6 @@ void	print_material(t_material mat);
 /**********************/
 //TODO norminetted!!
 t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
+
+t_color	lambert_formula(t_color color, t_light light, t_vector point, t_vector normal);
 #endif

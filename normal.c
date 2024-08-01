@@ -6,13 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 11:30:56 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/01 17:56:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-t_vector v2normal_at(t_object obj, t_vector world_point)
+t_vector v2normal_at(t_object obj, t_vector point)
 {
 	t_sphere	*sphere;
 
@@ -23,7 +23,8 @@ t_vector v2normal_at(t_object obj, t_vector world_point)
 		//printf("just to make sure, if we try to print the sphere here: SEGFAULT!\n");
 		//print_single_sphere(sphere);
 
-		return (normal_at(*sphere, world_point));
+		return normalization(subtract(point, sphere->center));
+		//return (normal_at(*sphere, world_point));
 	}
 	printf("v2normal failure\n");
 	exit(-42);

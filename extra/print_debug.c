@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 11:21:52 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/01 17:22:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	print_color(t_color color)
 
 void	print_vector(t_vector vector)
 {
-	printf("\nx: %f ", vector.x);
+	printf("x: %f ", vector.x);
 	printf("y: %f ", vector.y);
 	printf("z: %f ",vector.z);
-	printf("%sw:%s %f\n\n", BLUE, RESET, vector.w);
+	printf("%sw:%s %f\n", BLUE, RESET, vector.w);
 }
 
 void	print_single_plane(t_plane *one_plane)
