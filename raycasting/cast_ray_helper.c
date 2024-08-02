@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 18:14:27 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 14:54:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,36 @@ void	each_pixel_calculation(t_mlx *data, int x, int y)
 	free(all_intersections->intersections);
 	free(all_intersections);
 }
+
+void	each_pixel_calculationV2(t_mlx *data, int x, int y)
+{
+	t_ray ray;
+	t_list_intersect *all_intersections = NULL;
+	t_intersection *closest_intersection;
+	t_list_intersect *sphere_intersections;
+	int i;
+
+	ray = create_ray_from_camera(data, x, y);
+	for (i = 0; i < data->setting->num_spheres; i++)
+	{
+		sphere_intersections = intersect_sphereV2(*data->setting->spheres[i], ray);
+		if (sphere_intersections)
+			concatenate_lists(&all_intersections, sphere_intersections);
+	}
+	closest_intersection = hit_v2(all_intersections);
+	if (closest_intersection != NULL)
+	{
+		//printf(" | hit! pixel values: [%s%d, %d%s] |\n", GREEN, x, y, RESET);
+		print_ray(ray);
+		t_vector point = position_ray(ray, closest_intersection->t);
+		t_vector normal = v2normal_at(closest_intersection->obj, point);
+		t_vector eye = negate(ray.direction);
+		t_material m = material(); // Default material
+		t_color color = lighting(m, *data->setting->lights[0], point, eye, normal);
+		my_mlx_pixel_put(data, x, y, create_trgb(color));
+	}
+	else
+		my_mlx_pixel_put(data, x, y, COLOR_BLACK);  // Background color
+	free_list(&all_intersections);
+}
+

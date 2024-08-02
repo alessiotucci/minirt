@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/02 11:03:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 14:57:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -419,6 +419,7 @@ t_vector	position_ray(t_ray ray, double t);
 /* Raycasting/hit.c */
 /********************/
 t_intersection	*hit(t_intersection_list *list);
+t_intersection	*hit_v2(t_list_intersect *list);
 
 /*************************/
 /* Raycasting/cast_ray.c */
@@ -430,6 +431,7 @@ void	cast_rays(t_mlx *data);
 /* Raycasting/cast_ray_helper.c */
 /********************************/
 void	each_pixel_calculation(t_mlx *data, int x, int y);
+void	each_pixel_calculationV2(t_mlx *data, int x, int y);
 
 /*********************************/
 /* Raycasting/intersection_ray.c */
@@ -509,6 +511,9 @@ void				add_intersection(t_intersection_list *l, int index, t_intersection i);
 void				free_intersection_list(t_intersection_list *list);
 
 //TODO
+
+void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2);
+t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray);
 /************************************/
 /* intersection/intersection_list.c */
 /************************************/

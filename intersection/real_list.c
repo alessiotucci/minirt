@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 10:23:58 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/02 11:29:42 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 14:57:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)
 	}
 }
 
+/*
 int	main()
 {
 	printf("%sTEST:%s aggregating intersections\n", RED, RESET);
@@ -180,3 +181,4 @@ int	main()
 	return (0);
 }
 
+*/

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 15:47:51 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 14:55:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ void	cast_rays(t_mlx *data)
 		x = 0;
 		while (x < data->width)
 		{
-			each_pixel_calculation(data, x, y);
+			//each_pixel_calculation(data, x, y);
+			each_pixel_calculationV2(data, x, y);
 			/*ray = create_ray_from_camera(data, x, y);
 			all_intersections = malloc(sizeof(t_intersection_list));
 			all_intersections->count = 0;

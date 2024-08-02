@@ -6,12 +6,29 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:22:17 by ftroise           #+#    #+#             */
-/*   Updated: 2024/07/25 17:27:25 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 14:52:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
+
+t_intersection	*hit_v2(t_list_intersect *list)
+{
+	t_intersection	*closest_hit;
+	t_list_intersect	*current;
+
+	closest_hit = NULL;
+	current = list;
+	while (current)
+	{
+		if (current->intersection->t >= 0 &&
+			(closest_hit == NULL || current->intersection->t < closest_hit->t))
+			closest_hit = current->intersection;
+		current = current->next;
+	}
+	return (closest_hit);
+}
 
 t_intersection	*hit(t_intersection_list *list)
 {
