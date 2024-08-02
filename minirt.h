@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/02 10:47:53 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 11:03:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -434,6 +434,8 @@ void	each_pixel_calculation(t_mlx *data, int x, int y);
 /*********************************/
 /* Raycasting/intersection_ray.c */
 /*********************************/
+t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray);
+double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter);
 t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
 
 /***********************************/

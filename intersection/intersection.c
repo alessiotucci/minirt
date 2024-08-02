@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/31 14:50:01 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 11:13:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_type	string_to_type(char *type)
 	if (my_strcmp(type, "cy") == 0)
 		return (T_CYLINDER);
 	else
-		return (T_CAMERA); // THIS IS TO COMPILE
+		return (T_SPHERE); // THIS IS TO COMPILE
 }
 
 t_intersection	intersection(double t, char *type, void *obj_address)
@@ -62,6 +62,7 @@ t_intersection	intersection(double t, char *type, void *obj_address)
 	//printf("\t\tintersection value t: %lf\n", t);
 	
 	new.t = t;
+	printf("value t: [%lf], string type (%s)\n", t, type);
 	new.obj.type = string_to_type(type);
 	new.obj.address = obj_address;
 	if (string_to_type(type) == T_SPHERE)

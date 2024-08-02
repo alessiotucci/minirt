@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/02 10:43:34 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 11:04:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ void	free_intersection_list(t_intersection_list *list)
 
 void	print_intersection(t_intersection i)
 {
-	t_sphere		*sphere;
+//	t_sphere		*sphere;
 
 	print_type(i.obj);
 	printf("Pointer: %p\n", i.obj.address);
-	sphere = (t_sphere *)i.obj.address; // casting
-	printf("Address of transform: %p\n", sphere->transform);
-	print_single_sphere(sphere);
+//	sphere = (t_sphere *)i.obj.address; // casting
+//	printf("Address of transform: %p\n", sphere->transform);
+//	print_single_sphere(sphere);
 	//print_int_matrix(4, 4, sphere->transform);
 	printf("Value: %f\n", i.t);
 }
