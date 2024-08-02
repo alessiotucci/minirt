@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 17:16:03 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 10:47:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,13 @@ typedef struct s_intersection_list
 	t_intersection	*intersections;
 	int count;
 }	t_intersection_list;
+
+//TODO: NEW LINKED_LIST!
+typedef struct s_list_intersect
+{
+	t_intersection			*intersection;
+	struct s_list_intersect	*next;
+}	t_list_intersect;
 /*****************************************************************************/
 
 typedef struct s_amb_light
@@ -499,6 +506,14 @@ t_intersection_list	*create_intersection_list(int count);
 void				add_intersection(t_intersection_list *l, int index, t_intersection i);
 void				free_intersection_list(t_intersection_list *list);
 
+//TODO
+/************************************/
+/* intersection/intersection_list.c */
+/************************************/
+t_list_intersect	*create_new_node(t_intersection *intersection);
+void	add_intersection_l(t_list_intersect **head, t_intersection *intersection);
+void	free_list(t_list_intersect **head);
+void	print_list(t_list_intersect **head);
 /***************************/
 /* draw_scene/draw_scene.c */
 /***************************/

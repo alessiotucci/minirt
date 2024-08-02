@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/31 12:40:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/02 10:43:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,5 @@ int	main()
 
 	return (0);
 }
-	*/
-// gcc ../matrix/*.c ../vector/*.c   ../extra/comparing.c ../extra/print_debug.c ../shapes/sphere.c  ../libft/libft.a ../raycasting/intersection_ray.c ../raycasting/create_ray.c  ../raycasting/utils_obj.c  intersection_list.c -lm
 
-
+*/
