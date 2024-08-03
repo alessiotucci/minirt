@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 15:44:44 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 15:00:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	start_planes(t_setting *set, char **details)
 {
 	ft_printf("\n\t%s*SETTING UP PLANES*%s\n", BLUE, RESET);
 	t_plane	*new_plane;
+	double		**def;
+
+	def = create_matrix(4, 4);
+	create_identity_matrix(def);
 	new_plane = malloc(sizeof(t_plane));;
 	if (!new_plane)
 		return ;//TODO add the check
@@ -61,6 +65,7 @@ void	start_planes(t_setting *set, char **details)
 	new_plane->point = parse_vector(details[1], 1.0);
 	new_plane->normal = parse_vector(details[2], 0.0); //TODO: Carefull with ranges
 	new_plane->color = parse_color(details[3]);
+	new_plane->transform = def;//TODO: this is last
 	add_plane_to_array(new_plane, set);
 
 }

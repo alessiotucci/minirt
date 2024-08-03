@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 17:56:34 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 15:49:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 t_vector v2normal_at(t_object obj, t_vector point)
 {
 	t_sphere	*sphere;
+	t_plane		*plane;
 
 	if (obj.type == T_SPHERE)
 	{
 		sphere = (t_sphere *)obj.address; // casting
-		//printf("%sKO: (calling the normal_at_sphere() function)%s\n", YELLOW, RESET);
-		//printf("just to make sure, if we try to print the sphere here: SEGFAULT!\n");
-		//print_single_sphere(sphere);
-
 		return normalization(subtract(point, sphere->center));
-		//return (normal_at(*sphere, world_point));
+	}
+	if (obj.type == T_PLANE)
+	{
+		plane = (t_plane *)obj.address;
+		return (plane->normal);
 	}
 	printf("v2normal failure\n");
 	exit(-42);

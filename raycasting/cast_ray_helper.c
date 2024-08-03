@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/03 14:04:19 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 16:37:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ t_color	get_color_intersect(t_object obj)
 	return (create_color(1, 1, 1));
 }
 
+/*
 void	each_pixel_calculation(t_mlx *data, int x, int y)
 {
 	t_ray				ray;
 	t_intersection_list	*all_intersections;
 	t_intersection		*closest_intersection;
 	t_intersection_list	*sphere_intersections;
+	t_intersection_list	*plane_intersections;
 	int					i;
 
 	ray = create_ray_from_camera(data, x, y);
@@ -45,6 +47,17 @@ void	each_pixel_calculation(t_mlx *data, int x, int y)
 			add_intersections_to_list(all_intersections, sphere_intersections);
 	i++;
 	}
+
+	i = 0;
+	while (i < data->setting->num_planes)
+	{
+		//printf("%sDEBUG%s sphere intersection[%d], please wait...\n", RED, RESET, i);
+		plane_intersections = intersect_plane(*data->setting->planes[i], ray);//TODO:
+		if (plane_intersections)
+			add_intersections_to_list(all_intersections, plane_intersections);
+	i++;
+	}
+	
 	closest_intersection = hit(all_intersections);
 	if (closest_intersection != NULL)
 	{
@@ -70,6 +83,7 @@ void	each_pixel_calculation(t_mlx *data, int x, int y)
 	free(all_intersections->intersections);
 	free(all_intersections);
 }
+*/
 
 void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 {
@@ -77,27 +91,41 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	t_list_intersect *all_intersections = NULL;
 	t_intersection *closest_intersection;
 	t_list_intersect *sphere_intersections;
+	//t_list_intersect *plane_intersections;
 	int i;
 
 	ray = create_ray_from_camera(data, x, y);
-	for (i = 0; i < data->setting->num_spheres; i++)
+	i = 0;
+	while (i < data->setting->num_spheres)
 	{
 		sphere_intersections = intersect_sphereV2(*data->setting->spheres[i], ray);
 		if (sphere_intersections)
 			concatenate_lists(&all_intersections, sphere_intersections);
+	i++;
 	}
+	i = 0;
+	/*
+	while (i < data->setting->num_planes)
+	{
+		//printf("%sDEBUG%s sphere intersection[%d], please wait...\n", RED, RESET, i);
+		plane_intersections = intersect_plane(*data->setting->planes[i], ray);//TODO:
+		if (plane_intersections)
+			concatenate_lists(&all_intersections, plane_intersections);
+	i++;
+	}
+	*/
 	closest_intersection = hit_v2(all_intersections);
 	if (closest_intersection != NULL)
 	{
 		//printf(" | hit! pixel values: [%s%d, %d%s] |\n", GREEN, x, y, RESET);
-		print_ray(ray);
+		//print_ray(ray);
 		t_vector point = position_ray(ray, closest_intersection->t);
 		t_vector normal = v2normal_at(closest_intersection->obj, point);
-		t_vector eye = negate(ray.direction);
-		t_material m = material(); // Default material
-		t_color color = lighting(m, *data->setting->lights[0], point, eye, normal);
-	//	t_color std = get_color_intersect(closest_intersection->obj);
-	//	t_color color = lambert_formula(std, *data->setting->lights[0], point, normal);
+	//	t_vector eye = negate(ray.direction);
+	//	t_material m = material(); // Default material
+	//	t_color color = lighting(m, *data->setting->lights[0], point, eye, normal);
+		t_color std = get_color_intersect(closest_intersection->obj);
+		t_color color = lambert_formula(std, *data->setting->lights[0], point, normal);
 		my_mlx_pixel_put(data, x, y, create_trgb(color));
 		return ;
 	}

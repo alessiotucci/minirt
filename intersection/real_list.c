@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 10:23:58 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/02 14:57:53 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 16:35:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	add_intersection_l(t_list_intersect **head, t_intersection *intersection)
 		return (error_msg("malloc failed."));
 	if (!*head)
 	{
-		printf("The list is %sempty%s, new node the head!\n", GREEN, RESET);
+		//printf("The list is %sempty%s, new node the head!\n", GREEN, RESET);
 		*head = new_node;
 		return ;
 	}

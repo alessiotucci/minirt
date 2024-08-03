@@ -6,12 +6,40 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:39:46 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 18:37:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 17:39:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 #include <stdlib.h>
+
+//1
+double	determinant_two(double **matrix)
+{
+
+	double	x;
+	
+	x  = (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
+	//return (free_heap_matrix(matrix, 4), x);
+	return (x);
+}
+//5
+double	determinant_n(double **matrix, int size)
+{
+	double	result;
+	int		i;
+
+	i = 0;
+	result = 0.0;
+	while (i < size)
+	{
+		//printf("result: %f += cofactor:(%f) * matrix[0][%d]: (%f)\n", result, cofactor(0, i , matrix, size), i,  matrix[0][i]);
+		result += cofactor(0, i , matrix, size) * matrix[0][i];
+		i++;
+	}
+	//return (free_heap_matrix(matrix, 4), result);
+	return (result);
+}
 
 double	determinant(double **matrix, int size)
 {
@@ -21,21 +49,18 @@ double	determinant(double **matrix, int size)
 		return (determinant_n(matrix, size));
 }
 
-//1
-double	determinant_two(double **matrix)
-{
-	return ((matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]));
-}
-
 //2
 /* The minor of an element at row i and column j is the determinant of the 
  * submatrix at (i, j). */
 double	minor(int row, int col, double **matrix, int size)
 {
 	double	**find;
+	double	result;
 
 	find = submatrix(row, col, matrix, size);
-	return (determinant(find, size - 1));
+	result = determinant(find, size - 1);
+	//free_heap_matrix(find, 4);
+	return (result);
 }
 
 //3
@@ -85,23 +110,6 @@ double	**submatrix(int index_rows, int index_cols, double **matrix, int size)
 	return (new);
 }
 
-//5
-double	determinant_n(double **matrix, int size)
-{
-	double	result;
-	int		i;
-
-	i = 0;
-	result = 0.0;
-	while (i < size)
-	{
-		//printf("result: %f += cofactor:(%f) * matrix[0][%d]: (%f)\n", result, cofactor(0, i , matrix, size), i,  matrix[0][i]);
-		result += cofactor(0, i , matrix, size) * matrix[0][i];
-		i++;
-	}
-	return (result);
-
-}
 /*Main to test out the function
 int main()
 {
@@ -117,10 +125,12 @@ int main()
 	printf("Matrix a\n");
 	print_int_matrix(4, 4, a);
 	b = submatrix(2, 1, a, 4);
-
 	printf("b = submatrix(2, 1, a, 4);\n");
 	printf("Matrix b\n");
 	print_int_matrix(3, 3, b);
+
+	free_heap_matrix(a, 4);
+	free_heap_matrix(b, 3);
 
 	double	**z;
 	z = create_matrix(2, 2);
@@ -129,6 +139,7 @@ int main()
 	z[1][0] = -3.0; z[1][1] = 2.0;
 	printf("the determinant of 2x2 matrix z is [%f]\n", determinant_two(z));
 	printf("***\n");
+	free_heap_matrix(z, 2);
 
 	double **x;
 	x = create_matrix(3, 3);
@@ -137,6 +148,8 @@ int main()
 	x[1][0] = 2.0; x[1][1] = -1.0; x[1][2] = -7.0;
 	x[2][0] = 6.0; x[2][1] = -1.0; x[2][2] = 5.0;
 	printf("the minor of the 3x3 matrix x is [%f]\n", minor(1, 0, x, 3));
+	free_heap_matrix(x, 3);
+	return (-1); //TODO: need to finish debug here
 
 	double **t;
 	t = create_matrix(3, 3);
@@ -148,6 +161,7 @@ int main()
 	printf("the cofactor of the 3x3 matrix T is [%f]\n", cofactor(0, 0, t, 3));
 	printf("the minor of the 3x3 matrix T is [%f]\n", minor(1, 0, t, 3));
 	printf("the cofactor of the 3x3 matrix T is [%f]\n", cofactor(1, 0, t, 3));
+	free_heap_matrix(t, 4);
 
 	printf("** matrix y ***\n");
 	double	**y;
@@ -159,9 +173,11 @@ int main()
 	y[3][0] = -6.0; y[3][1] = 7.0; y[3][2] = 7.0; y[3][3] = -9.0;
 	printf("determinant of matrix Y: [%f]\n", determinant_n(y, 4));
 	printf("DEBUG: cofactor of matrix Y: {%f}\n", cofactor(0, 0, y, 4));
+	free_heap_matrix(y, 4);
 	return (0);
 }
 */
+
 //TO run the main for testing purpose
 //gcc *.c ../libft/libft.a ../extra/comparing.c ../extra/print_debug.c
 //TODO: CHECK THE LEAKS WITH THIS COMMANDS

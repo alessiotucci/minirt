@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/03 14:49:14 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 15:38:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@
 /***************************************/
 /* Define default size for the windows */
 /***************************************/
-# define DEFAULT_WIDTH 1024
-# define DEFAULT_HEIGHT 768
+# define DEFAULT_WIDTH 100
+# define DEFAULT_HEIGHT 100
 
 /************************************/
 /* color for mlx images and library */
@@ -96,6 +96,7 @@
 /* defining this for comparing doubles */
 /***************************************/
 # define EPSILON 0.00001
+#define EPSILON_v2 1e-6
 
 /*TODO:ADDITIONAL STRUCTS
 * Ray Struct: Represents a ray in the scene.
@@ -561,4 +562,8 @@ void	print_material(t_material mat);
 t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
 
 t_color	lambert_formula(t_color color, t_light light, t_vector point, t_vector normal);
+
+//TODO; planes!
+t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray);
+
 #endif

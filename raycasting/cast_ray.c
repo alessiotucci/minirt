@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/02 14:55:59 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 15:22:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
 }
 
 
-static t_vector project_point_to_2d(t_vector point, t_camera *camera, int width, int height)
+t_vector project_point_to_2d(t_vector point, t_camera *camera, int width, int height)
 {
 	// Assuming camera is at the origin and looking along the z-axis
 	double aspect_ratio = (double)width / (double)height;
@@ -65,7 +65,7 @@ static t_vector project_point_to_2d(t_vector point, t_camera *camera, int width,
 	return screen_point;
 }
 
-static void	print_light_source(t_mlx *data, int x, int y)
+void	print_light_source(t_mlx *data, int x, int y)
 {
 	printf("finally print out the light point: x: %d, y: %d\n", x, y);
 	my_mlx_pixel_put(data, x, y, COLOR_WHITE);
@@ -140,11 +140,12 @@ void	cast_rays(t_mlx *data)
 		}
 	y++;
 	}
-	//TODO print the lightpoint of white
+	/*TODO print the lightpoint of white
 	t_vector light_position = data->setting->lights[0]->position;
 	t_vector screen_coords = project_point_to_2d(light_position, data->setting->camera, data->width, data->height);
 	int light_x = (int)screen_coords.x;
 	int light_y = (int)screen_coords.y;
 	print_light_source(data, light_x, light_y);
+	*/
 }
 
