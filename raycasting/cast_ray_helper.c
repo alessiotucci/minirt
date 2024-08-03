@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/03 16:37:32 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 19:48:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	t_list_intersect *all_intersections = NULL;
 	t_intersection *closest_intersection;
 	t_list_intersect *sphere_intersections;
-	//t_list_intersect *plane_intersections;
+	t_list_intersect *plane_intersections;
 	int i;
 
 	ray = create_ray_from_camera(data, x, y);
@@ -101,10 +101,11 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 		sphere_intersections = intersect_sphereV2(*data->setting->spheres[i], ray);
 		if (sphere_intersections)
 			concatenate_lists(&all_intersections, sphere_intersections);
+		printf("i: %d\n", i);
 	i++;
 	}
 	i = 0;
-	/*
+	
 	while (i < data->setting->num_planes)
 	{
 		//printf("%sDEBUG%s sphere intersection[%d], please wait...\n", RED, RESET, i);
@@ -113,7 +114,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 			concatenate_lists(&all_intersections, plane_intersections);
 	i++;
 	}
-	*/
+	
 	closest_intersection = hit_v2(all_intersections);
 	if (closest_intersection != NULL)
 	{
