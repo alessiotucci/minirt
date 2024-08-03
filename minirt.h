@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/02 14:57:25 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 14:49:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,19 @@
 # define BG_YELLOW       "\033[43m"
 # define BG_RED          "\033[41m"
 
+/******************************************************************************/
+/*History of Screen Resolutions                                               */
+/*Screen resolutions have come a long way since the early days of computing.  */
+/*In the 1970s, the standard screen resolution was 320×200 pixels.            */
+/*In the 1980s, resolutions increased, with 640×480 becoming the new standard.*/
+/*In the 1990s, resolutions increased, with 1024×768 becoming the new standard*/
+/*In the 2000s, resolutions increased even more, with 1920×1080              .*/
+/******************************************************************************/
 /***************************************/
 /* Define default size for the windows */
 /***************************************/
-# define DEFAULT_WIDTH 1280
-# define DEFAULT_HEIGHT 720
+# define DEFAULT_WIDTH 1024
+# define DEFAULT_HEIGHT 768
 
 /************************************/
 /* color for mlx images and library */
@@ -103,7 +111,7 @@ typedef struct s_color
 
 typedef struct s_material
 {
-	t_color	color;
+	t_color	color;// material can get color from the shape
 	double	ambient;
 	double	diffuse;
 	double	specular;
@@ -207,6 +215,8 @@ typedef struct s_plane
 	t_vector	point;
 	t_vector	normal;
 	t_color		color;
+	double		**transform;
+	t_material	material;//THIS IS LAST CHANGE
 }	t_plane;
 
 typedef struct s_cylinder
@@ -217,6 +227,8 @@ typedef struct s_cylinder
 	double		diameter;
 	double		height;
 	t_color		color;
+	double		**transform;
+	t_material	material;//THIS IS LAST CHANGE
 }	t_cylinder;
 
 typedef struct s_setting

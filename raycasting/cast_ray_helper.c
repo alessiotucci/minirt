@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/02 17:00:17 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 14:04:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,13 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 		print_ray(ray);
 		t_vector point = position_ray(ray, closest_intersection->t);
 		t_vector normal = v2normal_at(closest_intersection->obj, point);
-		//t_vector eye = negate(ray.direction);
-		//t_material m = material(); // Default material
-		//t_color color = lighting(m, *data->setting->lights[0], point, eye, normal);
-		t_color std = get_color_intersect(closest_intersection->obj);
-		t_color color = lambert_formula(std, *data->setting->lights[0], point, normal);
+		t_vector eye = negate(ray.direction);
+		t_material m = material(); // Default material
+		t_color color = lighting(m, *data->setting->lights[0], point, eye, normal);
+	//	t_color std = get_color_intersect(closest_intersection->obj);
+	//	t_color color = lambert_formula(std, *data->setting->lights[0], point, normal);
 		my_mlx_pixel_put(data, x, y, create_trgb(color));
+		return ;
 	}
 	else
 		my_mlx_pixel_put(data, x, y, COLOR_BLACK);  // Background color
