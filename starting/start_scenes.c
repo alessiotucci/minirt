@@ -1,5 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
+/* ************************************************************************** */ /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   start_scenes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -49,12 +48,10 @@ void	start_camera(t_setting *set, char **details)
 //DOUBLE CHECK THIS ONE
 void	start_lights(t_setting *set, char **details)
 {
-	(void)set;
 	t_light	*new_light;
 	new_light = malloc(sizeof(t_light));
 	if (!new_light)
 		return ;//TODO add the check
-	(void)new_light;
 	ft_printf("\t*%sSETTING UP LIGHTS*%s\n", PURPLE, RESET);
 	if (lenght_string_array(details) == 4)
 	{

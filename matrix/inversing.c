@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 14:31:35 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 15:10:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 int	is_matrix_invertible(int s, double **matrix)
 {
 	if (comparing_double(determinant(copy_matrix(s, s, matrix), s), 0.0))
+	//if (comparing_double(determinant(matrix, s), 0.0))
 		return (0);
 	else
 		return (1);
@@ -89,24 +90,25 @@ double	**transposing(int rows, int cols, double **matrix)
 	return (ret);
 }
 
-double	**inversing_matrix(int size, double **source)
+double	**inversing_matrix(int s, double **src)
 {
 	double	**mat_cofact;
 	double	**trans;
 	double	**inversed;
 
-	if (is_matrix_invertible(size, source) == 0)
-		return (printf("Cannot reverse it!\n"), source);
-	mat_cofact = matrix_of_cofactors(size, source);
-	trans = transposing(size, size, mat_cofact);
-	inversed = divide_matrix(size, trans, determinant(source, size));
-	free_heap_matrix(mat_cofact, size);
-	free_heap_matrix(trans, size);
+	if (is_matrix_invertible(s, src) == 0)
+		return (printf("Cannot reverse it!\n"), src);
+	mat_cofact = matrix_of_cofactors(s, src);
+	trans = transposing(s, s, mat_cofact);
+	inversed = divide_matrix(s, trans, determinant(copy_matrix(s, s, src), s));
+	//inversed = divide_matrix(s, trans, determinant(src, s));
+	free_heap_matrix(mat_cofact, s);
+	free_heap_matrix(trans, s);
 	return (inversed);
 }
 
 /* main to test out the function */
-
+/*
 int	main()
 {
 	printf("** matrix y ***\n");
@@ -232,5 +234,6 @@ int	main()
 	free_heap_matrix(result, 4);
 	return (0);
 }
+*/
 //TODO: CHECK THE LEAKS WITH THIS COMMANDS
 //valgrind   --leak-check=full --show-leak-kinds=all ./a.out

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:39:46 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:52:19 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 15:10:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ double	determinant(double **matrix, int size)
 		result = (determinant_two(matrix));
 	else
 		result = (determinant_n(matrix, size));
-	return (free_heap_matrix(matrix, size), result);
+	return (free_heap_matrix(matrix, size), result); //TODO:
+	//return (result);
 }
 
 //2

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:07:31 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 15:56:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@
 /***************************************/
 /* Define default size for the windows */
 /***************************************/
-# define DEFAULT_WIDTH 224
-# define DEFAULT_HEIGHT 200
+# define DEFAULT_WIDTH 524
+# define DEFAULT_HEIGHT 524
 
 /************************************/
 /* color for mlx images and library */
@@ -468,6 +468,9 @@ int			calculate_sphere_color(t_intersection *intersection);
 /*freeing the function  */
 /************************/
 void		free_struct(t_setting *set);
+void		free_single_sphere(t_sphere *sphere);
+void		free_single_plane(t_plane *plane);
+void		free_single_cylinder(t_cylinder *cylinder);
 /************************/
 /* print debug function */
 /************************/
@@ -514,6 +517,7 @@ void				print_single_plane(t_plane *one_plane);
 t_type				string_to_type(char *type);
 t_object			create_object(char *type, void *object);
 t_intersection		intersection(double t, char *type, void *object);
+void				free_intersection(t_intersection *intersect);
 
 /************************************/
 /* intersection/intersection_list.c */

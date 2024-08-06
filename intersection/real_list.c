@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 10:23:58 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/03 16:35:00 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 15:58:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	free_list(t_list_intersect **head)
 	{
 		next_node = current->next;
 		//TODO:free(current->intersection);Free the intersection if it was dynamically allocated
+		free_intersection(current->intersection);
 		free(current);
 		current = next_node;
 	}
@@ -105,13 +106,13 @@ t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)
 	t_intersection inter2;
 	t_ray ray;
 
-	ray = transform_ray(old_ray, inversing_matrix(4, sphere.transform));
+	ray = transform_ray(old_ray, inversing_matrix(4, copy_matrix(4, 4, sphere.transform)));
 	sphere_to_ray = get_sphere_to_ray(sphere, ray);
 	discriminant = get_discriminant(sphere_to_ray, ray, sphere.diameter / 2.0); // diameter/2 for radius
 	if (discriminant < 0)
 	{
 		// No intersections, return an empty list
-		return NULL;
+		return (NULL);
 	}
 	t[0] = (-2.0 * dot(sphere_to_ray, ray.direction) - sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));
 	t[1] = (-2.0 * dot(sphere_to_ray, ray.direction) + sqrt(discriminant)) / (2.0 * dot(ray.direction, ray.direction));

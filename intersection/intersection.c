@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:17:19 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 15:55:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,35 @@ t_type	string_to_type(char *type)
 		return (T_CYLINDER);
 	else
 		return (T_SPHERE); // THIS IS TO COMPILE
+}
+
+#include <stdlib.h>
+
+// Function to free a single intersection
+void	free_intersection(t_intersection *intersect)
+{
+	if (!intersect)
+		return ;
+	// Check the type of object and free accordingly
+	if (intersect->obj.type == T_SPHERE)
+	{
+		t_sphere *sphere = (t_sphere *)intersect->obj.address;
+		free_single_sphere(sphere);
+	}
+	else if (intersect->obj.type == T_PLANE)
+	{
+		t_plane *plane = (t_plane *)intersect->obj.address;
+		free_single_plane(plane);
+	}
+	/*
+	else if (intersect->obj.type == T_CYLINDER)
+	{
+		t_cylinder *cylinder = (t_cylinder *)intersect->obj.address;
+		free_single_cylinder(cylinder);
+	}
+	*/
+	else
+		return ;
 }
 
 t_intersection	intersection(double t, char *type, void *obj_address)
