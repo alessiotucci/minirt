@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:26:21 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/31 11:17:57 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:09:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_sphere	create_sphere(char *id, t_vector center, double d, t_color c)
 	t_sphere	new_sphere;
 	double		**def;
 
-	def = create_matrix(4, 4);
+	def = malloc_matrix(4, 4);
 	create_identity_matrix(def);
 	new_sphere.identifier = id;
 	new_sphere.center = center;

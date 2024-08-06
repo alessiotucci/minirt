@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 18:49:23 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 18:36:44 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:08:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double	**copy_matrix(int rows, int cols, double **source)
 	int		i;
 	int		j;
 
-	destination = create_matrix(rows, cols);
+	destination = malloc_matrix(rows, cols);
 	i = 0;
 	while (i < rows)
 	{
@@ -50,7 +50,7 @@ double	**value_matrix(double a[4], double b[4], double c[4], double d[4])
 {
 	double	**new;
 
-	new = create_matrix(4, 4);
+	new = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, new);
 	copy_row_value(new[0], a);
 	copy_row_value(new[1], b);

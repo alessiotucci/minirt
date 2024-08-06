@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/03 19:45:29 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:07:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -346,7 +346,7 @@ t_vector	cross(t_vector v1, t_vector v2);
 /* Matrix operations */
 /*********************/
 void		free_heap_matrix(double **matrix, int rows);
-double		**create_matrix(int rows, int col);
+double		**malloc_matrix(int rows, int col);
 void		init_matrix(int rows, int cols, double matrix[rows][cols]);
 void		init_heap_matrix(int rows, int cols, double **matrix);
 void		print_int_matrix(int rows, int cols, double **matrix);

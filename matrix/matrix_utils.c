@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 16:25:08 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 17:43:09 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:07:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_heap_matrix(double **matrix, int rows)
 }
 
 //4) you can decide rows and cols!
-double	**create_matrix(int rows, int col)
+double	**malloc_matrix(int rows, int col)
 {
 	double	**new_matrix;
 	int	i;

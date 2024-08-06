@@ -6,12 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:16:40 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/28 15:16:31 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:10:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
+//TODO: leaks!
 t_vector	rotation_x(t_vector origin, double radians)
 {
 	double	**matrix;

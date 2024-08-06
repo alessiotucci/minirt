@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/03 16:35:25 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:17:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,10 @@ t_sphere *deep_copy_sphere(t_sphere *src)
 	copy->material = src->material;
 
 	// Deep copy the transform matrix//TODO: create a function to do that
-	copy->transform = create_matrix(4, 4);
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			copy->transform[i][j] = src->transform[i][j];
-		}
-	}
-
-	return copy;
+	copy->transform = malloc_matrix(4, 4);
+	//  358 | double  **copy_matrix(int rows, int cols, double **source);
+	copy->transform = copy_matrix(4, 4, src->transform);
+	return (copy);
 }
 
 t_plane *deep_copy_plane(t_plane *src)
@@ -55,15 +49,9 @@ t_plane *deep_copy_plane(t_plane *src)
 	copy->normal = src->normal;
 	copy->color = src->color;
 	//TODO: create a function to do that
-	copy->transform = create_matrix(4, 4);
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			copy->transform[i][j] = src->transform[i][j];
-		}
-	}
-	return copy;
+	copy->transform = malloc_matrix(4, 4);
+	copy->transform = copy_matrix(4, 4, src->transform);
+	return (copy);
 }
 
 t_type	string_to_type(char *type)

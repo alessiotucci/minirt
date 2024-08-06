@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/03 15:00:03 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:09:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	start_spheres(t_setting *set, char **details)
 	t_sphere	*new_sphere;
 	double		**def;
 
-	def = create_matrix(4, 4);
+	def = malloc_matrix(4, 4);
 	create_identity_matrix(def);
 	new_sphere = malloc(sizeof(t_sphere));;
 	if (!new_sphere)
@@ -56,7 +56,7 @@ void	start_planes(t_setting *set, char **details)
 	t_plane	*new_plane;
 	double		**def;
 
-	def = create_matrix(4, 4);
+	def = malloc_matrix(4, 4);
 	create_identity_matrix(def);
 	new_plane = malloc(sizeof(t_plane));;
 	if (!new_plane)

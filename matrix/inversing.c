@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 18:36:55 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:12:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ double	**divide_matrix(int size, double **source, double det)
 	int		i;
 	int		j;
 
-	new = create_matrix(size, size);
+	new = malloc_matrix(size, size);
 	init_heap_matrix(size, size, new);
 	i = 0;
 	while (i < size)
@@ -50,7 +50,7 @@ double	**matrix_of_cofactors(int size, double **matrix)
 	int		i;
 	int		j;
 
-	new = create_matrix(size, size);
+	new = malloc_matrix(size, size);
 	init_heap_matrix(size, size, new);
 	i = 0;
 	while (i < size)
@@ -72,7 +72,7 @@ double	**transposing(int rows, int cols, double **matrix)
 	int		i;
 	int		j;
 
-	ret = create_matrix(rows, cols);
+	ret = malloc_matrix(rows, cols);
 	init_heap_matrix(rows, cols, ret);
 	i = 0;
 	while (i < rows)
@@ -107,7 +107,7 @@ int	main()
 {
 	printf("** matrix y ***\n");
 	double	**y;
-	y = create_matrix(4, 4);
+	y = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, y);
 	y[0][0] = 6.0; y[0][1] = 4.0; y[0][2] = 4.0; y[0][3] = 4.0;
 	y[1][0] = 5.0; y[1][1] = 5.0; y[1][2] = 7.0; y[1][3] = 6.0;
@@ -122,7 +122,7 @@ int	main()
 		printf("It cannot be reverse\n");
 	printf("\n\n** matrix x ***\n");
 	double	**x;
-	x = create_matrix(4, 4);
+	x = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, x);
 	x[0][0] = -4.0; x[0][1] = 2.0; x[0][2] = -2.0; x[0][3] = -3.0;
 	x[1][0] = -9.0; x[1][1] = 6.0; x[1][2] = 2.0; x[1][3] = 6.0;
@@ -136,7 +136,7 @@ int	main()
 	printf("%sTEST 1%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [k]\n");
 	double	**k;
-	k = create_matrix(4, 4);
+	k = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, k);
 	k[0][0] = -5.0; k[0][1] = 2.0; k[0][2] = 6.0; k[0][3] = -8.0;
 	k[1][0] = 1.0; k[1][1] = -5.0; k[1][2] = 1.0; k[1][3] = 8.0;
@@ -150,7 +150,7 @@ int	main()
 	printf("%sTEST: 2%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [r]\n");
 	double	**r;
-	r = create_matrix(4, 4);
+	r = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, r);
 	r[0][0] = 8.0; r[0][1] = -5.0; r[0][2] = 9.0; r[0][3] = 2.0;
 	r[1][0] = 7.0; r[1][1] = 5.0; r[1][2] = 6.0; r[1][3] = 1.0;
@@ -165,7 +165,7 @@ int	main()
 	printf("%sTEST 3%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [e]\n");
 	double	**e;
-	e = create_matrix(4, 4);
+	e = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, e);
 	e[0][0] = 9.0; e[0][1] = 3.0; e[0][2] = 0.0; e[0][3] = 9.0;
 	e[1][0] = -5.0; e[1][1] = -2.0; e[1][2] = -6.0; e[1][3] = -3.0;
@@ -180,7 +180,7 @@ int	main()
 	printf("%sTEST 3 %s multiplying a product by its inverse\n", GREEN, RESET);
 	printf("Given the following 4x4 matrix a1\n");
 	double	**a1;
-	a1 = create_matrix(4, 4);
+	a1 = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, a1);
 	a1[0][0] = 9.0; a1[0][1] = 3.0; a1[0][2] = 0.0; a1[0][3] = 9.0;
 	a1[1][0] = -5.0; a1[1][1] = -2.0; a1[1][2] = -6.0; a1[1][3] = -3.0;
@@ -190,7 +190,7 @@ int	main()
 
 	printf("And the following matrix 4x4 b1\n");
 	double	**b1;
-	b1 = create_matrix(4, 4);
+	b1 = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, b1);
 	b1[0][0] = 9.0; b1[0][1] = 3.0; b1[0][2] = 0.0; b1[0][3] = 9.0;
 	b1[1][0] = -5.0; b1[1][1] = -2.0; b1[1][2] = -6.0; b1[1][3] = -3.0;
