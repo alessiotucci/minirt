@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:58:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 14:31:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ double	**inversing_matrix(int size, double **source)
 	mat_cofact = matrix_of_cofactors(size, source);
 	trans = transposing(size, size, mat_cofact);
 	inversed = divide_matrix(size, trans, determinant(source, size));
+	free_heap_matrix(mat_cofact, size);
+	free_heap_matrix(trans, size);
 	return (inversed);
 }
 
@@ -125,8 +127,7 @@ int	main()
 	}
 	else
 		printf("It cannot be reverse\n");
-	//free_heap_matrix(y, 4);
-	//return (-42);
+
 
 	printf("\n\n** matrix x ***\n");
 	double	**x;
@@ -142,6 +143,7 @@ int	main()
 		printf("It cannot be reverse\n");
 	free_heap_matrix(x, 4);
 	
+
 	printf("%sTEST 1%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [k]\n");
 	double	**k;
@@ -190,6 +192,7 @@ int	main()
 	free_heap_matrix(inversed2, 4);
 
 
+
 	printf("%sTEST 3 %s multiplying a product by its inverse\n", GREEN, RESET);
 	printf("Given the following 4x4 matrix a1\n");
 	double	**a1;
@@ -223,6 +226,10 @@ int	main()
 		printf("they different!\n");
 	else
 		printf("they the same\n");
+	free_heap_matrix(c1, 4);
+	free_heap_matrix(a1, 4);
+	free_heap_matrix(inverse_b1, 4);
+	free_heap_matrix(result, 4);
 	return (0);
 }
 //TODO: CHECK THE LEAKS WITH THIS COMMANDS
