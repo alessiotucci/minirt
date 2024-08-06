@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:39:46 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:28:53 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:52:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ double	determinant_n(double **matrix, int size)
 	return (result);
 }
 
+/* as you can see, now Determinant() free the matrix! */
 double	determinant(double **matrix, int size)
 {
 	double	result;

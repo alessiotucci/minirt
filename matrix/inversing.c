@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:12:33 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/06 12:58:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 //1 return 1 (true) if it is possible to invert the matrix
 //remember how to compare doubles
-int	is_matrix_invertible(int size, double **matrix)
+
+int	is_matrix_invertible(int s, double **matrix)
 {
-	if (comparing_double(determinant(matrix, size), 0.0))
+	if (comparing_double(determinant(copy_matrix(s, s, matrix), s), 0.0))
 		return (0);
 	else
 		return (1);
@@ -101,18 +102,22 @@ double	**inversing_matrix(int size, double **source)
 	inversed = divide_matrix(size, trans, determinant(source, size));
 	return (inversed);
 }
+
 /* main to test out the function */
-/*
+
 int	main()
 {
 	printf("** matrix y ***\n");
 	double	**y;
 	y = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, y);
+
 	y[0][0] = 6.0; y[0][1] = 4.0; y[0][2] = 4.0; y[0][3] = 4.0;
 	y[1][0] = 5.0; y[1][1] = 5.0; y[1][2] = 7.0; y[1][3] = 6.0;
 	y[2][0] = 4.0; y[2][1] = -9.0; y[2][2] = 3.0; y[2][3] = -7.0;
 	y[3][0] = 9.0; y[3][1] = 1.0; y[3][2] = 7.0; y[3][3] = -6.0;
+
+
 	if (is_matrix_invertible(4, y))
 	{
 		printf("nice! it can be invert!\n");
@@ -120,6 +125,9 @@ int	main()
 	}
 	else
 		printf("It cannot be reverse\n");
+	//free_heap_matrix(y, 4);
+	//return (-42);
+
 	printf("\n\n** matrix x ***\n");
 	double	**x;
 	x = malloc_matrix(4, 4);
@@ -132,6 +140,7 @@ int	main()
 		printf("nice! it can be invert!\n");
 	else
 		printf("It cannot be reverse\n");
+	free_heap_matrix(x, 4);
 	
 	printf("%sTEST 1%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [k]\n");
@@ -143,9 +152,11 @@ int	main()
 	k[2][0] = 7.0; k[2][1] = 7.0; k[2][2] = -6.0; k[2][3] = -7.0;
 	k[3][0] = 1.0; k[3][1] = -3.0; k[3][2] = 7.0; k[3][3] = 4.0;
 	print_int_matrix(4, 4, k);
-	printf("determinant k: [%f]\n", determinant(k, 4));
+	printf("determinant k: [%f]\n", determinant(copy_matrix(4, 4, k), 4));
 	double **inversed = inversing_matrix(4, k);
 	print_int_matrix(4, 4, inversed);
+	//free_heap_matrix(k, 4);
+	free_heap_matrix(inversed, 4);
 
 	printf("%sTEST: 2%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [r]\n");
@@ -157,9 +168,10 @@ int	main()
 	r[2][0] = -6.0; r[2][1] = 0.0; r[2][2] = 9.0; r[2][3] = 6.0;
 	r[3][0] = -3.0; r[3][1] = 0.0; r[3][2] = -9.0; r[3][3] = -4.0;
 	print_int_matrix(4, 4, r);
-	printf("determinant r: [%f]\n", determinant(r, 4));
+	printf("determinant r: [%f]\n", determinant(copy_matrix(4, 4, r), 4));
 	double **inversed1 = inversing_matrix(4, r);
 	print_int_matrix(4, 4, inversed1);
+	free_heap_matrix(inversed1, 4);
 
 
 	printf("%sTEST 3%s\n", RED, RESET);
@@ -172,9 +184,10 @@ int	main()
 	e[2][0] = -4.0; e[2][1] = 9.0; e[2][2] = 6.0; e[2][3] = 4.0;
 	e[3][0] = -7.0; e[3][1] = 6.0; e[3][2] = 6.0; e[3][3] = 2.0;
 	print_int_matrix(4, 4, e);
-	printf("determinant e: [%f]\n", determinant(e, 4));
+	printf("determinant e: [%f]\n", determinant(copy_matrix(4, 4, e), 4));
 	double **inversed2 = inversing_matrix(4, e);
 	print_int_matrix(4, 4, inversed2);
+	free_heap_matrix(inversed2, 4);
 
 
 	printf("%sTEST 3 %s multiplying a product by its inverse\n", GREEN, RESET);
@@ -212,6 +225,5 @@ int	main()
 		printf("they the same\n");
 	return (0);
 }
-*/
 //TODO: CHECK THE LEAKS WITH THIS COMMANDS
 //valgrind   --leak-check=full --show-leak-kinds=all ./a.out
