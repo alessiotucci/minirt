@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
+#    By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/08/01 15:59:18 by atucci           ###   ########.fr        #
+#    Updated: 2024/09/09 18:32:40 by ftroise          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,12 +72,13 @@ SOURCE = ./main.c \
 		 ./shadows/phong_reflection_model.c \
 
 
+
 HEADERS = ./minirt.h \
 
 # ***********************************************************
 # setting up the flag that will be used for the compilation *
 # ***********************************************************
-FLAG = -Wall -Wextra -Werror -O3
+FLAG = -Wall -Wextra -Werror -O3 -g
 
 
 # ***************************************************************

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_ray.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:54:27 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/31 14:49:11 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/20 21:23:27 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)
 //TODO:
 //MODIFICIATION
 //1) function intersection() return a t_intersection object
-t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)
+t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray, t_mlx *mlx)
 {
 	t_vector			sphere_to_ray;
 	double				discriminant;
@@ -65,8 +65,11 @@ t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)
 	//printf("⚠️ printing out the VALUES of the sphere.transform matrix\n");
 	//print_int_matrix(4, 4, sphere.transform);
 	//printf("*** end of verbose LOG... moving on the next function***\n");
-	inter1 = intersection(t[0], sphere.identifier, &sphere);
-	inter2 = intersection(t[1], sphere.identifier, &sphere);
+	if (!mlx->s)
+		mlx->s = 0;
+	inter1 = intersection(t[0], sphere.identifier, &sphere, mlx->s);
+	inter2 = intersection(t[1], sphere.identifier, &sphere, mlx->s);
+	mlx->s++;
 	if (comparing_double(t[0], t[1]))
 	{
 		list = create_intersection_list(1);
@@ -133,5 +136,5 @@ int	main()
 	print_intersection_list(test4);
 	free_intersection_list(test4);
 }
-*/ 
+*/
 // gcc ../matrix/*.c ../vector/*.c create_ray.c intersection_ray.c  ../extra/comparing.c ../extra/print_debug.c ../shapes/sphere.c  ../libft/libft.a -lm

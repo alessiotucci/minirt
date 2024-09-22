@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shearing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:41:57 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/02 14:09:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/16 09:43:18 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vector	shearing(t_vector origin, double value[6])
 	double		**matrix;
 	t_vector	result;
 
-	matrix = create_matrix(4, 4);
+	matrix = malloc_matrix(4, 4);
 	create_identity_matrix(matrix);
 	matrix[0][1] = value[0];
 	matrix[0][2] = value[1];

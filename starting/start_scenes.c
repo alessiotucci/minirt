@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_scenes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 17:02:57 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/27 15:24:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:08:09 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	start_amb_light(t_setting *set, char **details)
 	}
 }
 
+
 void	start_camera(t_setting *set, char **details)
 {
 	ft_printf("\n\t%s*SETTING UP CAMERA%s*\n", CYAN, RESET);
@@ -46,6 +47,7 @@ void	start_camera(t_setting *set, char **details)
 	}
 
 }
+
 //DOUBLE CHECK THIS ONE
 void	start_lights(t_setting *set, char **details)
 {

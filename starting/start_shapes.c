@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/29 15:44:44 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/16 09:39:20 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	start_spheres(t_setting *set, char **details)
 	t_sphere	*new_sphere;
 	double		**def;
 
-	def = create_matrix(4, 4);
+	def = malloc_matrix(4, 4);
 	create_identity_matrix(def);
 	new_sphere = malloc(sizeof(t_sphere));;
 	if (!new_sphere)

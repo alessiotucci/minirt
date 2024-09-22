@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   translations.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:15:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 09:59:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/16 09:43:49 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ double	**create_translation_matrix(t_vector move)
 {
 	double	**matrix;
 
-	matrix = create_matrix(4, 4);
+	matrix = malloc_matrix(4, 4);
 	create_identity_matrix(matrix);
 	last_cols_value(4, matrix, move);
 
@@ -38,7 +38,7 @@ t_vector	translations(t_vector move, t_vector origin)
 	//1) Create an identity matrix
 	double	**matrix;
 
-	matrix = create_matrix(4, 4);
+	matrix = malloc_matrix(4, 4);
 	create_identity_matrix(matrix);
 	//2) add the value to the last columns
 	last_cols_value(4, matrix, move);
@@ -51,7 +51,7 @@ t_vector	inverse_translations(t_vector move, t_vector origin)
 	double	**matrix;
 	//double	**rev_matrix;
 
-	matrix = create_matrix(4, 4);
+	matrix = malloc_matrix(4, 4);
 	create_identity_matrix(matrix);
 	last_cols_value(4, matrix, move);
 	//rev_matrix = inversing_matrix(4, matrix);

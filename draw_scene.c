@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:24:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 15:36:19 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:52:45 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 // Use the horizontal FOV of 70 degrees.
 // Convert FOV from degrees to radians
 // Calculate the width of the image plane
+
 void	fov_calculation(t_camera *cam, double *image_plane_width)
 {
 	double	fov_rad;
@@ -33,6 +34,7 @@ void	aspect_ratio(t_mlx *mlx, double *aspect_ratio)
 
 //Image Plane Dimensions: Based on the FOV and aspect ratio,
 //determine the width and height of the image plane.
+
 void	image_plane_dimensions(t_mlx *mlx, double *width, double *height)
 {
 	double	aspect_ratio_value;
@@ -42,7 +44,9 @@ void	image_plane_dimensions(t_mlx *mlx, double *width, double *height)
 	*height = *width / aspect_ratio_value;
 }
 
+
 //Step 1: Define the Camera's Image Plane
+
 void	camera_image_plane(t_mlx *mlx)
 {
 	double	width;
@@ -57,7 +61,7 @@ void	camera_image_plane(t_mlx *mlx)
 
 //TODO: this was the entry point
 /* There is no need to center the sphere here ... */
-void	draw_scene(t_mlx *data)
+/*void	draw_scene(t_mlx *data)
 {
 	clock_t	start_time;
 	clock_t	end_time;
@@ -68,4 +72,25 @@ void	draw_scene(t_mlx *data)
 	end_time = clock();
 	printf("\n\tThe while loop took %s%.2f seconds%s to execute.\n", YELLOW, \
 		(((double)end_time - start_time) / CLOCKS_PER_SEC), RESET);
+}originale*/
+
+void draw_scene(t_mlx *data) {
+    // Riempie lo sfondo di nero
+    int x, y;
+    for (y = 0; y < data->height; y++) {
+        for (x = 0; x < data->width; x++) {
+            my_mlx_pixel_put(data, x, y, COLOR_BLACK);
+        }
+    }
+    printf("SFONDO NERO RIDISEGNATO\n");
+
+    // Chiama la funzione originale per disegnare la scena
+    camera_image_plane(data);
+    clock_t start_time = clock();
+    cast_rays(data);
+    clock_t end_time = clock();
+    printf("\n\tThe while loop took %s%.2f seconds%s to execute.\n", YELLOW, 
+           (((double)end_time - start_time) / CLOCKS_PER_SEC), RESET);
+
+    printf("SCENA RIDISEGNATA\n");
 }

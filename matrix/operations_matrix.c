@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_matrix.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 20:52:18 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/01 18:37:08 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/16 09:34:05 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ double	**multiply_matrix(int cols_a, int rows_b, double **a, double **b)
 	int		i;
 	int		j;
 
-	new = create_matrix(4, 4);
+	new = malloc_matrix(4, 4);
 	if (cols_a != rows_b)
 		return (ft_printf("You dont know how to multiply matrix\n"), new);
 	init_heap_matrix(4, 4, new);
@@ -106,18 +106,18 @@ int main()
 	double	**c;
 
 	//test identity matrix
-	double	**identity = create_matrix(4, 4);
+	double	**identity = malloc_matrix(4, 4);
 	create_identity_matrix(identity);
 	printf("INDENTITY MATRIX\n");
 	print_int_matrix(4, 4, identity);
 
 	double	**d;
-	d = create_matrix(4, 4);
+	d = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, d);
 	t_vector	e;
-	a = create_matrix(4, 4);
+	a = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, a);
-	b = create_matrix(4, 4);
+	b = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, b);
 	a[0][0] = 1.0; a[0][1] = 4.0; a[0][2] = 4.0; a[0][3] = 4.0;
 	a[1][0] = 1.0; a[1][1] = 1.0; a[1][2] = 1.0; a[1][3] = 1.0;

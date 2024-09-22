@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_list.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/31 12:40:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/22 09:49:55 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 //	int count;
 //}	t_intersection_list;
 
-//TODO: GPT gave this to me 
+//TODO: GPT gave this to me
 void	add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src)
 {
 	for (int i = 0; i < src->count; i++)
@@ -51,16 +51,48 @@ void	add_intersection(t_intersection_list *l, int index, t_intersection i)
 	if (index >= 0 && index < l->count)
 		l->intersections[index] = i;
 }
+void free_sphere(t_sphere *sphere) {
+    if (!sphere) return;
+
+    // Libera la matrice di trasformazione
+    if (sphere->transform)
+	{
+        free_heap_matrix(sphere->transform, 4); // Supponendo che la matrice sia 4x4
+    }
+
+    // Libera l'identificatore se è stato allocato dinamicamente
+    if (sphere->identifier) {
+        free(sphere->identifier);
+    }
+
+    // Libera la struttura sfera
+    free(sphere);
+}
+
+static void free_intersection(t_intersection *inter) {
+    if (inter->obj.type == T_SPHERE) {
+        // Libera la copia profonda della sfera
+        free_sphere((t_sphere *)inter->obj.address);
+    }
+    // Se ci sono altri tipi di oggetti, aggiungili qui
+}
+
 
 /* 4) freeing the list of intersection */
-void	free_intersection_list(t_intersection_list *list)
-{
-	if (list)
-	{
-		if (list->intersections)
-			free(list->intersections);
-		free(list);
-	}
+void free_intersection_list(t_intersection_list *list) {
+    if (list == NULL)
+        return;
+
+    for (int i = 0; i < list->count; i++) {
+        // Stampa le informazioni dell'intersezione per il debug
+        print_intersection_data(&list->intersections[i]);
+
+        // Libera ogni singola intersezione
+        free_intersection(&list->intersections[i]);
+    }
+
+    free(list->intersections); // Libera l'array di intersezioni
+    free(list); // Libera la lista stessa
 }
 
 void	print_intersection(t_intersection i)
@@ -127,5 +159,3 @@ int	main()
 }
 	*/
 // gcc ../matrix/*.c ../vector/*.c   ../extra/comparing.c ../extra/print_debug.c ../shapes/sphere.c  ../libft/libft.a ../raycasting/intersection_ray.c ../raycasting/create_ray.c  ../raycasting/utils_obj.c  intersection_list.c -lm
-
-

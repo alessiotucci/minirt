@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_elem_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:10:38 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/12 11:35:32 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/08 12:31:06 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	add_sphere_to_array(t_sphere *to_add, t_setting *set)
 {
 	set->spheres[set->num_spheres] = to_add;
 	set->num_spheres++;
+	print_sphere_details(to_add);
 }
 
 void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set)

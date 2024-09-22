@@ -3,35 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:22:17 by ftroise           #+#    #+#             */
-/*   Updated: 2024/07/25 17:27:25 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/16 10:54:48 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
 
-t_intersection	*hit(t_intersection_list *list)
+t_intersection *hit(t_intersection_list *list)
 {
-	t_intersection	*closest_hit;
-	int				i;
+    t_intersection *closest_hit;
+    int i;
 
-	closest_hit = NULL;
-	i = 0;
-	while (i < list->count)
-	{
-		if (list->intersections[i].t >= 0 &&
-			(closest_hit == NULL || list->intersections[i].t < closest_hit->t))
-		{
-			closest_hit = &list->intersections[i];
-		}
-		i++;
-	}
-	return (closest_hit);
+    closest_hit = NULL;
+    i = 0;
+    while (i < list->count)
+    {
+        if (list->intersections[i].t >= 0 &&
+            (closest_hit == NULL || list->intersections[i].t < closest_hit->t))
+        {
+            closest_hit = &list->intersections[i];
+        }
+        i++;
+    }
+    return (closest_hit);
 }
-
 /*
 int	main()
 {

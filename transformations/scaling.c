@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scaling.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:17:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 10:11:07 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/16 09:43:03 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ double	**create_scaling_matrix(t_vector move)
 {
 	double		**matrix;
 
-	matrix = create_matrix(4, 4);
+	matrix = malloc_matrix(4, 4);
 	identity_value_matrix(matrix, move);
 	return (matrix);
 }
@@ -35,7 +35,7 @@ t_vector	scaling(t_vector move, t_vector origin)
 	double		**matrix;
 	t_vector	result;
 
-	matrix = create_matrix(4, 4);
+	matrix = malloc_matrix(4, 4);
 	identity_value_matrix(matrix, move);
 	result = matrix_x_vector(matrix, origin);
 	return (free_heap_matrix(matrix, 4), result);
@@ -47,7 +47,7 @@ t_vector	scaling_inverse(t_vector move, t_vector origin)
 	double		**inversed;
 	t_vector	result;
 
-	matrix = create_matrix(4, 4);
+	matrix = malloc_matrix(4, 4);
 	identity_value_matrix(matrix, move);
 	//printf("scaling matrix \n");
 	//print_int_matrix(4, 4, matrix);

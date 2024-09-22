@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 15:47:51 by atucci           ###   ########.fr       */
+/*   Updated: 2024/08/03 16:55:21 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	print_light_source(t_mlx *data, int x, int y)
 	my_mlx_pixel_put(data, x + 1, y - 1, COLOR_WHITE);
 	my_mlx_pixel_put(data, x -1 , y + 1, COLOR_WHITE);
 }
-
+/*
 //TODO: LAST VERSION OF GPT
 void	cast_rays(t_mlx *data)
 {
@@ -96,7 +96,7 @@ void	cast_rays(t_mlx *data)
 		while (x < data->width)
 		{
 			each_pixel_calculation(data, x, y);
-			/*ray = create_ray_from_camera(data, x, y);
+			qui iniziama un commento ray = create_ray_from_camera(data, x, y);
 			all_intersections = malloc(sizeof(t_intersection_list));
 			all_intersections->count = 0;
 			all_intersections->intersections = malloc(sizeof(t_intersection) * data->setting->num_spheres * 2);
@@ -134,7 +134,7 @@ void	cast_rays(t_mlx *data)
 			}
 			free(all_intersections->intersections);
 			free(all_intersections);
-			*/
+			qui finiva il commento
 		x++;
 		}
 	y++;
@@ -145,5 +145,43 @@ void	cast_rays(t_mlx *data)
 	int light_x = (int)screen_coords.x;
 	int light_y = (int)screen_coords.y;
 	print_light_source(data, light_x, light_y);
+}*/
+
+void cast_rays(t_mlx *data)
+{
+    int x;
+    int y;
+
+    y = 0;
+    while (y < data->height)
+    {
+        x = 0;
+        while (x < data->width)
+        {
+            each_pixel_calculation(data, x, y);
+            x++;
+        }
+        y++;
+    }
+
+    // Stampa la sorgente di luce
+    t_vector light_position = data->setting->lights[0]->position;
+    t_vector screen_coords = project_point_to_2d(light_position, data->setting->camera, data->width, data->height);
+    int light_x = (int)screen_coords.x;
+    int light_y = (int)screen_coords.y;
+    print_light_source(data, light_x, light_y);
 }
+
+/*static t_color get_color_intersect(t_object obj)
+{
+    if (obj.type == T_SPHERE)
+    {
+        t_sphere *sphere = (t_sphere *)obj.address;
+        return sphere->color;
+    }
+    // Aggiungere altri tipi di oggetti se necessari
+    t_color default_color = {0, 0, 0}; // Default to black if object type is unknown
+    return default_color;
+}
+*/
 

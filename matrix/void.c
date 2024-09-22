@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   void.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:45:36 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/02 17:00:52 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/16 09:34:25 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../minirt.h"
+
+
 
 void	divide_matrix_void(int size, double **source, double det)
 {
@@ -82,7 +84,7 @@ void	inversing_matrix_void(int size, double **source)
 		printf("Cannot reverse it!\n");
 		return;
 	}
-	new = create_matrix(4, 4);
+	new = malloc_matrix(4, 4);
 	matrix_of_cofactors_void(size, source, new);
 	transposing(size, size, new);
 	det = determinant(new, size);
@@ -94,7 +96,7 @@ int	main()
 {
 	printf("MATRIX OF %sCOFACTORS%s\n", YELLOW, RESET);
 	double	**k1;
-	k1 = create_matrix(4, 4);
+	k1 = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, k1);
 	k1[0][0] = -5.0; k1[0][1] = 2.0; k1[0][2] = 6.0; k1[0][3] = -8.0;
 	k1[1][0] = 1.0; k1[1][1] = -5.0; k1[1][2] = 1.0; k1[1][3] = 8.0;
@@ -105,13 +107,13 @@ int	main()
 	print_int_matrix(4, 4, result0);
 	printf("void: \n");
 	double **newy;
-	newy = create_matrix(4, 4);
+	newy = malloc_matrix(4, 4);
 	matrix_of_cofactors_void(4, k1, newy);
 	print_int_matrix(4, 4, newy);
 
 	printf("** matrix y ***\n");
 	double	**y;
-	y = create_matrix(4, 4);
+	y = malloc_matrix(4, 4);
 	y[0][0] = 6.0; y[0][1] = 4.0; y[0][2] = 4.0; y[0][3] = 4.0;
 	y[1][0] = 5.0; y[1][1] = 5.0; y[1][2] = 7.0; y[1][3] = 6.0;
 	y[2][0] = 4.0; y[2][1] = -9.0; y[2][2] = 3.0; y[2][3] = -7.0;
@@ -125,7 +127,7 @@ int	main()
 		printf("It cannot be reverse\n");
 	printf("\n\n** matrix x ***\n");
 	double	**x;
-	x = create_matrix(4, 4);
+	x = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, x);
 	x[0][0] = -4.0; x[0][1] = 2.0; x[0][2] = -2.0; x[0][3] = -3.0;
 	x[1][0] = -9.0; x[1][1] = 6.0; x[1][2] = 2.0; x[1][3] = 6.0;
@@ -139,7 +141,7 @@ int	main()
 	printf("%sTEST 1%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [k]\n");
 	double	**k;
-	k = create_matrix(4, 4);
+	k = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, k);
 	k[0][0] = -5.0; k[0][1] = 2.0; k[0][2] = 6.0; k[0][3] = -8.0;
 	k[1][0] = 1.0; k[1][1] = -5.0; k[1][2] = 1.0; k[1][3] = 8.0;
@@ -154,7 +156,7 @@ int	main()
 	printf("%sTEST: 2%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [r]\n");
 	double	**r;
-	r = create_matrix(4, 4);
+	r = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, r);
 	r[0][0] = 8.0; r[0][1] = -5.0; r[0][2] = 9.0; r[0][3] = 2.0;
 	r[1][0] = 7.0; r[1][1] = 5.0; r[1][2] = 6.0; r[1][3] = 1.0;
@@ -170,7 +172,7 @@ int	main()
 	printf("%sTEST 3%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [e]\n");
 	double	**e;
-	e = create_matrix(4, 4);
+	e = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, e);
 	e[0][0] = 9.0; e[0][1] = 3.0; e[0][2] = 0.0; e[0][3] = 9.0;
 	e[1][0] = -5.0; e[1][1] = -2.0; e[1][2] = -6.0; e[1][3] = -3.0;
@@ -186,7 +188,7 @@ int	main()
 	printf("%sTEST 3 %s multiplying a product by its inverse\n", GREEN, RESET);
 	printf("Given the following 4x4 matrix a1\n");
 	double	**a1;
-	a1 = create_matrix(4, 4);
+	a1 = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, a1);
 	a1[0][0] = 9.0; a1[0][1] = 3.0; a1[0][2] = 0.0; a1[0][3] = 9.0;
 	a1[1][0] = -5.0; a1[1][1] = -2.0; a1[1][2] = -6.0; a1[1][3] = -3.0;
@@ -196,7 +198,7 @@ int	main()
 
 	printf("And the following matrix 4x4 b1\n");
 	double	**b1;
-	b1 = create_matrix(4, 4);
+	b1 = malloc_matrix(4, 4);
 	init_heap_matrix(4, 4, b1);
 	b1[0][0] = 9.0; b1[0][1] = 3.0; b1[0][2] = 0.0; b1[0][3] = 9.0;
 	b1[1][0] = -5.0; b1[1][1] = -2.0; b1[1][2] = -6.0; b1[1][3] = -3.0;

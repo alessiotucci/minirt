@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 17:16:03 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/20 21:31:55 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "mlx/mlx.h"
 # include "libft/libft.h"
+# include <string.h>
+# include <pthread.h>
 
 /***********************************************************************/
 /*The open and creat functions are declared in the header file fcntl.h */
@@ -40,7 +42,7 @@
 # define ESCAPE 53
 
 //TODO: CHECK UBUNTU CODES
-# define LEFT 65361
+# define LEFT 1
 # define RIGHT 65363
 # define W 119
 # define A 97
@@ -49,6 +51,9 @@
 # define ESC 65307
 # define NORTH_SOUTH 0
 # define EAST_WEST 1
+# define RIGHT_BUTTON 3
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
 
 /* Define color macros */
 # define BLUE    "\033[1;34m"
@@ -58,6 +63,7 @@
 # define CYAN    "\033[1;36m"
 # define YELLOW  "\033[1;33m"
 # define RED     "\033[1;31m"
+# define WHITE   "\033[1;37m"
 # define RESET   "\033[0m"
 /* Define Background colors macros */
 # define BG_RESET        "\033[49m"
@@ -83,33 +89,43 @@
 # define COLOR_YELLOW 0xFFFF00
 # define COLOR_MAGENTA 0xFF00FF
 # define COLOR_CYAN 0x00FFFF
+# define COLOR_DARKGREY 0xA9A9A9
 
 /***************************************/
 /* defining this for comparing doubles */
 /***************************************/
 # define EPSILON 0.00001
 
+/***************************************/
+/* new definition for movement         */
+/***************************************/
+
 /*TODO:ADDITIONAL STRUCTS
 * Ray Struct: Represents a ray in the scene.
 * Intersection Struct: Represents the result of a ray-object intersection
 * Material Struct: Represents the material properties of objects:TODO BONUS!
 */
-typedef struct s_color
-{
-	double	r;
-	double	g;
-	double	b;
-}	t_color;
 
-typedef struct s_material
-{
-	t_color	color;
-	double	ambient;
-	double	diffuse;
-	double	specular;
-	double	shininess;
+typedef struct s_color {
+    double r;
+    double g;
+    double b;
+    double ambient;    // Aggiunto per gestire il contributo di luce ambientale
+    double diffuse;    // Aggiunto per gestire il contributo di luce diffusa
+    double specular;   // Aggiunto per gestire il contributo di luce speculare
+    double is_shadow;  // Aggiunto per gestire l'ombra
+    double reflect;    // Aggiunto per gestire la riflessione
+    double refract;    // Aggiunto per gestire la rifrazione
+} t_color;
+typedef struct s_material {
+    t_color color;
+    double ambient;
+    double diffuse;
+    double specular;
+    double shininess;
+    double refract;    // Aggiunto per gestire la rifrazione
+} t_material;
 
-}	t_material;
 
 //TODO: small update with the 'w'
 typedef struct s_vector
@@ -120,11 +136,6 @@ typedef struct s_vector
 	double	w;
 }	t_vector;
 
-typedef struct s_ray
-{
-	t_vector	origin;
-	t_vector	direction;
-}	t_ray;
 
 // Define the enum for the object types
 typedef enum e_type
@@ -141,6 +152,7 @@ typedef struct s_object
 {
 	t_type	type;
 	void	*address;
+	int num_objects;
 }	t_object;
 
 /* let's see if it is usefult ***********************************************/
@@ -148,8 +160,19 @@ typedef struct s_object
 typedef struct s_intersection
 {
 	double	t;
+	t_vector position; // Aggiunto come membro per la posizione di impatto
+    t_vector normal;   // Aggiunto come membro per la normale di impatto
 	t_object	obj;
+	t_color     color;
 }	t_intersection;
+
+typedef struct s_ray
+{
+	t_vector	origin;
+	t_vector	direction;
+	t_intersection hit; // Aggiunto per includere le informazioni di intersezione
+}	t_ray;
+
 
 typedef struct s_intersection_list
 {
@@ -173,6 +196,7 @@ typedef struct s_camera
 	int			fov;
 	double		image_plane_height;
 	double		image_plane_width;
+	double		view_distance;//aggiornato
 }	t_camera;
 
 typedef struct s_light
@@ -183,7 +207,7 @@ typedef struct s_light
 	t_color		color;
 }	t_light;
 
-typedef struct s_sphere
+/*typedef struct s_sphere
 {
 	char		*identifier;
 	t_vector	center;
@@ -192,7 +216,33 @@ typedef struct s_sphere
 	double		**transform;
 	t_material	material;//THIS IS LAST CHANGE
 
-}	t_sphere;
+}	t_sphere;*/
+
+typedef struct s_texture
+{
+    void    *img;
+    char    *path;
+    int     width;
+    int     height;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+    char    *addr;
+} t_texture;
+
+typedef struct s_sphere
+{
+    char        *identifier;
+    t_vector    center;
+    double      diameter;
+    t_color     color;
+    t_material  material;
+    t_texture   texture;
+    t_texture   bump;
+	double		**transform;
+	t_object obj;
+
+} t_sphere;
 
 typedef struct s_plane
 {
@@ -212,6 +262,8 @@ typedef struct s_cylinder
 	t_color		color;
 }	t_cylinder;
 
+
+
 typedef struct s_setting
 {
 	t_amb_light		*amb_light;
@@ -226,6 +278,12 @@ typedef struct s_setting
 	int				num_cylinders;
 	int				num_cones;
 }	t_setting;
+
+
+typedef struct s_event
+{
+    int mouse;  // 1 se il mouse è attivo, 0 altrimenti
+} t_event;
 
 /**********************************************************************/
 /* Define the struct to use for managing windows, image a other stuff */
@@ -243,7 +301,22 @@ typedef struct s_mlx
 	int			endian;
 	char		*img_string;
 	t_setting 	*setting;
-}		t_mlx;
+	t_object *selected_object;
+	int is_object_selected;
+	int k;  //mi serve un counter poer proseguire l'aggiornamento dell'immagine per capire dove va in fault
+	int s; //mi serve per tenere traccia delle copie delle sfere create e liberare quella precedente
+
+
+} t_mlx;
+
+// Struttura per i dati dei thread
+typedef struct s_line_trd
+{
+    int i;
+    t_mlx *mlx;
+    pthread_t trd;
+} t_line_trd;
+
 
 int			parsing_map(char *map, t_setting *set);
 void		create_setting(char **line, t_setting *set);
@@ -326,7 +399,7 @@ t_vector	cross(t_vector v1, t_vector v2);
 /* Matrix operations */
 /*********************/
 void		free_heap_matrix(double **matrix, int rows);
-double		**create_matrix(int rows, int col);
+double		**malloc_matrix(int rows, int col);
 void		init_matrix(int rows, int cols, double matrix[rows][cols]);
 void		init_heap_matrix(int rows, int cols, double **matrix);
 void		print_int_matrix(int rows, int cols, double **matrix);
@@ -427,7 +500,7 @@ void	each_pixel_calculation(t_mlx *data, int x, int y);
 /*********************************/
 /* Raycasting/intersection_ray.c */
 /*********************************/
-t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
+t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray, t_mlx *mlx);
 
 /***********************************/
 /* Raycasting/transformation_ray.c */
@@ -444,6 +517,7 @@ int			calculate_sphere_color(t_intersection *intersection);
 /*freeing the function  */
 /************************/
 void		free_struct(t_setting *set);
+void free_sphere(t_sphere *sphere);
 /************************/
 /* print debug function */
 /************************/
@@ -483,13 +557,14 @@ int					print_type(t_object obj);
 void				print_single_sphere(t_sphere *one_sphere);
 void				print_single_cylinder(t_cylinder *one_cylinder);
 void				print_single_plane(t_plane *one_plane);
+void 				print_intersection_data(t_intersection *intersection);
 
 /*******************************/
 /* intersection/intersection.c */
 /*******************************/
 t_type				string_to_type(char *type);
 t_object			create_object(char *type, void *object);
-t_intersection		intersection(double t, char *type, void *object);
+t_intersection		intersection(double t, char *type, void *object, int s);
 
 /************************************/
 /* intersection/intersection_list.c */
@@ -503,6 +578,7 @@ void				free_intersection_list(t_intersection_list *list);
 /* draw_scene/draw_scene.c */
 /***************************/
 void				draw_scene(t_mlx *data);
+
 
 /************/
 /* normal.c */
@@ -527,4 +603,22 @@ void	print_material(t_material mat);
 t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
 
 t_color	lambert_formula(t_color color, t_light light, t_vector point, t_vector normal);
+
+/**********************/
+/*   moves_objects	  */
+/**********************/
+//void selected_obj(int x, int y, t_mlx *mlx);
+//void build_camray(t_mlx *mlx, t_ray *ray, float x, float y);
+void render(t_mlx *mlx);
+//t_object *get_closest_obj(t_ray *ray, t_object *obj_list, t_intersection *hit);
+//t_object *get_closest_sphere(t_ray *ray, t_sphere **spheres, int num_spheres, t_intersection *hit);
+void move_obj(t_mlx *mlx, int x, int y);
+t_color color_obj(t_object *obj, t_intersection *hit);
+int mouse_click(int button, int x, int y, t_mlx *mlx);
+t_vector screen_to_world(int x, int y, t_mlx *mlx);
+
+//funzione di debug
+void print_sphere_details(t_sphere *sphere);
+void debug_print_data(t_mlx *data);
+
 #endif
