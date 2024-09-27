@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/27 17:50:56 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/27 19:18:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ t_color	get_color_intersect(t_object obj)
 	}
 	if (obj.type == T_PLANE)
 	{
-		printf("ok: color of the plane is ");
+		//printf("ok: color of the plane is ");
 		plane = (t_plane *)obj.address; // casting
 		//print_single_plane(plane);
-		print_color(plane->color);
+		//print_color(plane->color);
 		return (plane->color);
 	}
 	return (create_color(1, 1, 1));
@@ -99,13 +99,13 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	t_ray	ray;
 	t_list_intersect *all_intersections = NULL;
 	t_intersection *closest_intersection;
-	//t_list_intersect *sphere_intersections;
+	t_list_intersect *sphere_intersections;
 	//t_list_intersect *cylinder_intersections;
 	int	i;
 
 	ray = create_ray_from_camera(data, x, y);
 	i = 0;
-	/*
+	
 	while (i < data->setting->num_spheres)
 	{
 		sphere_intersections = intersect_sphereV2(*data->setting->spheres[i], ray);
@@ -113,7 +113,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 			concatenate_lists(&all_intersections, sphere_intersections);
 	i++;
 	}
-	*/
+	
 	
 	//Starting working here to see a plane on the screen
 	
@@ -154,10 +154,12 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	//	t_color color = lighting(m, *data->setting->lights[0], point, eye, normal);
 		t_color std = get_color_intersect(closest_intersection->obj);
 		t_color color = lambert_formula(std, *data->setting->lights[0], point, normal);
-		printf("NOT OK color: ");
-		print_color(std);
-		(void)color;
-		my_mlx_pixel_put(data, x, y, create_trgb(std));
+		printf("The issue is in lamber_formula() that is going to black out planes colors");
+		//print_color(std);
+		if (closest_intersection->obj.type != T_PLANE)
+			my_mlx_pixel_put(data, x, y, create_trgb(color));
+		else
+			my_mlx_pixel_put(data, x, y, create_trgb(std));
 		return ;
 	}
 	else
