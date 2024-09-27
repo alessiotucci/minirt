@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 15:09:55 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/27 15:05:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	t_intersection *closest_intersection;
 	t_list_intersect *sphere_intersections;
 	//t_list_intersect *plane_intersections;
+	//t_list_intersect *cylinder_intersections;
 	int	i;
 
 	ray = create_ray_from_camera(data, x, y);
@@ -103,19 +104,33 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 			concatenate_lists(&all_intersections, sphere_intersections);
 	i++;
 	}
-	i = 0;
 	
+	//Starting working here to see a plane on the screen
 	/*
+	i = 0;
 	while (i < data->setting->num_planes)
 	{
-		//printf("%sDEBUG%s sphere intersection[%d], please wait...\n", RED, RESET, i);
+		//printf("%sDEBUG%s plane intersection[%d], please wait...\n", RED, RESET, i);
 		plane_intersections = intersect_plane(*data->setting->planes[i], ray);//TODO:
 		if (plane_intersections)
 			concatenate_lists(&all_intersections, plane_intersections);
 	i++;
 	}
 	*/
-	
+
+	//Starting working here to try see a cylinder on the screen
+	/*
+	i = 0;
+	while (i < data->setting->num_cylinders)
+	{
+		//printf("%sDEBUG%s cylinder intersection[%d], please wait...\n", RED, RESET, i);
+		cylinder_intersections = intersect_cylinder(*data->setting->cylinders[i], ray);//TODO:
+		if (plane_intersections)
+			concatenate_lists(&all_intersections, cylinder_intersections);
+	i++;
+	}
+	*/
+
 	closest_intersection = hit_v2(all_intersections);
 	if (closest_intersection != NULL)
 	{
