@@ -481,7 +481,6 @@ lambert_formula	shadows/lambert_reflection_model.c	/^t_color	lambert_formula(t_c
 last_cols_value	transformations/translations.c	/^void	last_cols_value(int size, double **matrix, t_vector source)$/;"	f	typeref:typename:void
 lenght_string_array	extra/utils.c	/^int	lenght_string_array(char **array)$/;"	f	typeref:typename:int
 lenght_word	libft/ft_split.c	/^int	lenght_word(char const *s, char c)$/;"	f	typeref:typename:int
-lighting	shadows/lighting.c	/^t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal)$/;"	f	typeref:typename:t_color
 lights	minirt.h	/^	t_light			**lights;$/;"	m	struct:s_setting	typeref:typename:t_light **
 local_endian	mlx/test/main.c	/^int	local_endian;$/;"	v	typeref:typename:int
 log_error	mlx/configure	/^log_error(){$/;"	f
@@ -628,6 +627,7 @@ parse_vector	parsing/parsing_numbers.c	/^t_vector	parse_vector(char *str, double
 parsing_map	parsing/parsing_map.c	/^int	parsing_map(char *map, t_setting *set)$/;"	f	typeref:typename:int
 phold	libft/ft_printf.c	/^static int	phold(va_list *arg, char q, int count)$/;"	f	typeref:typename:int	file:
 phong_formula	shadows/phong_reflection_model.c	/^t_color	phong_formula(t_material mat, t_light light, t_vector point, t_vector eye, t_vector norm/;"	f	typeref:typename:t_color
+phong_lighting	shadows/lighting.c	/^t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector nor/;"	f	typeref:typename:t_color
 pix	mlx/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img	typeref:typename:Pixmap
 planes	minirt.h	/^	t_plane			**planes;$/;"	m	struct:s_setting	typeref:typename:t_plane **
 point	minirt.h	/^	t_vector	point;$/;"	m	struct:s_plane	typeref:typename:t_vector

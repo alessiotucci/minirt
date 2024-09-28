@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:56:06 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 14:48:07 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/28 12:56:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_light	point_light(t_vector pos, t_color c)
 	return (new);
 }
 
-t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal)
+t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal)
 {
 	/* Effective color: material color multiplied by light color
 	printf("mat.color\n");

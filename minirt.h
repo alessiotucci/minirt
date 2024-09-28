@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/28 11:54:22 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/28 12:56:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -563,7 +563,7 @@ void	print_material(t_material mat);
 /* Shadows/lighting.c */
 /**********************/
 //TODO norminetted!!
-t_color	lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
+t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
 
 t_color	lambert_formula(t_color color, t_light light, t_vector point, t_vector normal);
 
