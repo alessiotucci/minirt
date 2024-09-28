@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:56:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/28 14:56:41 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/28 15:06:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_ve
 	t_color		color;
 
 	color = get_color_intersect(c_i->obj);
+	if (c_i->obj.type == T_PLANE)
+		return (color);
 	//printf("VECTOR: light.position\n");
 	//print_vector(light.position);
 	//printf("VECTOR: point\n");
@@ -31,10 +33,11 @@ t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_ve
 	//printf("VECTOR: normal\n");
 	//print_vector(normal);
 	
-	if (c_i->obj.type != T_PLANE)
+	light_dot_normal = dot(light_v, normal);
+	/*if (c_i->obj.type != T_PLANE)
 		light_dot_normal = dot(light_v, normal);
 	else
-		light_dot_normal = fabs(dot(light_v, normal));
+		light_dot_normal = fabs(dot(light_v, normal));*/
 
 	//printf("DOUBLE: light_dot_normal: %lf\n", light_dot_normal);
 	if (light_dot_normal < 0)
