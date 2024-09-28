@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/28 12:58:21 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/28 14:52:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,16 +149,17 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 		//print_ray(ray);
 		t_vector point = position_ray(ray, closest_intersection->t);
 		t_vector normal = v2normal_at(closest_intersection->obj, point);
-		t_vector eye = negate(ray.direction);
-		t_material m = material(); // Default material
-		t_color color = phong_lighting(m, *data->setting->lights[0], point, eye, normal);
-		t_color std = get_color_intersect(closest_intersection->obj);
-		//t_color color = lambert_formula(std, *data->setting->lights[0], point, normal);
+	//	t_vector eye = negate(ray.direction);
+	//	t_material m = material(); // Default material
+		//t_color color = phong_lighting(m, *data->setting->lights[0], point, eye, normal);
+
+		/*t_color std = get_color_intersect(closest_intersection->obj);*/
+		t_color color = lambert_formula(closest_intersection, *data->setting->lights[0], point, normal);
 		//print_color(std);
-		if (closest_intersection->obj.type != T_PLANE)
+//		if (closest_intersection->obj.type != T_PLANE)
 			my_mlx_pixel_put(data, x, y, create_trgb(color));
-		else
-			my_mlx_pixel_put(data, x, y, create_trgb(std));
+//		else
+//			my_mlx_pixel_put(data, x, y, create_trgb(std));
 		return ;
 	}
 	else

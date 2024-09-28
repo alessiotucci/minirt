@@ -477,7 +477,7 @@ key_pressed	manage_mlx.c	/^static int	key_pressed(int keycode, void *param)$/;"	
 key_win1	mlx/test/main.c	/^int	key_win1(int key,void *p)$/;"	f	typeref:typename:int
 key_win2	mlx/test/main.c	/^int	key_win2(int key,void *p)$/;"	f	typeref:typename:int
 key_win3	mlx/test/main.c	/^int	key_win3(int key,void *p)$/;"	f	typeref:typename:int
-lambert_formula	shadows/lambert_reflection_model.c	/^t_color	lambert_formula(t_color color, t_light light, t_vector point, t_vector normal) \/\/ inte/;"	f	typeref:typename:t_color
+lambert_formula	shadows/lambert_reflection_model.c	/^t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal) \/\//;"	f	typeref:typename:t_color
 last_cols_value	transformations/translations.c	/^void	last_cols_value(int size, double **matrix, t_vector source)$/;"	f	typeref:typename:void
 lenght_string_array	extra/utils.c	/^int	lenght_string_array(char **array)$/;"	f	typeref:typename:int
 lenght_word	libft/ft_split.c	/^int	lenght_word(char const *s, char c)$/;"	f	typeref:typename:int

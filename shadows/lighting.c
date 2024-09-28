@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:56:06 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/28 12:56:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/28 14:35:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,15 @@ t_light	point_light(t_vector pos, t_color c)
 
 t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal)
 {
-	/* Effective color: material color multiplied by light color
-	printf("mat.color\n");
-	print_color(mat.color);
-	printf("light.color\n");
-	print_color(light.color);
-	*/
 	t_color effective_color = multiply_colors(mat.color, light.color);
 
 	// Light vector: from light position to the point
 	t_vector light_v = normalization(subtract(light.position, point));
-	//printf("Light Vector:");
-	//print_vector(light_v);
-
 	// Ambient contribution
 	t_color ambient = multiply_color_by_scalar(effective_color, mat.ambient);
-
-	//TODO
-	/* Debugging the vectors
-	printf("Point: ");
-	print_vector(point);
-	printf("Light Position: ");
-	print_vector(light.position);
-	printf("Normal Vector: ");
-	print_vector(normal);
-	printf("Light Vector: ");
-	print_vector(light_v);
-	print_single_light(&light);
-	*/
-
 	// Light dot normal
 	double light_dot_normal = dot(light_v, normal);
 	//printf("Light Dot Normal: %lf\n", light_dot_normal);
-
 	t_color diffuse;
 	t_color specular;
 
@@ -81,19 +57,12 @@ t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector e
 	{
 		// Diffuse contribution
 		diffuse = multiply_color_by_scalar(multiply_color_by_scalar(effective_color, mat.diffuse), light_dot_normal);
-
 		// Reflection vector
 		t_vector reflect_v = reflect(negate(light_v), normal);
-		//printf("Reflect Vector:");
-		//print_vector(reflect_v);
-
 		// Reflect dot eye
 		double reflect_dot_eye = dot(reflect_v, eye);
-		//printf("Reflect Dot Eye: %lf\n", reflect_dot_eye);
-
 		if (reflect_dot_eye <= 0)
 		{
-			//printf("Reflect Dot Eye <= 0. Specular set to black.\n");
 			printf("%sSpecular is black%s\n", BG_RED, BG_RESET);
 			specular = create_color(0, 0, 0); // black
 		}
@@ -104,32 +73,11 @@ t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector e
 			specular = multiply_color_by_scalar(multiply_color_by_scalar(light.color, mat.specular), factor);
 		}
 	}
-
-	/*
-	printf("%s--------------------------------------------%s\n", BG_GREEN, BG_RESET);
-	printf("Ambient: %sOK%s", BG_GREEN, BG_RESET);
-	print_color(convert_color_inverse(ambient));
-
-	printf("Diffuse: %sOK%s", BG_GREEN, BG_RESET);
-	print_color(convert_color_inverse(diffuse));
-
-	printf("specular: %sOK%s", BG_GREEN, BG_RESET);
-	print_color(convert_color_inverse(specular));
-	*/
-	// Final color
-	//t_color final_color = add_colors(add_colors(ambient, diffuse), specular);
 	t_color final_color;
-
 	// First addition: ambient + diffuse
 	t_color ambient_plus_diffuse = add_colors(ambient, diffuse);
-	//printf("Ambient + Diffuse:");
-	//print_color(ambient_plus_diffuse);
-
 	// Second addition: (ambient + diffuse) + specular
 	final_color = add_colors(ambient_plus_diffuse, specular);
-	//printf("Final Color:\n");
-	//print_color(final_color);
-	//printf("%s--------------------------------------------%s\n", BG_GREEN, BG_RESET);
 	return (final_color);
 }
 
