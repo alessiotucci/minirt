@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:55:10 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/29 13:59:51 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/29 15:23:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_list_intersect	*intersect_world(t_setting *world, t_ray ray)
 			concatenate_lists(&all_intersections, current_intersections);
 		i++;
 	}
+	sort_intersection_list(&all_intersections);
 	return (all_intersections);
 }
 

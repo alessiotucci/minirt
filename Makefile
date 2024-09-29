@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/09/29 13:46:06 by atucci           ###   ########.fr        #
+#    Updated: 2024/09/29 15:20:21 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SOURCE = ./main.c \
 		 ./intersection/intersection_list.c \
 		 ./intersection/real_list.c \
 		 ./intersection/intersection_plane.c \
+		 ./intersection/sort_intersection.c \
 		 ./shadows/lighting.c \
 		 ./shadows/material.c \
 		 ./shadows/lambert_reflection_model.c \

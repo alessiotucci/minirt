@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/29 13:49:56 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/29 15:19:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -538,6 +538,13 @@ t_list_intersect	*create_new_node(t_intersection *intersection);
 void	add_intersection_l(t_list_intersect **head, t_intersection *intersection);
 void	free_list(t_list_intersect **head);
 void	print_list(t_list_intersect **head);
+
+/************************************/
+/* intersection/sort_intersection.c */
+/************************************/
+void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new);
+void	sort_intersection_list(t_list_intersect **head);
+
 /***************************/
 /* draw_scene/draw_scene.c */
 /***************************/

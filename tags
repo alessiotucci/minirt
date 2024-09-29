@@ -459,6 +459,7 @@ img_string	minirt.h	/^	char		*img_string;$/;"	m	struct:s_mlx	typeref:typename:ch
 init_heap_matrix	matrix/matrix_utils.c	/^void	init_heap_matrix(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 init_scene	main.c	/^void	init_scene(t_mlx *info, char *mapname)$/;"	f	typeref:typename:void
 init_zero_matrix	matrix/matrix_utils.c	/^void	init_zero_matrix(int rows, int cols, double matrix[rows][cols])$/;"	f	typeref:typename:void
+insert_sorted	intersection/sort_intersection.c	/^void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)$/;"	f	typeref:typename:void
 intersect_plane	intersection/intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	raycasting/intersection_ray.c	/^t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_intersection_list *
 intersect_sphereV2	intersection/real_list.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
@@ -723,6 +724,7 @@ sl1	mlx/test/main.c	/^int	sl1;$/;"	v	typeref:typename:int
 sl2	mlx/test/main.c	/^int	sl2;$/;"	v	typeref:typename:int
 sl3	mlx/test/main.c	/^int	sl3;$/;"	v	typeref:typename:int
 sl4	mlx/test/main.c	/^int	sl4;$/;"	v	typeref:typename:int
+sort_intersection_list	intersection/sort_intersection.c	/^void	sort_intersection_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 specular	minirt.h	/^	double	specular;$/;"	m	struct:s_material	typeref:typename:double
 spheres	minirt.h	/^	t_sphere		**spheres;$/;"	m	struct:s_setting	typeref:typename:t_sphere **
 split_line	parsing/parsing_map.c	/^static void	split_line(char **matrix, t_setting *set)$/;"	f	typeref:typename:void	file:
