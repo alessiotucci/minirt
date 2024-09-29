@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/08/03 15:36:20 by atucci           ###   ########.fr        #
+#    Updated: 2024/09/29 13:46:06 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SOURCE = ./main.c \
 		 ./shadows/material.c \
 		 ./shadows/lambert_reflection_model.c \
 		 ./shadows/phong_reflection_model.c \
+		 ./shadows/is_shadowed.c \
 
 
 HEADERS = ./minirt.h \

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/28 15:00:56 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/29 13:49:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -566,10 +566,12 @@ void	print_material(t_material mat);
 t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
 
 //t_color	lambert_formula(t_color color, t_light light, t_vector point, t_vector normal);
-t_color	lambert_formula(t_intersection *i, t_light light, t_vector point, t_vector normal);
+//t_color	lambert_formula(t_intersection *i, t_light light, t_vector point, t_vector normal);
+t_color	lambert_formula(t_intersection *i, t_light light, t_vector point, t_vector normal, t_setting *world);
 
 //TODO; planes!
 t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray);
 
 t_color	get_color_intersect(t_object obj);
+int	is_shadowed(t_setting *world, t_vector point, t_light light);
 #endif

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/28 14:52:56 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/29 13:48:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 		//t_color color = phong_lighting(m, *data->setting->lights[0], point, eye, normal);
 
 		/*t_color std = get_color_intersect(closest_intersection->obj);*/
-		t_color color = lambert_formula(closest_intersection, *data->setting->lights[0], point, normal);
+		t_color color = lambert_formula(closest_intersection, *data->setting->lights[0], point, normal, data->setting); //TODO: this is not normed, check data
 		//print_color(std);
 //		if (closest_intersection->obj.type != T_PLANE)
 			my_mlx_pixel_put(data, x, y, create_trgb(color));

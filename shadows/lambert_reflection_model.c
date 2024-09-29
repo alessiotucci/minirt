@@ -6,14 +6,15 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:56:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/28 15:06:24 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/29 14:01:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
 //material is part of phong, it is bonus and it is not mentioned in mandatory part
-t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal) // intensity is inside the lights
+// for now I add a parameter, but norminette wont be happy about it
+t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal, t_setting *world) // intensity is inside the lights
 {
 	t_vector	light_v;
 	double		light_dot_normal;
@@ -21,8 +22,11 @@ t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_ve
 	t_color		color;
 
 	color = get_color_intersect(c_i->obj);
+	if (is_shadowed(world, point, light))
+		return multiply_color_by_scalar(color, world->amb_light->ratio);
 	if (c_i->obj.type == T_PLANE)
 		return (color);
+	//TODO: where to get the world
 	//printf("VECTOR: light.position\n");
 	//print_vector(light.position);
 	//printf("VECTOR: point\n");

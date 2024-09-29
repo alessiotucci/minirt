@@ -462,6 +462,7 @@ init_zero_matrix	matrix/matrix_utils.c	/^void	init_zero_matrix(int rows, int col
 intersect_plane	intersection/intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	raycasting/intersection_ray.c	/^t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_intersection_list *
 intersect_sphereV2	intersection/real_list.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_world	shadows/is_shadowed.c	/^t_list_intersect	*intersect_world(t_setting *world, t_ray ray)$/;"	f	typeref:typename:t_list_intersect *
 intersection	intersection/intersection.c	/^t_intersection	intersection(double t, char *type, void *obj_address)$/;"	f	typeref:typename:t_intersection
 intersection	minirt.h	/^	t_intersection			*intersection;$/;"	m	struct:s_list_intersect	typeref:typename:t_intersection *
 intersections	minirt.h	/^	t_intersection	*intersections;$/;"	m	struct:s_intersection_list	typeref:typename:t_intersection *
@@ -471,13 +472,14 @@ inversing_matrix_void	matrix/void.c	/^void	inversing_matrix_void(int size, doubl
 is_a_point	vector/utils_vectors.c	/^int	is_a_point(t_vector vect)$/;"	f	typeref:typename:int
 is_a_vector	vector/utils_vectors.c	/^int	is_a_vector(t_vector vect)$/;"	f	typeref:typename:int
 is_matrix_invertible	matrix/inversing.c	/^int	is_matrix_invertible(int s, double **matrix)$/;"	f	typeref:typename:int
+is_shadowed	shadows/is_shadowed.c	/^int	is_shadowed(t_setting *world, t_vector point, t_light light)$/;"	f	typeref:typename:int
 key_hook	mlx/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
 key_param	mlx/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list	typeref:typename:void *
 key_pressed	manage_mlx.c	/^static int	key_pressed(int keycode, void *param)$/;"	f	typeref:typename:int	file:
 key_win1	mlx/test/main.c	/^int	key_win1(int key,void *p)$/;"	f	typeref:typename:int
 key_win2	mlx/test/main.c	/^int	key_win2(int key,void *p)$/;"	f	typeref:typename:int
 key_win3	mlx/test/main.c	/^int	key_win3(int key,void *p)$/;"	f	typeref:typename:int
-lambert_formula	shadows/lambert_reflection_model.c	/^t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal) \/\//;"	f	typeref:typename:t_color
+lambert_formula	shadows/lambert_reflection_model.c	/^t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal, t_s/;"	f	typeref:typename:t_color
 last_cols_value	transformations/translations.c	/^void	last_cols_value(int size, double **matrix, t_vector source)$/;"	f	typeref:typename:void
 lenght_string_array	extra/utils.c	/^int	lenght_string_array(char **array)$/;"	f	typeref:typename:int
 lenght_word	libft/ft_split.c	/^int	lenght_word(char const *s, char c)$/;"	f	typeref:typename:int

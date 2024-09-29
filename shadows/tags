@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/nfs/homes/atucci/Desktop/mioGithubMiniRT/shadows/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+assign_material_sphere	material.c	/^void	assign_material_sphere(t_sphere *s, t_material new)$/;"	f	typeref:typename:void
+lambert_formula	lambert_reflection_model.c	/^t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal) \/\//;"	f	typeref:typename:t_color
+material	material.c	/^t_material	material(void)$/;"	f	typeref:typename:t_material
+phong_formula	phong_reflection_model.c	/^t_color	phong_formula(t_material mat, t_light light, t_vector point, t_vector eye, t_vector norm/;"	f	typeref:typename:t_color
+phong_lighting	lighting.c	/^t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector nor/;"	f	typeref:typename:t_color
+point_light	lighting.c	/^t_light	point_light(t_vector pos, t_color c)$/;"	f	typeref:typename:t_light
+print_material	material.c	/^void	print_material(t_material mat)$/;"	f	typeref:typename:void

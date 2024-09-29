@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:01:23 by ftroise           #+#    #+#             */
-/*   Updated: 2024/07/28 12:05:04 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/29 12:44:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	test(t_camera *camera)
 
 	// Centrare il viewpoint rispetto alla finestra
 	center_viewpoint(camera, DEFAULT_WIDTH, DEFAULT_HEIGHT );
-
 	// Output delle nuove coordinate del viewpoint
 	printf("Viewpoint centered:\n");
 	printf("x: %lf\n", camera->viewpoint.x);
