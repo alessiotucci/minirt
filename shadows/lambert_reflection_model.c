@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:56:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/29 14:01:34 by atucci           ###   ########.fr       */
+/*   Updated: 2024/09/30 14:10:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_ve
 	t_color		color;
 
 	color = get_color_intersect(c_i->obj);
+
+	(void)world;
+	/*TODO: now working right now
 	if (is_shadowed(world, point, light))
 		return multiply_color_by_scalar(color, world->amb_light->ratio);
+	*/
 	if (c_i->obj.type == T_PLANE)
 		return (color);
 	//TODO: where to get the world

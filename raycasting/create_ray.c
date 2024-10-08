@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:27:05 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/18 12:10:53 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/10/08 18:21:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_ray	create_ray(t_vector origin, t_vector direction)
 
 void	print_ray(t_ray ray)
 {
-	printf("%sRAY%s\n", YELLOW, RESET);
+	printf("%sRAY%s\n", RED, RESET);
 	printf("%sorigin%s ", YELLOW, RESET);
 	print_vector(ray.origin);
 	printf("%sdirection%s ", YELLOW, RESET);

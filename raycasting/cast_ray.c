@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/27 14:59:15 by atucci           ###   ########.fr       */
+/*   Updated: 2024/10/08 18:01:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,4 +149,4 @@ void	cast_rays(t_mlx *data)
 	*/
 }
 
-//EACH PIXEL CALCUALTION ()
+//EACH PIXEL CALCUALTION ():
