@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/22 09:48:10 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/09/22 10:48:09 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_intersection	intersection(double t, char *type, void *obj_address, int s)
             printf("s++\n");
             s++;
         }
-        else if (s >= 1)
+        else if (s >= 1 && s <= 2)
         {
             printf("----------------------------------------------------copia già  effettuata\n\n\n");
 	    }

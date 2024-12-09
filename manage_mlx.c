@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/22 09:52:19 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/09/22 11:00:20 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,11 +208,12 @@ static void find_intersections(t_ray ray, t_mlx *mlx, t_intersection_list *inter
             {
                 printf(GREEN"\n\n\t\t\t  VOGLIO VEDERE SE QUI ARRIVI\n\n\n\n");
                 t_intersection *current_intersection = &(sphere_intersections->intersections[j]);
+                printf(BLUE"\t\t\t\t\tTIPO OGGETTO%d\n\n\n\n",current_intersection->obj.type);
                 if (current_intersection->obj.type == T_SPHERE)
                 {
                     // Libera la sfera copiata in profondità
                     printf(GREEN"\n\n\t\t\t  STO CHIAMANDO FREE_SPHERE\n");
-                    free_sphere((t_sphere *)current_intersection->obj.address);
+                    //free_sphere((t_sphere *)current_intersection->obj.address);
                 }
             }
 
