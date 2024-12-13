@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 10:23:58 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 15:58:06 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/13 13:48:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)
 		current = current->next;
 	current->next = list2;
 }
-
+//TODO: rename this function
 t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)
 {
 	t_vector sphere_to_ray;

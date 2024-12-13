@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/30 12:14:19 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/13 13:41:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 
 	ray = create_ray_from_camera(data, x, y);
 	i = 0;
-	
 	while (i < data->setting->num_spheres)
 	{
 		sphere_intersections = intersect_sphereV2(*data->setting->spheres[i], ray);
@@ -113,10 +112,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 			concatenate_lists(&all_intersections, sphere_intersections);
 	i++;
 	}
-	
-	
 	//Starting working here to see a plane on the screen
-	
 	t_list_intersect *plane_intersections;
 	i = 0;
 	while (i < data->setting->num_planes)
@@ -127,21 +123,20 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 			concatenate_lists(&all_intersections, plane_intersections);
 	i++;
 	}
-	
-
 	//Starting working here to try see a cylinder on the screen
-	/*
+	//t_list_intersect *cylinder_intersections;
 	i = 0;
 	while (i < data->setting->num_cylinders)
 	{
-		//printf("%sDEBUG%s cylinder intersection[%d], please wait...\n", RED, RESET, i);
-		cylinder_intersections = intersect_cylinder(*data->setting->cylinders[i], ray);//TODO:
-		if (plane_intersections)
+		printf("%sDEBUG%s cylinder intersection[%d], please wait...\n", RED, RESET, i);
+		/*cylinder_intersections = intersect_cylinder(*data->setting->cylinders[i], ray);//TODO:
+		if (cylinder_intersections)
 			concatenate_lists(&all_intersections, cylinder_intersections);
+		*/
 	i++;
 	}
-	*/
-
+	
+	//TODO: here after checking for all the obj (sphere, cylinder, planes etc.) we check the closest point.
 	closest_intersection = hit_v2(all_intersections);
 	if (closest_intersection != NULL)
 	{

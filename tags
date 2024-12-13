@@ -460,6 +460,7 @@ init_heap_matrix	matrix/matrix_utils.c	/^void	init_heap_matrix(int rows, int col
 init_scene	main.c	/^void	init_scene(t_mlx *info, char *mapname)$/;"	f	typeref:typename:void
 init_zero_matrix	matrix/matrix_utils.c	/^void	init_zero_matrix(int rows, int cols, double matrix[rows][cols])$/;"	f	typeref:typename:void
 insert_sorted	intersection/sort_intersection.c	/^void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)$/;"	f	typeref:typename:void
+intersect_cylinder	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_plane	intersection/intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	raycasting/intersection_ray.c	/^t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_intersection_list *
 intersect_sphereV2	intersection/real_list.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
@@ -496,6 +497,7 @@ loop_hook	mlx/mlx_int.h	/^	int			(*loop_hook)();$/;"	m	struct:s_xvar	typeref:typ
 loop_param	mlx/mlx_int.h	/^	void		*loop_param;$/;"	m	struct:s_xvar	typeref:typename:void *
 lsize	minirt.h	/^	int			lsize;$/;"	m	struct:s_mlx	typeref:typename:int
 magnitude	vector/complex_operations.c	/^double	magnitude(t_vector v)$/;"	f	typeref:typename:double
+main	intersection/intersection_cylinder.c	/^int main()$/;"	f	typeref:typename:int
 main	main.c	/^int	main(int ac, char **av)$/;"	f	typeref:typename:int
 main	mlx/configure	/^main(){$/;"	f
 main	mlx/test/main.c	/^int	main()$/;"	f	typeref:typename:int

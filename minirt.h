@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/11/10 15:57:17 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/08 15:28:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@
 /***************************************/
 /* Define default size for the windows */
 /***************************************/
-# define DEFAULT_WIDTH 420
-# define DEFAULT_HEIGHT 800
+# define DEFAULT_WIDTH 820
+# define DEFAULT_HEIGHT 400
 
 /************************************/
 /* color for mlx images and library */
