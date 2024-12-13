@@ -296,6 +296,7 @@ count	minirt.h	/^	int count;$/;"	m	struct:s_intersection_list	typeref:typename:i
 count_elements	create_setting.c	/^void	count_elements(char **details, t_setting *set)$/;"	f	typeref:typename:void
 counting_123	parsing/parsing_map.c	/^static int	counting_123(char *filename, t_setting *set)$/;"	f	typeref:typename:int	file:
 create_color	colors/operation_color.c	/^t_color	create_color(double r, double g, double b)$/;"	f	typeref:typename:t_color
+create_cylinder	shapes/cylinder.c	/^t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c)$/;"	f	typeref:typename:t_cylinder
 create_identity_matrix	matrix/operations_matrix.c	/^void	create_identity_matrix(double	**ret)$/;"	f	typeref:typename:void
 create_intersection_list	intersection/intersection_list.c	/^t_intersection_list	*create_intersection_list(int count)$/;"	f	typeref:typename:t_intersection_list *
 create_new_node	intersection/real_list.c	/^t_list_intersect	*create_new_node(t_intersection *intersection)$/;"	f	typeref:typename:t_list_intersect *
@@ -497,7 +498,6 @@ loop_hook	mlx/mlx_int.h	/^	int			(*loop_hook)();$/;"	m	struct:s_xvar	typeref:typ
 loop_param	mlx/mlx_int.h	/^	void		*loop_param;$/;"	m	struct:s_xvar	typeref:typename:void *
 lsize	minirt.h	/^	int			lsize;$/;"	m	struct:s_mlx	typeref:typename:int
 magnitude	vector/complex_operations.c	/^double	magnitude(t_vector v)$/;"	f	typeref:typename:double
-main	intersection/intersection_cylinder.c	/^int main()$/;"	f	typeref:typename:int
 main	main.c	/^int	main(int ac, char **av)$/;"	f	typeref:typename:int
 main	mlx/configure	/^main(){$/;"	f
 main	mlx/test/main.c	/^int	main()$/;"	f	typeref:typename:int

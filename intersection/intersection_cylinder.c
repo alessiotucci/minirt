@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/13 14:09:54 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/13 19:33:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	double	c;
 	double	disc;
 
+	//TODO
+	(void)cylinder;
 	a = (pow(old_ray.direction.x, 2) + pow(old_ray.direction.y, 2));
 	if (comparing_double(a, 0.0))
 		return (NULL);
@@ -29,13 +31,12 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	if (disc < 0)
 		return (NULL);
 	else
-		return(intersection());
+		//return(intersection());
+		return (NULL);
 }
 
 
-/*main to test*/
-
-
+/*main to test
 int main()
 {
 //	|        ORIGIN                          |           VECTOR                            |
@@ -45,4 +46,5 @@ int main()
 
 
 }
+*/
 
