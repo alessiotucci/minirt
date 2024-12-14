@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 14:11:48 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 14:47:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,20 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 
 	a = (pow(old_ray.direction.x, 2) + pow(old_ray.direction.z, 2));
 	if (comparing_double(a, 0.0))
+	{
+		printf("CYLINDER: returning null\n");
 		return (NULL);
+	}
 	b = (2 * old_ray.origin.x * old_ray.direction.x) + (2 * old_ray.origin.z * old_ray.direction.z);
 	c = (pow(old_ray.origin.x, 2) + pow(old_ray.origin.z, 2) - 1);
 	//printf("pow(b, 2)) = [%lf] - (4 * a * c) = [%lf]\n", pow(b, 2), 4 * a * c);
 	disc = (pow(b, 2)) - (4 * a * c);
 	//disc = ((b * b) - (4 * a * c));
 	if (disc < 0)
+	{
+		printf("CYLINDER: returning null\n");
 		return (NULL);
+	}
 	else
 	{
 		//printf("DEBUG: a[%lf]\tb[%lf]\tc[%lf]\tdisc[%lf]\n", a, b, c, disc);

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 14:09:42 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 14:51:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_color	get_color_intersect(t_object obj)
 {
 	t_sphere	*sphere;
 	t_plane		*plane;
+	t_cylinder	*cylinder;
 
 	if (obj.type == T_SPHERE)
 	{
@@ -30,6 +31,13 @@ t_color	get_color_intersect(t_object obj)
 		//print_color(plane->color);
 		return (plane->color);
 	}
+	if (obj.type == T_CYLINDER)
+	{
+		cylinder = (t_cylinder *)obj.address;
+		printf("GET_COLOR: %scylinder%s\n", BG_CYAN, BG_RESET);
+		return (cylinder->color);
+	}
+		
 	return (create_color(1, 1, 1));
 }
 
@@ -128,7 +136,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	i = 0;
 	while (i < data->setting->num_cylinders)
 	{
-		printf("%sDEBUG%s cylinder intersection[%d], please wait...\n", RED, RESET, i);
+		//printf("%sDEBUG%s cylinder intersection[%d], please wait...\n", RED, RESET, i);
 		cylinder_intersections = intersect_cylinder(*data->setting->cylinders[i], ray);//TODO:
 		if (cylinder_intersections)
 			concatenate_lists(&all_intersections, cylinder_intersections);
