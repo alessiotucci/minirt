@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:35:20 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 10:18:35 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 14:30:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ void	free_single_plane(t_plane *plane)
 
 void	free_single_cylinder(t_cylinder *cylinder)
 {
+	printf("%sSEGFAULT%s\nfree_single_cylinder: freeing.c\n", RED, RESET);
 	if (cylinder)
 	{
 		free(cylinder->identifier);
 		free_heap_matrix(cylinder->transform, 4); // Assuming free_matrix correctly frees a 2D array
 		free(cylinder);
+		return ;
 	}
 }
 

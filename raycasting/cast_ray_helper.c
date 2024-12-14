@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/13 13:41:26 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 14:09:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	t_list_intersect *all_intersections = NULL;
 	t_intersection *closest_intersection;
 	t_list_intersect *sphere_intersections;
-	//t_list_intersect *cylinder_intersections;
+	t_list_intersect *cylinder_intersections;
 	int	i;
 
 	ray = create_ray_from_camera(data, x, y);
@@ -129,10 +129,10 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	while (i < data->setting->num_cylinders)
 	{
 		printf("%sDEBUG%s cylinder intersection[%d], please wait...\n", RED, RESET, i);
-		/*cylinder_intersections = intersect_cylinder(*data->setting->cylinders[i], ray);//TODO:
+		cylinder_intersections = intersect_cylinder(*data->setting->cylinders[i], ray);//TODO:
 		if (cylinder_intersections)
 			concatenate_lists(&all_intersections, cylinder_intersections);
-		*/
+		
 	i++;
 	}
 	

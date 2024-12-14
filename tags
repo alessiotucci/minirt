@@ -500,7 +500,6 @@ loop_hook	mlx/mlx_int.h	/^	int			(*loop_hook)();$/;"	m	struct:s_xvar	typeref:typ
 loop_param	mlx/mlx_int.h	/^	void		*loop_param;$/;"	m	struct:s_xvar	typeref:typename:void *
 lsize	minirt.h	/^	int			lsize;$/;"	m	struct:s_mlx	typeref:typename:int
 magnitude	vector/complex_operations.c	/^double	magnitude(t_vector v)$/;"	f	typeref:typename:double
-main	intersection/intersection_cylinder.c	/^int main()$/;"	f	typeref:typename:int
 main	main.c	/^int	main(int ac, char **av)$/;"	f	typeref:typename:int
 main	mlx/configure	/^main(){$/;"	f
 main	mlx/test/main.c	/^int	main()$/;"	f	typeref:typename:int

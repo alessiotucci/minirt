@@ -6,16 +6,18 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/03 15:49:39 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 14:08:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
+/*please rename this function */
 t_vector v2normal_at(t_object obj, t_vector point)
 {
 	t_sphere	*sphere;
 	t_plane		*plane;
+	t_cylinder	*cylinder; (void)cylinder;
 
 	if (obj.type == T_SPHERE)
 	{
@@ -26,6 +28,18 @@ t_vector v2normal_at(t_object obj, t_vector point)
 	{
 		plane = (t_plane *)obj.address;
 		return (plane->normal);
+	}
+	if (obj.type == T_CYLINDER)
+	{
+		cylinder = (t_cylinder *)obj.address;
+		// complete this function
+		/*double dist = pow(point.x, 2) + pow(point.z, 2);
+		if (dist < 1 && point.y >= cylinder->maximum - EPSILON)
+			return create_vector(0, 1, 0);
+		else if (dist < 1 && point.y <= cylinder->minimum + EPSILON)
+			return create_vector(0, -1, 0);
+		else*/
+			return normalization(create_vector(point.x, 0, point.z));
 	}
 	printf("v2normal failure\n");
 	exit(-42);
