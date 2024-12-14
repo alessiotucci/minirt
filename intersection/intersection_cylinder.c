@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 11:24:31 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 12:09:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	double	b;
 	double	c;
 	double	disc;
+	double	t[2];
 	t_list_intersect *list = NULL;
 	t_intersection inter1;
-	t_intersection inter2;(void)inter2;
-	t_ray ray; (void)ray;
+	t_intersection inter2;
+	//t_ray ray;
 
 	a = (pow(old_ray.direction.x, 2) + pow(old_ray.direction.z, 2));
 	if (comparing_double(a, 0.0))
@@ -35,10 +36,12 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 		return (NULL);
 	else
 	{
-		printf("else, core dump ofc\n");exit(0);
-		double fake = 1;//PLACEHOLDER FUNCTION
-		inter1 = intersection(fake, cylinder.identifier, &cylinder);
+		t[0] = ((-b - sqrt(disc)) / (2 * a));
+		t[1] = ((-b + sqrt(disc)) / (2 * a));
+		inter1 = intersection(t[0], cylinder.identifier, &cylinder);
+		inter2 = intersection(t[1], cylinder.identifier, &cylinder);
 		add_intersection_l(&list, &inter1);
+		add_intersection_l(&list, &inter2);
 		return (list);
 	}
 }
@@ -54,7 +57,7 @@ int main()
 	t_color bogus;
 	bogus.r = 0; bogus.g = 0; bogus.b = 0;
 	t_vector center = create_point(0, 0, 0);
-	t_cylinder cyl = create_cylinder("Cyl", center, 1.0, bogus);
+	t_cylinder cyl = create_cylinder("cy", center, 1.0, bogus);
 
 	// Create rays that should miss the cylinder
 	t_vector origin1 = create_point(1, 0, 0);
@@ -79,6 +82,35 @@ int main()
 		printf("%sTEST PASSED:%s All rays miss the cylinder\n", GREEN, RESET);
 	else
 		printf("%sTEST FAILED:%s Some rays intersected the cylinder\n", RED, RESET);
+
+	// Create rays that should intersect the cylinder
+    t_vector origin4 = create_point(1, 0, -5);
+    t_vector direction4 = create_vector(0, 0, 1);
+    t_ray ray4 = create_ray(origin4, direction4);
+
+    t_vector origin5 = create_point(0, 0, -5);
+    t_vector direction5 = create_vector(0, 0, 1);
+    t_ray ray5 = create_ray(origin5, direction5);
+
+    t_vector origin6 = create_point(0.5, 0, -5);
+    t_vector direction6 = create_vector(0.1, 1, 1);
+    t_ray ray6 = create_ray(origin6, direction6);
+
+    // Test the intersection function
+    t_list_intersect *intersections4 = intersect_cylinder(cyl, ray4);
+    t_list_intersect *intersections5 = intersect_cylinder(cyl, ray5);
+    t_list_intersect *intersections6 = intersect_cylinder(cyl, ray6);
+
+    // Print the intersection lists
+    printf("Intersections for ray4:\n\n");
+    print_list(&intersections4);
+	free_list(&intersections4);
+    printf("Intersections for ray5:\n\n");
+    print_list(&intersections5);
+	free_list(&intersections5);
+    printf("Intersections for ray6:\n\n");
+    print_list(&intersections6);
+	free_list(&intersections6);
 	return 0;
 }
 
