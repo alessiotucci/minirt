@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:35:20 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 15:57:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 10:18:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	free_single_cylinder(t_cylinder *cylinder)
 	if (cylinder)
 	{
 		free(cylinder->identifier);
+		free_heap_matrix(cylinder->transform, 4); // Assuming free_matrix correctly frees a 2D array
 		free(cylinder);
 	}
 }

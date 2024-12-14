@@ -317,6 +317,7 @@ data2	mlx/test/main.c	/^char	*data2;$/;"	v	typeref:typename:char *
 data3	mlx/test/main.c	/^char	*data3;$/;"	v	typeref:typename:char *
 data4	mlx/test/main.c	/^char	*data4;$/;"	v	typeref:typename:char *
 decrgb	mlx/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar	typeref:typename:int[6]
+deep_copy_cylinder	intersection/intersection.c	/^t_cylinder	*deep_copy_cylinder(t_cylinder *src)$/;"	f	typeref:typename:t_cylinder *
 deep_copy_plane	intersection/intersection.c	/^t_plane *deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
 deep_copy_sphere	intersection/intersection.c	/^t_sphere *deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
 depth	mlx/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar	typeref:typename:int
@@ -464,7 +465,8 @@ insert_sorted	intersection/sort_intersection.c	/^void	insert_sorted(t_list_inter
 intersect_cylinder	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_plane	intersection/intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	raycasting/intersection_ray.c	/^t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_intersection_list *
-intersect_sphereV2	intersection/real_list.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_sphereV2	intersection/intersection_sphere.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_sphereV2	raycasting/intersection_sphere.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_world	shadows/is_shadowed.c	/^t_list_intersect	*intersect_world(t_setting *world, t_ray ray)$/;"	f	typeref:typename:t_list_intersect *
 intersection	intersection/intersection.c	/^t_intersection	intersection(double t, char *type, void *obj_address)$/;"	f	typeref:typename:t_intersection
 intersection	minirt.h	/^	t_intersection			*intersection;$/;"	m	struct:s_list_intersect	typeref:typename:t_intersection *

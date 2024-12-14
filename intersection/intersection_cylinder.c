@@ -6,19 +6,24 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/13 19:33:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 10:23:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
 
+/* return a list of intersection like usual */
 t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 {
 	double	a;
 	double	b;
 	double	c;
 	double	disc;
+	t_list_intersect *list = NULL;
+	t_intersection inter1;(void)inter1;
+	t_intersection inter2;(void)inter2;
+	t_ray ray; (void)ray;
 
 	//TODO
 	(void)cylinder;
@@ -32,7 +37,7 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 		return (NULL);
 	else
 		//return(intersection());
-		return (NULL);
+		return (list);
 }
 
 

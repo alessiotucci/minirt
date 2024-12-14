@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/atucci/Desktop/miniRT/intersection/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+add_intersection	intersection_list.c	/^void	add_intersection(t_intersection_list *l, int index, t_intersection i)$/;"	f	typeref:typename:void
+add_intersection_l	real_list.c	/^void	add_intersection_l(t_list_intersect **head, t_intersection *intersection)$/;"	f	typeref:typename:void
+add_intersections_to_list	intersection_list.c	/^void	add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src)$/;"	f	typeref:typename:void
+concatenate_lists	real_list.c	/^void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)$/;"	f	typeref:typename:void
+create_intersection_list	intersection_list.c	/^t_intersection_list	*create_intersection_list(int count)$/;"	f	typeref:typename:t_intersection_list *
+create_new_node	real_list.c	/^t_list_intersect	*create_new_node(t_intersection *intersection)$/;"	f	typeref:typename:t_list_intersect *
+deep_copy_plane	intersection.c	/^t_plane *deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
+deep_copy_sphere	intersection.c	/^t_sphere *deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
+free_intersection	intersection.c	/^void	free_intersection(t_intersection *intersect)$/;"	f	typeref:typename:void
+free_intersection_list	intersection_list.c	/^void	free_intersection_list(t_intersection_list *list)$/;"	f	typeref:typename:void
+free_list	real_list.c	/^void	free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
+insert_sorted	sort_intersection.c	/^void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)$/;"	f	typeref:typename:void
+intersect_cylinder	intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_plane	intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_sphereV2	intersection_sphere.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersection	intersection.c	/^t_intersection	intersection(double t, char *type, void *obj_address)$/;"	f	typeref:typename:t_intersection
+print_intersection	intersection_list.c	/^void	print_intersection(t_intersection i)$/;"	f	typeref:typename:void
+print_intersection_list	intersection_list.c	/^void	print_intersection_list(t_intersection_list *lis)$/;"	f	typeref:typename:void
+print_list	real_list.c	/^void	print_list(t_list_intersect **head)$/;"	f	typeref:typename:void
+sort_intersection_list	sort_intersection.c	/^void	sort_intersection_list(t_list_intersect **head)$/;"	f	typeref:typename:void
+string_to_type	intersection.c	/^t_type	string_to_type(char *type)$/;"	f	typeref:typename:t_type

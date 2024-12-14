@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 15:55:14 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 10:19:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,27 @@ t_plane *deep_copy_plane(t_plane *src)
 	return (copy);
 }
 
+t_cylinder	*deep_copy_cylinder(t_cylinder *src)
+{
+	t_cylinder *copy = malloc(sizeof(t_cylinder));
+	if (!copy)
+	{
+		perror("Failed to allocate memory for cylinder copy");
+		exit(EXIT_FAILURE);
+	}
+	// Copy simple fields//TODO: create a function to do that
+	copy->identifier = ft_strdup(src->identifier);
+	copy->center = src->center;
+	copy->axis = src->axis;
+	copy->height = src->height;
+	copy->diameter = src->diameter;
+	copy->color = src->color;
+	//TODO: create a function to do that
+	copy->transform = malloc_matrix(4, 4);
+	copy->transform = copy_matrix(4, 4, src->transform);
+	return (copy);
+}
+
 t_type	string_to_type(char *type)
 {
 	if (my_strcmp(type, "sp") == 0)
@@ -84,13 +105,11 @@ void	free_intersection(t_intersection *intersect)
 		t_plane *plane = (t_plane *)intersect->obj.address;
 		free_single_plane(plane);
 	}
-	/*
 	else if (intersect->obj.type == T_CYLINDER)
 	{
 		t_cylinder *cylinder = (t_cylinder *)intersect->obj.address;
 		free_single_cylinder(cylinder);
 	}
-	*/
 	else
 		return ;
 }
@@ -100,6 +119,7 @@ t_intersection	intersection(double t, char *type, void *obj_address)
 	t_intersection	new;
 	t_sphere		*sphere;
 	t_plane			*plane;
+	t_cylinder		*cylinder;
 
 	//printf("\t\t%sDEBUG LOG: intersection func%s obj_address: %p\n", YELLOW, RESET, obj_address);
 	//printf("\t\tintersection value t: %lf\n", t);
@@ -117,6 +137,11 @@ t_intersection	intersection(double t, char *type, void *obj_address)
 	{
 		plane = (t_plane *)obj_address;
 		new.obj.address = deep_copy_plane(plane);
+	}
+	if (string_to_type(type) == T_CYLINDER)
+	{
+		cylinder = (t_cylinder *)obj_address;
+		new.obj.address = deep_copy_cylinder(cylinder);
 	}
 	return (new);
 }

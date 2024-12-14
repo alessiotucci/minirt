@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/12/13 13:28:38 by atucci           ###   ########.fr        #
+#    Updated: 2024/12/14 10:02:44 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SOURCE = ./main.c \
 		 ./intersection/intersection.c \
 		 ./intersection/intersection_list.c \
 		 ./intersection/real_list.c \
+		 ./intersection/intersection_sphere.c \
 		 ./intersection/intersection_plane.c \
 		 ./intersection/intersection_cylinder.c \
 		 ./intersection/sort_intersection.c \
