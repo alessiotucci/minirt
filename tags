@@ -519,6 +519,8 @@ matrix_rotation_x	transformations/matrix_rotations.c	/^double	**matrix_rotation_
 matrix_rotation_y	transformations/matrix_rotations.c	/^double	**matrix_rotation_y(double radians)$/;"	f	typeref:typename:double **
 matrix_rotation_z	transformations/matrix_rotations.c	/^double	**matrix_rotation_z(double radians)$/;"	f	typeref:typename:double **
 matrix_x_vector	matrix/operations_matrix.c	/^t_vector	matrix_x_vector(double **a, t_vector b)$/;"	f	typeref:typename:t_vector
+max	minirt.h	/^	double		max;$/;"	m	struct:s_cylinder	typeref:typename:double
+min	minirt.h	/^	double		min;$/;"	m	struct:s_cylinder	typeref:typename:double
 minirt	README.md	/^# minirt$/;"	c
 minor	matrix/determinant.c	/^double	minor(int row, int col, double **matrix, int size)$/;"	f	typeref:typename:double
 mlx	Makefile	/^mlx:$/;"	t

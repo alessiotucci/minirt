@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/13 19:32:30 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/14 15:18:29 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,8 @@ typedef struct s_cylinder
 	t_vector	axis;
 	double		diameter;
 	double		height;
+	double		min;
+	double		max;
 	t_color		color;
 	double		**transform;
 	t_material	material;//THIS IS LAST CHANGE
