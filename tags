@@ -258,6 +258,7 @@ center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_sphere	typeref:typename:t_vec
 center_sphere	centering.c	/^void center_sphere(t_sphere *sphere, int window_width, int window_height)$/;"	f	typeref:typename:void
 center_viewpoint	centering.c	/^static void	center_viewpoint(t_camera *camera, int window_width, int window_height)$/;"	f	typeref:typename:void	file:
 check	mlx/Makefile.mk	/^check: all$/;"	t
+check_cap_cylinder	intersection/intersection_cylinder.c	/^int	check_cap_cylinder(t_ray ray, double t)$/;"	f	typeref:typename:int
 check_null_array	extra/utils.c	/^int	check_null_array(char **array)$/;"	f	typeref:typename:int
 check_sign	libft/ft_num_utils.c	/^int	check_sign(int num)$/;"	f	typeref:typename:int
 check_the_extension	parsing/parsing_map.c	/^static int	check_the_extension(char *filename, char *ext)$/;"	f	typeref:typename:int	file:
@@ -269,6 +270,7 @@ clean	mlx/configure	/^clean(){$/;"	f
 clean	mlx/test/Makefile.mk	/^clean:$/;"	t
 clean_close	manage_mlx.c	/^static void	clean_close(t_mlx *project)$/;"	f	typeref:typename:void	file:
 clean_test	Makefile	/^clean_test: fclean$/;"	t
+closed	minirt.h	/^	int			closed;$/;"	m	struct:s_cylinder	typeref:typename:int
 cmap	mlx/mlx_int.h	/^	Colormap	cmap;$/;"	m	struct:s_xvar	typeref:typename:Colormap
 cofactor	matrix/determinant.c	/^double	cofactor(int row, int col, double **matrix, int size)$/;"	f	typeref:typename:double
 col	mlx/mlx_int.h	/^	int		col;$/;"	m	struct:s_xpm_col	typeref:typename:int
@@ -462,6 +464,7 @@ init_heap_matrix	matrix/matrix_utils.c	/^void	init_heap_matrix(int rows, int col
 init_scene	main.c	/^void	init_scene(t_mlx *info, char *mapname)$/;"	f	typeref:typename:void
 init_zero_matrix	matrix/matrix_utils.c	/^void	init_zero_matrix(int rows, int cols, double matrix[rows][cols])$/;"	f	typeref:typename:void
 insert_sorted	intersection/sort_intersection.c	/^void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)$/;"	f	typeref:typename:void
+intersect_caps	intersection/intersection_cylinder.c	/^static void intersect_caps(t_cylinder cylinder, t_ray ray, t_list_intersect **list)$/;"	f	typeref:typename:void	file:
 intersect_cylinder	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_plane	intersection/intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	raycasting/intersection_ray.c	/^t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_intersection_list *
@@ -501,12 +504,12 @@ loop_hook	mlx/mlx_int.h	/^	int			(*loop_hook)();$/;"	m	struct:s_xvar	typeref:typ
 loop_param	mlx/mlx_int.h	/^	void		*loop_param;$/;"	m	struct:s_xvar	typeref:typename:void *
 lsize	minirt.h	/^	int			lsize;$/;"	m	struct:s_mlx	typeref:typename:int
 magnitude	vector/complex_operations.c	/^double	magnitude(t_vector v)$/;"	f	typeref:typename:double
-main	intersection/intersection_cylinder.c	/^int main()$/;"	f	typeref:typename:int
 main	main.c	/^int	main(int ac, char **av)$/;"	f	typeref:typename:int
 main	mlx/configure	/^main(){$/;"	f
 main	mlx/test/main.c	/^int	main()$/;"	f	typeref:typename:int
 main	mlx/test/new_win.c	/^int main()$/;"	f	typeref:typename:int
 main	mlx/test/run_tests.sh	/^main(){$/;"	f
+main	normal.c	/^int main()$/;"	f	typeref:typename:int
 malloc_matrix	matrix/matrix_utils.c	/^double	**malloc_matrix(int rows, int col)$/;"	f	typeref:typename:double **
 manage_mlx	manage_mlx.c	/^void manage_mlx(t_mlx *obj, t_setting *set)$/;"	f	typeref:typename:void
 map_name	minirt.h	/^	char		*map_name;$/;"	m	struct:s_mlx	typeref:typename:char *
@@ -654,7 +657,7 @@ print_intersection	intersection/intersection_list.c	/^void	print_intersection(t_
 print_intersection_list	intersection/intersection_list.c	/^void	print_intersection_list(t_intersection_list *lis)$/;"	f	typeref:typename:void
 print_light_source	raycasting/cast_ray.c	/^void	print_light_source(t_mlx *data, int x, int y)$/;"	f	typeref:typename:void
 print_lights	extra/print_debug.c	/^static void	print_lights(int n_lights, t_light **array)$/;"	f	typeref:typename:void	file:
-print_list	intersection/real_list.c	/^void	print_list(t_list_intersect **head)$/;"	f	typeref:typename:void
+print_list	intersection/real_list.c	/^void	print_list(t_list_intersect **head, int debug)$/;"	f	typeref:typename:void
 print_material	shadows/material.c	/^void	print_material(t_material mat)$/;"	f	typeref:typename:void
 print_planes	extra/print_debug.c	/^static void	print_planes(int n_planes, t_plane **array)$/;"	f	typeref:typename:void	file:
 print_ray	raycasting/create_ray.c	/^void	print_ray(t_ray ray)$/;"	f	typeref:typename:void
@@ -716,6 +719,7 @@ scaling	transformations/scaling.c	/^t_vector	scaling(t_vector move, t_vector ori
 scaling_inverse	transformations/scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
 send_to_centre	centering.c	/^void	send_to_centre(t_setting *set)$/;"	f	typeref:typename:void
+set_cylinder_cap	shapes/cylinder.c	/^void	set_cylinder_cap(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinder, double min, double max)$/;"	f	typeref:typename:void
 set_sphere_transformations	raycasting/transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void
 setback_zero	main_utils.c	/^void	setback_zero(t_setting *set)$/;"	f	typeref:typename:void

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/15 17:42:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/15 18:46:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,6 +229,7 @@ typedef struct s_cylinder
 	double		height;
 	double		min;
 	double		max;
+	int			closed;
 	t_color		color;
 	double		**transform;
 	t_material	material;//THIS IS LAST CHANGE
@@ -520,7 +521,6 @@ t_type				string_to_type(char *type);
 t_object			create_object(char *type, void *object);
 t_intersection		intersection(double t, char *type, void *object);
 void				free_intersection(t_intersection *intersect);
-
 /************************************/
 /* intersection/intersection_list.c */
 /************************************/
@@ -539,7 +539,7 @@ t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray);
 t_list_intersect	*create_new_node(t_intersection *intersection);
 void	add_intersection_l(t_list_intersect **head, t_intersection *intersection);
 void	free_list(t_list_intersect **head);
-void	print_list(t_list_intersect **head);
+void	print_list(t_list_intersect **head, int debug);
 
 /************************************/
 /* intersection/sort_intersection.c */
@@ -588,4 +588,5 @@ int	is_shadowed(t_setting *world, t_vector point, t_light light);
 t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c);
 t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray);
 void	set_cylinder_size(t_cylinder *cylinder, double min, double max);
+void	set_cylinder_cap(t_cylinder *cylinder);
 #endif

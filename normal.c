@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 15:11:29 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/15 19:14:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ t_vector v2normal_at(t_object obj, t_vector point)
 		printf("V2Normal_at, cylinder\n");
 		cylinder = (t_cylinder *)obj.address;
 		// complete this function
-		/*double dist = pow(point.x, 2) + pow(point.z, 2);
-		if (dist < 1 && point.y >= cylinder->maximum - EPSILON)
+		double dist = pow(point.x, 2) + pow(point.z, 2);
+		if (dist < 1 && point.y >= cylinder->max - EPSILON)
 			return create_vector(0, 1, 0);
-		else if (dist < 1 && point.y <= cylinder->minimum + EPSILON)
+		else if (dist < 1 && point.y <= cylinder->min + EPSILON)
 			return create_vector(0, -1, 0);
-		else*/
+		else
 			return normalization(create_vector(point.x, 0, point.z));
 	}
 	printf("v2normal failure\n");
@@ -184,3 +184,41 @@ int main()
 	return 0;
 }
 */
+int main()
+{
+	// Create a cylinder object
+	t_cylinder cyl;
+	cyl.center = create_vector(0, 0, 0);
+	cyl.axis = create_vector(0, 1, 0);
+	cyl.diameter = 14.2;
+	cyl.height = 21.42;
+	cyl.color.r = 10;
+	cyl.color.g = 0;
+	cyl.color.b = 255;
+	set_cylinder_size(&cyl, 1, 2);
+	set_cylinder_cap(&cyl);
+
+	// Create an object for the cylinder
+	t_object obj;
+	obj.type = T_CYLINDER;
+	obj.address = &cyl;
+
+	// Define points on the cylinder
+	t_vector points[] =
+	{
+		create_point(0, 1, 0),
+		create_point(0.5, 1, 0),
+		create_point(0, 1, 0.5),
+		create_point(0, 2, 0),
+		create_point(0.5, 2, 0),
+		create_point(0, 2, 0.5)
+	};
+	// Test the normal computation
+	for (int i = 0; i < 6; i++)
+	{
+		t_vector normal = v2normal_at(obj, points[i]);
+		printf("Point: (%f, %f, %f)\t | ", points[i].x, points[i].y, points[i].z);
+		printf("Normal: (%f, %f, %f)\n", normal.x, normal.y, normal.z);
+	}
+	return 0;
+}

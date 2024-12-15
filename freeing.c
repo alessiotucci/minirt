@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:35:20 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 14:30:01 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/15 18:47:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	free_single_plane(t_plane *plane)
 
 void	free_single_cylinder(t_cylinder *cylinder)
 {
-	printf("%sSEGFAULT%s\nfree_single_cylinder: freeing.c\n", RED, RESET);
+	//printf("%sSEGFAULT%s\nfree_single_cylinder: freeing.c\n", RED, RESET);
 	if (cylinder)
 	{
 		free(cylinder->identifier);

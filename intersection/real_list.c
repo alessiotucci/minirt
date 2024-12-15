@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 10:23:58 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 10:02:45 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/15 18:45:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,26 @@ void	free_list(t_list_intersect **head)
 	*head = NULL;
 }
 
-void	print_list(t_list_intersect **head)
+void	print_list(t_list_intersect **head, int debug)
 {
 	t_list_intersect	*current;
 	t_list_intersect	*next_node;
+	int					count;
 
+	count = 0;
 	current = *head;
 	while (current)
 	{
 		next_node = current->next;
 		//TODO; HERE YOU CAN ACCESS
 		//	current->intersection;
-		print_intersection(*current->intersection);
+		if (debug)
+			print_intersection(*current->intersection);
 		//	current;
 		current = next_node;
+		count++;
 	}
+	printf("List count:[%d]\n", count);
 }
 
 void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)
