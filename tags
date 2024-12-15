@@ -470,6 +470,7 @@ intersect_sphereV2	raycasting/intersection_sphere.c	/^t_list_intersect *intersec
 intersect_world	shadows/is_shadowed.c	/^t_list_intersect	*intersect_world(t_setting *world, t_ray ray)$/;"	f	typeref:typename:t_list_intersect *
 intersection	intersection/intersection.c	/^t_intersection	intersection(double t, char *type, void *obj_address)$/;"	f	typeref:typename:t_intersection
 intersection	minirt.h	/^	t_intersection			*intersection;$/;"	m	struct:s_list_intersect	typeref:typename:t_intersection *
+intersection_happened	intersection/intersection_cylinder.c	/^static t_list_intersect	*intersection_happened(double t[2], t_intersection inter1, t_intersectio/;"	f	typeref:typename:t_list_intersect *	file:
 intersections	minirt.h	/^	t_intersection	*intersections;$/;"	m	struct:s_intersection_list	typeref:typename:t_intersection *
 inverse_translations	transformations/translations.c	/^t_vector	inverse_translations(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 inversing_matrix	matrix/inversing.c	/^double	**inversing_matrix(int s, double **src)$/;"	f	typeref:typename:double **
@@ -500,6 +501,7 @@ loop_hook	mlx/mlx_int.h	/^	int			(*loop_hook)();$/;"	m	struct:s_xvar	typeref:typ
 loop_param	mlx/mlx_int.h	/^	void		*loop_param;$/;"	m	struct:s_xvar	typeref:typename:void *
 lsize	minirt.h	/^	int			lsize;$/;"	m	struct:s_mlx	typeref:typename:int
 magnitude	vector/complex_operations.c	/^double	magnitude(t_vector v)$/;"	f	typeref:typename:double
+main	intersection/intersection_cylinder.c	/^int main()$/;"	f	typeref:typename:int
 main	main.c	/^int	main(int ac, char **av)$/;"	f	typeref:typename:int
 main	mlx/configure	/^main(){$/;"	f
 main	mlx/test/main.c	/^int	main()$/;"	f	typeref:typename:int
@@ -714,6 +716,7 @@ scaling	transformations/scaling.c	/^t_vector	scaling(t_vector move, t_vector ori
 scaling_inverse	transformations/scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
 send_to_centre	centering.c	/^void	send_to_centre(t_setting *set)$/;"	f	typeref:typename:void
+set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinder, double min, double max)$/;"	f	typeref:typename:void
 set_sphere_transformations	raycasting/transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void
 setback_zero	main_utils.c	/^void	setback_zero(t_setting *set)$/;"	f	typeref:typename:void
 setting	minirt.h	/^	t_setting 	*setting;$/;"	m	struct:s_mlx	typeref:typename:t_setting *

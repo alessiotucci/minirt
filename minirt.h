@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 15:18:29 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/15 17:42:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -586,6 +586,6 @@ int	is_shadowed(t_setting *world, t_vector point, t_light light);
 
 //TODO: after graduations
 t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c);
-
 t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray);
+void	set_cylinder_size(t_cylinder *cylinder, double min, double max);
 #endif

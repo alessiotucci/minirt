@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:26:30 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/15 17:36:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/15 17:42:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,10 @@ t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c)
 	new_cylinder.min = DBL_MIN;
 	new_cylinder.max = DBL_MAX;
 	return (new_cylinder);
+}
+
+void	set_cylinder_size(t_cylinder *cylinder, double min, double max)
+{
+	cylinder->min = min;
+	cylinder->max = max;
 }
