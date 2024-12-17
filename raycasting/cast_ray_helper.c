@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 14:51:41 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/17 15:35:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,12 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	int	i;
 
 	ray = create_ray_from_camera(data, x, y);
+
+	 if (x == 300 && y == 199)
+	{
+		printf("%sinside EACH_PIXEL_CALCULATION v2, after creating ray from camera...%s\t", YELLOW, RESET);
+		print_ray(ray);
+	}
 	i = 0;
 	while (i < data->setting->num_spheres)
 	{

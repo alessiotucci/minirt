@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 09:41:01 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 16:00:42 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/17 15:22:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_ray	transform_ray(t_ray original, double **matrix)
 
 	new.origin = matrix_x_vector(matrix, original.origin);
 	new.direction = matrix_x_vector(matrix, original.direction);
+    new.direction = normalization(new.direction); //TODO:
 	return (new);
 }
 

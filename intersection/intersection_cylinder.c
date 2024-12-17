@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/17 10:57:28 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/17 15:38:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	t_ray ray;
 
 	ray = transform_ray(old_ray, inversing_matrix(4, copy_matrix(4, 4, cylinder.transform))); //TODO: check if this is working
-	//ray = old_ray;
+	//printf("OLD RAY\n");
+	//print_ray(old_ray);
+	//printf("RAY\n");
+	//print_ray(ray);
 	a = (pow(ray.direction.x, 2) + pow(ray.direction.z, 2));
 	if (comparing_double(a, 0.0))
 	{
@@ -100,13 +103,20 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 		return (NULL);
 	}
 	b = (2 * ray.origin.x * ray.direction.x) + (2 * ray.origin.z * ray.direction.z);
-	c = (pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1);
-	printf("pow(b, 2)) = [%lf] - (4 * a * c) = [%lf]\n", pow(b, 2), 4 * a * c);
+	//c = (pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1);
+	c = (pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - pow(cylinder.diameter / 2, 2));
+//	printf("a[%lf] b[%lf] c[%lf]\n", a, b, c);
+//	printf("pow(b, 2)) = [%lf] - (4 * a * c) = [%lf]\n", pow(b, 2), 4 * a * c);
 	disc = (pow(b, 2)) - (4 * a * c);
 	//disc = ((b * b) - (4 * a * c));
 	if (disc < 0)
 	{
-		printf("CYLINDER: returning null disc[%lf]\n", disc);
+		//printf("CYLINDER: returning null disc[%lf]\n", disc);
+		printf("DEBUG:returning null a[%lf]\tb[%lf]\tc[%lf]\tdisc[%lf] < 0\n", a, b, c, disc);
+		printf("Cylinder center: (%lf, %lf, %lf)\n", cylinder.center.x, cylinder.center.y, cylinder.center.z);
+		printf("Cylinder axis: (%lf, %lf, %lf)\n", cylinder.axis.x, cylinder.axis.y, cylinder.axis.z);
+		printf("Cylinder diameter: (%lf) radius%lf\n", cylinder.diameter, cylinder.diameter / 2);
+
 		return (NULL);
 	}
 	else

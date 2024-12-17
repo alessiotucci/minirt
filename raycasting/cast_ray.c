@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/10/08 18:01:45 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/17 15:33:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
 	// Calculate ray direction
 	direction = create_vector(screen_x, screen_y, -1); // assuming camera looks down -Z axis
 	ray.direction = normalization(direction);
+	//printf("DEBUG: Create ray from the camera with x[%d] and y[%d]\n next we will print the ray:\t", x, y);
+	//print_ray(ray);
 	return (ray);
 }
 

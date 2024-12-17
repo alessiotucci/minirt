@@ -469,7 +469,6 @@ intersect_cylinder	intersection/intersection_cylinder.c	/^t_list_intersect	*inte
 intersect_plane	intersection/intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	raycasting/intersection_ray.c	/^t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_intersection_list *
 intersect_sphereV2	intersection/intersection_sphere.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
-intersect_sphereV2	raycasting/intersection_sphere.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_world	shadows/is_shadowed.c	/^t_list_intersect	*intersect_world(t_setting *world, t_ray ray)$/;"	f	typeref:typename:t_list_intersect *
 intersection	intersection/intersection.c	/^t_intersection	intersection(double t, char *type, void *obj_address)$/;"	f	typeref:typename:t_intersection
 intersection	minirt.h	/^	t_intersection			*intersection;$/;"	m	struct:s_list_intersect	typeref:typename:t_intersection *
