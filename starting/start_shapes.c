@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:09:53 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/17 10:55:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ void	start_cylinder(t_setting *set, char **details)
 {
 	ft_printf("\t%s*SETTING UP CYLINDER*%s\n", GREEN, RESET);
 	t_cylinder	*new_cylinder;
+	double		**def;
+
+	def = malloc_matrix(4, 4);
+	create_identity_matrix(def);
 	new_cylinder = malloc(sizeof(t_cylinder));;
 	if (!new_cylinder)
 		return ;//TODO add the check
@@ -24,7 +28,11 @@ void	start_cylinder(t_setting *set, char **details)
 	new_cylinder->axis = parse_vector(details[2], 0.0); //TODO carefull with ranges
 	new_cylinder->diameter = atof(details[3]);
 	new_cylinder->height = atof(details[4]);
+//	new_cylinder->min;
+//	new_cylinder->max;
 	new_cylinder->color = parse_color(details[5]);
+	new_cylinder->transform = def;
+	new_cylinder->material = material();
 	add_cylinder_to_array(new_cylinder, set);
 
 }

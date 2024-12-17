@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/15 19:10:38 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/17 10:57:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void intersect_caps(t_cylinder cylinder, t_ray ray, t_list_intersect **li
 }
 
 
-static t_list_intersect	*intersection_happened(double t[2], t_intersection inter1, t_intersection inter2, t_ray old_ray, t_cylinder cylinder)
+static t_list_intersect	*intersection_happened(double t[2], t_intersection inter1, t_intersection inter2, t_ray ray, t_cylinder cylinder)
 {
 	double	temp;
 	double	y0;
@@ -63,8 +63,8 @@ static t_list_intersect	*intersection_happened(double t[2], t_intersection inter
 		t[1] = temp;
 	}
     // Check if the intersection points are within the cylinder's bounds
-	y0 = old_ray.origin.y + t[0] * old_ray.direction.y;
-	y1 = old_ray.origin.y + t[1] * old_ray.direction.y;
+	y0 = ray.origin.y + t[0] * ray.direction.y;
+	y1 = ray.origin.y + t[1] * ray.direction.y;
 	if (cylinder.min < y0 && y0 < cylinder.max)
 	{
 		inter1 = intersection(t[0], cylinder.identifier, &cylinder);
@@ -89,30 +89,32 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	t_list_intersect *list = NULL;
 	t_intersection inter1;
 	t_intersection inter2;
-	//t_ray ray;
+	t_ray ray;
 
-	a = (pow(old_ray.direction.x, 2) + pow(old_ray.direction.z, 2));
+	ray = transform_ray(old_ray, inversing_matrix(4, copy_matrix(4, 4, cylinder.transform))); //TODO: check if this is working
+	//ray = old_ray;
+	a = (pow(ray.direction.x, 2) + pow(ray.direction.z, 2));
 	if (comparing_double(a, 0.0))
 	{
-		printf("CYLINDER: returning null\n");
+		printf("CYLINDER: returning null a[%lf]\n", a);
 		return (NULL);
 	}
-	b = (2 * old_ray.origin.x * old_ray.direction.x) + (2 * old_ray.origin.z * old_ray.direction.z);
-	c = (pow(old_ray.origin.x, 2) + pow(old_ray.origin.z, 2) - 1);
-	//printf("pow(b, 2)) = [%lf] - (4 * a * c) = [%lf]\n", pow(b, 2), 4 * a * c);
+	b = (2 * ray.origin.x * ray.direction.x) + (2 * ray.origin.z * ray.direction.z);
+	c = (pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1);
+	printf("pow(b, 2)) = [%lf] - (4 * a * c) = [%lf]\n", pow(b, 2), 4 * a * c);
 	disc = (pow(b, 2)) - (4 * a * c);
 	//disc = ((b * b) - (4 * a * c));
 	if (disc < 0)
 	{
-		printf("CYLINDER: returning null\n");
+		printf("CYLINDER: returning null disc[%lf]\n", disc);
 		return (NULL);
 	}
 	else
 	{
-		//printf("DEBUG: a[%lf]\tb[%lf]\tc[%lf]\tdisc[%lf]\n", a, b, c, disc);
+		printf("DEBUG: a[%lf]\tb[%lf]\tc[%lf]\tdisc[%lf]\n", a, b, c, disc);
 		t[0] = ((-b - sqrt(disc)) / (2 * a));
 		t[1] = ((-b + sqrt(disc)) / (2 * a));
-		list = intersection_happened(t, inter1, inter2, old_ray, cylinder);
+		list = intersection_happened(t, inter1, inter2, ray, cylinder);
 
 		/*
 		inter1 = intersection(t[0], cylinder.identifier, &cylinder);
@@ -122,7 +124,7 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 		return (list);
 		*/
 	}
-	intersect_caps(cylinder, old_ray, &list);
+	intersect_caps(cylinder, ray, &list);
 	return (list);
 }
 
