@@ -509,7 +509,6 @@ main	mlx/configure	/^main(){$/;"	f
 main	mlx/test/main.c	/^int	main()$/;"	f	typeref:typename:int
 main	mlx/test/new_win.c	/^int main()$/;"	f	typeref:typename:int
 main	mlx/test/run_tests.sh	/^main(){$/;"	f
-main	normal.c	/^int main()$/;"	f	typeref:typename:int
 malloc_matrix	matrix/matrix_utils.c	/^double	**malloc_matrix(int rows, int col)$/;"	f	typeref:typename:double **
 manage_mlx	manage_mlx.c	/^void manage_mlx(t_mlx *obj, t_setting *set)$/;"	f	typeref:typename:void
 map_name	minirt.h	/^	char		*map_name;$/;"	m	struct:s_mlx	typeref:typename:char *

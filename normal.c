@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/15 19:14:57 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/17 09:55:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_vector v2normal_at(t_object obj, t_vector point)
 		else
 			return normalization(create_vector(point.x, 0, point.z));
 	}
-	printf("v2normal failure\n");
+	printf("v2normal failure: obj TYPE not found\n");
 	exit(-42);
 }
 
@@ -184,6 +184,8 @@ int main()
 	return 0;
 }
 */
+
+/*
 int main()
 {
 	// Create a cylinder object
@@ -222,3 +224,4 @@ int main()
 	}
 	return 0;
 }
+*/
