@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/18 14:16:54 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/18 16:03:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_color	get_color_intersect(t_object obj)
 		printf("GET_COLOR: %scylinder%s\n", BG_CYAN, BG_RESET);
 		return (cylinder->color);
 	}
-		
+	printf("Unexpected obj\n"); exit(-42);
 	return (create_color(1, 1, 1));
 }
 
@@ -113,9 +113,9 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 
 	ray = create_ray_from_camera(data, x, y);
 	//TODO: debugging here
-	 if (x == 300 && y == 199)
+	 if (x == 100 && y == 100)
 	{
-		printf("%sinside EACH_PIXEL_CALCULATION v2, pixel(300, 199)...%s\t", YELLOW, RESET);
+		printf("%sinside EACH_PIXEL_CALCULATION v2, pixel(100, 100)...%s\t", YELLOW, RESET);
 		print_ray(ray);
 	}
 	i = 0;
