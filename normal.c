@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/17 09:55:59 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/18 17:42:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_vector v2normal_at(t_object obj, t_vector point)
 	}
 	if (obj.type == T_CYLINDER)
 	{
-		printf("V2Normal_at, cylinder\n");
+		//printf("V2Normal_at, cylinder\n");
 		cylinder = (t_cylinder *)obj.address;
 		// complete this function
 		double dist = pow(point.x, 2) + pow(point.z, 2);

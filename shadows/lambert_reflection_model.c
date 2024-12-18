@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:56:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/18 16:01:16 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/18 18:05:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_ve
 	if (c_i->obj.type == T_PLANE)
 		return (color);
 	if (c_i->obj.type == T_CYLINDER)
-		printf("CYLINDER");
+		printf("Lamber formula: CYLINDER");
 	//TODO: where to get the world
 	//printf("VECTOR: light.position\n");
 	//print_vector(light.position);

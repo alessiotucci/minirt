@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/18 15:33:41 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/18 17:40:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ static t_list_intersect	*intersection_happened(double t[2], t_intersection inter
 	y1 = ray.origin.y + t[1] * ray.direction.y;
 	if (cylinder.min < y0 && y0 < cylinder.max)
 	{
-		printf("%sadd intersect for cylinder%s\n", GREEN, RESET);
+		//printf("%sadd intersect for cylinder%s\n", GREEN, RESET);
 		inter1 = intersection(t[0], cylinder.identifier, &cylinder);
 		add_intersection_l(&list, &inter1);
 	}
 	if (cylinder.min < y1 && y1 < cylinder.max)
 	{
-		printf("%sadd intersect for cylinder%s\n", GREEN, RESET);
+		//printf("%sadd intersect for cylinder%s\n", GREEN, RESET);
 		inter2 = intersection(t[1], cylinder.identifier, &cylinder);
 		add_intersection_l(&list, &inter2);
 	}
@@ -102,7 +102,7 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	a = (pow(ray.direction.x, 2) + pow(ray.direction.z, 2));
 	if (comparing_double(a, 0.0))
 	{
-		printf("CYLINDER: returning null a[%lf]\n", a);
+		//printf("CYLINDER: returning null a[%lf]\n", a);
 		return (NULL);
 	}
 	b = (2 * ray.origin.x * ray.direction.x) + (2 * ray.origin.z * ray.direction.z);
@@ -115,15 +115,16 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	if (disc < 0)
 	{
 		//printf("CYLINDER: returning null disc[%lf]\n", disc);
-		printf("DEBUG:returning null a[%lf]\tb[%lf]\tc[%lf]\tdisc[%lf] < 0\n", a, b, c, disc);
-		printf("Cylinder center: (%lf, %lf, %lf)\n", cylinder.center.x, cylinder.center.y, cylinder.center.z);
-		printf("Cylinder axis: (%lf, %lf, %lf)\n", cylinder.axis.x, cylinder.axis.y, cylinder.axis.z);
-		printf("Cylinder diameter: (%lf) radius%lf\n", cylinder.diameter, cylinder.diameter / 2);
+		//printf("DEBUG:returning null a[%lf]\tb[%lf]\tc[%lf]\tdisc[%lf] < 0\n", a, b, c, disc);
+		//printf("Cylinder center: (%lf, %lf, %lf)\n", cylinder.center.x, cylinder.center.y, cylinder.center.z);
+		//printf("Cylinder axis: (%lf, %lf, %lf)\n", cylinder.axis.x, cylinder.axis.y, cylinder.axis.z);
+		//printf("Cylinder diameter: (%lf) radius%lf\n", cylinder.diameter, cylinder.diameter / 2);
 
 		return (NULL);
 	}
 	else
 	{
+		//printf("DEBUG:OK! a[%lf]\tb[%lf]\tc[%lf]\tdisc[%lf]\n", a, b, c, disc);
 		t[0] = ((-b - sqrt(disc)) / (2 * a));
 		t[1] = ((-b + sqrt(disc)) / (2 * a));
 		list = intersection_happened(t, inter1, inter2, ray, cylinder);
