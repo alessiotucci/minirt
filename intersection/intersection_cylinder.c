@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/17 15:38:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/18 15:33:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static t_list_intersect	*intersection_happened(double t[2], t_intersection inter
 	double	y1;
 	t_list_intersect *list;
 
+	//printf("function: intersection happened\n");
 	list = NULL;
 	//TODO create a swap function if needed
 	if (t[0] > t[1])
@@ -67,11 +68,13 @@ static t_list_intersect	*intersection_happened(double t[2], t_intersection inter
 	y1 = ray.origin.y + t[1] * ray.direction.y;
 	if (cylinder.min < y0 && y0 < cylinder.max)
 	{
+		printf("%sadd intersect for cylinder%s\n", GREEN, RESET);
 		inter1 = intersection(t[0], cylinder.identifier, &cylinder);
 		add_intersection_l(&list, &inter1);
 	}
 	if (cylinder.min < y1 && y1 < cylinder.max)
 	{
+		printf("%sadd intersect for cylinder%s\n", GREEN, RESET);
 		inter2 = intersection(t[1], cylinder.identifier, &cylinder);
 		add_intersection_l(&list, &inter2);
 	}
@@ -121,7 +124,6 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	}
 	else
 	{
-		printf("DEBUG: a[%lf]\tb[%lf]\tc[%lf]\tdisc[%lf]\n", a, b, c, disc);
 		t[0] = ((-b - sqrt(disc)) / (2 * a));
 		t[1] = ((-b + sqrt(disc)) / (2 * a));
 		list = intersection_happened(t, inter1, inter2, ray, cylinder);

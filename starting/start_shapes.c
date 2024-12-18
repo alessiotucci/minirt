@@ -6,11 +6,12 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/17 10:55:53 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/18 14:37:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
+#include <float.h>
 
 void	start_cylinder(t_setting *set, char **details)
 {
@@ -28,8 +29,8 @@ void	start_cylinder(t_setting *set, char **details)
 	new_cylinder->axis = parse_vector(details[2], 0.0); //TODO carefull with ranges
 	new_cylinder->diameter = atof(details[3]);
 	new_cylinder->height = atof(details[4]);
-//	new_cylinder->min;
-//	new_cylinder->max;
+	new_cylinder->min = DBL_MIN;
+	new_cylinder->max = DBL_MAX;
 	new_cylinder->color = parse_color(details[5]);
 	new_cylinder->transform = def;
 	new_cylinder->material = material();
