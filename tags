@@ -81,7 +81,7 @@ EPSILON_v2	minirt.h	/^#define EPSILON_v2 /;"	d
 ERR_NO_TRUECOLOR	mlx/mlx_int.h	/^# define ERR_NO_TRUECOLOR /;"	d
 ESC	minirt.h	/^# define ESC /;"	d
 ESCAPE	minirt.h	/^# define ESCAPE /;"	d
-FLAG	Makefile	/^FLAG = -Wall -Wextra -Werror -O3$/;"	m
+FLAG	Makefile	/^FLAG = -Wall -Wextra -Werror -O3 -g$/;"	m
 GOING	mlx/man/man1/mlx_loop.1	/^.SH GOING FURTHER WITH EVENTS$/;"	s	title:MiniLibX
 GOING	mlx/man/man3/mlx_loop.3	/^.SH GOING FURTHER WITH EVENTS$/;"	s	title:MiniLibX
 GRAY	minirt.h	/^# define GRAY /;"	d

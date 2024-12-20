@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/17 09:56:44 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 15:27:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@
 /***************************************/
 /* Define default size for the windows */
 /***************************************/
-# define DEFAULT_WIDTH 320
-# define DEFAULT_HEIGHT 200
+# define DEFAULT_WIDTH 120
+# define DEFAULT_HEIGHT 60
 
 /************************************/
 /* color for mlx images and library */
@@ -589,4 +589,6 @@ t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c);
 t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray);
 void	set_cylinder_size(t_cylinder *cylinder, double min, double max);
 void	set_cylinder_cap(t_cylinder *cylinder);
+//Fixing leaks with ftroise
+void	my_free_setting(t_setting *set);
 #endif

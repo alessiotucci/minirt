@@ -46,19 +46,26 @@ void	start_camera(t_setting *set, char **details)
 
 }
 //DOUBLE CHECK THIS ONE
+
 void	start_lights(t_setting *set, char **details)
 {
 	t_light	*new_light;
 	new_light = malloc(sizeof(t_light));
-	if (!new_light)
-		return ;//TODO add the check
+	if (new_light == NULL)
+		return (free(new_light), error_msg("malloc failure\n"));//TODO add the check
 	ft_printf("\t*%sSETTING UP LIGHTS*%s\n", PURPLE, RESET);
+	if (lenght_string_array(details) != 4)
+		return (free(new_light));
 	if (lenght_string_array(details) == 4)
 	{
 		new_light->identifier = ft_strdup(details[0]);
+		if (new_light->identifier == NULL)
+			return (free(new_light));
 		new_light->position = parse_vector(details[1], 1.0);
 		new_light->brightness = my_atof(details[2]);
 		new_light->color = parse_color(details[3]);
 		add_light_to_array(new_light, set);
 	}
+	
 }
+

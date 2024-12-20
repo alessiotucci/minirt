@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:35:20 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/15 18:47:40 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 17:15:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	free_lights_array(t_light **lights, int num)
 	while (count < num)
 	{
 		free(lights[count]->identifier);
+		free(lights[count]);
 		count++;
 	}
 	free(lights);

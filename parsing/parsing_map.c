@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/06/14 16:39:04 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/12/20 15:22:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,25 @@ static void	split_line123(char **matrix, t_setting *set)
 }
 
 //TODO: 123 change the file locations
+//free bc there is get_next_line: check fdf with while(1)
 static int	counting_123(char *filename, t_setting *set)
 {
 	char	*line;
 	int		fd;
 
 	fd = open(filename, O_RDONLY);
-	line = get_next_line(fd);
-	while (line != NULL)
+	//line = get_next_line(fd);
+	//while (line != NULL)
+	while (1)
 	{
-		split_line123(ft_split(line, ' '), set);
 		line = get_next_line(fd);
+		if (line == NULL)
+			break;
+		split_line123(ft_split(line, ' '), set);
+		//line = get_next_line(fd);
+		free(line);
 	}
+	free(line);
 	//close(fd);TODO fix it
 	return (close(fd));
 }
@@ -63,6 +70,7 @@ static void	split_line(char **matrix, t_setting *set)
 }
 
 //4
+//free bc there is get_next_line
 static int	parse_map(char *filename, t_setting *set)
 {
 	char	*line;
@@ -74,14 +82,17 @@ static int	parse_map(char *filename, t_setting *set)
 	struct_status(set);
 	alloc_struct_elem(set);
 	fd = open(filename, O_RDONLY);
-	line = get_next_line(fd);
-	//replace_me(line, ' ', '\n');
-	while (line != NULL)
+//	while (line != NULL)
+	while(1)
 	{
-		//replace_me(line, ' ', '\n');
-		split_line(ft_split(line, ' '), set);
 		line = get_next_line(fd);
+		if (line == NULL)
+			break;
+		split_line(ft_split(line, ' '), set);
+		//line = get_next_line(fd);
+		free(line);
 	}
+	free(line);
 	return (close(fd));
 }
 
