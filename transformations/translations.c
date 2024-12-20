@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:15:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:11:11 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 19:11:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,24 @@ t_vector	translations(t_vector move, t_vector origin)
 {
 	//1) Create an identity matrix
 	double	**matrix;
+	t_vector	vector;
 
 	matrix = malloc_matrix(4, 4);
 	create_identity_matrix(matrix);
 	//2) add the value to the last columns
 	last_cols_value(4, matrix, move);
 	//3) Multiply the origin by the matrix
-	return (matrix_x_vector(matrix, origin));
+	//return (matrix_x_vector(matrix, origin));
+	vector = matrix_x_vector(matrix, origin);
+	free_heap_matrix(matrix, 4);
+	return (vector);
 }
 
 t_vector	inverse_translations(t_vector move, t_vector origin)
 {
 	double	**matrix;
 	//double	**rev_matrix;
+	t_vector	vector;
 
 	matrix = malloc_matrix(4, 4);
 	create_identity_matrix(matrix);
@@ -62,7 +67,11 @@ t_vector	inverse_translations(t_vector move, t_vector origin)
 //	printf("DOUBLE **\n");
 //	print_int_matrix(4, 4, rev_matrix);
 	//4) Multiply the origin by the reverse matrix
-	return (matrix_x_vector(matrix, origin));
+	//return (matrix_x_vector(matrix, origin));
+	vector = matrix_x_vector(matrix, origin);
+	free_heap_matrix(matrix, 4);
+	return (vector);
+
 }
 //TODO: DOUBLE CHECK THIS PART pls
 

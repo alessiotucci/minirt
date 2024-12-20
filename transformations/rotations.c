@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:16:40 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:10:33 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 19:13:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,40 @@
 t_vector	rotation_x(t_vector origin, double radians)
 {
 	double	**matrix;
+	t_vector	vector;
 
 	matrix = matrix_rotation_x(radians);
-	return (matrix_x_vector(matrix, origin));
+	//return (matrix_x_vector(matrix, origin));
+
+	vector = matrix_x_vector(matrix, origin);
+	free_heap_matrix(matrix, 4);
+	return (vector);
 }
 
 t_vector	rotation_y(t_vector origin, double radians)
 {
 	double	**matrix;
+	t_vector	vector;
 
 	matrix = matrix_rotation_y(radians);
-	return (matrix_x_vector(matrix, origin));
+	//return (matrix_x_vector(matrix, origin));
+
+	vector = matrix_x_vector(matrix, origin);
+	free_heap_matrix(matrix, 4);
+	return (vector);
 }
 
 t_vector	rotation_z(t_vector origin, double radians)
 {
 	double	**matrix;
+	t_vector	vector;
 
 	matrix = matrix_rotation_z(radians);
-	return (matrix_x_vector(matrix, origin));
+	//return (matrix_x_vector(matrix, origin));
+
+	vector = matrix_x_vector(matrix, origin);
+	free_heap_matrix(matrix, 4);
+	return (vector);
 }
 
 
