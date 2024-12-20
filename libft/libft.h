@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:38:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 17:24:39 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/18 15:04:15 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-# define LIBFT_H	
+# define LIBFT_H
 # include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdint.h>
+
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
@@ -93,4 +95,4 @@ int		pt_print_padding(char c, int width);
 int		check_formatting_flags(const char *str, int i);
 int		print_sign(int n);
 char	*get_next_line(int fd);
-#endif 
+#endif

@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/16 09:32:50 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/12/20 12:43:34 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,25 @@
 //1 return 1 (true) if it is possible to invert the matrix
 //remember how to compare doubles
 
-int	is_matrix_invertible(int s, double **matrix)
+/*int	is_matrix_invertible(int s, double **matrix) ORIGINALE
 {
 	if (comparing_double(determinant(copy_matrix(s, s, matrix), s), 0.0))
 	//if (comparing_double(determinant(matrix, s), 0.0))
 		return (0);
 	else
 		return (1);
+}*/
+
+int	is_matrix_invertible(int s, double **matrix)
+{
+	double **copy = copy_matrix(s, s, matrix);
+	int result = !comparing_double(determinant(copy, s), 0.0);
+	free_heap_matrix(copy, s); // Libera la copia che usiamo per trovare la determinata ma poi non la liberiamo
+	return result;
 }
 
-double	**divide_matrix(int size, double **source, double det)
+
+/*double	**divide_matrix(int size, double **source, double det) ORIGINALE
 {
 	double	**new;
 	int		i;
@@ -44,7 +53,42 @@ double	**divide_matrix(int size, double **source, double det)
 		i++;
 	}
 	return (new);
+}*/
+
+double **divide_matrix(int size, double **source, double det)
+{
+    double **new;
+    int i = 0;
+    int j;
+
+    // Allocazione della nuova matrice
+    new = malloc_matrix(size, size);
+    init_heap_matrix(size, size, new);
+
+    // Evitare la divisione per zero gestendo det al chiamante
+    if (det == 0.0)
+    {
+        free_heap_matrix(new, size);
+        printf("Error: Determinant is zero, cannot divide.\n");
+        return NULL;
+    }
+
+    // Divisione elemento per elemento
+    while (i < size)
+    {
+        j = 0;
+        while (j < size)
+        {
+            new[i][j] = source[i][j] / det; // Divisione sicura
+            j++;
+        }
+        i++;
+    }
+
+    return new;
 }
+
+
 
 double	**matrix_of_cofactors(int size, double **matrix)
 {
@@ -90,7 +134,7 @@ double	**transposing(int rows, int cols, double **matrix)
 	return (ret);
 }
 
-double	**inversing_matrix(int s, double **src)
+/*double	**inversing_matrix(int s, double **src)
 {
 	double	**mat_cofact;
 	double	**trans;
@@ -105,7 +149,32 @@ double	**inversing_matrix(int s, double **src)
 	free_heap_matrix(mat_cofact, s);
 	free_heap_matrix(trans, s);
 	return (inversed);
+}*/
+
+double	**inversing_matrix(int s, double **src)
+{
+	double	**mat_cofact, **trans, **inversed;
+	double	**copied_matrix = copy_matrix(s, s, src);
+	double det = determinant(copied_matrix, s);
+
+	if (det == 0.0)
+	{
+		free_heap_matrix(copied_matrix, s);
+		printf("Cannot reverse it!\n");
+		return NULL;
+	}
+
+	mat_cofact = matrix_of_cofactors(s, src);
+	trans = transposing(s, s, mat_cofact);
+	inversed = divide_matrix(s, trans, det);
+
+	free_heap_matrix(copied_matrix, s);
+	free_heap_matrix(mat_cofact, s);
+	free_heap_matrix(trans, s);
+
+	return inversed;
 }
+
 
 /* main to test out the function */
 /*
@@ -144,7 +213,7 @@ int	main()
 	else
 		printf("It cannot be reverse\n");
 	free_heap_matrix(x, 4);
-	
+
 
 	printf("%sTEST 1%s\n", RED, RESET);
 	printf("Calculating the inverse of another matrix: [k]\n");

@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/20 21:31:55 by ftroise          ###   ########.fr       */
+/*   Updated: 2024/12/20 12:07:22 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft/libft.h"
 # include <string.h>
 # include <pthread.h>
+# include <stdint.h>
 
 /***********************************************************************/
 /*The open and creat functions are declared in the header file fcntl.h */
@@ -399,7 +400,7 @@ t_vector	cross(t_vector v1, t_vector v2);
 /* Matrix operations */
 /*********************/
 void		free_heap_matrix(double **matrix, int rows);
-double		**malloc_matrix(int rows, int col);
+double		**malloc_matrix(long unsigned int rows, int col);
 void		init_matrix(int rows, int cols, double matrix[rows][cols]);
 void		init_heap_matrix(int rows, int cols, double **matrix);
 void		print_int_matrix(int rows, int cols, double **matrix);
