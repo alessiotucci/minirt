@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/18 14:37:03 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 19:18:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	start_cylinder(t_setting *set, char **details)
 	new_cylinder->identifier = ft_strdup(details[0]);
 	new_cylinder->center = parse_vector(details[1], 1.0);
 	new_cylinder->axis = parse_vector(details[2], 0.0); //TODO carefull with ranges
-	new_cylinder->diameter = atof(details[3]);
-	new_cylinder->height = atof(details[4]);
+	new_cylinder->diameter = my_atof(details[3]);
+	new_cylinder->height = my_atof(details[4]);
 	new_cylinder->min = DBL_MIN;
 	new_cylinder->max = DBL_MAX;
 	new_cylinder->color = parse_color(details[5]);
