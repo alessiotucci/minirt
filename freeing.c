@@ -6,13 +6,12 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:35:20 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 17:15:21 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 18:36:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
-
 #include <stdlib.h>
 
 void	free_single_sphere(t_sphere *sphere)

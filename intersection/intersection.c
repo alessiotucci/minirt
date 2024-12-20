@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 17:56:46 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 19:01:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_sphere *deep_copy_sphere(t_sphere *src)
 	copy->material = src->material;
 
 	// Deep copy the transform matrix//TODO: create a function to do that
-	copy->transform = malloc_matrix(4, 4);
+	//copy->transform = malloc_matrix(4, 4);
 	//  358 | double  **copy_matrix(int rows, int cols, double **source);
 	copy->transform = copy_matrix(4, 4, src->transform);
 	return (copy);
@@ -50,7 +50,7 @@ t_plane *deep_copy_plane(t_plane *src)
 	copy->normal = src->normal;
 	copy->color = src->color;
 	//TODO: create a function to do that
-	copy->transform = malloc_matrix(4, 4);
+	//copy->transform = malloc_matrix(4, 4);
 	copy->transform = copy_matrix(4, 4, src->transform);
 	return (copy);
 }
@@ -71,7 +71,7 @@ t_cylinder	*deep_copy_cylinder(t_cylinder *src)
 	copy->diameter = src->diameter;
 	copy->color = src->color;
 	//TODO: create a function to do that
-	copy->transform = malloc_matrix(4, 4);
+	//copy->transform = malloc_matrix(4, 4);
 	copy->transform = copy_matrix(4, 4, src->transform);
 	return (copy);
 }

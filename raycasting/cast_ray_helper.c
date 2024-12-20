@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 14:28:47 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 18:37:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,15 +112,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	int	i;
 
 	ray = create_ray_from_camera(data, x, y);
-	//TODO: debugging here
-	/* if (x == 100 && y == 100)
-	{
-		printf("%sinside EACH_PIXEL_CALCULATION v2, pixel(100, 100)...%s\t", YELLOW, RESET);
-		print_ray(ray);
-	}*/
 	i = 0;
-
-	
 	while (i < data->setting->num_spheres)
 	{
 		sphere_intersections = intersect_sphereV2(*data->setting->spheres[i], ray);
@@ -128,13 +120,9 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 			concatenate_lists(&all_intersections, sphere_intersections);
 	i++;
 	}
-	
-
 	//Starting working here to see a plane on the screen
 	t_list_intersect *plane_intersections;(void)plane_intersections;
 	i = 0;
-
-	
 	while (i < data->setting->num_planes)
 	{
 		//printf("%sDEBUG%s plane intersection[%d], please wait...\n", RED, RESET, i);
@@ -158,7 +146,6 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	i++;
 	}
 	*/
-	
 	//TODO: here after checking for all the obj (sphere, cylinder, planes etc.) we check the closest point.
 	closest_intersection = hit_v2(all_intersections);
 	if (closest_intersection != NULL)
