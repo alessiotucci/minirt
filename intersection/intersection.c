@@ -6,10 +6,11 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 12:08:06 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 17:56:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "../minirt.h"
 
 t_sphere *deep_copy_sphere(t_sphere *src)
@@ -91,13 +92,12 @@ t_type	string_to_type(char *type)
 		//return (T_SPHERE); // THIS IS TO COMPILE
 }
 
-#include <stdlib.h>
 
 // Function to free a single intersection
 void	free_intersection(t_intersection *intersect)
 {
 	if (!intersect)
-		return ;
+		return (error_msg("F: free_intersection!\n"));
 	// Check the type of object and free accordingly
 	if (intersect->obj.type == T_SPHERE)
 	{
@@ -115,7 +115,7 @@ void	free_intersection(t_intersection *intersect)
 		free_single_cylinder(cylinder);
 	}
 	else
-		return ;
+		return (error_msg("F: free_intersection! obj not FOUND\n"));
 }
 
 t_intersection	intersection(double t, char *type, void *obj_address)

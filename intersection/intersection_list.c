@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/15 18:20:35 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/20 18:22:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,8 @@
 //	int count;
 //}	t_intersection_list;
 
-//TODO: GPT gave this to me 
-void	add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src)
-{
-	for (int i = 0; i < src->count; i++)
-	{
-		if (dest->count < src->count)
-		{
-			dest->intersections[dest->count] = src->intersections[i];
-			dest->count++;
-		}
-	}
-}
-/* 2) */
+
+/* 2) this is also needed */
 t_intersection_list	*create_intersection_list(int count)
 {
 	t_intersection_list	*list;
@@ -45,23 +34,13 @@ t_intersection_list	*create_intersection_list(int count)
 	return (list);
 }
 
-/* 3) */
+/* this is needed */
 void	add_intersection(t_intersection_list *l, int index, t_intersection i)
 {
 	if (index >= 0 && index < l->count)
 		l->intersections[index] = i;
 }
 
-/* 4) freeing the list of intersection */
-void	free_intersection_list(t_intersection_list *list)
-{
-	if (list)
-	{
-		if (list->intersections)
-			free(list->intersections);
-		free(list);
-	}
-}
 
 void	print_intersection(t_intersection i)
 {

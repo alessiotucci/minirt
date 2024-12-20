@@ -223,7 +223,6 @@ add_colors	colors/operation_color.c	/^t_color	add_colors(t_color c1, t_color c2)
 add_cylinder_to_array	add_elem_array.c	/^void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_intersection	intersection/intersection_list.c	/^void	add_intersection(t_intersection_list *l, int index, t_intersection i)$/;"	f	typeref:typename:void
 add_intersection_l	intersection/real_list.c	/^void	add_intersection_l(t_list_intersect **head, t_intersection *intersection)$/;"	f	typeref:typename:void
-add_intersections_to_list	intersection/intersection_list.c	/^void	add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src)$/;"	f	typeref:typename:void
 add_light_to_array	add_elem_array.c	/^void	add_light_to_array(t_light *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_plane_to_array	add_elem_array.c	/^void	add_plane_to_array(t_plane *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_sphere_to_array	add_elem_array.c	/^void	add_sphere_to_array(t_sphere *to_add, t_setting *set)$/;"	f	typeref:typename:void
@@ -361,7 +360,6 @@ fov_calculation	draw_scene.c	/^void	fov_calculation(t_camera *cam, double *image
 free_cylinder_array	freeing.c	/^void	free_cylinder_array(t_cylinder **cylinders, int num)$/;"	f	typeref:typename:void
 free_heap_matrix	matrix/matrix_utils.c	/^void	free_heap_matrix(double **matrix, int rows)$/;"	f	typeref:typename:void
 free_intersection	intersection/intersection.c	/^void	free_intersection(t_intersection *intersect)$/;"	f	typeref:typename:void
-free_intersection_list	intersection/intersection_list.c	/^void	free_intersection_list(t_intersection_list *list)$/;"	f	typeref:typename:void
 free_lights_array	freeing.c	/^void	free_lights_array(t_light **lights, int num)$/;"	f	typeref:typename:void
 free_list	intersection/real_list.c	/^void	free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 free_plane_array	freeing.c	/^void	free_plane_array(t_plane **planes, int num)$/;"	f	typeref:typename:void
