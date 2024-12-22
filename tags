@@ -282,6 +282,7 @@ color	minirt.h	/^	t_color	color;\/\/ material can get color from the shape$/;"	m
 color	mlx/mlx_int.h	/^	int		color;$/;"	m	struct:s_col_name	typeref:typename:int
 color_map_1	mlx/test/main.c	/^int	color_map_1(void *win,int w,int h)$/;"	f	typeref:typename:int
 color_map_2	mlx/test/main.c	/^int	color_map_2(unsigned char *data,int bpp,int sl,int w,int h,int endian, int type)$/;"	f	typeref:typename:int
+compare_logs	new_script_valgrind.pl	/^sub compare_logs$/;"	s
 comparing_double	extra/comparing.c	/^int	comparing_double(double a, double b)$/;"	f	typeref:typename:int
 comparing_heap_matrix	matrix/operations_matrix.c	/^int	comparing_heap_matrix(int rows, int cols, double **a, double **b)$/;"	f	typeref:typename:int
 comparing_vector	extra/comparing.c	/^int	comparing_vector(t_vector a, t_vector b)$/;"	f	typeref:typename:int
@@ -426,6 +427,7 @@ gc	mlx/mlx_int.h	/^	GC					gc;$/;"	m	struct:s_win_list	typeref:typename:GC
 gc	mlx/mlx_int.h	/^	GC				gc;$/;"	m	struct:s_img	typeref:typename:GC
 gere_mouse	mlx/test/new_win.c	/^int gere_mouse(int x,int y,int button,void*toto)$/;"	f	typeref:typename:int
 get_color_intersect	raycasting/cast_ray_helper.c	/^t_color	get_color_intersect(t_object obj)$/;"	f	typeref:typename:t_color
+get_current_date	new_script_valgrind.pl	/^sub get_current_date()$/;"	s
 get_discriminant	raycasting/intersection_ray.c	/^double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)$/;"	f	typeref:typename:double
 get_length	libft/get_next_line.c	/^static ssize_t	get_length(char *buf, int kind_of_calculation)$/;"	f	typeref:typename:ssize_t	file:
 get_next_line	libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
@@ -669,6 +671,7 @@ private_cmap	mlx/mlx_int.h	/^	int			private_cmap;$/;"	m	struct:s_xvar	typeref:ty
 process_fractional_part	extra/my_atof.c	/^static double	process_fractional_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
 process_integer_part	extra/my_atof.c	/^static double	process_integer_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
 project_point_to_2d	raycasting/cast_ray.c	/^t_vector project_point_to_2d(t_vector point, t_camera *camera, int width, int height)$/;"	f	typeref:typename:t_vector
+prompt_user	new_script_valgrind.pl	/^sub prompt_user()$/;"	s
 pshm_format	mlx/mlx_int.h	/^	int			pshm_format;$/;"	m	struct:s_xvar	typeref:typename:int
 pt_putchar	libft/ft_printf_utils.c	/^int	pt_putchar(char c)$/;"	f	typeref:typename:int
 pt_putstr	libft/ft_printf_utils.c	/^int	pt_putstr(char *str)$/;"	f	typeref:typename:int
