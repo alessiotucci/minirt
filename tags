@@ -226,7 +226,7 @@ add_intersection_l	intersection/real_list.c	/^void	add_intersection_l(t_list_int
 add_light_to_array	add_elem_array.c	/^void	add_light_to_array(t_light *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_plane_to_array	add_elem_array.c	/^void	add_plane_to_array(t_plane *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_sphere_to_array	add_elem_array.c	/^void	add_sphere_to_array(t_sphere *to_add, t_setting *set)$/;"	f	typeref:typename:void
-address	minirt.h	/^	void	*address;$/;"	m	struct:s_object	typeref:typename:void *
+address	minirt.h	/^	void	*address; \/\/TODO: maybe should free it$/;"	m	struct:s_object	typeref:typename:void *
 after that I looked into my old fdf to see if  I still remember anything about the mlx graphical library from 42:	README.md	/^#### after that I looked into my old fdf to see if  I still remember anything about the mlx grap/;"	t	subsection:minirt""[`the first thing I search on youtube`](https://www.youtube.com/results?search_query=lectures+on+ray+tracing+from+ivy+college)
 all	Makefile	/^all: $(NAME)$/;"	t
 all	libft/Makefile	/^all: $(NAME)$/;"	t

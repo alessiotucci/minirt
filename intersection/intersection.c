@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 19:01:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/22 17:28:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	free_intersection(t_intersection *intersect)
 	{
 		t_sphere *sphere = (t_sphere *)intersect->obj.address;
 		free_single_sphere(sphere);
+		//TODO: WITH VENELIN free(intersect->obj.address);
 	}
 	else if (intersect->obj.type == T_PLANE)
 	{

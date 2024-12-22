@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 15:27:30 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/22 17:25:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ typedef enum e_type
 typedef struct s_object
 {
 	t_type	type;
-	void	*address;
+	void	*address; //TODO: maybe should free it
 }	t_object;
 
 /* let's see if it is usefult ***********************************************/
@@ -160,11 +160,13 @@ typedef struct s_intersection
 	t_object	obj;
 }	t_intersection;
 
+
 typedef struct s_intersection_list
 {
 	t_intersection	*intersections;
 	int count;
 }	t_intersection_list;
+
 
 //TODO: NEW LINKED_LIST!
 typedef struct s_list_intersect
@@ -435,6 +437,7 @@ t_vector	position_ray(t_ray ray, double t);
 /* Raycasting/hit.c */
 /********************/
 t_intersection	*hit(t_intersection_list *list);
+//TODO: v2
 t_intersection	*hit_v2(t_list_intersect *list);
 
 /*************************/
@@ -454,6 +457,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y);
 /*********************************/
 t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray);
 double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter);
+//TODO: v2
 t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
 
 /***********************************/
@@ -521,6 +525,7 @@ t_type				string_to_type(char *type);
 t_object			create_object(char *type, void *object);
 t_intersection		intersection(double t, char *type, void *object);
 void				free_intersection(t_intersection *intersect);
+
 /************************************/
 /* intersection/intersection_list.c */
 /************************************/
