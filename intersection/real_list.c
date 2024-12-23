@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 10:23:58 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 18:35:25 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/23 14:17:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ void	free_list(t_list_intersect **head)
 		next_node = current->next;
 		//TODO:free(current->intersection);Free the intersection if it was dynamically allocated
 		if (current->intersection)
+		{
 			free_intersection(current->intersection);
+			free(current->intersection);
+		}
 		free(current);
 		current = next_node;
 	}
@@ -101,6 +104,8 @@ void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)
 		current = current->next;
 	current->next = list2;
 }
+
+
 /*
 int	main()
 {
@@ -126,28 +131,23 @@ int	main()
 	t_list_intersect *second = intersect_sphereV2(s1, ray2);
 	printf("\nfirst_list\n");
 	// then print out the list
-	print_list(&first);
+	print_list(&first, 0);
 
 	printf("\nsecond_list\n");
 	// then print out the list
-	print_list(&second);
+	print_list(&second, 0);
 	 // Concatenate the lists
 	concatenate_lists(&first, second);
 
 	printf("\nconcatenated_list\n");
-	print_list(&first);
+	print_list(&first, 0);
 	// Free the list
 	free_list(&first);
 
-	// intersection linked list created
-	//t_list_intersect *new_list = NULL;
-	// add the intersections to the list
-	//add_intersection_l(&new_list, first);
-	//add_intersection_l(&new_list, second);
-	// then print out the list
-	//print_list(&new_list);
-	// free the list
-	//free_list(&new_list);
+	//free since those sphere are not malloced
+	free_heap_matrix(s.transform, 4);
+	free_heap_matrix(s1.transform, 4);
+
 	return (0);
 }
 

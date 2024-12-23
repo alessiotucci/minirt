@@ -254,8 +254,6 @@ camera_image_plane	draw_scene.c	/^void	camera_image_plane(t_mlx *mlx)$/;"	f	type
 cast_rays	raycasting/cast_ray.c	/^void	cast_rays(t_mlx *data)$/;"	f	typeref:typename:void
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_cylinder	typeref:typename:t_vector
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_sphere	typeref:typename:t_vector
-center_sphere	centering.c	/^void center_sphere(t_sphere *sphere, int window_width, int window_height)$/;"	f	typeref:typename:void
-center_viewpoint	centering.c	/^static void	center_viewpoint(t_camera *camera, int window_width, int window_height)$/;"	f	typeref:typename:void	file:
 check	mlx/Makefile.mk	/^check: all$/;"	t
 check_cap_cylinder	intersection/intersection_cylinder.c	/^int	check_cap_cylinder(t_ray ray, double t)$/;"	f	typeref:typename:int
 check_null_array	extra/utils.c	/^int	check_null_array(char **array)$/;"	f	typeref:typename:int
@@ -717,7 +715,6 @@ saved_mode	mlx/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v	typeref:typename:R
 scaling	transformations/scaling.c	/^t_vector	scaling(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 scaling_inverse	transformations/scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
-send_to_centre	centering.c	/^void	send_to_centre(t_setting *set)$/;"	f	typeref:typename:void
 set_cylinder_cap	shapes/cylinder.c	/^void	set_cylinder_cap(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinder, double min, double max)$/;"	f	typeref:typename:void
 set_sphere_transformations	raycasting/transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void
@@ -780,7 +777,6 @@ t_win_list	mlx/mlx_int.h	/^}				t_win_list;$/;"	t	typeref:struct:s_win_list
 t_xpm_col	mlx/mlx_int.h	/^}				t_xpm_col;$/;"	t	typeref:struct:s_xpm_col
 t_xvar	mlx/mlx_int.h	/^}				t_xvar;$/;"	t	typeref:struct:s_xvar
 test	Makefile	/^test: $(TEST_OBJ)$/;"	t
-test	centering.c	/^static void	test(t_camera *camera)$/;"	f	typeref:typename:void	file:
 test_default_main	mlx/test/run_tests.sh	/^test_default_main(){$/;"	f
 test_function	manage_mlx.c	/^static void	test_function(t_mlx *info)$/;"	f	typeref:typename:void	file:
 transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_cylinder	typeref:typename:double **
@@ -792,7 +788,6 @@ transposing	matrix/inversing.c	/^double	**transposing(int rows, int cols, double
 transposing_void	matrix/void.c	/^void	transposing_void(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 type	minirt.h	/^	t_type	type;$/;"	m	struct:s_object	typeref:typename:t_type
 type	mlx/mlx_int.h	/^	int				type;$/;"	m	struct:s_img	typeref:typename:int
-update_camera	centering.c	/^void update_camera(t_mlx *mlx, int x, int y)$/;"	f	typeref:typename:void
 use_xshm	mlx/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
 v2normal_at	normal.c	/^t_vector v2normal_at(t_object obj, t_vector point)$/;"	f	typeref:typename:t_vector
 value_matrix	matrix/initialize_matrix.c	/^double	**value_matrix(double a[4], double b[4], double c[4], double d[4])$/;"	f	typeref:typename:double **

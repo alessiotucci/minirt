@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 18:49:23 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:08:37 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/23 14:28:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ double	**copy_matrix(int rows, int cols, double **source)
 	int		i;
 	int		j;
 
+	if (source == NULL)
+		return (error_msg("copy_matrix_failure"), NULL);
 	destination = malloc_matrix(rows, cols);
 	i = 0;
 	while (i < rows)

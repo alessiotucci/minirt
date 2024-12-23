@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 10:04:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/14 10:06:35 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/23 16:42:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,17 @@ t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)
 	t_intersection inter2;
 	t_ray ray;
 
-	ray = transform_ray(old_ray, inversing_matrix(4, copy_matrix(4, 4, sphere.transform)));
+	double **leaking_matrix;
+	double **cp;
+	
+	cp = copy_matrix(4, 4, sphere.transform);
+//	leaking_matrix = inversing_matrix(4, copy_matrix(4, 4, sphere.transform));
+	leaking_matrix = inversing_matrix(4, cp);
+	//leaking_matrix = inversing_matrix(4, sphere.transform);
+	//ray = transform_ray(old_ray, inversing_matrix(4, copy_matrix(4, 4, sphere.transform)));
+	ray = transform_ray(old_ray, leaking_matrix);
+	free_heap_matrix(leaking_matrix, 4);
+	free_heap_matrix(cp, 4);
 	sphere_to_ray = get_sphere_to_ray(sphere, ray);
 	discriminant = get_discriminant(sphere_to_ray, ray, sphere.diameter / 2.0); // diameter/2 for radius
 	if (discriminant < 0)

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 15:10:55 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/23 15:47:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,9 @@ double	**inversing_matrix(int s, double **src)
 	mat_cofact = matrix_of_cofactors(s, src);
 	trans = transposing(s, s, mat_cofact);
 	inversed = divide_matrix(s, trans, determinant(copy_matrix(s, s, src), s));
-	//inversed = divide_matrix(s, trans, determinant(src, s));
+//	inversed = divide_matrix(s, trans, determinant(src, s));
+//	TODO: WHY I was creating a copy!? it causing a segfault but unit test do not leak!
+//	inversed = divide_matrix(s, trans, determinant(src, s));
 	free_heap_matrix(mat_cofact, s);
 	free_heap_matrix(trans, s);
 	return (inversed);

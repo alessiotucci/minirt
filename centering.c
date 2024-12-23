@@ -6,12 +6,13 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:01:23 by ftroise           #+#    #+#             */
-/*   Updated: 2024/09/29 12:44:06 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/23 13:36:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/*
 static void	center_viewpoint(t_camera *camera, int window_width, int window_height)
 {
 	// Calcolo del centro della finestra
@@ -72,3 +73,4 @@ void center_sphere(t_sphere *sphere, int window_width, int window_height)
 	sphere->center.y = center_y - sphere->center.y;
 }
 
+*/
