@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/22 17:28:47 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/23 17:14:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,21 +100,11 @@ void	free_intersection(t_intersection *intersect)
 		return (error_msg("F: free_intersection!\n"));
 	// Check the type of object and free accordingly
 	if (intersect->obj.type == T_SPHERE)
-	{
-		t_sphere *sphere = (t_sphere *)intersect->obj.address;
-		free_single_sphere(sphere);
-		//TODO: WITH VENELIN free(intersect->obj.address);
-	}
+		free_single_sphere((t_sphere *)intersect->obj.address);
 	else if (intersect->obj.type == T_PLANE)
-	{
-		t_plane *plane = (t_plane *)intersect->obj.address;
-		free_single_plane(plane);
-	}
+		free_single_plane((t_plane *)intersect->obj.address);
 	else if (intersect->obj.type == T_CYLINDER)
-	{
-		t_cylinder *cylinder = (t_cylinder *)intersect->obj.address;
-		free_single_cylinder(cylinder);
-	}
+		free_single_cylinder((t_cylinder *)intersect->obj.address);
 	else
 		return (error_msg("F: free_intersection! obj not FOUND\n"));
 }
@@ -122,9 +112,7 @@ void	free_intersection(t_intersection *intersect)
 t_intersection	intersection(double t, char *type, void *obj_address)
 {
 	t_intersection	new;
-	t_sphere		*sphere;
-	t_plane			*plane;
-	t_cylinder		*cylinder;
+
 
 	//printf("\t\t%sDEBUG LOG: intersection func%s obj_address: %p\n", YELLOW, RESET, obj_address);
 	//printf("\t\tintersection value t: %lf\n", t);
@@ -134,19 +122,10 @@ t_intersection	intersection(double t, char *type, void *obj_address)
 	new.obj.address = obj_address;
 	//printf("value t: [%lf], string type (%s)\n", t, type);
 	if (string_to_type(type) == T_SPHERE)
-	{
-		sphere = (t_sphere *)obj_address;
-		new.obj.address = deep_copy_sphere(sphere);
-	}
+		new.obj.address = deep_copy_sphere((t_sphere *)obj_address);
 	if (string_to_type(type) == T_PLANE)
-	{
-		plane = (t_plane *)obj_address;
-		new.obj.address = deep_copy_plane(plane);
-	}
+		new.obj.address = deep_copy_plane((t_plane *)obj_address);
 	if (string_to_type(type) == T_CYLINDER)
-	{
-		cylinder = (t_cylinder *)obj_address;
-		new.obj.address = deep_copy_cylinder(cylinder);
-	}
+		new.obj.address = deep_copy_cylinder((t_cylinder *)obj_address);
 	return (new);
 }
