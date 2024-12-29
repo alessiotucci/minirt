@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   real_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 10:23:58 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/23 17:10:23 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/29 14:09:18 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list_intersect	*create_new_node(t_intersection *intersection)
 	return (new_node);
 }
 
-void	add_intersection_l(t_list_intersect **head, t_intersection *intersection)
+/*void	add_intersection_l(t_list_intersect **head, t_intersection *intersection) //ORIGINALE
 {
 	t_list_intersect	*new_node;
 	t_list_intersect	*current;
@@ -45,9 +45,45 @@ void	add_intersection_l(t_list_intersect **head, t_intersection *intersection)
 	while (current->next)
 		current = current->next;
 	current->next = new_node;
+}*/
+
+/*
+Funzione aggiornata per aggiungere un nodo a una lista con gestione delle eccezioni
+I nodi precedenti vengono liberati scorrendo la lista, 
+Questo approccio al momento funziona qualcosina toglie ma niente di grosso, ho il dubbio se potra non andare bene quando dovremmo modificare gli oggetti.
+*/
+
+void add_intersection_l(t_list_intersect **head, t_intersection *intersection)
+{
+    t_list_intersect *new_node;
+    t_list_intersect *current;
+
+    new_node = create_new_node(intersection);
+    if (!new_node)
+        return (error_msg("malloc failed."));
+
+    if (!*head)
+    {
+        *head = new_node; // NUOVA RIGA: qui assegniamo il nuovo nodo come testa della lista perché la lista è vuota
+        return;
+    }
+
+    current = *head;
+    while (current->next)
+    {
+        t_list_intersect *temp = current; // NUOVA RIGA: teniamo traccia del nodo precedente
+        current = current->next;
+
+        free_intersection(temp->intersection); // NUOVA RIGA: liberiamo la memoria del nodo precedente
+        free(temp->intersection); 
+        free(temp);
+    }
+
+    current->next = new_node; 
 }
 
-void	free_list(t_list_intersect **head)
+/*
+void	free_list(t_list_intersect **head) ORIGINALE
 {
 	t_list_intersect	*current;
 	t_list_intersect	*next_node;
@@ -66,6 +102,30 @@ void	free_list(t_list_intersect **head)
 		current = next_node;
 	}
 	*head = NULL;
+}*/
+
+// Funzione aggiornata per liberare la memoria della lista
+void free_list(t_list_intersect **head)
+{
+    t_list_intersect *current;
+    t_list_intersect *next_node;
+
+    current = *head;
+    while (current)
+    {
+        next_node = current->next;
+
+        if (current->intersection)
+        {
+            free_intersection(current->intersection); // NUOVA RIGA: qui liberiamo le risorse interne dell'intersezione
+            free(current->intersection); // NUOVA RIGA: qui liberiamo l'intersezione stessa
+        }
+
+        free(current); // NUOVA RIGA: qui liberiamo il nodo della lista
+        current = next_node;
+    }
+
+    *head = NULL; // NUOVA RIGA: qui resettiamo il puntatore della lista per evitare riferimenti dangling
 }
 
 void	print_list(t_list_intersect **head, int debug)

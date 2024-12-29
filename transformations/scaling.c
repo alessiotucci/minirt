@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scaling.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:17:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:11:40 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/21 17:42:44 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main()
 	t_vector result = scaling(scal, point);
 	print_vector(result);
 	printf("%sTEST 2 SCALING%s\n", RED, RESET);
-	t_vector result0 = scaling_inverse(scal, point);
+	t_vector result0 = (scal, point);
 	print_vector(result0);
 	
 	t_vector neg = create_point(-1, 1, 1);

@@ -3,15 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/23 17:14:13 by atucci           ###   ########.fr       */
+/*   Updated: 2024/12/29 15:33:34 by ftroise          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "../minirt.h"
+
+
+/* al momento qulle funzioni che volevi fare le ho lasciate qui, in un secondo
+momento possiamo creare un'altro file*/ 
+
+static void copy_simple_fields_sphere(t_sphere *dest, t_sphere *src)
+{
+	dest->identifier = ft_strdup(src->identifier);
+    dest->center = src->center;
+    dest->diameter = src->diameter;
+    dest->color = src->color;
+    dest->material = src->material;
+}
+
+static void copy_simple_fields_plane(t_plane *dest, t_plane *src)
+{
+	dest->identifier = ft_strdup(src->identifier);
+	dest->point = src->point;
+	dest->color = src->color;
+	dest->material = src->material;
+}
+
+static void copy_simple_fields_cylinder(t_cylinder *dest, t_cylinder*src)
+{
+	dest->identifier = ft_strdup(src->identifier);
+	dest->center = src->center;
+	dest->axis = src->axis;
+	dest->height = src->height;
+	dest->diameter = src->diameter;
+	dest->color = src->color;
+}
+
 
 t_sphere *deep_copy_sphere(t_sphere *src)
 {
@@ -21,13 +53,7 @@ t_sphere *deep_copy_sphere(t_sphere *src)
 		perror("Failed to allocate memory for sphere copy");
 		exit(EXIT_FAILURE);
 	}
-
-	// Copy simple fields//TODO: create a function to do that
-	copy->identifier = ft_strdup(src->identifier);
-	copy->center = src->center;
-	copy->diameter = src->diameter;
-	copy->color = src->color;
-	copy->material = src->material;
+	copy_simple_fields_sphere(copy, src);
 
 	// Deep copy the transform matrix//TODO: create a function to do that
 	//copy->transform = malloc_matrix(4, 4);
@@ -44,11 +70,8 @@ t_plane *deep_copy_plane(t_plane *src)
 		perror("Failed to allocate memory for plane copy");
 		exit(EXIT_FAILURE);
 	}
-	// Copy simple fields//TODO: create a function to do that
-	copy->identifier = ft_strdup(src->identifier);
-	copy->point = src->point;
-	copy->normal = src->normal;
-	copy->color = src->color;
+	copy_simple_fields_plane(copy, src);
+
 	//TODO: create a function to do that
 	//copy->transform = malloc_matrix(4, 4);
 	copy->transform = copy_matrix(4, 4, src->transform);
@@ -64,13 +87,9 @@ t_cylinder	*deep_copy_cylinder(t_cylinder *src)
 		exit(EXIT_FAILURE);
 	}
 	// Copy simple fields//TODO: create a function to do that
-	copy->identifier = ft_strdup(src->identifier);
-	copy->center = src->center;
-	copy->axis = src->axis;
-	copy->height = src->height;
-	copy->diameter = src->diameter;
-	copy->color = src->color;
+
 	//TODO: create a function to do that
+	copy_simple_fields_cylinder(copy, src);
 	//copy->transform = malloc_matrix(4, 4);
 	copy->transform = copy_matrix(4, 4, src->transform);
 	return (copy);
@@ -121,11 +140,13 @@ t_intersection	intersection(double t, char *type, void *obj_address)
 	new.obj.type = string_to_type(type);
 	new.obj.address = obj_address;
 	//printf("value t: [%lf], string type (%s)\n", t, type);
+
 	if (string_to_type(type) == T_SPHERE)
 		new.obj.address = deep_copy_sphere((t_sphere *)obj_address);
 	if (string_to_type(type) == T_PLANE)
 		new.obj.address = deep_copy_plane((t_plane *)obj_address);
 	if (string_to_type(type) == T_CYLINDER)
 		new.obj.address = deep_copy_cylinder((t_cylinder *)obj_address);
+
 	return (new);
 }
