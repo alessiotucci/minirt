@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/22 17:25:56 by atucci           ###   ########.fr       */
+/*   Updated: 2025/01/24 16:58:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,8 @@ typedef enum e_type
 	T_LIGHT,
 	T_SPHERE,
 	T_PLANE,
-	T_CYLINDER
+	T_CYLINDER,
+	T_NULL
 }	t_type;
 
 // Define the struct that will hold the object type and the void pointer
@@ -596,4 +597,7 @@ void	set_cylinder_size(t_cylinder *cylinder, double min, double max);
 void	set_cylinder_cap(t_cylinder *cylinder);
 //Fixing leaks with ftroise
 void	my_free_setting(t_setting *set);
+//TODO: after coming back from China (fix compilation issues)
+t_vector	default_vector(void);
+t_color	default_color(void);
 #endif

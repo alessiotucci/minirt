@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:48:17 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/23 15:42:46 by atucci           ###   ########.fr       */
+/*   Updated: 2025/01/24 16:50:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_vector	add(t_vector v1, t_vector v2)
 {
 	t_vector	result;
 
+	result = default_vector();
 	if (is_a_point(v1) && is_a_point(v2))
 		return (ft_printf("bad usage adding 2 point\n"), result);
 	result.x = v1.x + v2.x;
@@ -32,6 +33,7 @@ t_vector	subtract(t_vector v1, t_vector v2)
 {
 	t_vector	result;
 
+	result = default_vector();
 	if (is_a_vector(v1) && is_a_point(v2))
 		return (ft_printf("bad subtract vector to a point\n"), result);
 	result.x = v1.x - v2.x;
@@ -58,6 +60,7 @@ t_vector	division(t_vector v, double scalar)
 {
 	t_vector	result;
 
+	result = default_vector();
 	if (scalar <= 0.0)
 		return (ft_printf("trying to divide by zero\n"), result);
 	result.x = v.x / scalar;

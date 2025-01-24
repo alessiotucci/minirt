@@ -196,8 +196,9 @@ SYNOPSYS	mlx/man/man3/mlx_pixel_put.3	/^.SH SYNOPSYS$/;"	s	title:MiniLibX
 TEST_OBJ	Makefile	/^TEST_OBJ = $(TEST_SOURCE:.c=.o)$/;"	m
 TEST_SOURCE	Makefile	/^TEST_SOURCE = $(filter-out .\/main.c, $(SOURCE))$/;"	m
 T_CAMERA	minirt.h	/^	T_CAMERA,$/;"	e	enum:e_type
-T_CYLINDER	minirt.h	/^	T_CYLINDER$/;"	e	enum:e_type
+T_CYLINDER	minirt.h	/^	T_CYLINDER,$/;"	e	enum:e_type
 T_LIGHT	minirt.h	/^	T_LIGHT,$/;"	e	enum:e_type
+T_NULL	minirt.h	/^	T_NULL$/;"	e	enum:e_type
 T_PLANE	minirt.h	/^	T_PLANE,$/;"	e	enum:e_type
 T_SPHERE	minirt.h	/^	T_SPHERE,$/;"	e	enum:e_type
 UC davis Computer Graphics course	README.md	/^## UC davis Computer Graphics course$/;"	s	chapter:minirt
@@ -222,7 +223,7 @@ add	vector/vector_operations.c	/^t_vector	add(t_vector v1, t_vector v2)$/;"	f	ty
 add_colors	colors/operation_color.c	/^t_color	add_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color
 add_cylinder_to_array	add_elem_array.c	/^void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_intersection	intersection/intersection_list.c	/^void	add_intersection(t_intersection_list *l, int index, t_intersection i)$/;"	f	typeref:typename:void
-add_intersection_l	intersection/real_list.c	/^void	add_intersection_l(t_list_intersect **head, t_intersection *intersection)$/;"	f	typeref:typename:void
+add_intersection_l	intersection/real_list.c	/^void add_intersection_l(t_list_intersect **head, t_intersection *intersection)$/;"	f	typeref:typename:void
 add_light_to_array	add_elem_array.c	/^void	add_light_to_array(t_light *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_plane_to_array	add_elem_array.c	/^void	add_plane_to_array(t_plane *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_sphere_to_array	add_elem_array.c	/^void	add_sphere_to_array(t_sphere *to_add, t_setting *set)$/;"	f	typeref:typename:void
@@ -292,6 +293,9 @@ convert_component	colors/converting_color.c	/^double convert_component(double co
 convert_component_inverse	colors/converting_color.c	/^double convert_component_inverse(double component)$/;"	f	typeref:typename:double
 copy_matrix	matrix/initialize_matrix.c	/^double	**copy_matrix(int rows, int cols, double **source)$/;"	f	typeref:typename:double **
 copy_row_value	matrix/initialize_matrix.c	/^void	copy_row_value(double destination[4], double source[4])$/;"	f	typeref:typename:void
+copy_simple_fields_cylinder	intersection/intersection.c	/^static void copy_simple_fields_cylinder(t_cylinder *dest, t_cylinder*src)$/;"	f	typeref:typename:void	file:
+copy_simple_fields_plane	intersection/intersection.c	/^static void copy_simple_fields_plane(t_plane *dest, t_plane *src)$/;"	f	typeref:typename:void	file:
+copy_simple_fields_sphere	intersection/intersection.c	/^static void copy_simple_fields_sphere(t_sphere *dest, t_sphere *src)$/;"	f	typeref:typename:void	file:
 count	minirt.h	/^	int count;$/;"	m	struct:s_intersection_list	typeref:typename:int
 count_elements	create_setting.c	/^void	count_elements(char **details, t_setting *set)$/;"	f	typeref:typename:void
 counting_123	parsing/parsing_map.c	/^static int	counting_123(char *filename, t_setting *set)$/;"	f	typeref:typename:int	file:
@@ -320,6 +324,9 @@ decrgb	mlx/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar	typeref:typename:in
 deep_copy_cylinder	intersection/intersection.c	/^t_cylinder	*deep_copy_cylinder(t_cylinder *src)$/;"	f	typeref:typename:t_cylinder *
 deep_copy_plane	intersection/intersection.c	/^t_plane *deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
 deep_copy_sphere	intersection/intersection.c	/^t_sphere *deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
+default_color	parsing/parsing_numbers.c	/^t_color	default_color(void)$/;"	f	typeref:typename:t_color
+default_intersection	intersection/intersection_cylinder.c	/^void	default_intersection(t_intersection *i1, t_intersection *i2)$/;"	f	typeref:typename:void
+default_vector	parsing/parsing_numbers.c	/^t_vector	default_vector(void)$/;"	f	typeref:typename:t_vector
 depth	mlx/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar	typeref:typename:int
 determinant	matrix/determinant.c	/^double	determinant(double **matrix, int size)$/;"	f	typeref:typename:double
 determinant_n	matrix/determinant.c	/^double	determinant_n(double **matrix, int size)$/;"	f	typeref:typename:double
@@ -360,7 +367,7 @@ free_cylinder_array	freeing.c	/^void	free_cylinder_array(t_cylinder **cylinders,
 free_heap_matrix	matrix/matrix_utils.c	/^void	free_heap_matrix(double **matrix, int rows)$/;"	f	typeref:typename:void
 free_intersection	intersection/intersection.c	/^void	free_intersection(t_intersection *intersect)$/;"	f	typeref:typename:void
 free_lights_array	freeing.c	/^void	free_lights_array(t_light **lights, int num)$/;"	f	typeref:typename:void
-free_list	intersection/real_list.c	/^void	free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
+free_list	intersection/real_list.c	/^void free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 free_plane_array	freeing.c	/^void	free_plane_array(t_plane **planes, int num)$/;"	f	typeref:typename:void
 free_single_cylinder	freeing.c	/^void	free_single_cylinder(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 free_single_plane	freeing.c	/^void	free_single_plane(t_plane *plane)$/;"	f	typeref:typename:void
@@ -464,7 +471,7 @@ init_zero_matrix	matrix/matrix_utils.c	/^void	init_zero_matrix(int rows, int col
 insert_sorted	intersection/sort_intersection.c	/^void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)$/;"	f	typeref:typename:void
 intersect_caps	intersection/intersection_cylinder.c	/^static void intersect_caps(t_cylinder cylinder, t_ray ray, t_list_intersect **list)$/;"	f	typeref:typename:void	file:
 intersect_cylinder	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
-intersect_plane	intersection/intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_plane	intersection/intersection_plane.c	/^t_list_intersect *intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	raycasting/intersection_ray.c	/^t_intersection_list *intersect_sphere(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_intersection_list *
 intersect_sphereV2	intersection/intersection_sphere.c	/^t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_world	shadows/is_shadowed.c	/^t_list_intersect	*intersect_world(t_setting *world, t_ray ray)$/;"	f	typeref:typename:t_list_intersect *

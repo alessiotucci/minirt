@@ -6,17 +6,41 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/28 15:34:18 by atucci           ###   ########.fr       */
+/*   Updated: 2025/01/24 16:48:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
+
+// Helper function to return a default t_color
+t_color	default_color(void)
+{
+	t_color	color;
+
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
+	return (color);
+}
+
+// Helper function to return a default t_vector
+t_vector	default_vector(void)
+{
+	t_vector	vector;
+
+	vector.x = 0;
+	vector.y = 0;
+	vector.z = 0;
+	vector.w = 0;
+	return (vector);
+}
 
 t_color	parse_color(char *str)
 {
 	t_color	color;
 	char	**matrix;
 
+	color = default_color();
 	ft_printf("Parsing color (%s)\n", str);
 	matrix = ft_split(str, ',');
 	if (lenght_string_array(matrix) == 3)
@@ -41,6 +65,7 @@ t_vector	parse_vector(char *str, double flag)
 	t_vector	vector;
 	char	**matrix;
 
+	vector = default_vector();
 	ft_printf("Parsing vector (%s)\n", str);
 	matrix = ft_split(str, ',');
 	if (lenght_string_array(matrix) == 3)

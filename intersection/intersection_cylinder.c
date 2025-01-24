@@ -6,11 +6,27 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/18 17:40:00 by atucci           ###   ########.fr       */
+/*   Updated: 2025/01/24 17:00:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
+
+void	default_intersection(t_intersection *i1, t_intersection *i2)
+{
+	if (i1 != NULL)
+	{
+		i1->t = 0.0;
+		i1->obj.type = T_NULL;
+		i1->obj.address = NULL;
+	}
+	if (i2 != NULL)
+	{
+		i2->t = 0.0;
+		i2->obj.type = T_NULL;
+		i2->obj.address = NULL;
+	}
+}
 
 int	check_cap_cylinder(t_ray ray, double t)
 {
@@ -29,6 +45,7 @@ static void intersect_caps(t_cylinder cylinder, t_ray ray, t_list_intersect **li
 	t_intersection	inter1;
 	t_intersection	inter2;
 
+	default_intersection(&inter1, &inter2);
 	// Caps only matter if the cylinder is closed and might possibly be intersected by the ray
 	if (!cylinder.closed || comparing_double(ray.direction.y, 0.0))
 		return ;
@@ -94,6 +111,7 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	t_intersection inter2;
 	t_ray ray;
 
+	default_intersection(&inter1, &inter2);
 	ray = transform_ray(old_ray, inversing_matrix(4, copy_matrix(4, 4, cylinder.transform))); //TODO: check if this is working
 	//printf("OLD RAY\n");
 	//print_ray(old_ray);
