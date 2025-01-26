@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2024/12/20 16:31:28 by atucci           ###   ########.fr        #
+#    Updated: 2025/01/26 12:16:51 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,8 +84,9 @@ HEADERS = ./minirt.h \
 # ***********************************************************
 # setting up the flag that will be used for the compilation *
 # ***********************************************************
-FLAG = -Wall -Wextra -Werror -O3 -g
+FLAG = -Wall -Wextra -Werror -O3 -gdwarf-4
 
+# -gdwarf-4
 
 # ***************************************************************
 # setting up the compiler that will be used for the compilation *

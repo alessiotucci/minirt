@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 18:37:59 by atucci           ###   ########.fr       */
+/*   Updated: 2025/01/26 16:12:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	
 	//Starting working here to try see a cylinder on the screen
 	//t_list_intersect *cylinder_intersections;
-	/*
+	
 	i = 0;
 	while (i < data->setting->num_cylinders)
 	{
@@ -145,7 +145,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 		
 	i++;
 	}
-	*/
+	
 	//TODO: here after checking for all the obj (sphere, cylinder, planes etc.) we check the closest point.
 	closest_intersection = hit_v2(all_intersections);
 	if (closest_intersection != NULL)
