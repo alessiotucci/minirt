@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/01/27 16:06:07 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/01 18:35:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	i = 0;
 	while (i < data->setting->num_cylinders)
 	{
-		printf("%sDEBUG%s cylinder intersection[%d], please wait...\n", RED, RESET, i);
+		//printf("%sDEBUG%s cylinder intersection[%d], please wait...\n", RED, RESET, i);
 		cylinder_intersections = intersect_cylinder(*data->setting->cylinders[i], ray);//TODO:
 		if (cylinder_intersections)
 			concatenate_lists(&all_intersections, cylinder_intersections);
