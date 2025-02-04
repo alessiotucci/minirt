@@ -657,7 +657,6 @@ print_color	extra/print_debug.c	/^void	print_color(t_color color)$/;"	f	typeref:
 print_cylinders	extra/print_debug.c	/^static void	print_cylinders(int n_cylinders, t_cylinder **array)$/;"	f	typeref:typename:void	file:
 print_int_matrix	matrix/matrix_utils.c	/^void	print_int_matrix(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 print_intersection	intersection/intersection_list.c	/^void	print_intersection(t_intersection i)$/;"	f	typeref:typename:void
-print_intersection_list	intersection/intersection_list.c	/^void	print_intersection_list(t_intersection_list *lis)$/;"	f	typeref:typename:void
 print_light_source	raycasting/cast_ray.c	/^void	print_light_source(t_mlx *data, int x, int y)$/;"	f	typeref:typename:void
 print_lights	extra/print_debug.c	/^static void	print_lights(int n_lights, t_light **array)$/;"	f	typeref:typename:void	file:
 print_list	intersection/real_list.c	/^void	print_list(t_list_intersect **head, int debug)$/;"	f	typeref:typename:void

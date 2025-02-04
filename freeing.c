@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:35:20 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/01 18:34:35 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 12:40:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	free_cylinder_array(t_cylinder **cylinders, int num)
 void	free_struct(t_setting *set)
 {
 	printf("%sRemember to free all the memory%s\n", RED, RESET);
-	printf("%sUPDATE 1 Feb: fixing cylinder%s\n", RED, RESET);
+	printf("%sUpdated: cylinder dont work Tue Feb 4 12:39 2025%s\n", RED, RESET);
 	if (set->amb_light)
 	{
 		free(set->amb_light->identifier);

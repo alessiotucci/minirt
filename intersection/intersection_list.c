@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 18:22:23 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 13:02:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 //	int count;
 //}	t_intersection_list;
 
+/*TODO: check if there is code duplication in this function with other list*/
 
 /* 2) this is also needed */
 t_intersection_list	*create_intersection_list(int count)
@@ -55,21 +56,6 @@ void	print_intersection(t_intersection i)
 	printf("Value: %f\n", i.t);
 }
 
-void	print_intersection_list(t_intersection_list *lis)
-{
-	int	count;
-
-	printf("\n\t%sLIST OF INTERSECTION!%s\n", GREEN, RESET);
-	printf("intersection.count: [%d]\n", lis->count);
-	count = 0;
-	while (count < lis->count)
-	{
-		printf("\n\t* * index list: %d * *\n", count);
-		print_intersection(lis->intersections[count]);
-		printf("\t* * *\n");
-		count++;
-	}
-}
 
 /* main to test out the functionality */
 	/*

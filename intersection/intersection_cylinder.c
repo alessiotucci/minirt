@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2025/01/24 17:00:22 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 12:38:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ static t_list_intersect	*intersection_happened(double t[2], t_intersection inter
     // Check if the intersection points are within the cylinder's bounds
 	y0 = ray.origin.y + t[0] * ray.direction.y;
 	y1 = ray.origin.y + t[1] * ray.direction.y;
-	if (cylinder.min < y0 && y0 < cylinder.max)
+	if (cylinder.min <= y0 && y0 <= cylinder.max)
 	{
 		//printf("%sadd intersect for cylinder%s\n", GREEN, RESET);
 		inter1 = intersection(t[0], cylinder.identifier, &cylinder);
 		add_intersection_l(&list, &inter1);
 	}
-	if (cylinder.min < y1 && y1 < cylinder.max)
+	if (cylinder.min <= y1 && y1 <= cylinder.max)
 	{
 		//printf("%sadd intersect for cylinder%s\n", GREEN, RESET);
 		inter2 = intersection(t[1], cylinder.identifier, &cylinder);
