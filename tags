@@ -325,6 +325,7 @@ deep_copy_cylinder	intersection/intersection.c	/^t_cylinder	*deep_copy_cylinder(
 deep_copy_plane	intersection/intersection.c	/^t_plane *deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
 deep_copy_sphere	intersection/intersection.c	/^t_sphere *deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
 default_color	parsing/parsing_numbers.c	/^t_color	default_color(void)$/;"	f	typeref:typename:t_color
+default_cylinder_normal	normal.c	/^t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)$/;"	f	typeref:typename:t_vector
 default_intersection	intersection/intersection_cylinder.c	/^void	default_intersection(t_intersection *i1, t_intersection *i2)$/;"	f	typeref:typename:void
 default_vector	parsing/parsing_numbers.c	/^t_vector	default_vector(void)$/;"	f	typeref:typename:t_vector
 depth	mlx/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar	typeref:typename:int
@@ -498,6 +499,7 @@ lenght_string_array	extra/utils.c	/^int	lenght_string_array(char **array)$/;"	f	
 lenght_word	libft/ft_split.c	/^int	lenght_word(char const *s, char c)$/;"	f	typeref:typename:int
 lights	minirt.h	/^	t_light			**lights;$/;"	m	struct:s_setting	typeref:typename:t_light **
 local_endian	mlx/test/main.c	/^int	local_endian;$/;"	v	typeref:typename:int
+local_point_in_cylinder	normal.c	/^t_vector local_point_in_cylinder(t_cylinder *cylinder, t_vector point)$/;"	f	typeref:typename:t_vector
 log_error	mlx/configure	/^log_error(){$/;"	f
 log_error	mlx/test/run_tests.sh	/^log_error(){$/;"	f
 log_info	mlx/configure	/^log_info(){$/;"	f

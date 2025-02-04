@@ -6,11 +6,52 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/18 17:42:36 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:31:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
+
+//reason by gpt
+t_vector local_point_in_cylinder(t_cylinder *cylinder, t_vector point)
+{
+    // Subtract the cylinder’s center (for the XZ coordinates)
+    // You may or may not want to affect the Y coordinate depending on your transform;
+    // here we assume the cylinder’s transform has already been applied so that the cylinder’s
+    // center in XZ is given by cylinder->center.x and cylinder->center.z.
+    t_vector local;
+    local.x = point.x - cylinder->center.x;
+    local.y = point.y;  // leave Y alone
+    local.z = point.z - cylinder->center.z;
+    local.w = point.w;  // keep the w component unchanged
+    return local;
+}
+//reasoning by gpt fix this
+t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)
+{
+    // Transform the point into cylinder-local coordinates (in XZ)
+    t_vector local = local_point_in_cylinder(cylinder, point);
+    // Use the actual squared radius of the cylinder
+    double r_squared = pow(cylinder->diameter / 2, 2);
+
+    // Check if the point is on the top cap
+    if ((pow(local.x, 2) + pow(local.z, 2)) < r_squared &&
+        local.y >= cylinder->max - EPSILON)
+    {
+        return create_vector(0, 1, 0);
+    }
+    // Check if the point is on the bottom cap
+    else if ((pow(local.x, 2) + pow(local.z, 2)) < r_squared &&
+             local.y <= cylinder->min + EPSILON)
+    {
+        return create_vector(0, -1, 0);
+    }
+    // Otherwise, for the lateral surface, compute the normal using the local XZ values
+    else
+    {
+        return normalization(create_vector(local.x, 0, local.z));
+    }
+}
 
 /*please rename this function */
 t_vector v2normal_at(t_object obj, t_vector point)
@@ -33,14 +74,7 @@ t_vector v2normal_at(t_object obj, t_vector point)
 	{
 		//printf("V2Normal_at, cylinder\n");
 		cylinder = (t_cylinder *)obj.address;
-		// complete this function
-		double dist = pow(point.x, 2) + pow(point.z, 2);
-		if (dist < 1 && point.y >= cylinder->max - EPSILON)
-			return create_vector(0, 1, 0);
-		else if (dist < 1 && point.y <= cylinder->min + EPSILON)
-			return create_vector(0, -1, 0);
-		else
-			return normalization(create_vector(point.x, 0, point.z));
+		return (default_cylinder_normal(cylinder, point));
 	}
 	printf("v2normal failure: obj TYPE not found\n");
 	exit(-42);
