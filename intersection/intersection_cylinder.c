@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/04 12:38:04 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 15:48:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,27 @@ t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)
 	//print_ray(old_ray);
 	//printf("RAY\n");
 	//print_ray(ray);
+	
+
+
+    // Subtract the cylinder's center from the ray's origin
+    t_vector cylinder_to_ray = subtract(ray.origin, cylinder.center);
+
+
 	a = (pow(ray.direction.x, 2) + pow(ray.direction.z, 2));
 	if (comparing_double(a, 0.0))
 	{
 		//printf("CYLINDER: returning null a[%lf]\n", a);
 		return (NULL);
 	}
+
+	/*
 	b = (2 * ray.origin.x * ray.direction.x) + (2 * ray.origin.z * ray.direction.z);
-	//c = (pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1);
 	c = (pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - pow(cylinder.diameter / 2, 2));
+	*/
+	b = (2 * cylinder_to_ray.x * ray.direction.x) + (2 * cylinder_to_ray.z * ray.direction.z);
+	c = (pow(cylinder_to_ray.x, 2) + pow(cylinder_to_ray.z, 2) - pow(cylinder.diameter / 2, 2));
+
 //	printf("a[%lf] b[%lf] c[%lf]\n", a, b, c);
 //	printf("pow(b, 2)) = [%lf] - (4 * a * c) = [%lf]\n", pow(b, 2), 4 * a * c);
 	disc = (pow(b, 2)) - (4 * a * c);

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/04 13:01:40 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 15:59:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,8 +176,8 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 			my_mlx_pixel_put(data, x, y, create_trgb(color));
 //		else
 //			my_mlx_pixel_put(data, x, y, create_trgb(std));
-		return ;
-	}
+		return ; //why here there is this return? TODO: check if the return
+	}															 // leakss!!
 	else
 	{
 		//printf("x:%d, y:%d\n", x, y);
