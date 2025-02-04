@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 10:23:58 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/04 13:04:27 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 15:21:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void	print_list(t_list_intersect **head, int debug)
 	if (count > 0)
 		printf("List count:[%d]\n", count);
 	else
-		printf("Empty :(\t");
+		return;//printf("Empty :(\t");
 }
 
 void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)
