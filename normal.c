@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/04 16:31:24 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 19:17:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,39 +26,81 @@ t_vector local_point_in_cylinder(t_cylinder *cylinder, t_vector point)
     local.w = point.w;  // keep the w component unchanged
     return local;
 }
-//reasoning by gpt fix this
+//TODO:
+t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)
+{
+    t_vector local;
+    double r_squared;
+    double dist_xz;
+    double blend;
+    t_vector lateral;
+    t_vector cap;
+    t_vector blended;
+
+    // Convert the point to the cylinder's local coordinate system (for XZ)
+    local = local_point_in_cylinder(cylinder, point);
+    r_squared = pow(cylinder->diameter / 2, 2);
+    dist_xz = pow(local.x, 2) + pow(local.z, 2);
+
+    // If the point is within the cap's circular boundary
+    if (dist_xz < r_squared)
+    {
+        // If the Y coordinate is almost equal to the top cap...
+        if (comparing_double(local.y, cylinder->max))
+            return create_vector(0, 1, 0);
+        // ...or almost equal to the bottom cap.
+        else if (comparing_double(local.y, cylinder->min))
+            return create_vector(0, -1, 0);
+        // If the point is near the top edge, blend between cap and lateral normals.
+        else if (fabs(local.y - cylinder->max) < EPSILON_v2 * 10)
+        {
+            blend = (cylinder->max - local.y) / (EPSILON_v2 * 10);
+            lateral = normalization(create_vector(local.x, 0, local.z));
+            cap = create_vector(0, 1, 0);
+            blended = add(multiplication(lateral, blend), multiplication(cap, 1 - blend));
+            return normalization(blended);
+        }
+        // If near the bottom edge, blend between lateral and cap normal.
+        else if (fabs(local.y - cylinder->min) < EPSILON_v2 * 10)
+        {
+            blend = (local.y - cylinder->min) / (EPSILON_v2 * 10);
+            lateral = normalization(create_vector(local.x, 0, local.z));
+            cap = create_vector(0, -1, 0);
+            blended = add(multiplication(lateral, blend), multiplication(cap, 1 - blend));
+            return normalization(blended);
+        }
+    }
+    // For points clearly on the lateral surface, return the normalized lateral normal.
+    return normalization(create_vector(local.x, 0, local.z));
+}
+
+
+/*reasoning by gpt fix this
 t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)
 {
     // Transform the point into cylinder-local coordinates (in XZ)
     t_vector local = local_point_in_cylinder(cylinder, point);
     // Use the actual squared radius of the cylinder
-    double r_squared = pow(cylinder->diameter / 2, 2);
+    double r = pow(cylinder->diameter / 2, 2);
 
     // Check if the point is on the top cap
-    if ((pow(local.x, 2) + pow(local.z, 2)) < r_squared &&
-        local.y >= cylinder->max - EPSILON)
-    {
+    if ((pow(local.x, 2) + pow(local.z, 2)) < r && local.y >= cylinder->max - EPSILON_v2)
         return create_vector(0, 1, 0);
-    }
     // Check if the point is on the bottom cap
-    else if ((pow(local.x, 2) + pow(local.z, 2)) < r_squared &&
-             local.y <= cylinder->min + EPSILON)
-    {
+    else if ((pow(local.x, 2) + pow(local.z, 2)) < r && local.y <= cylinder->min + EPSILON_v2)
         return create_vector(0, -1, 0);
-    }
     // Otherwise, for the lateral surface, compute the normal using the local XZ values
     else
-    {
-        return normalization(create_vector(local.x, 0, local.z));
-    }
+        return (normalization(create_vector(local.x, 0, local.z)));
 }
+*/
 
 /*please rename this function */
 t_vector v2normal_at(t_object obj, t_vector point)
 {
 	t_sphere	*sphere;
 	t_plane		*plane;
-	t_cylinder	*cylinder; (void)cylinder;
+	t_cylinder	*cylinder;
 
 	if (obj.type == T_SPHERE)
 	{
@@ -257,5 +299,66 @@ int main()
 		printf("Normal: (%f, %f, %f)\n", normal.x, normal.y, normal.z);
 	}
 	return 0;
+}
+*/
+
+
+/* --- Test Program --- GPT HAS REASONING NOW
+int main(void)
+{
+    t_cylinder cyl;
+    t_object obj;
+    t_vector test_points[6];
+    t_vector normal;
+    int i;
+
+    //  Set up a cylinder.
+    //  For this test, we assume the cylinder is defined in its object space as follows:
+    //  - Center: (0, 0, 0)  (i.e., the XZ part of the center is at the origin)
+    //  - Axis: (0, 1, 0)    (vertical)
+    //  - Diameter: 14.2 (so radius = 7.1)
+    //  - Height: 21.42, and we choose Option 2 (centered), so the caps are at:
+    //       min = -height/2, max = height/2.
+     
+    cyl.center = create_vector(0, 0, 0);
+    cyl.axis = create_vector(0, 1, 0);
+    cyl.diameter = 14.2;
+    cyl.height = 21.42;
+    cyl.min = -cyl.height / 2.0;  // e.g., -10.71
+    cyl.max = cyl.height / 2.0;   // e.g., 10.71
+    // (Other fields like color, transform, material are not used for normal calculation.)
+    cyl.color = parse_color("10,0,255");
+    // For this test, assume an identity transformation.
+    // (You can set cyl.transform to an identity matrix or NULL if your code interprets it as identity.)
+    cyl.transform = NULL;
+
+    // Create an object wrapper for the cylinder //
+    obj.type = T_CYLINDER;
+    obj.address = &cyl;
+
+    // Define test points on the cylinder:
+    // 0) Top cap center: should yield (0, 1, 0)
+    // 1) Bottom cap center: should yield (0, -1, 0)
+    // 2) Lateral surface: a point on the side; for example, (7.1, 0, 0)
+    // 3) Lateral surface: another point, say (-7.1, 0, 0)
+    // 4) A point near the top edge (transition between lateral and cap)
+    // 5) A point near the bottom edge
+    //
+    test_points[0] = create_point(0, cyl.max, 0);       // Top cap center
+    test_points[1] = create_point(0, cyl.min, 0);       // Bottom cap center
+    test_points[2] = create_point(cyl.diameter / 2, 0, 0);  // Lateral surface on +X
+    test_points[3] = create_point(-cyl.diameter / 2, 0, 0); // Lateral surface on -X
+    test_points[4] = create_point(cyl.diameter / 2, cyl.max - 0.001, 0); // Near top cap edge
+    test_points[5] = create_point(cyl.diameter / 2, cyl.min + 0.001, 0); // Near bottom cap edge
+
+    // Test the normal computation for each point //
+    for (i = 0; i < 6; i++)
+    {
+        normal = v2normal_at(obj, test_points[i]);
+        printf("Point: (%.3f, %.3f, %.3f) -> Normal: (%.3f, %.3f, %.3f)\n",
+            test_points[i].x, test_points[i].y, test_points[i].z,
+            normal.x, normal.y, normal.z);
+    }
+    return 0;
 }
 */

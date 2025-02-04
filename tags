@@ -77,7 +77,7 @@ EAST_WEST	minirt.h	/^# define EAST_WEST /;"	d
 ENV_DISPLAY	mlx/mlx_int.h	/^# define ENV_DISPLAY /;"	d
 EOF	mlx/configure	/^cat <<EOF$/;"	h
 EPSILON	minirt.h	/^# define EPSILON /;"	d
-EPSILON_v2	minirt.h	/^#define EPSILON_v2 /;"	d
+EPSILON_v2	minirt.h	/^# define EPSILON_v2 /;"	d
 ERR_NO_TRUECOLOR	mlx/mlx_int.h	/^# define ERR_NO_TRUECOLOR /;"	d
 ESC	minirt.h	/^# define ESC /;"	d
 ESCAPE	minirt.h	/^# define ESCAPE /;"	d

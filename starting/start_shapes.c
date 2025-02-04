@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 19:18:56 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 18:46:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ void	start_cylinder(t_setting *set, char **details)
 	new_cylinder->axis = parse_vector(details[2], 0.0); //TODO carefull with ranges
 	new_cylinder->diameter = my_atof(details[3]);
 	new_cylinder->height = my_atof(details[4]);
-	new_cylinder->min = DBL_MIN;
-	new_cylinder->max = DBL_MAX;
+	// Option 1: Cylinder extends from its base (0) to its height:
+	//new_cylinder->min = 0;
+	//new_cylinder->max = new_cylinder->height;
+	// Or Option 2: Cylinder is centered along the y-axis:
+	 new_cylinder->min = -new_cylinder->height / 2;
+	 new_cylinder->max = new_cylinder->height / 2;
 	new_cylinder->color = parse_color(details[5]);
 	new_cylinder->transform = def;
 	new_cylinder->material = material();

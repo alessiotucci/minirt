@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/01/27 16:08:25 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/04 17:49:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@
 /***************************************/
 /* Define default size for the windows */
 /***************************************/
-# define DEFAULT_WIDTH 200
-# define DEFAULT_HEIGHT 100
+# define DEFAULT_WIDTH 400
+# define DEFAULT_HEIGHT 260
 
 /************************************/
 /* color for mlx images and library */
@@ -96,7 +96,7 @@
 /* defining this for comparing doubles */
 /***************************************/
 # define EPSILON 0.00001
-#define EPSILON_v2 1e-6
+# define EPSILON_v2 1e-6
 
 /*TODO:ADDITIONAL STRUCTS
 * Ray Struct: Represents a ray in the scene.
