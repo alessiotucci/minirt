@@ -358,6 +358,7 @@ expose_hook	mlx/mlx_int.h	/^	int					(*expose_hook)();$/;"	m	struct:s_win_list	t
 expose_param	mlx/mlx_int.h	/^	void				*expose_param;$/;"	m	struct:s_win_list	typeref:typename:void *
 expose_win1	mlx/test/main.c	/^int	expose_win1(void *p)$/;"	f	typeref:typename:int
 expose_win2	mlx/test/main.c	/^int	expose_win2(void *p)$/;"	f	typeref:typename:int
+eyev	minirt.h	/^    t_vector   eyev;      \/\/ The eye vector (pointing toward the camera).$/;"	m	struct:s_computations	typeref:typename:t_vector
 fclean	Makefile	/^fclean: clean$/;"	t
 fclean	libft/Makefile	/^fclean: clean$/;"	t
 files	libft/Makefile	/^files 	   = ft_strlen \\$/;"	m
@@ -629,15 +630,18 @@ next	mlx/mlx_int.h	/^	struct s_win_list	*next;$/;"	m	struct:s_win_list	typeref:s
 normal	minirt.h	/^	t_vector	normal;$/;"	m	struct:s_plane	typeref:typename:t_vector
 normal_at	normal.c	/^t_vector	normal_at(t_sphere sphere, t_vector world_point)$/;"	f	typeref:typename:t_vector
 normalization	vector/complex_operations.c	/^t_vector	normalization(t_vector vector)$/;"	f	typeref:typename:t_vector
+normalv	minirt.h	/^    t_vector   normalv;   \/\/ The surface normal at the hit point.$/;"	m	struct:s_computations	typeref:typename:t_vector
 num_cones	minirt.h	/^	int				num_cones;$/;"	m	struct:s_setting	typeref:typename:int
 num_cylinders	minirt.h	/^	int				num_cylinders;$/;"	m	struct:s_setting	typeref:typename:int
 num_lights	minirt.h	/^	int				num_lights;$/;"	m	struct:s_setting	typeref:typename:int
 num_planes	minirt.h	/^	int				num_planes;$/;"	m	struct:s_setting	typeref:typename:int
 num_spheres	minirt.h	/^	int				num_spheres;$/;"	m	struct:s_setting	typeref:typename:int
 obj	minirt.h	/^	t_object	obj;$/;"	m	struct:s_intersection	typeref:typename:t_object
+object	minirt.h	/^    t_object   object;    \/\/ The object that was hit.$/;"	m	struct:s_computations	typeref:typename:t_object
 open_map	parsing/parsing_map.c	/^int	open_map(char *filename, t_setting *set)$/;"	f	typeref:typename:int
 orientation	minirt.h	/^	t_vector	orientation;$/;"	m	struct:s_camera	typeref:typename:t_vector
 origin	minirt.h	/^	t_vector	origin;$/;"	m	struct:s_ray	typeref:typename:t_vector
+over_point	minirt.h	/^    t_vector   over_point;\/\/ The hit point slightly offset along the normal.$/;"	m	struct:s_computations	typeref:typename:t_vector
 param	mlx/mlx_int.h	/^	void	*param;$/;"	m	struct:s_event_list	typeref:typename:void *
 parse_args	mlx/configure	/^parse_args(){$/;"	f
 parse_color	parsing/parsing_numbers.c	/^t_color	parse_color(char *str)$/;"	f	typeref:typename:t_color
@@ -650,9 +654,11 @@ phong_lighting	shadows/lighting.c	/^t_color	phong_lighting(t_material mat, t_lig
 pix	mlx/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img	typeref:typename:Pixmap
 planes	minirt.h	/^	t_plane			**planes;$/;"	m	struct:s_setting	typeref:typename:t_plane **
 point	minirt.h	/^	t_vector	point;$/;"	m	struct:s_plane	typeref:typename:t_vector
+point	minirt.h	/^    t_vector   point;     \/\/ The actual hit point on the surface.$/;"	m	struct:s_computations	typeref:typename:t_vector
 point_light	shadows/lighting.c	/^t_light	point_light(t_vector pos, t_color c)$/;"	f	typeref:typename:t_light
 position	minirt.h	/^	t_vector	position;$/;"	m	struct:s_light	typeref:typename:t_vector
 position_ray	raycasting/create_ray.c	/^t_vector	position_ray(t_ray ray, double t)$/;"	f	typeref:typename:t_vector
+prepare_computations	computation.c	/^t_computations prepare_computations(t_intersection i, t_ray r)$/;"	f	typeref:typename:t_computations
 print_ambient_light	extra/print_debug.c	/^static void	print_ambient_light(t_amb_light *amb_light)$/;"	f	typeref:typename:void	file:
 print_camera	extra/print_debug.c	/^static void	print_camera(t_camera *camera)$/;"	f	typeref:typename:void	file:
 print_color	extra/print_debug.c	/^void	print_color(t_color color)$/;"	f	typeref:typename:void
@@ -700,6 +706,7 @@ s_amb_light	minirt.h	/^typedef struct s_amb_light$/;"	s
 s_camera	minirt.h	/^typedef struct s_camera$/;"	s
 s_col_name	mlx/mlx_int.h	/^struct	s_col_name$/;"	s
 s_color	minirt.h	/^typedef struct s_color$/;"	s
+s_computations	minirt.h	/^typedef struct s_computations$/;"	s
 s_cylinder	minirt.h	/^typedef struct s_cylinder$/;"	s
 s_event_list	mlx/mlx_int.h	/^typedef struct	s_event_list$/;"	s
 s_img	mlx/mlx_int.h	/^typedef struct	s_img$/;"	s
@@ -728,6 +735,7 @@ set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinde
 set_sphere_transformations	raycasting/transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void
 setback_zero	main_utils.c	/^void	setback_zero(t_setting *set)$/;"	f	typeref:typename:void
 setting	minirt.h	/^	t_setting 	*setting;$/;"	m	struct:s_mlx	typeref:typename:t_setting *
+shade_hit	computation.c	/^t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i)$/;"	f	typeref:typename:t_color
 shearing	transformations/shearing.c	/^t_vector	shearing(t_vector origin, double value[6])$/;"	f	typeref:typename:t_vector
 shininess	minirt.h	/^	double	shininess;$/;"	m	struct:s_material	typeref:typename:double
 shm	mlx/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img	typeref:typename:XShmSegmentInfo
@@ -761,9 +769,11 @@ submatrix	matrix/determinant.c	/^double	**submatrix(int index_rows, int index_co
 subtract	vector/vector_operations.c	/^t_vector	subtract(t_vector v1, t_vector v2)$/;"	f	typeref:typename:t_vector
 subtract_colors	colors/operation_color.c	/^t_color	subtract_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color
 t	minirt.h	/^	double	t;$/;"	m	struct:s_intersection	typeref:typename:double
+t	minirt.h	/^    double     t;         \/\/ The parameter t at which the intersection occurs.$/;"	m	struct:s_computations	typeref:typename:double
 t_amb_light	minirt.h	/^}	t_amb_light;$/;"	t	typeref:struct:s_amb_light
 t_camera	minirt.h	/^}	t_camera;$/;"	t	typeref:struct:s_camera
 t_color	minirt.h	/^}	t_color;$/;"	t	typeref:struct:s_color
+t_computations	minirt.h	/^}   t_computations;$/;"	t	typeref:struct:s_computations
 t_cylinder	minirt.h	/^}	t_cylinder;$/;"	t	typeref:struct:s_cylinder
 t_event_list	mlx/mlx_int.h	/^}				t_event_list;$/;"	t	typeref:struct:s_event_list
 t_img	mlx/mlx_int.h	/^}				t_img;$/;"	t	typeref:struct:s_img

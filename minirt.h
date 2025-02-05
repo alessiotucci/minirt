@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/04 17:49:33 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/05 13:14:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,21 @@ typedef struct s_list_intersect
 }	t_list_intersect;
 /*****************************************************************************/
 
+/*****************************************************************************/
+/* This computation was missing from the previously implementations          */
+/*****************************************************************************/
+typedef struct s_computations
+{
+    double     t;         // The parameter t at which the intersection occurs.
+    t_object   object;    // The object that was hit.
+    t_vector   point;     // The actual hit point on the surface.
+    t_vector   over_point;// The hit point slightly offset along the normal.
+    t_vector   eyev;      // The eye vector (pointing toward the camera).
+    t_vector   normalv;   // The surface normal at the hit point.
+    // You can add more fields if needed, for example:
+    // t_material material; // Material properties at the hit point.
+}   t_computations;
+/*****************************************************************************/
 typedef struct s_amb_light
 {
 	char	*identifier;
@@ -600,4 +615,10 @@ void	my_free_setting(t_setting *set);
 //TODO: after coming back from China (fix compilation issues)
 t_vector	default_vector(void);
 t_color	default_color(void);
+//TODO: reasoning by GPT3
+t_computations prepare_computations(t_intersection i, t_ray r);
+
+//t_color shade_hit(t_setting *world, t_computations comps);
+//t_color shade_hit(t_setting *world, t_ray ray, t_intersection *hit);
+t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i);
 #endif
