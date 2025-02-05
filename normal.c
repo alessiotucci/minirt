@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/04 19:17:43 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/05 13:49:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)
     t_vector local;
     double r_squared;
     double dist_xz;
-    double blend;
-    t_vector lateral;
-    t_vector cap;
-    t_vector blended;
+    double blend;(void)blend;
+    t_vector lateral;(void)lateral;
+    t_vector cap;(void)cap;
+    t_vector blended;(void)blended;
 
     // Convert the point to the cylinder's local coordinate system (for XZ)
     local = local_point_in_cylinder(cylinder, point);
@@ -51,7 +51,7 @@ t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)
         // ...or almost equal to the bottom cap.
         else if (comparing_double(local.y, cylinder->min))
             return create_vector(0, -1, 0);
-        // If the point is near the top edge, blend between cap and lateral normals.
+        /* If the point is near the top edge, blend between cap and lateral normals.
         else if (fabs(local.y - cylinder->max) < EPSILON_v2 * 10)
         {
             blend = (cylinder->max - local.y) / (EPSILON_v2 * 10);
@@ -69,6 +69,7 @@ t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)
             blended = add(multiplication(lateral, blend), multiplication(cap, 1 - blend));
             return normalization(blended);
         }
+		*/
     }
     // For points clearly on the lateral surface, return the normalized lateral normal.
     return normalization(create_vector(local.x, 0, local.z));

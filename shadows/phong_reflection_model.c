@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:54:36 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 16:07:09 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/05 18:23:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ t_color	phong_formula(t_material mat, t_light light, t_vector point, t_vector ey
 	light_v = normalization(subtract(light.position, point));
 	ambient = multiply_color_by_scalar(effective_color, mat.ambient);
 	light_dot_normal = dot(light_v, normal);
-	if (light_dot_normal < 0)
+	//if (light_dot_normal < 0)
+    if (light_dot_normal < 0 || comparing_double(light_dot_normal, 0))  // Ensure correctness
 	{
 		//printf("%sDiffuse is black%s\n", BG_RED, BG_RESET);
 		//printf("%sSpecular is black%s\n", BG_RED, BG_RESET);
@@ -45,7 +46,8 @@ t_color	phong_formula(t_material mat, t_light light, t_vector point, t_vector ey
 		reflect_v = reflect(negate(light_v), normal);
 		reflect_dot_eye = dot(reflect_v, eye);
 		//printf("Reflect Dot Eye: %lf\n", reflect_dot_eye);
-		if (reflect_dot_eye <= 0)
+		//if (reflect_dot_eye <= 0)
+		if (reflect_dot_eye < 0 || comparing_double(reflect_dot_eye, 0))  // Use explicit check
 			specular = create_color(0, 0, 0); // black
 		else
 		{

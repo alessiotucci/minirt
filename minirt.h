@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/05 13:14:58 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/05 19:19:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -620,5 +620,6 @@ t_computations prepare_computations(t_intersection i, t_ray r);
 
 //t_color shade_hit(t_setting *world, t_computations comps);
 //t_color shade_hit(t_setting *world, t_ray ray, t_intersection *hit);
-t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i);
+t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector v);
+
 #endif

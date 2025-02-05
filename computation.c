@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:30:04 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/05 13:15:30 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/05 19:51:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,41 +32,19 @@ t_computations prepare_computations(t_intersection i, t_ray r)
     return comps;
 }
 
-/*t_color shade_hit(t_setting *world, t_computations comps)
+
+t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector eye)
 {
-    int shadowed;
+    int shadowed;(void)shadowed;
     t_color final_color;
-    t_material m = material(); // Default material
-
-    // Use the over_point (the offset point) for the shadow test.
-    shadowed = is_shadowed(world, comps.over_point, *world->lights[0]);
-
-    // Call your lighting function using the over_point.
-    final_color = lighting(m,
-                           *world->lights[0],
-                           comps.over_point,  // Use the offset point!
-                           comps.eyev,
-                           comps.normalv,
-                           shadowed);
-    return final_color;
-}
-*/
-
-
-t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i)
-{
-    int shadowed;
-    t_color final_color;
-    //t_material m = material();
-
+    t_material m = material();(void)m; (void)eye;(void)c_i;
     // Use the over_point for shadow testing to avoid acne.
     shadowed = is_shadowed(world, comps.over_point, *world->lights[0]);
 
     // Compute the final color using the Lambert formula (or both formulas if you later want Phong)
 	// object.intesection ?
-    final_color = lambert_formula(c_i, *world->lights[0],
-                                   comps.over_point, comps.normalv, world);
-
+    final_color = lambert_formula(c_i, *world->lights[0], comps.over_point, comps.normalv, world);
+    //final_color = phong_lighting(m, *world->lights[0], comps.over_point, comps.eyev, comps.normalv);
     // If in shadow, you might reduce the diffuse contribution:
     if (shadowed)
         final_color = multiply_color_by_scalar(get_color_intersect(comps.object), world->amb_light->ratio);

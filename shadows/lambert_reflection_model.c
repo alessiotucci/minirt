@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:56:13 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/18 18:05:41 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/05 18:07:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@ t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_ve
 	color = get_color_intersect(c_i->obj);
 
 	(void)world;
-	/*TODO: now working right now
-	if (is_shadowed(world, point, light))
-		return multiply_color_by_scalar(color, world->amb_light->ratio);
-	*/
-	if (c_i->obj.type == T_PLANE)
-		return (color);
-	if (c_i->obj.type == T_CYLINDER)
-		printf("Lamber formula: CYLINDER");
 	//TODO: where to get the world
 	//printf("VECTOR: light.position\n");
 	//print_vector(light.position);
@@ -42,20 +34,17 @@ t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_ve
 	//print_vector(light_v);
 	//printf("VECTOR: normal\n");
 	//print_vector(normal);
-	
-	light_dot_normal = dot(light_v, normal);
-	/*if (c_i->obj.type != T_PLANE)
-		light_dot_normal = dot(light_v, normal);
+	if (c_i->obj.type == T_PLANE)
+		return (color);
+//		light_dot_normal = fabs(dot(light_v, normal));
 	else
-		light_dot_normal = fabs(dot(light_v, normal));*/
-
+		light_dot_normal = dot(light_v, normal);
 	//printf("DOUBLE: light_dot_normal: %lf\n", light_dot_normal);
 	if (light_dot_normal < 0)
-	{
 		diffuse = create_color(0, 0, 0);
-		//printf("lambert still black\n");
-	}
 	else
 		diffuse = multiply_color_by_scalar(color, light.brightness * light_dot_normal);
 	return (diffuse);
 }
+
+
