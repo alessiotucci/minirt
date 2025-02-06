@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/05 18:13:37 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:25:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	t_list_intersect *cylinder_intersections;(void)cylinder_intersections;
 	int	i;
 
+	printf("x: %d, y: %d ", x, y);
 	ray = create_ray_from_camera(data, x, y);
 	i = 0;
 	while (i < data->setting->num_spheres)
@@ -108,9 +109,10 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 
     // Prepare computations for the hit.
     t_computations comps = prepare_computations(*closest_intersection, ray);
-
     // Use the over_point stored in comps for shading.
-    t_color final_color = shade_hit(data->setting, comps, closest_intersection, eye);
+	if (x == 242 && y == 64)
+		printf("ciao");
+    t_color final_color = shade_hit(data->setting, comps, closest_intersection, eye);(void)final_color;
         /* If the point is shadowed, use only ambient lighting (or darken the contribution).
         if (is_shadowed(data->setting, point, *data->setting->lights[0]))
             final_color = multiply_color_by_scalar(get_color_intersect(closest_intersection->obj), data->setting->amb_light->ratio);

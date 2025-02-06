@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/05 19:19:19 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:16:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,9 @@ typedef struct s_intersection_list
 	int count;
 }	t_intersection_list;
 
-
+/**/
 //TODO: NEW LINKED_LIST!
+/**/
 typedef struct s_list_intersect
 {
 	t_intersection			*intersection;

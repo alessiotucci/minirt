@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:22:17 by ftroise           #+#    #+#             */
-/*   Updated: 2024/09/30 11:47:08 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:33:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_intersection	*hit_v2(t_list_intersect *list)
 	return (closest_hit);
 }
 
+
+/*
 t_intersection	*hit(t_intersection_list *list)
 {
 	t_intersection	*closest_hit;
@@ -48,6 +50,7 @@ t_intersection	*hit(t_intersection_list *list)
 	}
 	return (closest_hit);
 }
+*/
 
 /*
 int	main()

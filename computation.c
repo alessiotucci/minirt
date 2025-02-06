@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:30:04 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/06 16:42:10 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:52:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_computations prepare_computations(t_intersection i, t_ray r)
     return comps;
 }
 
-/*
 
+/*
 t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector eye)
 {
     int shadowed;(void)shadowed;
@@ -53,8 +53,8 @@ t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t
 
     return final_color;
 }
-
 */
+
 t_color	shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector eye)
 {
 	int	shadowed;
@@ -69,10 +69,12 @@ t_color	shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t
 
 	// Compute diffuse only if not shadowed
 	shadowed = is_shadowed(world, comps.over_point, *world->lights[0]);
+	printf("shadowed: [%d]\n", shadowed);
 	if (!shadowed)
 	{                                                          //TODO: over point?
 		diffuse_specular = lambert_formula(c_i, *world->lights[0], comps.point, comps.normalv, world);
 		final_color = add_colors(ambient, diffuse_specular);
+		//final_color = diffuse_specular;
 	}
 	else
 	{

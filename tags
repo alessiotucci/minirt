@@ -446,7 +446,6 @@ height	minirt.h	/^	double		height;$/;"	m	struct:s_cylinder	typeref:typename:doub
 height	minirt.h	/^	int			height;$/;"	m	struct:s_mlx	typeref:typename:int
 height	mlx/mlx_int.h	/^	int				height;$/;"	m	struct:s_img	typeref:typename:int
 hidden	Makefile	/^hidden:$/;"	t
-hit	raycasting/hit.c	/^t_intersection	*hit(t_intersection_list *list)$/;"	f	typeref:typename:t_intersection *
 hit_v2	raycasting/hit.c	/^t_intersection	*hit_v2(t_list_intersect *list)$/;"	f	typeref:typename:t_intersection *
 hook	mlx/mlx_int.h	/^	int		(*hook)();$/;"	m	struct:s_event_list	typeref:typename:int (*)()
 hooks	mlx/mlx_int.h	/^	t_event_list		hooks[MLX_MAX_EVENT];$/;"	m	struct:s_win_list	typeref:typename:t_event_list[]
