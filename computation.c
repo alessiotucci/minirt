@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:30:04 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/05 19:51:45 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:42:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_computations prepare_computations(t_intersection i, t_ray r)
     return comps;
 }
 
+/*
 
 t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector eye)
 {
@@ -45,6 +46,7 @@ t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t
 	// object.intesection ?
     final_color = lambert_formula(c_i, *world->lights[0], comps.over_point, comps.normalv, world);
     //final_color = phong_lighting(m, *world->lights[0], comps.over_point, comps.eyev, comps.normalv);
+	//TODO:
     // If in shadow, you might reduce the diffuse contribution:
     if (shadowed)
         final_color = multiply_color_by_scalar(get_color_intersect(comps.object), world->amb_light->ratio);
@@ -52,3 +54,30 @@ t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t
     return final_color;
 }
 
+*/
+t_color	shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector eye)
+{
+	int	shadowed;
+	t_color	ambient;
+	t_color	diffuse_specular;
+	t_color	final_color;
+
+	(void)eye; (void)c_i;
+
+	// Always compute ambient light
+	ambient = multiply_color_by_scalar(get_color_intersect(comps.object), world->amb_light->ratio);
+
+	// Compute diffuse only if not shadowed
+	shadowed = is_shadowed(world, comps.over_point, *world->lights[0]);
+	if (!shadowed)
+	{                                                          //TODO: over point?
+		diffuse_specular = lambert_formula(c_i, *world->lights[0], comps.point, comps.normalv, world);
+		final_color = add_colors(ambient, diffuse_specular);
+	}
+	else
+	{
+		final_color = ambient; // Only ambient in shadow
+	}
+
+	return (final_color);
+}

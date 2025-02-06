@@ -735,7 +735,7 @@ set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinde
 set_sphere_transformations	raycasting/transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void
 setback_zero	main_utils.c	/^void	setback_zero(t_setting *set)$/;"	f	typeref:typename:void
 setting	minirt.h	/^	t_setting 	*setting;$/;"	m	struct:s_mlx	typeref:typename:t_setting *
-shade_hit	computation.c	/^t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector eye)$/;"	f	typeref:typename:t_color
+shade_hit	computation.c	/^t_color	shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector eye)$/;"	f	typeref:typename:t_color
 shearing	transformations/shearing.c	/^t_vector	shearing(t_vector origin, double value[6])$/;"	f	typeref:typename:t_vector
 shininess	minirt.h	/^	double	shininess;$/;"	m	struct:s_material	typeref:typename:double
 shm	mlx/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img	typeref:typename:XShmSegmentInfo
