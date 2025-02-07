@@ -437,6 +437,7 @@ get_color_intersect	raycasting/cast_ray_helper.c	/^t_color	get_color_intersect(t
 get_current_date	new_script_valgrind.pl	/^sub get_current_date()$/;"	s
 get_discriminant	raycasting/intersection_ray.c	/^double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)$/;"	f	typeref:typename:double
 get_length	libft/get_next_line.c	/^static ssize_t	get_length(char *buf, int kind_of_calculation)$/;"	f	typeref:typename:ssize_t	file:
+get_material	computation.c	/^static t_material get_material(t_object obj)$/;"	f	typeref:typename:t_material	file:
 get_next_line	libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
 get_realloc	libft/get_next_line.c	/^static char	*get_realloc(char **buf, int kind_of_alloc)$/;"	f	typeref:typename:char *	file:
 get_return	libft/get_next_line.c	/^static char	*get_return(char **buf)$/;"	f	typeref:typename:char *	file:
@@ -493,7 +494,7 @@ key_pressed	manage_mlx.c	/^static int	key_pressed(int keycode, void *param)$/;"	
 key_win1	mlx/test/main.c	/^int	key_win1(int key,void *p)$/;"	f	typeref:typename:int
 key_win2	mlx/test/main.c	/^int	key_win2(int key,void *p)$/;"	f	typeref:typename:int
 key_win3	mlx/test/main.c	/^int	key_win3(int key,void *p)$/;"	f	typeref:typename:int
-lambert_formula	shadows/lambert_reflection_model.c	/^t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal, t_s/;"	f	typeref:typename:t_color
+lambert_lighting	shadows/lambert_reflection_model.c	/^t_color lambert_lighting(t_setting *world, t_computations comps, t_light light)$/;"	f	typeref:typename:t_color
 last_cols_value	transformations/translations.c	/^void	last_cols_value(int size, double **matrix, t_vector source)$/;"	f	typeref:typename:void
 lenght_string_array	extra/utils.c	/^int	lenght_string_array(char **array)$/;"	f	typeref:typename:int
 lenght_word	libft/ft_split.c	/^int	lenght_word(char const *s, char c)$/;"	f	typeref:typename:int
@@ -522,7 +523,8 @@ mask	mlx/mlx_int.h	/^	int		mask;$/;"	m	struct:s_event_list	typeref:typename:int
 material	minirt.h	/^	t_material	material;\/\/THIS IS LAST CHANGE$/;"	m	struct:s_cylinder	typeref:typename:t_material
 material	minirt.h	/^	t_material	material;\/\/THIS IS LAST CHANGE$/;"	m	struct:s_plane	typeref:typename:t_material
 material	minirt.h	/^	t_material	material;\/\/THIS IS LAST CHANGE$/;"	m	struct:s_sphere	typeref:typename:t_material
-material	shadows/material.c	/^t_material	material(void)$/;"	f	typeref:typename:t_material
+material	minirt.h	/^    t_material material; \/\/ Material properties at the hit point.$/;"	m	struct:s_computations	typeref:typename:t_material
+material	shadows/material.c	/^t_material	material(t_color color)$/;"	f	typeref:typename:t_material
 matrix_of_cofactors	matrix/inversing.c	/^double	**matrix_of_cofactors(int size, double **matrix)$/;"	f	typeref:typename:double **
 matrix_of_cofactors_void	matrix/void.c	/^void	matrix_of_cofactors_void(int size, double **matrix, double **n)$/;"	f	typeref:typename:void
 matrix_rotation_x	transformations/matrix_rotations.c	/^double	**matrix_rotation_x(double radians)$/;"	f	typeref:typename:double **
@@ -617,8 +619,10 @@ multiply_colors	colors/operation_color.c	/^t_color	multiply_colors(t_color c1, t
 multiply_matrix	matrix/operations_matrix.c	/^double	**multiply_matrix(int cols_a, int rows_b, double **a, double **b)$/;"	f	typeref:typename:double **
 my_atof	extra/my_atof.c	/^double	my_atof(const char *str)$/;"	f	typeref:typename:double
 my_clamp	colors/clamp.c	/^double	my_clamp(double value, double min_val, double max_val)$/;"	f	typeref:typename:double
+my_lambert_formula	computation.c	/^t_color	my_lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal, /;"	f	typeref:typename:t_color
 my_mlx_pixel_put	manage_mlx.c	/^void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)$/;"	f	typeref:typename:void
 my_new_image	manage_mlx.c	/^void	my_new_image(t_mlx *data)$/;"	f	typeref:typename:void
+my_shade_hit	computation.c	/^t_color	my_shade_hit(t_setting *world, t_computations comps, t_intersection *c_i)$/;"	f	typeref:typename:t_color
 my_strcmp	extra/utils.c	/^int	my_strcmp(const char *str1, const char *str2)$/;"	f	typeref:typename:int
 name	mlx/mlx_int.h	/^	char	*name;$/;"	m	struct:s_col_name	typeref:typename:char *
 name	mlx/mlx_int.h	/^	int		name;$/;"	m	struct:s_xpm_col	typeref:typename:int
@@ -648,8 +652,7 @@ parse_map	parsing/parsing_map.c	/^static int	parse_map(char *filename, t_setting
 parse_vector	parsing/parsing_numbers.c	/^t_vector	parse_vector(char *str, double flag)$/;"	f	typeref:typename:t_vector
 parsing_map	parsing/parsing_map.c	/^int	parsing_map(char *map, t_setting *set)$/;"	f	typeref:typename:int
 phold	libft/ft_printf.c	/^static int	phold(va_list *arg, char q, int count)$/;"	f	typeref:typename:int	file:
-phong_formula	shadows/phong_reflection_model.c	/^t_color	phong_formula(t_material mat, t_light light, t_vector point, t_vector eye, t_vector norm/;"	f	typeref:typename:t_color
-phong_lighting	shadows/lighting.c	/^t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector nor/;"	f	typeref:typename:t_color
+phong_lighting	shadows/phong_reflection_model.c	/^t_color phong_lighting(t_setting *world, t_computations comps, t_light light)$/;"	f	typeref:typename:t_color
 pix	mlx/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img	typeref:typename:Pixmap
 planes	minirt.h	/^	t_plane			**planes;$/;"	m	struct:s_setting	typeref:typename:t_plane **
 point	minirt.h	/^	t_vector	point;$/;"	m	struct:s_plane	typeref:typename:t_vector
@@ -657,7 +660,7 @@ point	minirt.h	/^    t_vector   point;     \/\/ The actual hit point on the surf
 point_light	shadows/lighting.c	/^t_light	point_light(t_vector pos, t_color c)$/;"	f	typeref:typename:t_light
 position	minirt.h	/^	t_vector	position;$/;"	m	struct:s_light	typeref:typename:t_vector
 position_ray	raycasting/create_ray.c	/^t_vector	position_ray(t_ray ray, double t)$/;"	f	typeref:typename:t_vector
-prepare_computations	computation.c	/^t_computations prepare_computations(t_intersection i, t_ray r)$/;"	f	typeref:typename:t_computations
+prepare_computations	computation.c	/^t_computations	prepare_computations(t_intersection i, t_ray r)$/;"	f	typeref:typename:t_computations
 print_ambient_light	extra/print_debug.c	/^static void	print_ambient_light(t_amb_light *amb_light)$/;"	f	typeref:typename:void	file:
 print_camera	extra/print_debug.c	/^static void	print_camera(t_camera *camera)$/;"	f	typeref:typename:void	file:
 print_color	extra/print_debug.c	/^void	print_color(t_color color)$/;"	f	typeref:typename:void
@@ -734,7 +737,7 @@ set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinde
 set_sphere_transformations	raycasting/transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void
 setback_zero	main_utils.c	/^void	setback_zero(t_setting *set)$/;"	f	typeref:typename:void
 setting	minirt.h	/^	t_setting 	*setting;$/;"	m	struct:s_mlx	typeref:typename:t_setting *
-shade_hit	computation.c	/^t_color	shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector eye)$/;"	f	typeref:typename:t_color
+shade_hit	computation.c	/^t_color shade_hit(t_setting *world, t_computations comps, int flag)$/;"	f	typeref:typename:t_color
 shearing	transformations/shearing.c	/^t_vector	shearing(t_vector origin, double value[6])$/;"	f	typeref:typename:t_vector
 shininess	minirt.h	/^	double	shininess;$/;"	m	struct:s_material	typeref:typename:double
 shm	mlx/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img	typeref:typename:XShmSegmentInfo

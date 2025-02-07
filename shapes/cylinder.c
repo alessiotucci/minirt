@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:26:30 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/15 18:17:41 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/07 13:48:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c)
 //	new_cylinder.height;
 	new_cylinder.color = c;
 	new_cylinder.transform = def;
-	new_cylinder.material = material();
+	new_cylinder.material = material(create_color(115, 135, 22));
 //	last update...
 	new_cylinder.min = DBL_MIN;
 	new_cylinder.max = DBL_MAX;

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/06 19:16:50 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/07 17:08:54 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ typedef struct s_computations
     t_vector   eyev;      // The eye vector (pointing toward the camera).
     t_vector   normalv;   // The surface normal at the hit point.
     // You can add more fields if needed, for example:
-    // t_material material; // Material properties at the hit point.
+    t_material material; // Material properties at the hit point.
 }   t_computations;
 /*****************************************************************************/
 typedef struct s_amb_light
@@ -588,17 +588,18 @@ void	print_single_light(t_light *one_light);
 /**********************/
 /* Shadows/material.c */
 /**********************/
-t_material			material(void);
-void	print_material(t_material mat);
+//t_material			material(void);
+void		print_material(t_material mat);
+t_material	material(t_color color);
 /**********************/
 /* Shadows/lighting.c */
 /**********************/
 //TODO norminetted!!
+/*
 t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
-
-//t_color	lambert_formula(t_color color, t_light light, t_vector point, t_vector normal);
-//t_color	lambert_formula(t_intersection *i, t_light light, t_vector point, t_vector normal);
+t_color	phong_lightingV2(t_setting *world, t_computations comps, t_light light);
 t_color	lambert_formula(t_intersection *i, t_light light, t_vector point, t_vector normal, t_setting *world);
+*/
 
 //TODO; planes!
 t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray);
@@ -619,8 +620,8 @@ t_color	default_color(void);
 //TODO: reasoning by GPT3
 t_computations prepare_computations(t_intersection i, t_ray r);
 
-//t_color shade_hit(t_setting *world, t_computations comps);
-//t_color shade_hit(t_setting *world, t_ray ray, t_intersection *hit);
-t_color shade_hit(t_setting *world, t_computations comps, t_intersection *c_i, t_vector v);
-
+t_color lambert_lighting(t_setting *world, t_computations comps, t_light light);
+t_color phong_lighting(t_setting *world, t_computations comps, t_light light);
+t_color shade_hit(t_setting *world, t_computations comps, int flag);
+t_color	my_shade_hit(t_setting *world, t_computations comps, t_intersection *c_i);
 #endif

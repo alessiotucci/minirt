@@ -6,18 +6,19 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:55:51 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/03 12:47:10 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/07 13:37:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
 
-t_material	material(void)
+t_material	material(t_color color)
 {
 	t_material	standard;
 
-	standard.color = create_color(255, 51, 255);
+	//standard.color = create_color(255, 125, 44);
+	standard.color = color;
 	standard.ambient = 0.1;
 	standard.diffuse = 0.9;
 	standard.specular = 0.9;

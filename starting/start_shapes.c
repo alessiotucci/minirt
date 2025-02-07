@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/04 18:46:26 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/07 13:46:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	start_cylinder(t_setting *set, char **details)
 	//new_cylinder->min = 0;
 	//new_cylinder->max = new_cylinder->height;
 	// Or Option 2: Cylinder is centered along the y-axis:
-	 new_cylinder->min = -new_cylinder->height / 2;
-	 new_cylinder->max = new_cylinder->height / 2;
+	new_cylinder->min = -new_cylinder->height / 2;
+	new_cylinder->max = new_cylinder->height / 2;
 	new_cylinder->color = parse_color(details[5]);
 	new_cylinder->transform = def;
-	new_cylinder->material = material();
+	new_cylinder->material = material(new_cylinder->color);
 	add_cylinder_to_array(new_cylinder, set);
 
 }
@@ -58,7 +58,7 @@ void	start_spheres(t_setting *set, char **details)
 	new_sphere->diameter = my_atof(details[2]);
 	new_sphere->color = parse_color(details[3]);
 	new_sphere->transform = def;//TODO: this is last
-	new_sphere->material = material();
+	new_sphere->material = material(new_sphere->color);
 	add_sphere_to_array(new_sphere, set);
 
 }
@@ -79,6 +79,7 @@ void	start_planes(t_setting *set, char **details)
 	new_plane->normal = parse_vector(details[2], 0.0); //TODO: Carefull with ranges
 	new_plane->color = parse_color(details[3]);
 	new_plane->transform = def;//TODO: this is last
+	new_plane->material = material(new_plane->color);
 	add_plane_to_array(new_plane, set);
 
 }
