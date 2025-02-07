@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/06 19:25:25 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/07 13:02:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	t_list_intersect *cylinder_intersections;(void)cylinder_intersections;
 	int	i;
 
-	printf("x: %d, y: %d ", x, y);
 	ray = create_ray_from_camera(data, x, y);
 	i = 0;
 	while (i < data->setting->num_spheres)
@@ -92,38 +91,23 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	closest_intersection = hit_v2(all_intersections);
 	if (closest_intersection != NULL)
 	{
-		//printf(" | hit! pixel values: [%s%d, %d%s] |\n", GREEN, x, y, RESET);
-		//print_ray(ray);
+		/******************************************************************/
+		/* variable are used to calculate the color, material m for phong */
+		/******************************************************************/
 		t_vector point = position_ray(ray, closest_intersection->t);
 		t_vector normal = v2normal_at(closest_intersection->obj, point);
 		t_vector eye = negate(ray.direction);
-	//t_material m = material(); // Default material
-	//t_color color = phong_lighting(m, *data->setting->lights[0], point, eye, normal);
+		t_material m = material();
+		t_color phong_color = phong_lighting(m, *data->setting->lights[0], point, eye, normal);
+		(void)phong_color;
 
-		/*t_color std = get_color_intersect(closest_intersection->obj);*/
-		t_color color = lambert_formula(closest_intersection, *data->setting->lights[0], point, normal, data->setting); //TODO: this is not normed, check data
-		(void)color;
-        // Shadow Test:
-//		t_color final_color;
-//		final_color = shade_hit(data->setting, ray, closest_intersection);
+	// Prepare computations for the hit.
+		t_computations comps = prepare_computations(*closest_intersection, ray);
+		t_color final_color = shade_hit(data->setting, comps, closest_intersection, eye);
+		(void)final_color;
 
-    // Prepare computations for the hit.
-    t_computations comps = prepare_computations(*closest_intersection, ray);
-    // Use the over_point stored in comps for shading.
-	if (x == 242 && y == 64)
-		printf("ciao");
-    t_color final_color = shade_hit(data->setting, comps, closest_intersection, eye);(void)final_color;
-        /* If the point is shadowed, use only ambient lighting (or darken the contribution).
-        if (is_shadowed(data->setting, point, *data->setting->lights[0]))
-            final_color = multiply_color_by_scalar(get_color_intersect(closest_intersection->obj), data->setting->amb_light->ratio);
-        else
-            final_color = lambert_formula(closest_intersection, *data->setting->lights[0], point, normal, data->setting);
-        // Finally, put the pixel with the computed color.
-        //my_mlx_pixel_put(data, x, y, create_trgb(final_color));
-		*/
-			//print_color(std);
 			my_mlx_pixel_put(data, x, y, create_trgb(final_color));
-			//my_mlx_pixel_put(data, x, y, create_trgb(color));
+			//my_mlx_pixel_put(data, x, y, create_trgb(phong_color));
 			//my_mlx_pixel_put(data, x, y, create_trgb(std));
 		return ; //why here there is this return? TODO: check if the return
 	}															 // leakss!!
