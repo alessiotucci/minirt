@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:56:13 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/07 16:56:18 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/08 16:37:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ t_color lambert_lighting(t_setting *world, t_computations comps, t_light light)
 
 	// For diffuse shading: if the object is a plane, use fabs to ensure non-negative dot product.
 	if (comps.object.type == T_PLANE)
-		light_dot_normal = fabs(dot(light_v, comps.normalv));
+		return (base_color);
+//		light_dot_normal = fabs(dot(light_v, comps.normalv));
 	else
 		light_dot_normal = dot(light_v, comps.normalv);
 

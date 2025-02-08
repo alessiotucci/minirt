@@ -6,11 +6,33 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/05 13:49:25 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/08 16:28:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
+
+//REASON  gpt
+static t_vector get_plane_normal(t_plane *pl, t_ray ray)
+{
+    t_vector normal;
+
+    // Get the stored normal.
+    normal = pl->normal;
+	printf("get_plane_normal: FUNCTION CALL!\n");
+    // If the dot product between the ray's direction and the normal is positive,
+    // then the ray is coming from behind the plane.
+    // Flip the normal so that it faces the ray.
+    if (dot(ray.direction, normal) > 0)
+	{
+        normal = multiplication(normal, -1);
+		printf("dot(ray.direction, normal) > 0: [%d]\n", dot(ray.direction, normal) > 0 );
+	}
+
+    // Return the (assumed to be already normalized) normal.
+    return normal;
+}
+
 
 //reason by gpt
 t_vector local_point_in_cylinder(t_cylinder *cylinder, t_vector point)
@@ -51,53 +73,13 @@ t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)
         // ...or almost equal to the bottom cap.
         else if (comparing_double(local.y, cylinder->min))
             return create_vector(0, -1, 0);
-        /* If the point is near the top edge, blend between cap and lateral normals.
-        else if (fabs(local.y - cylinder->max) < EPSILON_v2 * 10)
-        {
-            blend = (cylinder->max - local.y) / (EPSILON_v2 * 10);
-            lateral = normalization(create_vector(local.x, 0, local.z));
-            cap = create_vector(0, 1, 0);
-            blended = add(multiplication(lateral, blend), multiplication(cap, 1 - blend));
-            return normalization(blended);
-        }
-        // If near the bottom edge, blend between lateral and cap normal.
-        else if (fabs(local.y - cylinder->min) < EPSILON_v2 * 10)
-        {
-            blend = (local.y - cylinder->min) / (EPSILON_v2 * 10);
-            lateral = normalization(create_vector(local.x, 0, local.z));
-            cap = create_vector(0, -1, 0);
-            blended = add(multiplication(lateral, blend), multiplication(cap, 1 - blend));
-            return normalization(blended);
-        }
-		*/
     }
     // For points clearly on the lateral surface, return the normalized lateral normal.
     return normalization(create_vector(local.x, 0, local.z));
 }
 
-
-/*reasoning by gpt fix this
-t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)
-{
-    // Transform the point into cylinder-local coordinates (in XZ)
-    t_vector local = local_point_in_cylinder(cylinder, point);
-    // Use the actual squared radius of the cylinder
-    double r = pow(cylinder->diameter / 2, 2);
-
-    // Check if the point is on the top cap
-    if ((pow(local.x, 2) + pow(local.z, 2)) < r && local.y >= cylinder->max - EPSILON_v2)
-        return create_vector(0, 1, 0);
-    // Check if the point is on the bottom cap
-    else if ((pow(local.x, 2) + pow(local.z, 2)) < r && local.y <= cylinder->min + EPSILON_v2)
-        return create_vector(0, -1, 0);
-    // Otherwise, for the lateral surface, compute the normal using the local XZ values
-    else
-        return (normalization(create_vector(local.x, 0, local.z)));
-}
-*/
-
-/*please rename this function */
-t_vector v2normal_at(t_object obj, t_vector point)
+/*please rename this function */					//TODO
+t_vector v2normal_at(t_object obj, t_vector point, t_ray r)
 {
 	t_sphere	*sphere;
 	t_plane		*plane;
@@ -111,7 +93,8 @@ t_vector v2normal_at(t_object obj, t_vector point)
 	if (obj.type == T_PLANE)
 	{
 		plane = (t_plane *)obj.address;
-		return (plane->normal);
+		return get_plane_normal(plane, r);
+		//return (plane->normal);
 	}
 	if (obj.type == T_CYLINDER)
 	{

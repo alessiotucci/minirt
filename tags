@@ -439,6 +439,7 @@ get_discriminant	raycasting/intersection_ray.c	/^double	get_discriminant(t_vecto
 get_length	libft/get_next_line.c	/^static ssize_t	get_length(char *buf, int kind_of_calculation)$/;"	f	typeref:typename:ssize_t	file:
 get_material	computation.c	/^static t_material get_material(t_object obj)$/;"	f	typeref:typename:t_material	file:
 get_next_line	libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
+get_plane_normal	normal.c	/^static t_vector get_plane_normal(t_plane *pl, t_ray ray)$/;"	f	typeref:typename:t_vector	file:
 get_realloc	libft/get_next_line.c	/^static char	*get_realloc(char **buf, int kind_of_alloc)$/;"	f	typeref:typename:char *	file:
 get_return	libft/get_next_line.c	/^static char	*get_return(char **buf)$/;"	f	typeref:typename:char *	file:
 get_sphere_to_ray	raycasting/intersection_ray.c	/^t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)$/;"	f	typeref:typename:t_vector
@@ -619,10 +620,8 @@ multiply_colors	colors/operation_color.c	/^t_color	multiply_colors(t_color c1, t
 multiply_matrix	matrix/operations_matrix.c	/^double	**multiply_matrix(int cols_a, int rows_b, double **a, double **b)$/;"	f	typeref:typename:double **
 my_atof	extra/my_atof.c	/^double	my_atof(const char *str)$/;"	f	typeref:typename:double
 my_clamp	colors/clamp.c	/^double	my_clamp(double value, double min_val, double max_val)$/;"	f	typeref:typename:double
-my_lambert_formula	computation.c	/^t_color	my_lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal, /;"	f	typeref:typename:t_color
 my_mlx_pixel_put	manage_mlx.c	/^void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)$/;"	f	typeref:typename:void
 my_new_image	manage_mlx.c	/^void	my_new_image(t_mlx *data)$/;"	f	typeref:typename:void
-my_shade_hit	computation.c	/^t_color	my_shade_hit(t_setting *world, t_computations comps, t_intersection *c_i)$/;"	f	typeref:typename:t_color
 my_strcmp	extra/utils.c	/^int	my_strcmp(const char *str1, const char *str2)$/;"	f	typeref:typename:int
 name	mlx/mlx_int.h	/^	char	*name;$/;"	m	struct:s_col_name	typeref:typename:char *
 name	mlx/mlx_int.h	/^	int		name;$/;"	m	struct:s_xpm_col	typeref:typename:int
@@ -809,7 +808,7 @@ transposing_void	matrix/void.c	/^void	transposing_void(int rows, int cols, doubl
 type	minirt.h	/^	t_type	type;$/;"	m	struct:s_object	typeref:typename:t_type
 type	mlx/mlx_int.h	/^	int				type;$/;"	m	struct:s_img	typeref:typename:int
 use_xshm	mlx/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
-v2normal_at	normal.c	/^t_vector v2normal_at(t_object obj, t_vector point)$/;"	f	typeref:typename:t_vector
+v2normal_at	normal.c	/^t_vector v2normal_at(t_object obj, t_vector point, t_ray r)$/;"	f	typeref:typename:t_vector
 value_matrix	matrix/initialize_matrix.c	/^double	**value_matrix(double a[4], double b[4], double c[4], double d[4])$/;"	f	typeref:typename:double **
 viewpoint	minirt.h	/^	t_vector	viewpoint;$/;"	m	struct:s_camera	typeref:typename:t_vector
 visual	mlx/mlx_int.h	/^	Visual		*visual;$/;"	m	struct:s_xvar	typeref:typename:Visual *
