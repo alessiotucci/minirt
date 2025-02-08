@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/08 16:28:17 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/08 18:13:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,11 @@ static t_vector get_plane_normal(t_plane *pl, t_ray ray)
 
     // Get the stored normal.
     normal = pl->normal;
-	printf("get_plane_normal: FUNCTION CALL!\n");
     // If the dot product between the ray's direction and the normal is positive,
     // then the ray is coming from behind the plane.
     // Flip the normal so that it faces the ray.
     if (dot(ray.direction, normal) > 0)
-	{
         normal = multiplication(normal, -1);
-		printf("dot(ray.direction, normal) > 0: [%d]\n", dot(ray.direction, normal) > 0 );
-	}
-
     // Return the (assumed to be already normalized) normal.
     return normal;
 }

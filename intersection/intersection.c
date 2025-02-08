@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/29 15:33:34 by ftroise          ###   ########.fr       */
+/*   Updated: 2025/02/08 18:10:29 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 #include "../minirt.h"
 
 
-/* al momento qulle funzioni che volevi fare le ho lasciate qui, in un secondo
-momento possiamo creare un'altro file*/ 
-
+/* those function are for the deep copy, double check those*/ 
 static void copy_simple_fields_sphere(t_sphere *dest, t_sphere *src)
 {
 	dest->identifier = ft_strdup(src->identifier);
-    dest->center = src->center;
-    dest->diameter = src->diameter;
-    dest->color = src->color;
-    dest->material = src->material;
+	dest->center = src->center;
+	dest->diameter = src->diameter;
+	dest->color = src->color;
+	dest->material = src->material;
 }
 
 static void copy_simple_fields_plane(t_plane *dest, t_plane *src)
@@ -32,8 +30,10 @@ static void copy_simple_fields_plane(t_plane *dest, t_plane *src)
 	dest->point = src->point;
 	dest->color = src->color;
 	dest->material = src->material;
+	dest->normal = src->normal;
 }
 
+//TODO: update this function pls
 static void copy_simple_fields_cylinder(t_cylinder *dest, t_cylinder*src)
 {
 	dest->identifier = ft_strdup(src->identifier);

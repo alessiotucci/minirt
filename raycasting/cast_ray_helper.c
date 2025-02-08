@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/08 16:38:01 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/08 17:53:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,10 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 		t_computations comps = prepare_computations(*closest_intersection, ray);
 		t_color final_color = shade_hit(data->setting, comps, 0);
 		(void)final_color;
-
 			my_mlx_pixel_put(data, x, y, create_trgb(final_color));
 			//my_mlx_pixel_put(data, x, y, create_trgb(phong_color));
 			//my_mlx_pixel_put(data, x, y, create_trgb(std));
-		return ; //why here there is this return? TODO: check if the return
+		//return ; //why here there is this return? TODO: check if the return
 	}															 // leakss!!
 	else
 		my_mlx_pixel_put(data, x, y, COLOR_BLACK);
