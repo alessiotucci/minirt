@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/07 17:53:28 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/09 19:46:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@
 /***************************************/
 /* Define default size for the windows */
 /***************************************/
-# define DEFAULT_WIDTH 400
-# define DEFAULT_HEIGHT 260
+# define DEFAULT_WIDTH 250
+# define DEFAULT_HEIGHT 120
 
 /************************************/
 /* color for mlx images and library */
@@ -515,7 +515,7 @@ void	replace_me(char *str, char replacement, char to_replace);
 /*********************************/
 /* useful function to manage mlx */
 /*********************************/
-void	manage_mlx(t_mlx *obj, t_setting *set);
+void	manage_mlx(t_mlx *obj);
 int		window_close(void *param);
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	my_new_image(t_mlx *data);

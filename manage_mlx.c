@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 18:43:15 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/09 19:46:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int	mouse_click(int button, int x, int y, t_mlx *mlx)
 }
 
 
-void manage_mlx(t_mlx *obj, t_setting *set)
+void manage_mlx(t_mlx *obj)
 {
 	obj->mlx = mlx_init();
 	ft_printf("%smlx_init has started%s\n", YELLOW, RESET);
@@ -134,12 +134,6 @@ void manage_mlx(t_mlx *obj, t_setting *set)
 		return (ft_putstr_fd("mlx_init fail...\n", 2));
 	obj->win = mlx_new_window(obj->mlx, obj->width, obj->height, obj->map_name);
 	my_new_image(obj); 
-
-	//send_to_centre(set);
-	(void)set;
-
-	// Disegna la scena
-	//wallpaper(obj);
 	draw_scene(obj);
 	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
 	mlx_mouse_hook(obj->win, mouse_click, obj);

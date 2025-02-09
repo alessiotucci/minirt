@@ -518,7 +518,7 @@ main	mlx/test/main.c	/^int	main()$/;"	f	typeref:typename:int
 main	mlx/test/new_win.c	/^int main()$/;"	f	typeref:typename:int
 main	mlx/test/run_tests.sh	/^main(){$/;"	f
 malloc_matrix	matrix/matrix_utils.c	/^double	**malloc_matrix(int rows, int col)$/;"	f	typeref:typename:double **
-manage_mlx	manage_mlx.c	/^void manage_mlx(t_mlx *obj, t_setting *set)$/;"	f	typeref:typename:void
+manage_mlx	manage_mlx.c	/^void manage_mlx(t_mlx *obj)$/;"	f	typeref:typename:void
 map_name	minirt.h	/^	char		*map_name;$/;"	m	struct:s_mlx	typeref:typename:char *
 mask	mlx/mlx_int.h	/^	int		mask;$/;"	m	struct:s_event_list	typeref:typename:int
 material	minirt.h	/^	t_material	material;\/\/THIS IS LAST CHANGE$/;"	m	struct:s_cylinder	typeref:typename:t_material
