@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:55:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/06 19:22:51 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/09 20:05:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@
 /* Step 2: Create the shadow ray in the direction of the light */
 /* Step 3: Intersect the world with the shadow ray */
 /* Step 4: Check for the closest hit */
+//TODO: important function useful for refactoring
+
 t_list_intersect	*intersect_world(t_setting *world, t_ray ray)
 {
-	t_list_intersect	*all_intersections = NULL;
+	t_list_intersect	*all_intersections;
 	t_list_intersect	*current_intersections;
 	int					i;
 
+	all_intersections = NULL;
 	i = 0;
 	while (i < world->num_spheres)
 	{
-		current_intersections = intersect_sphereV2(*world->spheres[i], ray);
+		current_intersections = intersect_sphere(*world->spheres[i], ray);
 		if (current_intersections)
 			concatenate_lists(&all_intersections, current_intersections);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/09 19:46:27 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/09 20:10:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,11 +162,13 @@ typedef struct s_intersection
 }	t_intersection;
 
 
+/*
 typedef struct s_intersection_list
 {
 	t_intersection	*intersections;
 	int count;
 }	t_intersection_list;
+*/
 
 /**/
 //TODO: NEW LINKED_LIST!
@@ -453,8 +455,6 @@ t_vector	position_ray(t_ray ray, double t);
 /********************/
 /* Raycasting/hit.c */
 /********************/
-t_intersection	*hit(t_intersection_list *list);
-//TODO: v2
 t_intersection	*hit_v2(t_list_intersect *list);
 
 /*************************/
@@ -475,7 +475,8 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y);
 t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray);
 double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter);
 //TODO: v2
-t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
+//t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
+t_list_intersect *intersect_sphere(t_sphere sphere, t_ray old_ray);
 
 /***********************************/
 /* Raycasting/transformation_ray.c */
@@ -529,7 +530,7 @@ int		mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
 /* started to create complex obj to track intersections */
 /********************************************************/
 void				print_intersection(t_intersection i);
-void				print_intersection_list(t_intersection_list *lis);
+//void				print_intersection_list(t_intersection_list *lis);
 int					print_type(t_object obj);
 void				print_single_sphere(t_sphere *one_sphere);
 void				print_single_cylinder(t_cylinder *one_cylinder);
@@ -543,18 +544,10 @@ t_object			create_object(char *type, void *object);
 t_intersection		intersection(double t, char *type, void *object);
 void				free_intersection(t_intersection *intersect);
 
-/************************************/
-/* intersection/intersection_list.c */
-/************************************/
-void				add_intersections_to_list(t_intersection_list *dest, t_intersection_list *src);
-t_intersection_list	*create_intersection_list(int count);
-void				add_intersection(t_intersection_list *l, int index, t_intersection i);
-void				free_intersection_list(t_intersection_list *list);
 
 //TODO
 
 void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2);
-t_list_intersect *intersect_sphereV2(t_sphere sphere, t_ray old_ray);
 /************************************/
 /* intersection/intersection_list.c */
 /************************************/

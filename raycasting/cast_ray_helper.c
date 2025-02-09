@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/08 18:33:47 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/09 20:05:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	i = 0;
 	while (i < data->setting->num_spheres)
 	{
-		sphere_intersections = intersect_sphereV2(*data->setting->spheres[i], ray);
+		sphere_intersections = intersect_sphere(*data->setting->spheres[i], ray);
 		if (sphere_intersections)
 			concatenate_lists(&all_intersections, sphere_intersections);
 	i++;
