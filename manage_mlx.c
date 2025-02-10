@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/09 19:59:05 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/10 14:24:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,6 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-//3
-/* This function perfom a clean close and then exit*/
-static void	clean_close(t_mlx *project)
-{
-	ft_printf("%sdestroying the windows\n%s\n", RED, RESET);
-	mlx_destroy_window(project->mlx, project->win);
-	free_struct(project->setting);
-	exit(0);
-}
-
 //4
 //TODO: interesting function!
 static void	test_function(t_mlx *info)
@@ -48,17 +38,22 @@ static void	test_function(t_mlx *info)
 	char	*strx;
 	char	*stry;
 	char	*strz;
+	char	*str_fov;
 	char	*new_str;
 
 	c = "camera : ";
 	strx = ft_itoa((int)info->setting->camera->viewpoint.x);
 	stry = ft_itoa((int)info->setting->camera->viewpoint.y);
 	strz = ft_itoa((int)info->setting->camera->viewpoint.z);
+	str_fov= ft_itoa((int)info->setting->camera->fov);
 	new_str = ft_strjoin(c, strx);
 	new_str = ft_strjoin(new_str, " ");
 	new_str = ft_strjoin(new_str, stry);
 	new_str = ft_strjoin(new_str, " ");
 	new_str = ft_strjoin(new_str, strz);
+	new_str = ft_strjoin(new_str, " FOV:");
+	new_str = ft_strjoin(new_str, str_fov);
+
 	mlx_string_put(info->mlx, info->win, 10, info->height - 10,
 		COLOR_WHITE, new_str);
 	mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, "selected obj: ");
@@ -71,12 +66,14 @@ static int	key_pressed(int keycode, void *param)
 	help = (t_mlx *) param;
 	if (keycode == ESC)
 		clean_close(help);
-	else if (keycode == PLUS)
+/*	else if (keycode == PLUS)
 		test_function(help);
 	else if (keycode == MINUS)
-		test_function(help);
+		test_function(help);*/
 	else if (keycode == A)
 		test_function(help);
+	else
+		key_pressed_gpt(keycode, param);
 	return (1);
 }
 
@@ -110,6 +107,7 @@ void	manage_mlx(t_mlx *obj)
 	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
 	mlx_mouse_hook(obj->win, mouse_click, obj);
 	mlx_hook(obj->win, 2, 1, key_pressed, obj);
+//	mlx_hook(obj->win, 2, 1, key_pressed_gpt, obj);
 	mlx_hook(obj->win, 17, 0L, window_close, obj);
 	mlx_loop(obj->mlx);
 	mlx_destroy_display(obj->mlx);

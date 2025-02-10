@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/09 20:10:22 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/10 15:07:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@
 /************************/
 # define ARROW_LEFT 123
 # define ARROW_RIGHT 124
-# define ARROW_DOWN 125
-# define ARROW_UP 126
-# define MINUS 27
-# define PLUS 24
+# define ARROW_DOWN 65364
+# define ARROW_UP 65362
+# define MINUS 61
+# define PLUS 45
 # define SPACE 49
 # define KEY_R 15
 # define ESCAPE 53
@@ -614,8 +614,15 @@ t_color	default_color(void);
 //TODO: reasoning by GPT3
 t_computations prepare_computations(t_intersection i, t_ray r);
 
-t_color lambert_lighting(t_setting *world, t_computations comps, t_light light);
-t_color phong_lighting(t_setting *world, t_computations comps, t_light light);
-t_color shade_hit(t_setting *world, t_computations comps, int flag);
+t_color	lambert_lighting(t_setting *world, t_computations comps, t_light light);
+t_color	phong_lighting(t_setting *world, t_computations comps, t_light light);
+t_color	shade_hit(t_setting *world, t_computations comps, int flag);
 t_color	my_shade_hit(t_setting *world, t_computations comps, t_intersection *c_i);
+
+/*************************/
+/*Experimenting with mlx */
+/*************************/
+int	key_pressed_gpt(int keycode, void *param);
+void	clean_close(t_mlx *project);
+void	camera_image_plane(t_mlx *mlx);
 #endif

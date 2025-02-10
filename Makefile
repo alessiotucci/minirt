@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2025/02/05 12:30:35 by atucci           ###   ########.fr        #
+#    Updated: 2025/02/10 13:56:43 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SOURCE = ./main.c \
 		 ./shadows/is_shadowed.c \
 		 ./default_setting.c \
 		 ./computation.c \
+		 ./rendering/key_pressed.c \
 
 
 HEADERS = ./minirt.h \

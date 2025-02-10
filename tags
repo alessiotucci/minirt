@@ -265,7 +265,7 @@ clean	mlx/Makefile	/^clean	:$/;"	t
 clean	mlx/Makefile.mk	/^clean	:$/;"	t
 clean	mlx/configure	/^clean(){$/;"	f
 clean	mlx/test/Makefile.mk	/^clean:$/;"	t
-clean_close	manage_mlx.c	/^static void	clean_close(t_mlx *project)$/;"	f	typeref:typename:void	file:
+clean_close	rendering/key_pressed.c	/^void	clean_close(t_mlx *project)$/;"	f	typeref:typename:void
 clean_test	Makefile	/^clean_test: fclean$/;"	t
 closed	minirt.h	/^	int			closed;$/;"	m	struct:s_cylinder	typeref:typename:int
 cmap	mlx/mlx_int.h	/^	Colormap	cmap;$/;"	m	struct:s_xvar	typeref:typename:Colormap
@@ -487,6 +487,7 @@ is_shadowed	shadows/is_shadowed.c	/^int	is_shadowed(t_setting *world, t_vector p
 key_hook	mlx/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
 key_param	mlx/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list	typeref:typename:void *
 key_pressed	manage_mlx.c	/^static int	key_pressed(int keycode, void *param)$/;"	f	typeref:typename:int	file:
+key_pressed_gpt	rendering/key_pressed.c	/^int key_pressed_gpt(int keycode, void *param)$/;"	f	typeref:typename:int
 key_win1	mlx/test/main.c	/^int	key_win1(int key,void *p)$/;"	f	typeref:typename:int
 key_win2	mlx/test/main.c	/^int	key_win2(int key,void *p)$/;"	f	typeref:typename:int
 key_win3	mlx/test/main.c	/^int	key_win3(int key,void *p)$/;"	f	typeref:typename:int
