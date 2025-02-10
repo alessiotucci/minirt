@@ -9,3 +9,6 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
+cast_mouse_ray	mouse_select.c	/^int	cast_mouse_ray(int x, int y, t_mlx *mlx)$/;"	f	typeref:typename:int
+clean_close	key_pressed.c	/^void	clean_close(t_mlx *project)$/;"	f	typeref:typename:void
+key_pressed_gpt	key_pressed.c	/^int key_pressed_gpt(int keycode, void *param)$/;"	f	typeref:typename:int

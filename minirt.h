@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/10 15:07:39 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/10 18:47:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 /************************/
 /* Define keyboard code */ //TODO: check with Ubuntu codes
 /************************/
-# define ARROW_LEFT 123
-# define ARROW_RIGHT 124
+# define ARROW_LEFT 65361
+# define ARROW_RIGHT 65363
 # define ARROW_DOWN 65364
 # define ARROW_UP 65362
 # define MINUS 61
@@ -40,8 +40,6 @@
 # define ESCAPE 53
 
 //TODO: CHECK UBUNTU CODES
-# define LEFT 65361
-# define RIGHT 65363
 # define W 119
 # define A 97
 # define S 115
@@ -77,8 +75,8 @@
 /***************************************/
 /* Define default size for the windows */
 /***************************************/
-# define DEFAULT_WIDTH 250
-# define DEFAULT_HEIGHT 120
+# define DEFAULT_WIDTH 205
+# define DEFAULT_HEIGHT 90
 
 /************************************/
 /* color for mlx images and library */
@@ -150,7 +148,8 @@ typedef enum e_type
 typedef struct s_object
 {
 	t_type	type;
-	void	*address; //TODO: maybe should free it
+	void	*address; //TODO: maybe should free it/
+	void	*original_addr;   // NEW: pointer to the original object.
 }	t_object;
 
 /* let's see if it is usefult ***********************************************/
@@ -286,6 +285,7 @@ typedef struct s_mlx
 	int			lsize;
 	int			endian;
 	char		*img_string;
+	t_object	*selected_object;  // Pointer to the currently selected object (if any)
 	t_setting 	*setting;
 }		t_mlx;
 
@@ -625,4 +625,8 @@ t_color	my_shade_hit(t_setting *world, t_computations comps, t_intersection *c_i
 int	key_pressed_gpt(int keycode, void *param);
 void	clean_close(t_mlx *project);
 void	camera_image_plane(t_mlx *mlx);
+int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *world);
+
+
+t_list_intersect	*intersect_world(t_setting *world, t_ray ray);
 #endif

@@ -99,7 +99,6 @@ INCLUDE	mlx/man/man1/mlx.1	/^.SH INCLUDE FILE$/;"	s	title:MiniLibX
 INCLUDE	mlx/man/man3/mlx.3	/^.SH INCLUDE FILE$/;"	s	title:MiniLibX
 INCLUDES	Makefile	/^INCLUDES = -I\/usr\/include -I$(MLX_DIR)$/;"	m
 KEY_R	minirt.h	/^# define KEY_R /;"	d
-LEFT	minirt.h	/^# define LEFT /;"	d
 LFLAGS	mlx/test/Makefile.mk	/^LFLAGS = -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm$/;"	m
 LIBFT	Makefile	/^LIBFT = libft\/libft.a$/;"	m
 LIBFT_H	libft/libft.h	/^# define LIBFT_H	/;"	d
@@ -165,7 +164,6 @@ RETURN	mlx/man/man3/mlx.3	/^.SH RETURN VALUES$/;"	s	title:MiniLibX
 RETURN	mlx/man/man3/mlx_new_image.3	/^.SH RETURN VALUES$/;"	s	title:MiniLibX
 RETURN	mlx/man/man3/mlx_new_window.3	/^.SH RETURN VALUES$/;"	s	title:MiniLibX
 RETURN	mlx/mlx_xpm.c	/^#define	RETURN	/;"	d	file:
-RIGHT	minirt.h	/^# define RIGHT /;"	d
 S	minirt.h	/^# define S /;"	d
 SEE	mlx/man/man1/mlx.1	/^.SH SEE ALSO$/;"	s	title:MiniLibX
 SEE	mlx/man/man1/mlx_loop.1	/^.SH SEE ALSO$/;"	s	title:MiniLibX
@@ -226,7 +224,7 @@ add_intersection_l	intersection/real_list.c	/^void add_intersection_l(t_list_int
 add_light_to_array	add_elem_array.c	/^void	add_light_to_array(t_light *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_plane_to_array	add_elem_array.c	/^void	add_plane_to_array(t_plane *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_sphere_to_array	add_elem_array.c	/^void	add_sphere_to_array(t_sphere *to_add, t_setting *set)$/;"	f	typeref:typename:void
-address	minirt.h	/^	void	*address; \/\/TODO: maybe should free it$/;"	m	struct:s_object	typeref:typename:void *
+address	minirt.h	/^	void	*address; \/\/TODO: maybe should free it\/$/;"	m	struct:s_object	typeref:typename:void *
 after that I looked into my old fdf to see if  I still remember anything about the mlx graphical library from 42:	README.md	/^#### after that I looked into my old fdf to see if  I still remember anything about the mlx grap/;"	t	subsection:minirt""[`the first thing I search on youtube`](https://www.youtube.com/results?search_query=lectures+on+ray+tracing+from+ivy+college)
 all	Makefile	/^all: $(NAME)$/;"	t
 all	libft/Makefile	/^all: $(NAME)$/;"	t
@@ -251,6 +249,7 @@ brightness	minirt.h	/^	double		brightness;$/;"	m	struct:s_light	typeref:typename
 calculate_sphere_color	shapes/sphere.c	/^int	calculate_sphere_color(t_intersection *intersection)$/;"	f	typeref:typename:int
 camera	minirt.h	/^	t_camera		*camera;$/;"	m	struct:s_setting	typeref:typename:t_camera *
 camera_image_plane	draw_scene.c	/^void	camera_image_plane(t_mlx *mlx)$/;"	f	typeref:typename:void
+cast_mouse_ray	rendering/mouse_select.c	/^int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)$/;"	f	typeref:typename:int
 cast_rays	raycasting/cast_ray.c	/^void	cast_rays(t_mlx *data)$/;"	f	typeref:typename:void
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_cylinder	typeref:typename:t_vector
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_sphere	typeref:typename:t_vector
@@ -359,6 +358,7 @@ eyev	minirt.h	/^    t_vector   eyev;      \/\/ The eye vector (pointing toward t
 fclean	Makefile	/^fclean: clean$/;"	t
 fclean	libft/Makefile	/^fclean: clean$/;"	t
 files	libft/Makefile	/^files 	   = ft_strlen \\$/;"	m
+find_original_object	rendering/mouse_select.c	/^t_object *find_original_object(t_setting *setting, void *original_addr, t_type obj_type)$/;"	f	typeref:typename:t_object *
 format	mlx/mlx_int.h	/^	int				format;$/;"	m	struct:s_img	typeref:typename:int
 fov	minirt.h	/^	int			fov;$/;"	m	struct:s_camera	typeref:typename:int
 fov_calculation	draw_scene.c	/^void	fov_calculation(t_camera *cam, double *image_plane_width)$/;"	f	typeref:typename:void
@@ -639,6 +639,7 @@ object	minirt.h	/^    t_object   object;    \/\/ The object that was hit.$/;"	m	
 open_map	parsing/parsing_map.c	/^int	open_map(char *filename, t_setting *set)$/;"	f	typeref:typename:int
 orientation	minirt.h	/^	t_vector	orientation;$/;"	m	struct:s_camera	typeref:typename:t_vector
 origin	minirt.h	/^	t_vector	origin;$/;"	m	struct:s_ray	typeref:typename:t_vector
+original_addr	minirt.h	/^	void	*original_addr;   \/\/ NEW: pointer to the original object.$/;"	m	struct:s_object	typeref:typename:void *
 over_point	minirt.h	/^    t_vector   over_point;\/\/ The hit point slightly offset along the normal.$/;"	m	struct:s_computations	typeref:typename:t_vector
 param	mlx/mlx_int.h	/^	void	*param;$/;"	m	struct:s_event_list	typeref:typename:void *
 parse_args	mlx/configure	/^parse_args(){$/;"	f
@@ -726,6 +727,7 @@ saved_mode	mlx/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v	typeref:typename:R
 scaling	transformations/scaling.c	/^t_vector	scaling(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 scaling_inverse	transformations/scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
+selected_object	minirt.h	/^	t_object	*selected_object;  \/\/ Pointer to the currently selected object (if any)$/;"	m	struct:s_mlx	typeref:typename:t_object *
 set_cylinder_cap	shapes/cylinder.c	/^void	set_cylinder_cap(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinder, double min, double max)$/;"	f	typeref:typename:void
 set_sphere_transformations	raycasting/transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void

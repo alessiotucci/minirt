@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/10 14:28:03 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/10 15:30:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,34 @@ int key_pressed_gpt(int keycode, void *param)
     if (keycode == ARROW_LEFT)
     {
         printf("Move camera left (modify the x component of the viewpoint)\n");
-        data->setting->camera->viewpoint.x -= 5; // adjust step size as needed
+        data->setting->camera->viewpoint.x -= 2; // adjust step size as needed
     }
     else if (keycode == ARROW_RIGHT)
     {
-        data->setting->camera->viewpoint.x += 5;
+        data->setting->camera->viewpoint.x += 2;
     }
     else if (keycode == ARROW_UP)
     {
         printf("Move camera up (modify y component)\n");
-        data->setting->camera->viewpoint.y += 5;
+        data->setting->camera->viewpoint.y += 2;
     }
     else if (keycode == ARROW_DOWN)
     {
-        data->setting->camera->viewpoint.y -= 5;
+        data->setting->camera->viewpoint.y -= 2;
     }
-    else if (keycode == PLUS)
+    else if (keycode == MINUS)
     {
         printf("Zoom in: decrease the FOV to narrow the view\n");
         data->setting->camera->fov -= 5; // ensure FOV stays within valid range (0, 180)
         if (data->setting->camera->fov < 1)
             data->setting->camera->fov = 1;
     }
-    else if (keycode == MINUS)
+    else if (keycode == PLUS)
     {
         printf("Zoom out: increase the FOV to widen the view\n");
         data->setting->camera->fov += 5;
         if (data->setting->camera->fov > 180)
             data->setting->camera->fov = 180;
-    }
-    else if (keycode == ESC)
-    {
-        clean_close(data);
-        return (0);
     }
 	else
 		printf("stupido cojone\n");
@@ -78,13 +73,10 @@ int key_pressed_gpt(int keycode, void *param)
 
     // Create a new image buffer:
     my_new_image(data);
-
     // Re-draw the scene:
     draw_scene(data);
-
     // Update the window with the new image:
     mlx_put_image_to_window(data->mlx, data->win, data->img_pointer, 0, 0);
-
     return (1);
 }
 

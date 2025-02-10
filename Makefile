@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2025/02/10 13:56:43 by atucci           ###   ########.fr        #
+#    Updated: 2025/02/10 16:29:39 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SOURCE = ./main.c \
 		 ./default_setting.c \
 		 ./computation.c \
 		 ./rendering/key_pressed.c \
+		 ./rendering/mouse_select.c \
 
 
 HEADERS = ./minirt.h \
