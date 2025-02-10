@@ -222,7 +222,6 @@ YELLOW	minirt.h	/^# define YELLOW /;"	d
 add	vector/vector_operations.c	/^t_vector	add(t_vector v1, t_vector v2)$/;"	f	typeref:typename:t_vector
 add_colors	colors/operation_color.c	/^t_color	add_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color
 add_cylinder_to_array	add_elem_array.c	/^void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set)$/;"	f	typeref:typename:void
-add_intersection	intersection/intersection_list.c	/^void	add_intersection(t_intersection_list *l, int index, t_intersection i)$/;"	f	typeref:typename:void
 add_intersection_l	intersection/real_list.c	/^void add_intersection_l(t_list_intersect **head, t_intersection *intersection)$/;"	f	typeref:typename:void
 add_light_to_array	add_elem_array.c	/^void	add_light_to_array(t_light *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_plane_to_array	add_elem_array.c	/^void	add_plane_to_array(t_plane *to_add, t_setting *set)$/;"	f	typeref:typename:void
@@ -301,7 +300,6 @@ counting_123	parsing/parsing_map.c	/^static int	counting_123(char *filename, t_s
 create_color	colors/operation_color.c	/^t_color	create_color(double r, double g, double b)$/;"	f	typeref:typename:t_color
 create_cylinder	shapes/cylinder.c	/^t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c)$/;"	f	typeref:typename:t_cylinder
 create_identity_matrix	matrix/operations_matrix.c	/^void	create_identity_matrix(double	**ret)$/;"	f	typeref:typename:void
-create_intersection_list	intersection/intersection_list.c	/^t_intersection_list	*create_intersection_list(int count)$/;"	f	typeref:typename:t_intersection_list *
 create_new_node	intersection/real_list.c	/^t_list_intersect	*create_new_node(t_intersection *intersection)$/;"	f	typeref:typename:t_list_intersect *
 create_point	vector/utils_vectors.c	/^t_vector	create_point(double x, double y, double z)$/;"	f	typeref:typename:t_vector
 create_ray	raycasting/create_ray.c	/^t_ray	create_ray(t_vector origin, t_vector direction)$/;"	f	typeref:typename:t_ray
