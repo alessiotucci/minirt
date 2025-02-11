@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/10 18:47:42 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 16:49:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -476,7 +476,7 @@ t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray);
 double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter);
 //TODO: v2
 //t_intersection_list	*intersect_sphere(t_sphere sphere, t_ray ray);
-t_list_intersect *intersect_sphere(t_sphere sphere, t_ray old_ray);
+t_list_intersect *intersect_sphere(t_sphere *sphere, t_ray old_ray);
 
 /***********************************/
 /* Raycasting/transformation_ray.c */

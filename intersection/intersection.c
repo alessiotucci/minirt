@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/10 18:15:03 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 16:34:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ t_intersection	intersection(double t, char *type, void *obj_address)
 	new.t = t;
 	new.obj.type = string_to_type(type);
 	new.obj.original_addr = obj_address;
+	printf("intersection:\ncopy address(%p)\n", obj_address);
 	//printf("value t: [%lf], string type (%s)\n", t, type);
 	if (string_to_type(type) == T_SPHERE)
 		new.obj.address = deep_copy_sphere((t_sphere *)obj_address);

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:55:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/09 20:05:38 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 16:50:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_list_intersect	*intersect_world(t_setting *world, t_ray ray)
 	i = 0;
 	while (i < world->num_spheres)
 	{
-		current_intersections = intersect_sphere(*world->spheres[i], ray);
+		current_intersections = intersect_sphere(world->spheres[i], ray);
 		if (current_intersections)
 			concatenate_lists(&all_intersections, current_intersections);
 		i++;

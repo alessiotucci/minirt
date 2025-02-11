@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/10 18:59:16 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 16:33:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_object *find_original_object(t_setting *setting, void *original_addr, t_type o
 	{
 		while (i < setting->num_spheres)
 		{
-			if ((void *)setting->spheres[i] == original_addr)
+			printf("1)setting->spheres[%d][%p]\n2)(t_sphere *)original_addr[%p]\n",i, setting->spheres[i], (t_sphere *)original_addr);
+			if (setting->spheres[i] == (t_sphere *)original_addr)
 				return (t_object *)setting->spheres[i];
 			i++;
 		}
@@ -31,7 +32,8 @@ t_object *find_original_object(t_setting *setting, void *original_addr, t_type o
 	{
 		while (i < setting->num_planes)
 		{
-			if ((void *)setting->planes[i] == original_addr)
+			printf("1)setting->planes[%d][%p]\n2)(t_plane *)original_addr[%p]\n",i, setting->planes[i], (t_plane *)original_addr);
+			if (setting->planes[i] == (t_plane *)original_addr)
 				return (t_object *)setting->planes[i];
 			i++;
 		}
@@ -40,7 +42,8 @@ t_object *find_original_object(t_setting *setting, void *original_addr, t_type o
 	{
 		while (i < setting->num_cylinders)
 		{
-			if ((void *)setting->cylinders[i] == original_addr)
+			printf("1%dp[%p]\t2p[%p]\n", i, setting->cylinders[i], (t_cylinder *)original_addr);
+			if (setting->cylinders[i] == (t_cylinder *)original_addr)
 				return (t_object *)setting->cylinders[i];
 			i++;
 		}
