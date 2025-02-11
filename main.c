@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/09 19:46:05 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 17:54:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_scene(t_mlx *info, char *mapname)
 	info->width = DEFAULT_WIDTH;
 	info->height = DEFAULT_HEIGHT;
 	info->map_name = mapname;
+	info->selected_object = NULL;
 }
 
 //TODO: close the fd, the return of parsing_map();

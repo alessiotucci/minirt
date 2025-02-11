@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/10 17:07:47 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 17:56:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ static void	test_function(t_mlx *info)
 
 	mlx_string_put(info->mlx, info->win, 10, info->height - 10,
 		COLOR_WHITE, new_str);
-	mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, "selected obj: ");
+	if (info->selected_object == NULL)
+		mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, "selected obj: NULL");
+	else
+		mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, "you have selected an obj");
 }
 
 static int	key_pressed(int keycode, void *param)

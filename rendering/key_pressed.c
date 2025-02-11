@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/10 15:30:33 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 18:36:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,42 @@ int key_pressed_gpt(int keycode, void *param)
         if (data->setting->camera->fov > 180)
             data->setting->camera->fov = 180;
     }
-	else
-		printf("stupido cojone\n");
+	else if (data->selected_object)
+		{
 
+			if (keycode == KEY_X)
+			{
+				printf("pressed: X increasing\n");
+				change_size(data->selected_object, 1);
+				//handle_x_rotation(data, 1);
+			}
+			else if (keycode == KEY_Y)
+			{
+				printf("pressed: Y decreasing\n");
+				change_size(data->selected_object, 0);
+				//handle_y_rotation(data, 1);
+			}
+			else if (keycode == KEY_Z)
+			{
+				printf("pressed: Z\n");
+				handle_z_rotation(data, 1);
+				}
+			else if (keycode == KEY_Q)
+			{
+				printf("pressed: Q\n");
+				handle_x_rotation(data, -1);
+			}
+			else if (keycode == KEY_W)
+			{
+				printf("pressed: W\n");
+				handle_y_rotation(data, -1);
+			}
+			else if (keycode == KEY_E)
+			{
+				printf("pressed: E\n");
+				handle_z_rotation(data, -1);
+			}
+		}
     // Once the camera is updated, we need to re-render the scene.
 
     // (Optional) Destroy the previous image if needed:

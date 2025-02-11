@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:35:20 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/08 16:31:35 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 18:47:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	free_cylinder_array(t_cylinder **cylinders, int num)
 void	free_struct(t_setting *set)
 {
 	printf("%sRemember to free all the memory%s\n", RED, RESET);
-	printf("%sUpdated: working of my_shade_hit my_lambe 2025%s\n", RED, RESET);
+	printf("%sUpdated: working on mlx and hooking up mouse %s\n", RED, RESET);
 	if (set->amb_light)
 	{
 		free(set->amb_light->identifier);

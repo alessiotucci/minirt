@@ -6,50 +6,50 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/11 16:33:32 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 18:49:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-/* this function do not work */
-t_object *find_original_object(t_setting *setting, void *original_addr, t_type obj_type)
+#include <stdio.h>
+
+// Assuming GREEN and RESET are defined elsewhere
+
+/* returning an index and enum instead of a fucking t_obj pointer! */
+static t_object	*search_array(void **array, int count, void *target, const char *type_name)
 {
 	int	i;
 
 	i = 0;
-	if (obj_type == T_SPHERE)
+	while (i < count)
 	{
-		while (i < setting->num_spheres)
+		if (array[i] == target)
 		{
-			printf("1)setting->spheres[%d][%p]\n2)(t_sphere *)original_addr[%p]\n",i, setting->spheres[i], (t_sphere *)original_addr);
-			if (setting->spheres[i] == (t_sphere *)original_addr)
-				return (t_object *)setting->spheres[i];
-			i++;
+			printf("%sFOUND!%s %s, with index[%d]\n", GREEN, RESET, type_name, i);
+			return ((t_object *)array[i]);
 		}
+		i++;
 	}
-	else if (obj_type == T_PLANE)
-	{
-		while (i < setting->num_planes)
-		{
-			printf("1)setting->planes[%d][%p]\n2)(t_plane *)original_addr[%p]\n",i, setting->planes[i], (t_plane *)original_addr);
-			if (setting->planes[i] == (t_plane *)original_addr)
-				return (t_object *)setting->planes[i];
-			i++;
-		}
-	}
-	else if (obj_type == T_CYLINDER)
-	{
-		while (i < setting->num_cylinders)
-		{
-			printf("1%dp[%p]\t2p[%p]\n", i, setting->cylinders[i], (t_cylinder *)original_addr);
-			if (setting->cylinders[i] == (t_cylinder *)original_addr)
-				return (t_object *)setting->cylinders[i];
-			i++;
-		}
-	}
-	printf("Error: Original object not found!\nreturning NULL\n\n");
 	return (NULL);
+}
+
+t_object	*find_original_object(t_setting *setting, void *original_addr, t_type obj_type)
+{
+	t_object	*found;
+
+	found = NULL;
+	if (obj_type == T_SPHERE)
+		found = search_array((void **)setting->spheres, setting->num_spheres, original_addr, "sphere");
+	else if (obj_type == T_PLANE)
+		found = search_array((void **)setting->planes, setting->num_planes, original_addr, "plane");
+	else if (obj_type == T_CYLINDER)
+		found = search_array((void **)setting->cylinders, setting->num_cylinders, original_addr, "cylinder");
+	else
+		printf("Error: Invalid object type!\n");
+	if (!found)
+		printf("Error: Original object not found!\nreturning NULL\n\n");
+	return (found);
 }
 
 int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)
@@ -68,23 +68,14 @@ int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)
 	if (hit != NULL)
 	{
 		// Store the selected object in your world/setting.
-		//mlx->selected_object = &(hit->obj);
-		find_original_object(setting, hit->obj.original_addr, hit->obj.type);
+		mlx->selected_object = find_original_object(setting, hit->obj.original_addr, hit->obj.type);
 		printf("Selected object: %p\n", hit->obj.original_addr);
-		/* Depending on the object type, cast and print its fields:
-		if (hit->obj.type == T_SPHERE)
-			printf("Sphere Selected:\n");
-		else if (hit->obj.type == T_PLANE)
-			printf("Plane Selected:\n");
-		else if (hit->obj.type == T_CYLINDER)
-			printf("Cylinder Selected:\n");
-		else
-			printf("not found\n");
-		*/
-		
 	}
 	else
+	{
+		mlx->selected_object = NULL;
 		printf("Missed ray :(\n");
+	}
 	free_list(&all_intersections);
 	return (0);
 }

@@ -98,7 +98,13 @@ INCLIB	mlx/test/Makefile.mk	/^INCLIB=$(INC)\/..\/lib$/;"	m
 INCLUDE	mlx/man/man1/mlx.1	/^.SH INCLUDE FILE$/;"	s	title:MiniLibX
 INCLUDE	mlx/man/man3/mlx.3	/^.SH INCLUDE FILE$/;"	s	title:MiniLibX
 INCLUDES	Makefile	/^INCLUDES = -I\/usr\/include -I$(MLX_DIR)$/;"	m
+KEY_E	minirt.h	/^# define KEY_E /;"	d
+KEY_Q	minirt.h	/^# define KEY_Q /;"	d
 KEY_R	minirt.h	/^# define KEY_R /;"	d
+KEY_W	minirt.h	/^# define KEY_W /;"	d
+KEY_X	minirt.h	/^# define KEY_X /;"	d
+KEY_Y	minirt.h	/^# define KEY_Y /;"	d
+KEY_Z	minirt.h	/^# define KEY_Z /;"	d
 LFLAGS	mlx/test/Makefile.mk	/^LFLAGS = -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm$/;"	m
 LIBFT	Makefile	/^LIBFT = libft\/libft.a$/;"	m
 LIBFT_H	libft/libft.h	/^# define LIBFT_H	/;"	d
@@ -234,6 +240,7 @@ all	mlx/test/Makefile.mk	/^all: $(NAME)$/;"	t
 alloc_struct_elem	create_setting.c	/^void alloc_struct_elem(t_setting *setting)$/;"	f	typeref:typename:void
 amb_light	minirt.h	/^	t_amb_light		*amb_light;$/;"	m	struct:s_setting	typeref:typename:t_amb_light *
 ambient	minirt.h	/^	double	ambient;$/;"	m	struct:s_material	typeref:typename:double
+apply_transformation	rendering/rotation_handlers.c	/^static void	apply_transformation(t_object *obj, double **new_transform)$/;"	f	typeref:typename:void	file:
 aspect_ratio	draw_scene.c	/^void	aspect_ratio(t_mlx *mlx, double *aspect_ratio)$/;"	f	typeref:typename:void
 assign_material_sphere	shadows/material.c	/^void	assign_material_sphere(t_sphere *s, t_material new)$/;"	f	typeref:typename:void
 at_exit	mlx/test/run_tests.sh	/^at_exit() {$/;"	f
@@ -253,6 +260,7 @@ cast_mouse_ray	rendering/mouse_select.c	/^int	cast_mouse_ray(int x, int y, t_mlx
 cast_rays	raycasting/cast_ray.c	/^void	cast_rays(t_mlx *data)$/;"	f	typeref:typename:void
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_cylinder	typeref:typename:t_vector
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_sphere	typeref:typename:t_vector
+change_size	rendering/rotation_handlers.c	/^void change_size(t_object *obj, int flag)$/;"	f	typeref:typename:void
 check	mlx/Makefile.mk	/^check: all$/;"	t
 check_cap_cylinder	intersection/intersection_cylinder.c	/^int	check_cap_cylinder(t_ray ray, double t)$/;"	f	typeref:typename:int
 check_null_array	extra/utils.c	/^int	check_null_array(char **array)$/;"	f	typeref:typename:int
@@ -358,7 +366,7 @@ eyev	minirt.h	/^    t_vector   eyev;      \/\/ The eye vector (pointing toward t
 fclean	Makefile	/^fclean: clean$/;"	t
 fclean	libft/Makefile	/^fclean: clean$/;"	t
 files	libft/Makefile	/^files 	   = ft_strlen \\$/;"	m
-find_original_object	rendering/mouse_select.c	/^t_object *find_original_object(t_setting *setting, void *original_addr, t_type obj_type)$/;"	f	typeref:typename:t_object *
+find_original_object	rendering/mouse_select.c	/^t_object	*find_original_object(t_setting *setting, void *original_addr, t_type obj_type)$/;"	f	typeref:typename:t_object *
 format	mlx/mlx_int.h	/^	int				format;$/;"	m	struct:s_img	typeref:typename:int
 fov	minirt.h	/^	int			fov;$/;"	m	struct:s_camera	typeref:typename:int
 fov_calculation	draw_scene.c	/^void	fov_calculation(t_camera *cam, double *image_plane_width)$/;"	f	typeref:typename:void
@@ -441,6 +449,9 @@ get_realloc	libft/get_next_line.c	/^static char	*get_realloc(char **buf, int kin
 get_return	libft/get_next_line.c	/^static char	*get_return(char **buf)$/;"	f	typeref:typename:char *	file:
 get_sphere_to_ray	raycasting/intersection_ray.c	/^t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)$/;"	f	typeref:typename:t_vector
 get_xlib_include_path	mlx/configure	/^get_xlib_include_path(){$/;"	f
+handle_x_rotation	rendering/rotation_handlers.c	/^void	handle_x_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
+handle_y_rotation	rendering/rotation_handlers.c	/^void	handle_y_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
+handle_z_rotation	rendering/rotation_handlers.c	/^void	handle_z_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
 height	minirt.h	/^	double		height;$/;"	m	struct:s_cylinder	typeref:typename:double
 height	minirt.h	/^	int			height;$/;"	m	struct:s_mlx	typeref:typename:int
 height	mlx/mlx_int.h	/^	int				height;$/;"	m	struct:s_img	typeref:typename:int
@@ -470,8 +481,8 @@ init_scene	main.c	/^void	init_scene(t_mlx *info, char *mapname)$/;"	f	typeref:ty
 init_zero_matrix	matrix/matrix_utils.c	/^void	init_zero_matrix(int rows, int cols, double matrix[rows][cols])$/;"	f	typeref:typename:void
 insert_sorted	intersection/sort_intersection.c	/^void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)$/;"	f	typeref:typename:void
 intersect_caps	intersection/intersection_cylinder.c	/^static void intersect_caps(t_cylinder cylinder, t_ray ray, t_list_intersect **list)$/;"	f	typeref:typename:void	file:
-intersect_cylinder	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
-intersect_plane	intersection/intersection_plane.c	/^t_list_intersect *intersect_plane(t_plane plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_cylinder	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_plane	intersection/intersection_plane.c	/^t_list_intersect *intersect_plane(t_plane *plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	intersection/intersection_sphere.c	/^t_list_intersect	*intersect_sphere(t_sphere *sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_world	shadows/is_shadowed.c	/^t_list_intersect	*intersect_world(t_setting *world, t_ray ray)$/;"	f	typeref:typename:t_list_intersect *
 intersection	intersection/intersection.c	/^t_intersection	intersection(double t, char *type, void *obj_address)$/;"	f	typeref:typename:t_intersection
@@ -727,6 +738,7 @@ saved_mode	mlx/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v	typeref:typename:R
 scaling	transformations/scaling.c	/^t_vector	scaling(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 scaling_inverse	transformations/scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
+search_array	rendering/mouse_select.c	/^static t_object	*search_array(void **array, int count, void *target, const char *type_name)$/;"	f	typeref:typename:t_object *	file:
 selected_object	minirt.h	/^	t_object	*selected_object;  \/\/ Pointer to the currently selected object (if any)$/;"	m	struct:s_mlx	typeref:typename:t_object *
 set_cylinder_cap	shapes/cylinder.c	/^void	set_cylinder_cap(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinder, double min, double max)$/;"	f	typeref:typename:void
@@ -803,6 +815,7 @@ transposing	matrix/inversing.c	/^double	**transposing(int rows, int cols, double
 transposing_void	matrix/void.c	/^void	transposing_void(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 type	minirt.h	/^	t_type	type;$/;"	m	struct:s_object	typeref:typename:t_type
 type	mlx/mlx_int.h	/^	int				type;$/;"	m	struct:s_img	typeref:typename:int
+type_to_string	intersection/intersection.c	/^int	type_to_string(t_type type)$/;"	f	typeref:typename:int
 use_xshm	mlx/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
 v2normal_at	normal.c	/^t_vector v2normal_at(t_object obj, t_vector point, t_ray r)$/;"	f	typeref:typename:t_vector
 value_matrix	matrix/initialize_matrix.c	/^double	**value_matrix(double a[4], double b[4], double c[4], double d[4])$/;"	f	typeref:typename:double **

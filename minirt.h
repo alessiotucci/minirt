@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/11 16:49:05 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/11 18:46:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@
 # define SPACE 49
 # define KEY_R 15
 # define ESCAPE 53
+
+# define KEY_X 120
+# define KEY_Y 121
+# define KEY_Z 122
+# define KEY_Q 113
+# define KEY_W 119
+# define KEY_E 101
 
 //TODO: CHECK UBUNTU CODES
 # define W 119
@@ -596,14 +603,14 @@ t_color	lambert_formula(t_intersection *i, t_light light, t_vector point, t_vect
 */
 
 //TODO; planes!
-t_list_intersect	*intersect_plane(t_plane plane, t_ray old_ray);
+t_list_intersect	*intersect_plane(t_plane *plane, t_ray old_ray);
 
 t_color	get_color_intersect(t_object obj);
 int	is_shadowed(t_setting *world, t_vector point, t_light light);
 
 //TODO: after graduations
 t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c);
-t_list_intersect	*intersect_cylinder(t_cylinder cylinder, t_ray old_ray);
+t_list_intersect	*intersect_cylinder(t_cylinder *cylinder, t_ray old_ray);
 void	set_cylinder_size(t_cylinder *cylinder, double min, double max);
 void	set_cylinder_cap(t_cylinder *cylinder);
 //Fixing leaks with ftroise
@@ -629,4 +636,14 @@ int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *world);
 
 
 t_list_intersect	*intersect_world(t_setting *world, t_ray ray);
+
+/********************/
+/*Rotation handlers */
+/********************/
+void	handle_x_rotation(t_mlx *data, int direction);
+void	handle_y_rotation(t_mlx *data, int direction);
+void	handle_z_rotation(t_mlx *data, int direction);
+
+void change_size(t_object *obj, int flag);
+int	type_to_string(t_type type);
 #endif
