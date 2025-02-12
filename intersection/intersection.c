@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/11 18:46:29 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/12 16:52:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,17 @@ t_cylinder	*deep_copy_cylinder(t_cylinder *src)
 	return (copy);
 }
 
-int	type_to_string(t_type type)
+char	*type_to_string(t_type type)
 {
+	printf("type_to_string: %d\n", type);
 	if (type == T_SPHERE)
-		return (printf("sphere\n"));
+		return (printf("sphere\n"), "sphere\n");
 	if (type == T_PLANE)
-		return (printf("plane\n"));
+		return (printf("plane\n"), "plane\n");
 	if (type == T_CYLINDER)
-		return (printf("cylinder\n"));
+		return (printf("cylinder\n"), "cylinder\n");
 	else
-		return (printf("not found:[%d]\n", type));
+		return (printf("not found:[%d]\n", type), "NOT FOUND\n");
 }
 
 t_type	string_to_type(char *type)

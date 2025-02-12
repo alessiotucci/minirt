@@ -815,7 +815,7 @@ transposing	matrix/inversing.c	/^double	**transposing(int rows, int cols, double
 transposing_void	matrix/void.c	/^void	transposing_void(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 type	minirt.h	/^	t_type	type;$/;"	m	struct:s_object	typeref:typename:t_type
 type	mlx/mlx_int.h	/^	int				type;$/;"	m	struct:s_img	typeref:typename:int
-type_to_string	intersection/intersection.c	/^int	type_to_string(t_type type)$/;"	f	typeref:typename:int
+type_to_string	intersection/intersection.c	/^char	*type_to_string(t_type type)$/;"	f	typeref:typename:char *
 use_xshm	mlx/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
 v2normal_at	normal.c	/^t_vector v2normal_at(t_object obj, t_vector point, t_ray r)$/;"	f	typeref:typename:t_vector
 value_matrix	matrix/initialize_matrix.c	/^double	**value_matrix(double a[4], double b[4], double c[4], double d[4])$/;"	f	typeref:typename:double **

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/11 18:49:35 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/12 16:46:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static t_object	*search_array(void **array, int count, void *target, const char 
 	{
 		if (array[i] == target)
 		{
-			printf("%sFOUND!%s %s, with index[%d]\n", GREEN, RESET, type_name, i);
+			printf("%sFOUND!%s\n", GREEN, RESET);
+			printf("index: [%d], type: %s\n", i, type_name);
 			return ((t_object *)array[i]);
 		}
 		i++;
