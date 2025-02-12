@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/12 16:48:37 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/12 17:13:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,13 @@ typedef enum e_type
 	T_NULL
 }	t_type;
 
+// Yet another struct
+typedef struct s_selected_obj
+{
+	t_type	type;
+	int		index;
+}	t_selected_obj;
+
 // Define the struct that will hold the object type and the void pointer
 typedef struct s_object
 {
@@ -292,10 +299,12 @@ typedef struct s_mlx
 	int			lsize;
 	int			endian;
 	char		*img_string;
-	t_object	*selected_object;  // Pointer to the currently selected object (if any)
+	//t_object	*selected_object;  // Pointer to the currently selected object (if any)
+	t_selected_obj	selected;  // Now we store the index and type of the selected object.
 	t_setting 	*setting;
 }		t_mlx;
 
+void		reset_selected_object(t_selected_obj selected);
 int			parsing_map(char *map, t_setting *set);
 void		create_setting(char **line, t_setting *set);
 void		count_elements(char **details, t_setting *set);

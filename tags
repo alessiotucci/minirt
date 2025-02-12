@@ -367,6 +367,7 @@ fclean	Makefile	/^fclean: clean$/;"	t
 fclean	libft/Makefile	/^fclean: clean$/;"	t
 files	libft/Makefile	/^files 	   = ft_strlen \\$/;"	m
 find_original_object	rendering/mouse_select.c	/^t_object	*find_original_object(t_setting *setting, void *original_addr, t_type obj_type)$/;"	f	typeref:typename:t_object *
+find_original_object_index	rendering/mouse_select.c	/^t_selected_obj find_original_object_index(t_setting *setting, void *original_addr, t_type obj_ty/;"	f	typeref:typename:t_selected_obj
 format	mlx/mlx_int.h	/^	int				format;$/;"	m	struct:s_img	typeref:typename:int
 fov	minirt.h	/^	int			fov;$/;"	m	struct:s_camera	typeref:typename:int
 fov_calculation	draw_scene.c	/^void	fov_calculation(t_camera *cam, double *image_plane_width)$/;"	f	typeref:typename:void
@@ -476,6 +477,7 @@ image_plane_height	minirt.h	/^	double		image_plane_height;$/;"	m	struct:s_camera
 image_plane_width	minirt.h	/^	double		image_plane_width;$/;"	m	struct:s_camera	typeref:typename:double
 img_pointer	minirt.h	/^	void		*img_pointer;$/;"	m	struct:s_mlx	typeref:typename:void *
 img_string	minirt.h	/^	char		*img_string;$/;"	m	struct:s_mlx	typeref:typename:char *
+index	minirt.h	/^	int		index;$/;"	m	struct:s_selected_obj	typeref:typename:int
 init_heap_matrix	matrix/matrix_utils.c	/^void	init_heap_matrix(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 init_scene	main.c	/^void	init_scene(t_mlx *info, char *mapname)$/;"	f	typeref:typename:void
 init_zero_matrix	matrix/matrix_utils.c	/^void	init_zero_matrix(int rows, int cols, double matrix[rows][cols])$/;"	f	typeref:typename:void
@@ -707,6 +709,7 @@ re	mlx/test/Makefile.mk	/^re: clean all$/;"	t
 reflect	normal.c	/^t_vector	reflect(t_vector in, t_vector normal)$/;"	f	typeref:typename:t_vector
 remove_new_line	extra/utils.c	/^void	remove_new_line(char **matrix, char replacement, char to_replace)$/;"	f	typeref:typename:void
 replace_me	parsing/parsing_map.c	/^void	replace_me(char *str, char replacement, char to_replace)$/;"	f	typeref:typename:void
+reset_selected_object	rendering/mouse_select.c	/^void	reset_selected_object(t_selected_obj selected)$/;"	f	typeref:typename:void
 root	mlx/mlx_int.h	/^	Window		root;$/;"	m	struct:s_xvar	typeref:typename:Window
 rotation_x	transformations/rotations.c	/^t_vector	rotation_x(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
 rotation_y	transformations/rotations.c	/^t_vector	rotation_y(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
@@ -728,6 +731,7 @@ s_mlx	minirt.h	/^typedef struct s_mlx$/;"	s
 s_object	minirt.h	/^typedef struct s_object$/;"	s
 s_plane	minirt.h	/^typedef struct s_plane$/;"	s
 s_ray	minirt.h	/^typedef struct s_ray$/;"	s
+s_selected_obj	minirt.h	/^typedef struct s_selected_obj$/;"	s
 s_setting	minirt.h	/^typedef struct s_setting$/;"	s
 s_sphere	minirt.h	/^typedef struct s_sphere$/;"	s
 s_vector	minirt.h	/^typedef struct s_vector$/;"	s
@@ -738,8 +742,8 @@ saved_mode	mlx/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v	typeref:typename:R
 scaling	transformations/scaling.c	/^t_vector	scaling(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 scaling_inverse	transformations/scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
-search_array	rendering/mouse_select.c	/^static t_object	*search_array(void **array, int count, void *target, const char *type_name)$/;"	f	typeref:typename:t_object *	file:
-selected_object	minirt.h	/^	t_object	*selected_object;  \/\/ Pointer to the currently selected object (if any)$/;"	m	struct:s_mlx	typeref:typename:t_object *
+search_array	rendering/mouse_select.c	/^static t_object	*search_array(void **array, int count, void *target)$/;"	f	typeref:typename:t_object *	file:
+selected	minirt.h	/^	t_selected_obj	selected;  \/\/ Now we store the index and type of the selected object.$/;"	m	struct:s_mlx	typeref:typename:t_selected_obj
 set_cylinder_cap	shapes/cylinder.c	/^void	set_cylinder_cap(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinder, double min, double max)$/;"	f	typeref:typename:void
 set_sphere_transformations	raycasting/transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void
@@ -796,6 +800,7 @@ t_mlx	minirt.h	/^}		t_mlx;$/;"	t	typeref:struct:s_mlx
 t_object	minirt.h	/^}	t_object;$/;"	t	typeref:struct:s_object
 t_plane	minirt.h	/^}	t_plane;$/;"	t	typeref:struct:s_plane
 t_ray	minirt.h	/^}	t_ray;$/;"	t	typeref:struct:s_ray
+t_selected_obj	minirt.h	/^}	t_selected_obj;$/;"	t	typeref:struct:s_selected_obj
 t_setting	minirt.h	/^}	t_setting;$/;"	t	typeref:struct:s_setting
 t_sphere	minirt.h	/^}	t_sphere;$/;"	t	typeref:struct:s_sphere
 t_type	minirt.h	/^}	t_type;$/;"	t	typeref:enum:e_type
@@ -814,6 +819,7 @@ translations	transformations/translations.c	/^t_vector	translations(t_vector mov
 transposing	matrix/inversing.c	/^double	**transposing(int rows, int cols, double **matrix)$/;"	f	typeref:typename:double **
 transposing_void	matrix/void.c	/^void	transposing_void(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 type	minirt.h	/^	t_type	type;$/;"	m	struct:s_object	typeref:typename:t_type
+type	minirt.h	/^	t_type	type;$/;"	m	struct:s_selected_obj	typeref:typename:t_type
 type	mlx/mlx_int.h	/^	int				type;$/;"	m	struct:s_img	typeref:typename:int
 type_to_string	intersection/intersection.c	/^char	*type_to_string(t_type type)$/;"	f	typeref:typename:char *
 use_xshm	mlx/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
