@@ -259,7 +259,6 @@ cast_mouse_ray	rendering/mouse_select.c	/^int	cast_mouse_ray(int x, int y, t_mlx
 cast_rays	raycasting/cast_ray.c	/^void	cast_rays(t_mlx *data)$/;"	f	typeref:typename:void
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_cylinder	typeref:typename:t_vector
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_sphere	typeref:typename:t_vector
-change_size	rendering/rotation_handlers.c	/^void change_size(t_object *obj, int flag)$/;"	f	typeref:typename:void
 check	mlx/Makefile.mk	/^check: all$/;"	t
 check_cap_cylinder	intersection/intersection_cylinder.c	/^int	check_cap_cylinder(t_ray ray, double t)$/;"	f	typeref:typename:int
 check_null_array	extra/utils.c	/^int	check_null_array(char **array)$/;"	f	typeref:typename:int
@@ -365,8 +364,10 @@ eyev	minirt.h	/^    t_vector   eyev;      \/\/ The eye vector (pointing toward t
 fclean	Makefile	/^fclean: clean$/;"	t
 fclean	libft/Makefile	/^fclean: clean$/;"	t
 files	libft/Makefile	/^files 	   = ft_strlen \\$/;"	m
-find_original_object	rendering/mouse_select.c	/^t_object	*find_original_object(t_setting *setting, void *original_addr, t_type obj_type)$/;"	f	typeref:typename:t_object *
+find_original_cylinder	rendering/mouse_select.c	/^static t_selected_obj	find_original_cylinder(t_setting *setting, void *original_addr)$/;"	f	typeref:typename:t_selected_obj	file:
 find_original_object_index	rendering/mouse_select.c	/^t_selected_obj find_original_object_index(t_setting *setting, void *original_addr, t_type obj_ty/;"	f	typeref:typename:t_selected_obj
+find_original_plane	rendering/mouse_select.c	/^static t_selected_obj	find_original_plane(t_setting *setting, void *original_addr)$/;"	f	typeref:typename:t_selected_obj	file:
+find_original_sphere	rendering/mouse_select.c	/^static t_selected_obj	find_original_sphere(t_setting *setting, void *original_addr)$/;"	f	typeref:typename:t_selected_obj	file:
 format	mlx/mlx_int.h	/^	int				format;$/;"	m	struct:s_img	typeref:typename:int
 fov	minirt.h	/^	int			fov;$/;"	m	struct:s_camera	typeref:typename:int
 fov_calculation	draw_scene.c	/^void	fov_calculation(t_camera *cam, double *image_plane_width)$/;"	f	typeref:typename:void
@@ -709,7 +710,7 @@ re	mlx/test/Makefile.mk	/^re: clean all$/;"	t
 reflect	normal.c	/^t_vector	reflect(t_vector in, t_vector normal)$/;"	f	typeref:typename:t_vector
 remove_new_line	extra/utils.c	/^void	remove_new_line(char **matrix, char replacement, char to_replace)$/;"	f	typeref:typename:void
 replace_me	parsing/parsing_map.c	/^void	replace_me(char *str, char replacement, char to_replace)$/;"	f	typeref:typename:void
-reset_selected_object	rendering/mouse_select.c	/^void	reset_selected_object(t_selected_obj selected)$/;"	f	typeref:typename:void
+reset_selected_object	selected_obj.c	/^void	reset_selected_object(t_selected_obj selected)$/;"	f	typeref:typename:void
 root	mlx/mlx_int.h	/^	Window		root;$/;"	m	struct:s_xvar	typeref:typename:Window
 rotation_x	transformations/rotations.c	/^t_vector	rotation_x(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
 rotation_y	transformations/rotations.c	/^t_vector	rotation_y(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
@@ -742,7 +743,7 @@ saved_mode	mlx/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v	typeref:typename:R
 scaling	transformations/scaling.c	/^t_vector	scaling(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 scaling_inverse	transformations/scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
-search_array	rendering/mouse_select.c	/^static t_object	*search_array(void **array, int count, void *target)$/;"	f	typeref:typename:t_object *	file:
+search_index	rendering/mouse_select.c	/^static int	search_index(void **array, int count, void *target)$/;"	f	typeref:typename:int	file:
 selected	minirt.h	/^	t_selected_obj	selected;  \/\/ Now we store the index and type of the selected object.$/;"	m	struct:s_mlx	typeref:typename:t_selected_obj
 set_cylinder_cap	shapes/cylinder.c	/^void	set_cylinder_cap(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinder, double min, double max)$/;"	f	typeref:typename:void
