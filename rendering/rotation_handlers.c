@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:06:36 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/13 17:48:43 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/13 18:05:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void increase_cylinder_height(t_mlx *data)
     {
         t_cylinder *cy = data->setting->cylinders[data->selected.index];
         cy->height += HEIGHT_DELTA;
+		update_cylinder(cy);
         printf("Increased cylinder height to: %lf\n", cy->height);
     }
     else
@@ -82,6 +83,7 @@ void decrease_cylinder_height(t_mlx *data)
     {
         t_cylinder *cy = data->setting->cylinders[data->selected.index];
         cy->height -= HEIGHT_DELTA;
+		update_cylinder(cy);
         if (cy->height < 1.0)
             cy->height = 1.0;
         printf("Decreased cylinder height to: %lf\n", cy->height);

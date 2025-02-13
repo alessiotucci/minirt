@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:26:30 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/07 13:48:13 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/13 18:04:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #include <float.h>
 //TODO: check if this library is allowed
 
+void	update_cylinder(t_cylinder *my_cylinder)
+{
+	my_cylinder->min = -my_cylinder->height / 2;
+	my_cylinder->max = my_cylinder->height / 2;
+	printf("Updating min and max\nupdate Cylinder\n\n");
+}
 t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c)
 {
 	t_cylinder	new_cylinder;

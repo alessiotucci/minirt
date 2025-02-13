@@ -3,131 +3,191 @@
 use strict;
 use warnings;
 use File::Basename;
-use File::Compare;
 use POSIX qw(strftime);
 use Term::ANSIColor;
-use IO::Select;
 
-# Directory to store the log files
-my $log_dir = 'debug_logs';
-mkdir $log_dir unless -d $log_dir;
+# Configuration
+my $MAPS_DIR = 'DIRmaps';
+my $LOG_DIR = 'debug_logs';
+my $DEFAULT_MAP = 'pt2.rt';
+my $EXECUTABLE = './miniRT';
 
-# Directory containing .rt files
-my $dir = 'DIRmaps';
-my @maps = glob "$dir/*.rt";
+# Setup directories
+mkdir $LOG_DIR unless -d $LOG_DIR;
 
-# Function to get the current date
-sub get_current_date()
+sub get_timestamp
 {
-	return strftime "%d-%m_%W_%Y", localtime;
+    return strftime("%Y-%m-%d %H:%M:%S", localtime);
 }
 
-# Function to compare log files
-sub compare_logs
+sub print_header
 {
-    my ($new_log, $old_log) = @_;
-
-    my $new_leaks = `grep "definitely lost" $new_log | awk '{print \$4}'`;
-    my $old_leaks = `grep "definitely lost" $old_log | awk '{print \$4}'`;
-
-    $new_leaks =~ s/,//g; # Remove commas
-    $old_leaks =~ s/,//g; # Remove commas
-
-    if ($new_leaks < $old_leaks)
-	{
-        print color('bold green');
-        print "Leaks have decreased: $new_leaks bytes (new) vs $old_leaks bytes (old)\n";
-    }
-	elsif ($new_leaks > $old_leaks)
-	{
-        print color('bold red');
-        print "Leaks have increased: $new_leaks bytes (new) vs $old_leaks bytes (old)\n";
-    }
-	else
-	{
-        print color('bold yellow');
-        print "No change in leaks: $new_leaks bytes\n";
-    }
-    print color('reset');
-}
-
-# Function to prompt user for input with a 5-second timeout
-sub prompt_user()
-{
+    my ($message) = @_;
     print color('bold cyan');
-    print "Enter map filename or 'TEST ALL' to test all maps (default: pt2.rt): ";
+    print "\n" . '=' x 50 . "\n";
+    print "$message\n";
+    print '=' x 50 . "\n\n";
     print color('reset');
-
-    my $input;
-    my $s = IO::Select->new();
-    $s->add(\*STDIN);
-
-    if ($s->can_read(5)) {
-        $input = <STDIN>;
-        chomp $input;
-    }
-    $input ||= 'pt2.rt';
-    return $input;
 }
 
-# Main script logic
-my $input = prompt_user();
+sub get_leak_info
+{
+    my ($log_file) = @_;
+    return 0 unless -e $log_file;
 
-if ($input eq 'TEST ALL') {
-    foreach my $map_file (@maps) {
-        my $date = get_current_date();
-        my $log_file = "$log_dir/" . basename($map_file, ".rt") . "_ALL_$date.txt";
-
-        print color('bold blue');
-        print "Running valgrind on $map_file\n";
-        print color('reset');
-
-        system("valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --verbose ./miniRT $map_file > $log_file 2>&1");
-
-        # Compare with the most recent log file
-        my @logs = glob "$log_dir/" . basename($map_file, ".rt") . "_ALL_*.txt";
-        @logs = sort @logs;
-        if (@logs > 1) {
-            my $prev_log = $logs[-2];
-            compare_logs($log_file, $prev_log);
+    open my $fh, '<', $log_file or return 0;
+    while (my $line = <$fh>)
+    {
+        if ($line =~ /definitely lost:\s+([\d,]+)\s+bytes/)
+        {
+            my $leaks = $1;
+            $leaks =~ s/,//g;
+            close $fh;
+            return $leaks + 0;
         }
     }
-} else {
-    my $map_file = "$dir/$input";
-    if (!-e $map_file) {
-        print color('bold red');
-        print "Error: The specified map file '$input' does not exist in the directory '$dir'.\n";
-        print color('reset');
-        exit 1;
-    }
-    my $date = get_current_date();
-    my $log_file = "$log_dir/" . basename($map_file, ".rt") . "_$date.txt";
+    close $fh;
+    return 0;
+}
 
-    print color('bold blue');
-    print "Running valgrind on $map_file\n";
+sub run_valgrind
+{
+    my ($map_path) = @_;
+    my $map_name = basename($map_path);
+    my $timestamp = get_timestamp();
+    my $log_file = "$LOG_DIR/${map_name}_${timestamp}.log";
+
+    print_header("TESTING MAP: $map_name");
+
+    my $cmd = "valgrind --tool=memcheck --leak-check=full " .
+              "--show-leak-kinds=all --track-origins=yes " .
+              "$EXECUTABLE '$map_path' > '$log_file' 2>&1";
+
+    print color('yellow');
+    print "Running: $cmd\n\n";
+    system($cmd);
+
+    return $log_file;
+}
+
+sub find_previous_log
+{
+    my ($current_log) = @_;
+    my $pattern = $current_log;
+    $pattern =~ s/_\d{4}-\d{2}-\d{2}.*\.log$//;
+    $pattern .= "_*.log";
+
+    my @logs = sort glob($pattern);
+    return unless @logs >= 2;
+    return $logs[-2];
+}
+
+sub report_leaks
+{
+    my ($log_file) = @_;
+    my $current_leaks = get_leak_info($log_file);
+    my $previous_log = find_previous_log($log_file);
+    my $previous_leaks = $previous_log ? get_leak_info($previous_log) : 0;
+
+    print_header("MEMORY LEAK REPORT");
+
+    print color('bold white');
+    printf "%-30s: %s\n", "Current test", basename($log_file);
+    printf "%-30s: %s\n", "Current leaks", $current_leaks;
+
+    if ($previous_log)
+    {
+        printf "%-30s: %s\n", "Previous test", basename($previous_log);
+        printf "%-30s: %s\n", "Previous leaks", $previous_leaks;
+
+        print "\n";
+        if ($current_leaks < $previous_leaks)
+        {
+            print color('bold green');
+            printf "IMPROVEMENT: -%d bytes\n", ($previous_leaks - $current_leaks);
+        }
+        elsif ($current_leaks > $previous_leaks)
+        {
+            print color('bold red');
+            printf "REGRESSION: +%d bytes\n", ($current_leaks - $previous_leaks);
+        }
+        else
+        {
+            print color('bold yellow');
+            print "NO CHANGE\n";
+        }
+    }
+    else
+    {
+        print color('bold cyan');
+        print "\nNo previous logs found for comparison\n";
+    }
+
+    print color('reset');
+    print "\n" . '-' x 50 . "\n\n";
+}
+
+sub select_map
+{
+    print color('bold green');
+    print "Available maps:\n";
     print color('reset');
 
-    system("valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --verbose ./miniRT $map_file > $log_file 2>&1");
+    my @maps = glob("$MAPS_DIR/*.rt");
+    my $i = 1;
 
-    # Compare with the most recent log file
-    my @logs = glob "$log_dir/" . basename($map_file, ".rt") . "_*.txt";
-    @logs = sort @logs;
-    if (@logs > 1) {
-        my $prev_log = $logs[-2];
-        compare_logs($log_file, $prev_log);
+    foreach my $map (@maps)
+    {
+        printf "%2d) %s\n", $i++, basename($map);
     }
+
+    print "\n";
+    print color('bold cyan');
+    print "Enter map number (1-$#maps) or 'all': ";
+    print color('reset');
+
+    my $input = <STDIN>;
+    chomp $input;
+
+    if (lc($input) eq 'all')
+    {
+        return @maps;
+    }
+    elsif ($input =~ /^\d+$/ && $input >= 1 && $input <= scalar @maps)
+    {
+        return $maps[$input - 1];
+    }
+
+    return "$MAPS_DIR/$DEFAULT_MAP";
 }
 
-# Help message
-if (grep { $_ eq '-help' } @ARGV)
+# Main execution
+print_header("MINIRT MEMORY TESTER");
+
+# Validate executable
+die color('bold red') . "Missing executable: $EXECUTABLE\n" . color('reset')
+    unless -x $EXECUTABLE;
+
+# Get map selection
+my @selected_maps;
+my $selection = select_map();
+
+if (ref($selection) eq 'ARRAY')
 {
-	print color('bold green');
-	print "Usage: $0\n";
-	print "This script runs valgrind on a specified .rt file in the DIRmaps directory.\n";
-	print "The output is stored in the debug_logs directory with date-based naming.\n";
-	print "If 'TEST ALL' is entered, the script runs valgrind on all .rt files in the directory.\n";
-	print "After creating a new log file, the script compares it with the previous log file to check for changes in memory leaks.\n";
-	print color('reset');
-	exit;
+    @selected_maps = @$selection;
+}
+else
+{
+    @selected_maps = ($selection);
 }
 
+# Process maps
+foreach my $map (@selected_maps)
+{
+    next unless -e $map;
+
+    my $log_file = run_valgrind($map);
+    report_leaks($log_file);
+}
+
+print_header("TESTING COMPLETE");
