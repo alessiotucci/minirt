@@ -6,13 +6,13 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:06:36 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/13 16:48:38 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/13 17:48:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 #define DIAMETER_DELTA 1.0
-#define HEIGHT_DELTA 1.0
+#define HEIGHT_DELTA 2.0
 #define ANGLE_DELTA (M_PI / 36)  // 5 degrees in radians
 // Increase the diameter (for spheres and cylinders)
 void increase_object_diameter(t_mlx *data)
@@ -21,13 +21,13 @@ void increase_object_diameter(t_mlx *data)
     {
         t_sphere *sp = data->setting->spheres[data->selected.index];
         sp->diameter += DIAMETER_DELTA;
-        printf("Increased sphere diameter to: %lf\n", sp->diameter);
+        printf("%sIncreased sphere diameter to: %lf%s\n", YELLOW, sp->diameter, RESET);
     }
     else if (data->selected.type == T_CYLINDER)
     {
         t_cylinder *cy = data->setting->cylinders[data->selected.index];
         cy->diameter += DIAMETER_DELTA;
-        printf("Increased cylinder diameter to: %lf\n", cy->diameter);
+        printf("%sIncreased cylinder diameter to: %lf%s\n", YELLOW, cy->diameter, RESET);
     }
     else
     {
@@ -42,17 +42,17 @@ void decrease_object_diameter(t_mlx *data)
     {
         t_sphere *sp = data->setting->spheres[data->selected.index];
         sp->diameter -= DIAMETER_DELTA;
-        if (sp->diameter < 0)
-            sp->diameter = 0;
-        printf("Decreased sphere diameter to: %lf\n", sp->diameter);
+        if (sp->diameter <= 1)
+            sp->diameter = 1;
+        printf("%sDecreased sphere diameter to: %lf%s\n", YELLOW, sp->diameter, RESET);
     }
     else if (data->selected.type == T_CYLINDER)
     {
         t_cylinder *cy = data->setting->cylinders[data->selected.index];
         cy->diameter -= DIAMETER_DELTA;
-        if (cy->diameter < 0)
-            cy->diameter = 0;
-        printf("Decreased cylinder diameter to: %lf\n", cy->diameter);
+        if (cy->diameter <= 1)
+            cy->diameter = 1;
+        printf("%sDecreased cylinder diameter to: %lf%s\n", YELLOW, cy->diameter, RESET);
     }
     else
     {
@@ -82,8 +82,8 @@ void decrease_cylinder_height(t_mlx *data)
     {
         t_cylinder *cy = data->setting->cylinders[data->selected.index];
         cy->height -= HEIGHT_DELTA;
-        if (cy->height < 0)
-            cy->height = 0;
+        if (cy->height < 1.0)
+            cy->height = 1.0;
         printf("Decreased cylinder height to: %lf\n", cy->height);
     }
     else
