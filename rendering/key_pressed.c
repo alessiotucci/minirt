@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/11 18:36:12 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/13 15:02:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,19 @@ int key_pressed_gpt(int keycode, void *param)
         if (data->setting->camera->fov > 180)
             data->setting->camera->fov = 180;
     }
-	else if (data->selected_object)
+	else if (is_selected_null(data->selected) == 0) // created an helper function to check if null
 		{
-
+/*
 			if (keycode == KEY_X)
 			{
 				printf("pressed: X increasing\n");
-				change_size(data->selected_object, 1);
+				change_size(data->selected, 1);
 				//handle_x_rotation(data, 1);
 			}
 			else if (keycode == KEY_Y)
 			{
 				printf("pressed: Y decreasing\n");
-				change_size(data->selected_object, 0);
+				change_size(data->selected, 0);
 				//handle_y_rotation(data, 1);
 			}
 			else if (keycode == KEY_Z)
@@ -97,6 +97,7 @@ int key_pressed_gpt(int keycode, void *param)
 				printf("pressed: E\n");
 				handle_z_rotation(data, -1);
 			}
+*/		printf("selected is not null, key code to be waited\n");
 		}
     // Once the camera is updated, we need to re-render the scene.
 

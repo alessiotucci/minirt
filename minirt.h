@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/12 17:13:41 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/13 14:56:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -655,4 +655,10 @@ void	handle_z_rotation(t_mlx *data, int direction);
 
 void change_size(t_object *obj, int flag);
 char	*type_to_string(t_type type);
+
+/*********************/
+/*Selected obj utils */
+/*********************/
+int	is_selected_null(t_selected_obj obj);
+
 #endif

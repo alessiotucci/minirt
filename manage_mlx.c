@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/12 16:49:54 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/13 14:55:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static void	test_function(t_mlx *info)
 
 	mlx_string_put(info->mlx, info->win, 10, info->height - 10,
 		COLOR_WHITE, new_str);
-	if (info->selected_object == NULL)
+	if (is_selected_null(info->selected))
 		mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, "selected obj: NULL");
 	else
 	{
-		char *try = type_to_string(info->selected_object->type);
+		char *try = type_to_string(info->selected.type);
 		mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, try);
 	}
 }

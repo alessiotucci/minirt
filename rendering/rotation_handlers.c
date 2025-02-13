@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:06:36 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/11 18:46:05 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/13 15:05:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void change_size(t_object *obj, int flag)
     }
 }
 
-static void	apply_transformation(t_object *obj, double **new_transform)
+/*
+static void	apply_transformation(t_selected_obj obj, double **new_transform)
 {
 	void	*original;
 	double	**old_matrix;
@@ -93,33 +94,34 @@ static void	apply_transformation(t_object *obj, double **new_transform)
 	}
 	free_heap_matrix(new_transform, 4);
 }
+*/
 
 void	handle_x_rotation(t_mlx *data, int direction)
 {
-	double	**rotation;
-	double	angle;
+	double	**rotation;(void)rotation;(void)data;
+	double	angle;(void)angle;
 
 	angle = M_PI/16 * direction; // 22.5 degree steps
 	rotation = matrix_rotation_x(angle);
-	apply_transformation(data->selected_object, rotation);
+	//apply_transformation(data->selected, rotation);
 }
 
 void	handle_y_rotation(t_mlx *data, int direction)
 {
-	double	**rotation;
-	double	angle;
+	double	**rotation;(void)rotation;(void)data;
+	double	angle;(void)angle;
 
 	angle = M_PI/16 * direction;
 	rotation = matrix_rotation_y(angle);
-	apply_transformation(data->selected_object, rotation);
+	//apply_transformation(data->selected, rotation);
 }
 
 void	handle_z_rotation(t_mlx *data, int direction)
 {
-	double	**rotation;
-	double	angle;
+	double	**rotation;(void)rotation;(void)data;
+	double	angle;(void)angle;
 
 	angle = M_PI/16 * direction;
 	rotation = matrix_rotation_z(angle);
-	apply_transformation(data->selected_object, rotation);
+	//apply_transformation(data->selected, rotation);
 }
