@@ -16,6 +16,7 @@ $(NAME)	mlx/test/Makefile.mk	/^$(NAME): $(OBJ)$/;"	t
 $(OBJ_DIR)/%.o	mlx/Makefile.mk	/^$(OBJ_DIR)\/%.o: %.c$/;"	t
 %.o	Makefile	/^%.o: %.c$/;"	t
 A	minirt.h	/^# define A /;"	d
+ANGLE_DELTA	rendering/rotation_handlers.c	/^#define ANGLE_DELTA /;"	d	file:
 ARROW_DOWN	minirt.h	/^# define ARROW_DOWN /;"	d
 ARROW_LEFT	minirt.h	/^# define ARROW_LEFT /;"	d
 ARROW_RIGHT	minirt.h	/^# define ARROW_RIGHT /;"	d
@@ -73,6 +74,7 @@ DESCRIPTION	mlx/man/man3/mlx_loop.3	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
 DESCRIPTION	mlx/man/man3/mlx_new_image.3	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
 DESCRIPTION	mlx/man/man3/mlx_new_window.3	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
 DESCRIPTION	mlx/man/man3/mlx_pixel_put.3	/^.SH DESCRIPTION$/;"	s	title:MiniLibX
+DIAMETER_DELTA	rendering/rotation_handlers.c	/^#define DIAMETER_DELTA /;"	d	file:
 EAST_WEST	minirt.h	/^# define EAST_WEST /;"	d
 ENV_DISPLAY	mlx/mlx_int.h	/^# define ENV_DISPLAY /;"	d
 EOF	mlx/configure	/^cat <<EOF$/;"	h
@@ -88,6 +90,7 @@ GRAY	minirt.h	/^# define GRAY /;"	d
 GREEN	Makefile	/^GREEN := \\033[1;32m$/;"	m
 GREEN	minirt.h	/^# define GREEN /;"	d
 HEADERS	Makefile	/^HEADERS = .\/minirt.h \\$/;"	m
+HEIGHT_DELTA	rendering/rotation_handlers.c	/^#define HEIGHT_DELTA /;"	d	file:
 IM1_SX	mlx/test/main.c	/^#define	IM1_SX	/;"	d	file:
 IM1_SY	mlx/test/main.c	/^#define	IM1_SY	/;"	d	file:
 IM3_SX	mlx/test/main.c	/^#define	IM3_SX	/;"	d	file:
@@ -322,6 +325,8 @@ data1	mlx/test/main.c	/^char	*data1;$/;"	v	typeref:typename:char *
 data2	mlx/test/main.c	/^char	*data2;$/;"	v	typeref:typename:char *
 data3	mlx/test/main.c	/^char	*data3;$/;"	v	typeref:typename:char *
 data4	mlx/test/main.c	/^char	*data4;$/;"	v	typeref:typename:char *
+decrease_cylinder_height	rendering/rotation_handlers.c	/^void decrease_cylinder_height(t_mlx *data)$/;"	f	typeref:typename:void
+decrease_object_diameter	rendering/rotation_handlers.c	/^void decrease_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
 decrgb	mlx/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar	typeref:typename:int[6]
 deep_copy_cylinder	intersection/intersection.c	/^t_cylinder	*deep_copy_cylinder(t_cylinder *src)$/;"	f	typeref:typename:t_cylinder *
 deep_copy_plane	intersection/intersection.c	/^t_plane *deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
@@ -477,6 +482,8 @@ image_plane_height	minirt.h	/^	double		image_plane_height;$/;"	m	struct:s_camera
 image_plane_width	minirt.h	/^	double		image_plane_width;$/;"	m	struct:s_camera	typeref:typename:double
 img_pointer	minirt.h	/^	void		*img_pointer;$/;"	m	struct:s_mlx	typeref:typename:void *
 img_string	minirt.h	/^	char		*img_string;$/;"	m	struct:s_mlx	typeref:typename:char *
+increase_cylinder_height	rendering/rotation_handlers.c	/^void increase_cylinder_height(t_mlx *data)$/;"	f	typeref:typename:void
+increase_object_diameter	rendering/rotation_handlers.c	/^void increase_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
 index	minirt.h	/^	int		index;$/;"	m	struct:s_selected_obj	typeref:typename:int
 init_heap_matrix	matrix/matrix_utils.c	/^void	init_heap_matrix(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 init_scene	main.c	/^void	init_scene(t_mlx *info, char *mapname)$/;"	f	typeref:typename:void
@@ -712,6 +719,8 @@ remove_new_line	extra/utils.c	/^void	remove_new_line(char **matrix, char replace
 replace_me	parsing/parsing_map.c	/^void	replace_me(char *str, char replacement, char to_replace)$/;"	f	typeref:typename:void
 reset_selected_object	selected_obj.c	/^void	reset_selected_object(t_selected_obj selected)$/;"	f	typeref:typename:void
 root	mlx/mlx_int.h	/^	Window		root;$/;"	m	struct:s_xvar	typeref:typename:Window
+rotate_object_axis_negative	rendering/rotation_handlers.c	/^void rotate_object_axis_negative(t_mlx *data)$/;"	f	typeref:typename:void
+rotate_object_axis_positive	rendering/rotation_handlers.c	/^void rotate_object_axis_positive(t_mlx *data)$/;"	f	typeref:typename:void
 rotation_x	transformations/rotations.c	/^t_vector	rotation_x(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
 rotation_y	transformations/rotations.c	/^t_vector	rotation_y(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
 rotation_z	transformations/rotations.c	/^t_vector	rotation_z(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector

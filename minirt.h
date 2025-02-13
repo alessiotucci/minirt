@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/13 14:56:27 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/13 16:48:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -660,5 +660,13 @@ char	*type_to_string(t_type type);
 /*Selected obj utils */
 /*********************/
 int	is_selected_null(t_selected_obj obj);
+
+
+void	increase_object_diameter(t_mlx *data);
+void	decrease_object_diameter(t_mlx *data);
+void	increase_cylinder_height(t_mlx *data);
+void	decrease_cylinder_height(t_mlx *data);
+void	rotate_object_axis_positive(t_mlx *data);
+void	rotate_object_axis_negative(t_mlx *data);
 
 #endif

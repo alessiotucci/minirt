@@ -9,12 +9,23 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
-apply_transformation	rotation_handlers.c	/^static void	apply_transformation(t_object *obj, double **new_transform)$/;"	f	typeref:typename:void	file:
+ANGLE_DELTA	rotation_handlers.c	/^#define ANGLE_DELTA /;"	d	file:
+DIAMETER_DELTA	rotation_handlers.c	/^#define DIAMETER_DELTA /;"	d	file:
+HEIGHT_DELTA	rotation_handlers.c	/^#define HEIGHT_DELTA /;"	d	file:
 cast_mouse_ray	mouse_select.c	/^int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)$/;"	f	typeref:typename:int
 clean_close	key_pressed.c	/^void	clean_close(t_mlx *project)$/;"	f	typeref:typename:void
-find_original_object	mouse_select.c	/^t_object	*find_original_object(t_setting *setting, void *original_addr, t_type obj_type)$/;"	f	typeref:typename:t_object *
+decrease_cylinder_height	rotation_handlers.c	/^void decrease_cylinder_height(t_mlx *data)$/;"	f	typeref:typename:void
+decrease_object_diameter	rotation_handlers.c	/^void decrease_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
+find_original_cylinder	mouse_select.c	/^static t_selected_obj	find_original_cylinder(t_setting *setting, void *original_addr)$/;"	f	typeref:typename:t_selected_obj	file:
+find_original_object_index	mouse_select.c	/^t_selected_obj find_original_object_index(t_setting *setting, void *original_addr, t_type obj_ty/;"	f	typeref:typename:t_selected_obj
+find_original_plane	mouse_select.c	/^static t_selected_obj	find_original_plane(t_setting *setting, void *original_addr)$/;"	f	typeref:typename:t_selected_obj	file:
+find_original_sphere	mouse_select.c	/^static t_selected_obj	find_original_sphere(t_setting *setting, void *original_addr)$/;"	f	typeref:typename:t_selected_obj	file:
 handle_x_rotation	rotation_handlers.c	/^void	handle_x_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
 handle_y_rotation	rotation_handlers.c	/^void	handle_y_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
 handle_z_rotation	rotation_handlers.c	/^void	handle_z_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
+increase_cylinder_height	rotation_handlers.c	/^void increase_cylinder_height(t_mlx *data)$/;"	f	typeref:typename:void
+increase_object_diameter	rotation_handlers.c	/^void increase_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
 key_pressed_gpt	key_pressed.c	/^int key_pressed_gpt(int keycode, void *param)$/;"	f	typeref:typename:int
-search_array	mouse_select.c	/^static t_object	*search_array(void **array, int count, void *target, const char *type_name)$/;"	f	typeref:typename:t_object *	file:
+rotate_object_axis_negative	rotation_handlers.c	/^void rotate_object_axis_negative(t_mlx *data)$/;"	f	typeref:typename:void
+rotate_object_axis_positive	rotation_handlers.c	/^void rotate_object_axis_positive(t_mlx *data)$/;"	f	typeref:typename:void
+search_index	mouse_select.c	/^static int	search_index(void **array, int count, void *target)$/;"	f	typeref:typename:int	file:

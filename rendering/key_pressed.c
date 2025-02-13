@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/13 15:49:36 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/13 16:50:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,35 +67,33 @@ int key_pressed_gpt(int keycode, void *param)
 			printf("object is selected key code to be waited\n");
 			if (keycode == KEY_X)
 			{
-				printf("pressed: X increasing\n");
-				//change_size(data->selected, 1);
-				//handle_x_rotation(data, 1);
+				printf("pressed: X ++increasing radius or diameter (not working with plane)\n");
+            increase_object_diameter(data);
 			}
 			else if (keycode == KEY_Y)
 			{
-				printf("pressed: Y decreasing\n");
-				//change_size(data->selected, 0);
-				//handle_y_rotation(data, 1);
+				printf("pressed: Y --decreasing radius or diameter (not working with plane)\n");
+            decrease_object_diameter(data);
 			}
 			else if (keycode == KEY_Z)
 			{
-				printf("pressed: Z\n");
-				//handle_z_rotation(data, 1);
+				printf("pressed: Z ++increasing height of Cylinder (not compatible with other obj)\n");
+
 			}
 			else if (keycode == KEY_Q)
 			{
-				printf("pressed: Q\n");
-				//handle_x_rotation(data, -1);
+				printf("pressed: Q ++increasing height of Cylinder (not compatible with other obj)\n");
+
 			}
 			else if (keycode == KEY_W)
 			{
-				printf("pressed: W\n");
-				//handle_y_rotation(data, -1);
+				printf("pressed: W inclining the axis (plane or cylinder)\n");
+
 			}
 			else if (keycode == KEY_E)
 			{
-				printf("pressed: E\n");
-				//handle_z_rotation(data, -1);
+				printf("pressed: E inclining the axis (plane or cylinder)\n");
+
 			}
 		}
     // Once the camera is updated, we need to re-render the scene.
