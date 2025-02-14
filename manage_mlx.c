@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/13 14:55:10 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/14 17:53:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,16 @@ int	window_close(void *param)
 /*TODO: cast a ray and see if a obj is being intersected*/
 int	mouse_click(int button, int x, int y, t_mlx *mlx)
 {
-	printf("Mouse click: button %d, x = %d, y = %d\n", button, x, y);
-	cast_mouse_ray(x, y, mlx, mlx->setting);
+//	printf("Mouse click: button %d, x = %d, y = %d\n", button, x, y);
+	if (button == 1)
+		cast_mouse_ray(x, y, mlx, mlx->setting);
+	else if (button == 3)
+		printf("Mouse: left click not yet implemented\n");
+	else if (button == 5)
+		printf("Mouse: scroll down not yet implemented\n");
+	else if (button == 4)
+		printf("Mouse: scroll up  not yet implemented\n");
+
 	return (0);
 }
 
