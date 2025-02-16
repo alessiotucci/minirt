@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/13 18:04:20 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/14 18:51:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -670,4 +670,7 @@ void	rotate_object_axis_positive(t_mlx *data);
 void	rotate_object_axis_negative(t_mlx *data);
 
 void	update_cylinder(t_cylinder *my_cylinder);
+
+void	re_start_image(t_mlx *data);
+t_ray create_ray_from_camera2(t_mlx *data, int x, int y);
 #endif

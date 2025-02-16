@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/14 17:53:16 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/14 18:39:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,82 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 
 //4
 //TODO: interesting function!
+
+/* ---------------------- VECTOR FORMATTING ---------------------- */
+static char	*vector_to_str(t_vector vec)
+{
+	char	*x = ft_itoa((int)vec.x);
+	char	*y = ft_itoa((int)vec.y);
+	char	*z = ft_itoa((int)vec.z);
+	char	*temp = ft_strjoin(x, " ");
+	char	*temp2 = ft_strjoin(temp, y);
+	free(temp);
+	temp = ft_strjoin(temp2, " ");
+	free(temp2);
+	temp2 = ft_strjoin(temp, z);
+	free(temp);
+	free(x);
+	free(y);
+	free(z);
+	return (temp2);
+}
+
+static char	*vector_to_labeled_str(char *label, t_vector vec)
+{
+	char	*vec_str = vector_to_str(vec);
+	char	*full_str = ft_strjoin(label, vec_str);
+	free(vec_str);
+	return (full_str);
+}
+
+/* ---------------------- CAMERA INFO FORMATTING ---------------------- */
+static char	*camera_info_str(t_camera *cam)
+{
+	char	*view_str = vector_to_labeled_str("Camera: ", cam->viewpoint);
+	char	*fov_str = ft_strjoin("FOV: ", ft_itoa(cam->fov));
+	char	*orient_str = vector_to_labeled_str("| ", cam->orientation);
+
+	char	*final = ft_strjoin(view_str, fov_str);
+	free(view_str);
+	free(fov_str);
+
+	char	*temp = ft_strjoin(final, orient_str);
+	free(final);
+	free(orient_str);
+
+	return (temp);
+}
+
+/* ---------------------- SELECTION STATUS FORMATTING ---------------------- */
+static char	*get_selection_status(t_selected_obj selected)
+{
+	if (is_selected_null(selected))
+		return (ft_strdup("Selected obj: NULL"));
+
+	const char	*type_str = type_to_string(selected.type);
+	char		*buffer = malloc(ft_strlen(type_str) + 15);
+	if (buffer)
+		sprintf(buffer, "Selected: %s", type_str);
+	return (buffer ? buffer : ft_strdup("Selection error"));
+}
+
+/* ---------------------- MAIN TEST FUNCTION ---------------------- */
 static void	test_function(t_mlx *info)
 {
-	char	*c;
-	char	*strx;
-	char	*stry;
-	char	*strz;
-	char	*str_fov;
-	char	*new_str;
+	// Format camera information
+	char	*cam_info = camera_info_str(info->setting->camera);
 
-	c = "camera : ";
-	strx = ft_itoa((int)info->setting->camera->viewpoint.x);
-	stry = ft_itoa((int)info->setting->camera->viewpoint.y);
-	strz = ft_itoa((int)info->setting->camera->viewpoint.z);
-	str_fov= ft_itoa((int)info->setting->camera->fov);
-	new_str = ft_strjoin(c, strx);
-	new_str = ft_strjoin(new_str, " ");
-	new_str = ft_strjoin(new_str, stry);
-	new_str = ft_strjoin(new_str, " ");
-	new_str = ft_strjoin(new_str, strz);
-	new_str = ft_strjoin(new_str, " FOV:");
-	new_str = ft_strjoin(new_str, str_fov);
+	// Format selection status
+	char	*selection_status = get_selection_status(info->selected);
 
+	// Render to screen
 	mlx_string_put(info->mlx, info->win, 10, info->height - 10,
-		COLOR_WHITE, new_str);
-	if (is_selected_null(info->selected))
-		mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, "selected obj: NULL");
-	else
-	{
-		char *try = type_to_string(info->selected.type);
-		mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, try);
-	}
+		COLOR_WHITE, cam_info);
+	mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, selection_status);
+
+	// Cleanup
+	free(cam_info);
+	free(selection_status);
 }
 
 static int	key_pressed(int keycode, void *param)
@@ -101,9 +146,19 @@ int	mouse_click(int button, int x, int y, t_mlx *mlx)
 	else if (button == 3)
 		printf("Mouse: left click not yet implemented\n");
 	else if (button == 5)
-		printf("Mouse: scroll down not yet implemented\n");
+	{
+		//printf("Mouse: scroll down not yet implemented\n");
+		mlx->setting->camera->orientation = rotation_x(mlx->setting->camera->orientation, M_PI/36);
+		re_start_image(mlx);
+
+	}
 	else if (button == 4)
-		printf("Mouse: scroll up  not yet implemented\n");
+	{
+		//printf("Mouse: scroll up  not yet implemented\n");
+		mlx->setting->camera->orientation = rotation_x(mlx->setting->camera->orientation, -M_PI/36);
+		re_start_image(mlx);
+
+	}
 
 	return (0);
 }

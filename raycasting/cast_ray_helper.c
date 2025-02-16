@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/11 17:44:49 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/14 18:55:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 	int	i;
 
 	ray = create_ray_from_camera(data, x, y);
+	//TODO: understand why this is not working!!
+	//ray = create_ray_from_camera2(data, x, y);
 	i = 0;
 	while (i < data->setting->num_spheres)
 	{

@@ -26,6 +26,7 @@ handle_z_rotation	rotation_handlers.c	/^void	handle_z_rotation(t_mlx *data, int 
 increase_cylinder_height	rotation_handlers.c	/^void increase_cylinder_height(t_mlx *data)$/;"	f	typeref:typename:void
 increase_object_diameter	rotation_handlers.c	/^void increase_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
 key_pressed_gpt	key_pressed.c	/^int key_pressed_gpt(int keycode, void *param)$/;"	f	typeref:typename:int
+re_start_image	key_pressed.c	/^void	re_start_image(t_mlx *data)$/;"	f	typeref:typename:void
 rotate_object_axis_negative	rotation_handlers.c	/^void rotate_object_axis_negative(t_mlx *data)$/;"	f	typeref:typename:void
 rotate_object_axis_positive	rotation_handlers.c	/^void rotate_object_axis_positive(t_mlx *data)$/;"	f	typeref:typename:void
 search_index	mouse_select.c	/^static int	search_index(void **array, int count, void *target)$/;"	f	typeref:typename:int	file:

@@ -258,6 +258,7 @@ brightness	minirt.h	/^	double		brightness;$/;"	m	struct:s_light	typeref:typename
 calculate_sphere_color	shapes/sphere.c	/^int	calculate_sphere_color(t_intersection *intersection)$/;"	f	typeref:typename:int
 camera	minirt.h	/^	t_camera		*camera;$/;"	m	struct:s_setting	typeref:typename:t_camera *
 camera_image_plane	draw_scene.c	/^void	camera_image_plane(t_mlx *mlx)$/;"	f	typeref:typename:void
+camera_info_str	manage_mlx.c	/^static char	*camera_info_str(t_camera *cam)$/;"	f	typeref:typename:char *	file:
 cast_mouse_ray	rendering/mouse_select.c	/^int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)$/;"	f	typeref:typename:int
 cast_rays	raycasting/cast_ray.c	/^void	cast_rays(t_mlx *data)$/;"	f	typeref:typename:void
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_cylinder	typeref:typename:t_vector
@@ -311,6 +312,7 @@ create_new_node	intersection/real_list.c	/^t_list_intersect	*create_new_node(t_i
 create_point	vector/utils_vectors.c	/^t_vector	create_point(double x, double y, double z)$/;"	f	typeref:typename:t_vector
 create_ray	raycasting/create_ray.c	/^t_ray	create_ray(t_vector origin, t_vector direction)$/;"	f	typeref:typename:t_ray
 create_ray_from_camera	raycasting/cast_ray.c	/^t_ray	create_ray_from_camera(t_mlx *data, int x, int y)$/;"	f	typeref:typename:t_ray
+create_ray_from_camera2	raycasting/cast_ray.c	/^t_ray create_ray_from_camera2(t_mlx *data, int x, int y)$/;"	f	typeref:typename:t_ray
 create_scaling_matrix	transformations/scaling.c	/^double	**create_scaling_matrix(t_vector move)$/;"	f	typeref:typename:double **
 create_setting	create_setting.c	/^void	create_setting(char **details, t_setting *set)$/;"	f	typeref:typename:void
 create_sphere	shapes/sphere.c	/^t_sphere	create_sphere(char *id, t_vector center, double d, t_color c)$/;"	f	typeref:typename:t_sphere
@@ -453,6 +455,7 @@ get_next_line	libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:
 get_plane_normal	normal.c	/^static t_vector get_plane_normal(t_plane *pl, t_ray ray)$/;"	f	typeref:typename:t_vector	file:
 get_realloc	libft/get_next_line.c	/^static char	*get_realloc(char **buf, int kind_of_alloc)$/;"	f	typeref:typename:char *	file:
 get_return	libft/get_next_line.c	/^static char	*get_return(char **buf)$/;"	f	typeref:typename:char *	file:
+get_selection_status	manage_mlx.c	/^static char	*get_selection_status(t_selected_obj selected)$/;"	f	typeref:typename:char *	file:
 get_sphere_to_ray	raycasting/intersection_ray.c	/^t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)$/;"	f	typeref:typename:t_vector
 get_timestamp	new_script_valgrind.pl	/^sub get_timestamp$/;"	s
 get_xlib_include_path	mlx/configure	/^get_xlib_include_path(){$/;"	f
@@ -715,6 +718,7 @@ re	Makefile	/^re: fclean all$/;"	t
 re	libft/Makefile	/^re: fclean all$/;"	t
 re	mlx/Makefile	/^re	: clean all$/;"	t
 re	mlx/test/Makefile.mk	/^re: clean all$/;"	t
+re_start_image	rendering/key_pressed.c	/^void	re_start_image(t_mlx *data)$/;"	f	typeref:typename:void
 reflect	normal.c	/^t_vector	reflect(t_vector in, t_vector normal)$/;"	f	typeref:typename:t_vector
 remove_new_line	extra/utils.c	/^void	remove_new_line(char **matrix, char replacement, char to_replace)$/;"	f	typeref:typename:void
 replace_me	parsing/parsing_map.c	/^void	replace_me(char *str, char replacement, char to_replace)$/;"	f	typeref:typename:void
@@ -840,6 +844,8 @@ update_cylinder	shapes/cylinder.c	/^void	update_cylinder(t_cylinder *my_cylinder
 use_xshm	mlx/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
 v2normal_at	normal.c	/^t_vector v2normal_at(t_object obj, t_vector point, t_ray r)$/;"	f	typeref:typename:t_vector
 value_matrix	matrix/initialize_matrix.c	/^double	**value_matrix(double a[4], double b[4], double c[4], double d[4])$/;"	f	typeref:typename:double **
+vector_to_labeled_str	manage_mlx.c	/^static char	*vector_to_labeled_str(char *label, t_vector vec)$/;"	f	typeref:typename:char *	file:
+vector_to_str	manage_mlx.c	/^static char	*vector_to_str(t_vector vec)$/;"	f	typeref:typename:char *	file:
 viewpoint	minirt.h	/^	t_vector	viewpoint;$/;"	m	struct:s_camera	typeref:typename:t_vector
 visual	mlx/mlx_int.h	/^	Visual		*visual;$/;"	m	struct:s_xvar	typeref:typename:Visual *
 w	minirt.h	/^	double	w;$/;"	m	struct:s_vector	typeref:typename:double
