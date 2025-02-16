@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/16 16:35:48 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/16 18:57:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ t_ray create_ray_from_camera2(t_mlx *data, int x, int y)
 	offset_y = (1 - 2 * ndc_y) * scale;
 	// Calculate final ray direction using camera basis
 	direction = add(add(multiplication(right, offset_x),multiplication(up, offset_y)), forward);
+
 	ray.origin = cam->viewpoint;
 	ray.direction = normalization(direction);
-	return ray;
+	return (ray);
 }
 
 t_ray	create_ray_from_camera(t_mlx *data, int x, int y)
