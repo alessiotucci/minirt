@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/14 18:50:23 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/16 16:35:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,30 @@ t_ray create_ray_from_camera2(t_mlx *data, int x, int y)
 	t_vector	forward;
 	t_vector	right;
 	t_vector	up;
+	t_vector	direction;
 	double		aspect_ratio;
 	double		scale;
+	double		ndc_x;
+	double		ndc_y;
+	double		offset_x;
+	double		offset_y;
 
-	// Get camera basis vectors
 	forward = normalization(cam->orientation);
 	up = create_vector(0, 1, 0); // Default up vector (Y-axis)
 	right = cross(forward, up);
 	right = normalization(right);
 	up = cross(right, forward); // Ensure orthonormal basis
-
 	// Calculate aspect ratio and FOV scale
 	aspect_ratio = (double)data->width / (double)data->height;
 	scale = tan(cam->fov * 0.5 * M_PI / 180.0);
-
 	// Calculate screen coordinates
-	double ndc_x = (x + 0.5) / data->width;
-	double ndc_y = (y + 0.5) / data->height;
-
+	ndc_x = (x + 0.5) / data->width;
+	ndc_y = (y + 0.5) / data->height;
 	// Offset coordinates to be in [-1, 1] range
-	double offset_x = (2 * ndc_x - 1) * aspect_ratio * scale;
-	double offset_y = (1 - 2 * ndc_y) * scale;
-
+	offset_x = (2 * ndc_x - 1) * aspect_ratio * scale;
+	offset_y = (1 - 2 * ndc_y) * scale;
 	// Calculate final ray direction using camera basis
-	t_vector direction = add(
-		add(
-			multiplication(right, offset_x),
-			multiplication(up, offset_y)
-		),
-		forward
-	);
-
+	direction = add(add(multiplication(right, offset_x),multiplication(up, offset_y)), forward);
 	ray.origin = cam->viewpoint;
 	ray.direction = normalization(direction);
 	return ray;
@@ -135,8 +128,7 @@ void	cast_rays(t_mlx *data)
 		while (x < data->width)
 		{
 			each_pixel_calculationV2(data, x, y);
-			
-		x++;
+			x++;
 		}
 	y++;
 	}
