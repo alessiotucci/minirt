@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/14 18:40:54 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:50:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	clean_close(t_mlx *project)
 	free_struct(project->setting);
 	exit(0);
 }
-
+// 44 46
 int key_pressed_gpt(int keycode, void *param)
 {
 	 t_mlx *data = (t_mlx *)param;
@@ -62,6 +62,10 @@ int key_pressed_gpt(int keycode, void *param)
 		  if (data->setting->camera->fov > 180)
 				data->setting->camera->fov = 180;
 	 }
+	else if (keycode == 44)
+		data->setting->camera->orientation = rotation_y(data->setting->camera->orientation, M_PI/36);
+	else if (keycode == 46)
+		data->setting->camera->orientation = rotation_y(data->setting->camera->orientation, -M_PI/36);
 	else if (is_selected_null(data->selected) == 0) // created an helper function to check if null
 		{
 			printf("object is selected key code to be waited\n");
