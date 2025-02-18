@@ -771,7 +771,7 @@ scaling	transformations/scaling.c	/^t_vector	scaling(t_vector move, t_vector ori
 scaling_inverse	transformations/scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
 search_index	rendering/mouse_select.c	/^static int	search_index(void **array, int count, void *target)$/;"	f	typeref:typename:int	file:
-select_light	rendering/key_pressed.c	/^void	select_light(t_selected_obj selected)$/;"	f	typeref:typename:void
+select_light	rendering/key_pressed.c	/^void	select_light(t_selected_obj *selected)$/;"	f	typeref:typename:void
 select_map	new_script_valgrind.pl	/^sub select_map$/;"	s
 selected	minirt.h	/^	t_selected_obj	selected;  \/\/ Now we store the index and type of the selected object.$/;"	m	struct:s_mlx	typeref:typename:t_selected_obj
 set_cylinder_cap	shapes/cylinder.c	/^void	set_cylinder_cap(t_cylinder *cylinder)$/;"	f	typeref:typename:void

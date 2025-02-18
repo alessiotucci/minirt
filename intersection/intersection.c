@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 17:14:51 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:43:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ char	*type_to_string(t_type type)
 		return (printf("plane\n"), "plane\n");
 	if (type == T_CYLINDER)
 		return (printf("cylinder\n"), "cylinder\n");
+	if (type == T_LIGHT)
+		return (printf("light\n"), "light\n");
 	else
 		return (printf("not found:[%d]\n", type), "NOT FOUND\n");
 }

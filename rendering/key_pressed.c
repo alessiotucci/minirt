@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:52:57 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:42:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 // Key codes are defined in your header.
 // For example: ARROW_LEFT, ARROW_RIGHT, ARROW_UP, ARROW_DOWN, PLUS, MINUS
 
-void	select_light(t_selected_obj selected)
+void	select_light(t_selected_obj *selected)
 {
 	printf("%sSELECT light!%s\n", YELLOW, RESET);
-	selected.index = 0;
-	selected.type = T_LIGHT;
+	selected->index = 0;
+	selected->type = T_LIGHT;
 }
 
 //3
@@ -87,6 +87,8 @@ void handle_object_keys(int keycode, t_mlx *data)
 		rotate_object_axis_positive(data);
 	else if (keycode == KEY_E)
 		rotate_object_axis_negative(data);
+	else if (keycode == KEY_L)
+		select_light(&data->selected);
 }
 
 // Main key press handler.
