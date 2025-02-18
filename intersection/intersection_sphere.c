@@ -6,25 +6,23 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 10:04:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/11 16:49:26 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:08:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-// Funzione aggiornata per gestire l'intersezione con una sfera
 t_list_intersect	*intersect_sphere(t_sphere *sphere, t_ray old_ray)
 {
-	t_vector	sphere_to_ray;
-	double	discriminant;
-	double	t[2];
+	t_vector			sphere_to_ray;
+	double				discriminant;
+	double				t[2];
 	t_list_intersect	*list;
-	t_intersection	inter1;
-	t_intersection	inter2;
-	t_ray	ray;
-
-	double	**leaking_matrix;
-	double	**cp;
+	t_intersection		inter1;
+	t_intersection		inter2;
+	t_ray				ray;
+	double				**leaking_matrix;
+	double				**cp;
 
 	list = NULL;
 	cp = copy_matrix(4, 4, sphere->transform);

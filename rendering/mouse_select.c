@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 13:15:33 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:22:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,27 +101,21 @@ t_selected_obj find_original_object_index(t_setting *setting, void *original_add
 
 int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)
 {
-	printf("CAST_MOUSE_RAY!\n");
-	t_ray	ray;
+	t_ray				ray;
 	t_list_intersect	*all_intersections;
-	t_intersection	*hit;
+	t_intersection		*hit;
 
-	(void)all_intersections;
-	(void)hit;
-	(void)mlx;
+	printf("CAST_MOUSE_RAY!\n");
 	ray = create_ray_from_camera2(mlx, x, y);
 	all_intersections = intersect_world(setting, ray);
 	hit = hit_v2(all_intersections);
 	if (hit != NULL)
 	{
-		// Store the selected object in your world/setting.
-		//mlx->selected = find_original_object(setting, hit->obj.original_addr, hit->obj.type);
 		mlx->selected = find_original_object_index(setting, hit->obj.original_addr, hit->obj.type);
 		printf("Selected object: %p\n", hit->obj.original_addr);
 	}
 	else
 	{
-		//mlx->selected_object = NULL;
 		reset_selected_object(&mlx->selected);
 		printf("Missed ray :(\n");
 	}

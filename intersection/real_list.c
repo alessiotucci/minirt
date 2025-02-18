@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 10:23:58 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/04 15:21:45 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:04:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list_intersect	*create_new_node(t_intersection *intersection)
 	return (new_node);
 }
 
-/*void	add_intersection_l(t_list_intersect **head, t_intersection *intersection) //ORIGINALE
+void	add_intersection_l(t_list_intersect **head, t_intersection *intersection)
 {
 	t_list_intersect	*new_node;
 	t_list_intersect	*current;
@@ -37,53 +37,23 @@ t_list_intersect	*create_new_node(t_intersection *intersection)
 		return (error_msg("malloc failed."));
 	if (!*head)
 	{
-		//printf("The list is %sempty%s, new node the head!\n", GREEN, RESET);
 		*head = new_node;
 		return ;
 	}
 	current = *head;
 	while (current->next)
+	{
+		t_list_intersect *temp = current;
 		current = current->next;
-	current->next = new_node;
-}*/
+		free_intersection(temp->intersection);
+		free(temp->intersection); 
+		free(temp);
+	}
 
-/*
-Funzione aggiornata per aggiungere un nodo a una lista con gestione delle eccezioni
-I nodi precedenti vengono liberati scorrendo la lista, 
-Questo approccio al momento funziona qualcosina toglie ma niente di grosso, ho il dubbio se potra non andare bene quando dovremmo modificare gli oggetti.
-*/
-
-void add_intersection_l(t_list_intersect **head, t_intersection *intersection)
-{
-    t_list_intersect *new_node;
-    t_list_intersect *current;
-
-    new_node = create_new_node(intersection);
-    if (!new_node)
-        return (error_msg("malloc failed."));
-
-    if (!*head)
-    {
-        *head = new_node; // NUOVA RIGA: qui assegniamo il nuovo nodo come testa della lista perché la lista è vuota
-        return;
-    }
-
-    current = *head;
-    while (current->next)
-    {
-        t_list_intersect *temp = current; // NUOVA RIGA: teniamo traccia del nodo precedente
-        current = current->next;
-
-        free_intersection(temp->intersection); // NUOVA RIGA: liberiamo la memoria del nodo precedente
-        free(temp->intersection); 
-        free(temp);
-    }
-
-    current->next = new_node; 
+	current->next = new_node; 
 }
 
-/*
-void	free_list(t_list_intersect **head) ORIGINALE
+void	free_list(t_list_intersect **head)
 {
 	t_list_intersect	*current;
 	t_list_intersect	*next_node;
@@ -92,7 +62,6 @@ void	free_list(t_list_intersect **head) ORIGINALE
 	while (current)
 	{
 		next_node = current->next;
-		//TODO:free(current->intersection);Free the intersection if it was dynamically allocated
 		if (current->intersection)
 		{
 			free_intersection(current->intersection);
@@ -102,30 +71,6 @@ void	free_list(t_list_intersect **head) ORIGINALE
 		current = next_node;
 	}
 	*head = NULL;
-}*/
-
-// Funzione aggiornata per liberare la memoria della lista
-void free_list(t_list_intersect **head)
-{
-    t_list_intersect *current;
-    t_list_intersect *next_node;
-
-    current = *head;
-    while (current)
-    {
-        next_node = current->next;
-
-        if (current->intersection)
-        {
-            free_intersection(current->intersection); // NUOVA RIGA: qui liberiamo le risorse interne dell'intersezione
-            free(current->intersection); // NUOVA RIGA: qui liberiamo l'intersezione stessa
-        }
-
-        free(current); // NUOVA RIGA: qui liberiamo il nodo della lista
-        current = next_node;
-    }
-
-    *head = NULL; // NUOVA RIGA: qui resettiamo il puntatore della lista per evitare riferimenti dangling
 }
 
 void	print_list(t_list_intersect **head, int debug)
@@ -139,18 +84,15 @@ void	print_list(t_list_intersect **head, int debug)
 	while (current)
 	{
 		next_node = current->next;
-		//TODO; HERE YOU CAN ACCESS
-		//	current->intersection;
 		if (debug)
 			print_intersection(*current->intersection);
-		//	current;
 		current = next_node;
 		count++;
 	}
 	if (count > 0)
 		printf("List count:[%d]\n", count);
 	else
-		return;//printf("Empty :(\t");
+		return ;
 }
 
 void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)
@@ -160,14 +102,13 @@ void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)
 	if (!*list1)
 	{
 		*list1 = list2;
-		return;
+		return ;
 	}
 	current = *list1;
 	while (current->next)
 		current = current->next;
 	current->next = list2;
 }
-
 
 /*
 int	main()
@@ -214,4 +155,3 @@ int	main()
 	return (0);
 }
 */
-

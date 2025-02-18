@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:42:04 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/27 11:47:52 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:00:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@ t_vector	normalization(t_vector vector)
 {
 	t_vector	new_vector;
 
-	if (magnitude(vector) == 0) //TODO: check this comparison
-		{
-			ft_printf("%smagnitude is zero!%s\n", RED, RESET);
-			print_vector(vector);
-			//return(vector);
-			exit(-1);
-		}
+	if (magnitude(vector) == 0)
+	{
+		ft_printf("%smagnitude is zero!%s\n", RED, RESET);
+		print_vector(vector);
+		exit(-1);
+	}
 	new_vector.x = vector.x / magnitude(vector);
 	new_vector.y = vector.y / magnitude(vector);
 	new_vector.z = vector.z / magnitude(vector);
 	new_vector.w = vector.w / magnitude(vector);
 	return (new_vector);
-
 }
+
 // 3. Magnitude
 double	magnitude(t_vector v)
 {
 	return (sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w)));
 }
+
 // 4. Dot Product
 double	dot(t_vector a, t_vector b)
 {

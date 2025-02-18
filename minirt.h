@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 13:48:25 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:31:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -645,7 +645,7 @@ t_color	my_shade_hit(t_setting *world, t_computations comps, t_intersection *c_i
 /*************************/
 /*Experimenting with mlx */
 /*************************/
-int	key_pressed_gpt(int keycode, void *param);
+int	my_key_pressed(int keycode, void *param);
 void	clean_close(t_mlx *project);
 void	camera_image_plane(t_mlx *mlx);
 int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *world);

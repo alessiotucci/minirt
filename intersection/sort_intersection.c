@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:14:44 by atucci            #+#    #+#             */
-/*   Updated: 2024/09/29 15:17:58 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:05:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)
 {
+	t_list_intersect	*current;
+
 	if (*sorted == NULL || (*sorted)->intersection->t > new->intersection->t)
 	{
 		new->next = *sorted;
@@ -21,10 +23,10 @@ void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)
 	}
 	else
 	{
-		t_list_intersect *current = *sorted;
-		while (current->next != NULL && current->next->intersection->t < new->intersection->t)
+		current = *sorted;
+		while (current->next != NULL
+			&& current->next->intersection->t < new->intersection->t)
 			current = current->next;
-
 		new->next = current->next;
 		current->next = new;
 	}
@@ -46,4 +48,3 @@ void	sort_intersection_list(t_list_intersect **head)
 	}
 	*head = sorted_list;
 }
-

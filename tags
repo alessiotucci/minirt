@@ -232,7 +232,7 @@ YELLOW	minirt.h	/^# define YELLOW /;"	d
 add	vector/vector_operations.c	/^t_vector	add(t_vector v1, t_vector v2)$/;"	f	typeref:typename:t_vector
 add_colors	colors/operation_color.c	/^t_color	add_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color
 add_cylinder_to_array	add_elem_array.c	/^void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set)$/;"	f	typeref:typename:void
-add_intersection_l	intersection/real_list.c	/^void add_intersection_l(t_list_intersect **head, t_intersection *intersection)$/;"	f	typeref:typename:void
+add_intersection_l	intersection/real_list.c	/^void	add_intersection_l(t_list_intersect **head, t_intersection *intersection)$/;"	f	typeref:typename:void
 add_light_to_array	add_elem_array.c	/^void	add_light_to_array(t_light *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_plane_to_array	add_elem_array.c	/^void	add_plane_to_array(t_plane *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_sphere_to_array	add_elem_array.c	/^void	add_sphere_to_array(t_sphere *to_add, t_setting *set)$/;"	f	typeref:typename:void
@@ -387,7 +387,7 @@ free_cylinder_array	freeing.c	/^void	free_cylinder_array(t_cylinder **cylinders,
 free_heap_matrix	matrix/matrix_utils.c	/^void	free_heap_matrix(double **matrix, int rows)$/;"	f	typeref:typename:void
 free_intersection	intersection/intersection.c	/^void	free_intersection(t_intersection *intersect)$/;"	f	typeref:typename:void
 free_lights_array	freeing.c	/^void	free_lights_array(t_light **lights, int num)$/;"	f	typeref:typename:void
-free_list	intersection/real_list.c	/^void free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
+free_list	intersection/real_list.c	/^void	free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 free_plane_array	freeing.c	/^void	free_plane_array(t_plane **planes, int num)$/;"	f	typeref:typename:void
 free_single_cylinder	freeing.c	/^void	free_single_cylinder(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 free_single_plane	freeing.c	/^void	free_single_plane(t_plane *plane)$/;"	f	typeref:typename:void
@@ -518,7 +518,6 @@ is_shadowed	shadows/is_shadowed.c	/^int	is_shadowed(t_setting *world, t_vector p
 key_hook	mlx/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
 key_param	mlx/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list	typeref:typename:void *
 key_pressed	manage_mlx.c	/^static int	key_pressed(int keycode, void *param)$/;"	f	typeref:typename:int	file:
-key_pressed_gpt	rendering/key_pressed.c	/^int key_pressed_gpt(int keycode, void *param)$/;"	f	typeref:typename:int
 key_win1	mlx/test/main.c	/^int	key_win1(int key,void *p)$/;"	f	typeref:typename:int
 key_win2	mlx/test/main.c	/^int	key_win2(int key,void *p)$/;"	f	typeref:typename:int
 key_win3	mlx/test/main.c	/^int	key_win3(int key,void *p)$/;"	f	typeref:typename:int
@@ -647,6 +646,7 @@ multiply_colors	colors/operation_color.c	/^t_color	multiply_colors(t_color c1, t
 multiply_matrix	matrix/operations_matrix.c	/^double	**multiply_matrix(int cols_a, int rows_b, double **a, double **b)$/;"	f	typeref:typename:double **
 my_atof	extra/my_atof.c	/^double	my_atof(const char *str)$/;"	f	typeref:typename:double
 my_clamp	colors/clamp.c	/^double	my_clamp(double value, double min_val, double max_val)$/;"	f	typeref:typename:double
+my_key_pressed	rendering/key_pressed.c	/^int my_key_pressed(int keycode, void *param)$/;"	f	typeref:typename:int
 my_mlx_pixel_put	manage_mlx.c	/^void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)$/;"	f	typeref:typename:void
 my_new_image	manage_mlx.c	/^void	my_new_image(t_mlx *data)$/;"	f	typeref:typename:void
 my_strcmp	extra/utils.c	/^int	my_strcmp(const char *str1, const char *str2)$/;"	f	typeref:typename:int
