@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 17:11:49 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 19:12:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,32 @@ t_vector	default_cylinder_normal(t_cylinder *cylinder, t_vector point)
 	}
 	return (normalization(create_vector(local.x, 0, local.z)));
 }
+
+/*
+t_vector compute_cylinder_normal(t_cylinder *cy, t_vector point)
+{
+    // Compute vector from cylinder center to the point.
+    t_vector v = subtract(point, cy->center);
+
+    // Projection of v along the cylinder's axis.
+    double dist = dot(v, cy->axis);
+
+    // Determine the half height of the cylinder.
+    double half_height = cy->height / 2.0;
+
+    // If the cylinder is closed and the point is on a cap, return the cap normal.
+    if (cy->closed) {
+         if (fabs(dist - half_height) < EPSILON)
+             return cy->axis;  // Top cap
+         else if (fabs(dist + half_height) < EPSILON)
+             return multiplication(cy->axis, -1);  // Bottom cap
+    }
+
+    // Otherwise, compute the lateral surface normal.
+    t_vector lateral = subtract(v, multiplication(cy->axis, dist));
+    return normalization(lateral);
+}
+*/
 
 /*please rename this function */
 t_vector v2normal_at(t_object obj, t_vector point, t_ray r)
