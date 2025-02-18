@@ -465,6 +465,9 @@ get_selection_status	manage_mlx.c	/^static char	*get_selection_status(t_selected
 get_sphere_to_ray	raycasting/intersection_ray.c	/^t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)$/;"	f	typeref:typename:t_vector
 get_timestamp	new_script_valgrind.pl	/^sub get_timestamp$/;"	s
 get_xlib_include_path	mlx/configure	/^get_xlib_include_path(){$/;"	f
+handle_camera_keys	rendering/key_pressed.c	/^void	handle_camera_keys(int keycode, t_mlx *data)$/;"	f	typeref:typename:void
+handle_object_keys	rendering/key_pressed.c	/^void handle_object_keys(int keycode, t_mlx *data)$/;"	f	typeref:typename:void
+handle_plus_minus	rendering/key_pressed.c	/^void	handle_plus_minus(int keycode, t_mlx *data)$/;"	f	typeref:typename:void
 handle_x_rotation	rendering/rotation_handlers.c	/^void	handle_x_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
 handle_y_rotation	rendering/rotation_handlers.c	/^void	handle_y_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
 handle_z_rotation	rendering/rotation_handlers.c	/^void	handle_z_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
@@ -690,7 +693,7 @@ position	minirt.h	/^	t_vector	position;$/;"	m	struct:s_light	typeref:typename:t_
 position_ray	raycasting/create_ray.c	/^t_vector	position_ray(t_ray ray, double t)$/;"	f	typeref:typename:t_vector
 prepare_computations	computation.c	/^t_computations	prepare_computations(t_intersection i, t_ray r)$/;"	f	typeref:typename:t_computations
 print_ambient_light	extra/print_debug.c	/^static void	print_ambient_light(t_amb_light *amb_light)$/;"	f	typeref:typename:void	file:
-print_camera	extra/print_debug.c	/^static void	print_camera(t_camera *camera)$/;"	f	typeref:typename:void	file:
+print_camera	extra/print_debug.c	/^void	print_camera(t_camera *camera)$/;"	f	typeref:typename:void
 print_color	extra/print_debug.c	/^void	print_color(t_color color)$/;"	f	typeref:typename:void
 print_cylinders	extra/print_debug.c	/^static void	print_cylinders(int n_cylinders, t_cylinder **array)$/;"	f	typeref:typename:void	file:
 print_header	new_script_valgrind.pl	/^sub print_header$/;"	s

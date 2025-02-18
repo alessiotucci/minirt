@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:30:46 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:52:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,85 +30,85 @@ void	clean_close(t_mlx *project)
 	free_struct(project->setting);
 	exit(0);
 }
-// 44 46
-int my_key_pressed(int keycode, void *param)
-{
-	 t_mlx *data = (t_mlx *)param;
 
-	printf("Keycode; [%d]\n", keycode);
-	if (keycode == ARROW_LEFT)
+void	handle_plus_minus(int keycode, t_mlx *data)
+{
+	if (keycode == MINUS)
 	{
-		printf("\n\nMove camera left (modify the x component of the viewpoint)\n");
-		data->setting->camera->viewpoint.x -= 2;
-	}
-	else if (keycode == ARROW_RIGHT)
-	{
-		data->setting->camera->viewpoint.x += 2;
-	}
-	else if (keycode == ARROW_UP)
-	{
-		printf("\n\nMove camera up (modify y component)\n");
-		data->setting->camera->viewpoint.y += 2;
-	}
-	else if (keycode == ARROW_DOWN)
-	{
-		data->setting->camera->viewpoint.y -= 2;
-	}
-	else if (keycode == MINUS)
-	{
-		printf("\n\nZoom in: decrease the FOV to narrow the view\n");
+		printf("Zoom in: decrease the FOV to narrow the view\n");
 		data->setting->camera->fov -= 5;
 		if (data->setting->camera->fov <= 5)
-				data->setting->camera->fov = 15;
+			data->setting->camera->fov = 15;
 	}
 	else if (keycode == PLUS)
 	{
-		printf("\n\nZoom out: increase the FOV to widen the view\n");
+		printf("Zoom out: increase the FOV to widen the view\n");
 		data->setting->camera->fov += 5;
 		if (data->setting->camera->fov >= 140)
-				data->setting->camera->fov = 135;
+			data->setting->camera->fov = 135;
 	}
+}
+// Handles camera movement, zoom, and tilting.
+void	handle_camera_keys(int keycode, t_mlx *data)
+{
+	if (keycode == ARROW_LEFT)
+		data->setting->camera->viewpoint.x -= 2;
+	else if (keycode == ARROW_RIGHT)
+		data->setting->camera->viewpoint.x += 2;
+	else if (keycode == ARROW_UP)
+		data->setting->camera->viewpoint.y += 2;
+	else if (keycode == ARROW_DOWN)
+		data->setting->camera->viewpoint.y -= 2;
+	else if (keycode == PLUS || keycode == MINUS)
+		handle_plus_minus(keycode, data);
 	else if (keycode == 44)
 		data->setting->camera->orientation = rotation_y(data->setting->camera->orientation, M_PI/36);
 	else if (keycode == 46)
 		data->setting->camera->orientation = rotation_y(data->setting->camera->orientation, -M_PI/36);
-	else if (keycode == KEY_L)
-		select_light(data->selected);
-	else if (is_selected_null(&data->selected) == 0)
-		{
-			printf("\n\nobject is selected key code to be waited\n");
-			if (keycode == KEY_X)
-			{
-				printf("\n\npressed: X ++increasing radius or diameter (not working with plane)\n");
-				increase_object_diameter(data);
-			}
-			else if (keycode == KEY_Y)
-			{
-				printf("\n\npressed: Y --decreasing radius or diameter (not working with plane)\n");
-				decrease_object_diameter(data);
-			}
-			else if (keycode == KEY_Z)
-			{
-				printf("\n\npressed: Z ++increasing height of Cylinder (not compatible with other obj)\n");
-				increase_cylinder_height(data);
-			}
-			else if (keycode == KEY_Q)
-			{
-				printf("\n\npressed: Q ++increasing height of Cylinder (not compatible with other obj)\n");
-					decrease_cylinder_height(data);
-			}
-			else if (keycode == KEY_W)
-			{
-				printf("\n\npressed: W inclining the axis (plane or cylinder)\n");
-					rotate_object_axis_positive(data);
-			}
-			else if (keycode == KEY_E)
-			{
-				printf("\n\npressed: E inclining the axis (plane or cylinder)\n");
-					rotate_object_axis_negative(data);
-			}
-		}
+	else if (keycode == 5)
+		data->setting->camera->orientation = rotation_x(data->setting->camera->orientation, M_PI/36);
+	else if (keycode == 4)
+		data->setting->camera->orientation = rotation_x(data->setting->camera->orientation, -M_PI/36);
+	print_camera(data->setting->camera);
+}
+
+// Handles object-specific transformation keys.
+void handle_object_keys(int keycode, t_mlx *data)
+{
+	if (keycode == KEY_X)
+		increase_object_diameter(data);
+	else if (keycode == KEY_Y)
+		decrease_object_diameter(data);
+	else if (keycode == KEY_Z)
+		increase_cylinder_height(data);
+	else if (keycode == KEY_Q)
+		decrease_cylinder_height(data);
+	else if (keycode == KEY_W)
+		rotate_object_axis_positive(data);
+	else if (keycode == KEY_E)
+		rotate_object_axis_negative(data);
+}
+
+// Main key press handler.
+int my_key_pressed(int keycode, void *param)
+{
+	t_mlx *data;
+
+	data = (t_mlx *)param;
+	printf("Keycode: [%d]\n", keycode);
+	if (keycode == ARROW_LEFT || keycode == ARROW_RIGHT ||
+		keycode == ARROW_UP || keycode == ARROW_DOWN ||
+		keycode == MINUS || keycode == PLUS ||
+		keycode == 44 || keycode == 46)
+	{
+		handle_camera_keys(keycode, data);
+	}
+	else if (!is_selected_null(&data->selected))
+		handle_object_keys(keycode, data);
+	else
+		printf("No object selected; camera remains unchanged.\n");
 	re_start_image(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img_pointer, 0, 0);
 	return (1);
 }
 

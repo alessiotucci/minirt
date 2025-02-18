@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:31:05 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:46:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,10 +150,8 @@ int	mouse_click(int button, int x, int y, t_mlx *mlx)
 			re_start_image(mlx);
 		}
 	}
-	else if (button == 5)
-		mlx->setting->camera->orientation = rotation_x(mlx->setting->camera->orientation, M_PI/36);
-	else if (button == 4)
-		mlx->setting->camera->orientation = rotation_x(mlx->setting->camera->orientation, -M_PI/36);
+	else if ((button == 5) || (button == 4))
+		handle_camera_keys(button, mlx);
 	re_start_image(mlx);
 	return (0);
 }

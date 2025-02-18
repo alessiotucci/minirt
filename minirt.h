@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:31:21 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:52:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -688,4 +688,7 @@ t_vector	get_selected_object_position(t_mlx *mlx);
 void perform_translation_from_mouse(t_mlx *mlx, int x, int y);
 void	translate_object(t_mlx *data, t_vector delta);
 t_vector	calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_y, t_vector current_position);
+
+void	handle_camera_keys(int keycode, t_mlx *data);
+void	print_camera(t_camera *camera);
 #endif

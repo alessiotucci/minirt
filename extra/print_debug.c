@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 17:22:18 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 16:54:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,13 +135,16 @@ static void	print_lights(int n_lights, t_light **array)
 	}
 }
 
-static void	print_camera(t_camera *camera)
+void	print_camera(t_camera *camera)
 {
+	printf("++++++++++++Printing out the cammera stuff++++++++++++++++++++\n");
 	printf("ViewPoint: ");
 	print_vector(camera->viewpoint);
 	printf("Orentation: ");
 	print_vector(camera->orientation);
 	printf("FOV:[%d]\n", camera->fov);
+	printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+	printf("ViewPoint: ");
 }
 static void	print_ambient_light(t_amb_light *amb_light)
 {
