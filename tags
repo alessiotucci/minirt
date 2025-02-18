@@ -102,6 +102,7 @@ INCLUDE	mlx/man/man1/mlx.1	/^.SH INCLUDE FILE$/;"	s	title:MiniLibX
 INCLUDE	mlx/man/man3/mlx.3	/^.SH INCLUDE FILE$/;"	s	title:MiniLibX
 INCLUDES	Makefile	/^INCLUDES = -I\/usr\/include -I$(MLX_DIR)$/;"	m
 KEY_E	minirt.h	/^# define KEY_E /;"	d
+KEY_L	minirt.h	/^# define KEY_L /;"	d
 KEY_Q	minirt.h	/^# define KEY_Q /;"	d
 KEY_R	minirt.h	/^# define KEY_R /;"	d
 KEY_W	minirt.h	/^# define KEY_W /;"	d
@@ -507,7 +508,7 @@ inversing_matrix_void	matrix/void.c	/^void	inversing_matrix_void(int size, doubl
 is_a_point	vector/utils_vectors.c	/^int	is_a_point(t_vector vect)$/;"	f	typeref:typename:int
 is_a_vector	vector/utils_vectors.c	/^int	is_a_vector(t_vector vect)$/;"	f	typeref:typename:int
 is_matrix_invertible	matrix/inversing.c	/^int	is_matrix_invertible(int s, double **matrix)$/;"	f	typeref:typename:int
-is_selected_null	selected_obj.c	/^int	is_selected_null(t_selected_obj obj)$/;"	f	typeref:typename:int
+is_selected_null	selected_obj.c	/^int	is_selected_null(t_selected_obj *obj)$/;"	f	typeref:typename:int
 is_shadowed	shadows/is_shadowed.c	/^int	is_shadowed(t_setting *world, t_vector point, t_light light)$/;"	f	typeref:typename:int
 key_hook	mlx/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
 key_param	mlx/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list	typeref:typename:void *
@@ -723,7 +724,7 @@ reflect	normal.c	/^t_vector	reflect(t_vector in, t_vector normal)$/;"	f	typeref:
 remove_new_line	extra/utils.c	/^void	remove_new_line(char **matrix, char replacement, char to_replace)$/;"	f	typeref:typename:void
 replace_me	parsing/parsing_map.c	/^void	replace_me(char *str, char replacement, char to_replace)$/;"	f	typeref:typename:void
 report_leaks	new_script_valgrind.pl	/^sub report_leaks$/;"	s
-reset_selected_object	selected_obj.c	/^void	reset_selected_object(t_selected_obj selected)$/;"	f	typeref:typename:void
+reset_selected_object	selected_obj.c	/^void	reset_selected_object(t_selected_obj *selected)$/;"	f	typeref:typename:void
 root	mlx/mlx_int.h	/^	Window		root;$/;"	m	struct:s_xvar	typeref:typename:Window
 rotate_object_axis_negative	rendering/rotation_handlers.c	/^void rotate_object_axis_negative(t_mlx *data)$/;"	f	typeref:typename:void
 rotate_object_axis_positive	rendering/rotation_handlers.c	/^void rotate_object_axis_positive(t_mlx *data)$/;"	f	typeref:typename:void
@@ -760,6 +761,7 @@ scaling	transformations/scaling.c	/^t_vector	scaling(t_vector move, t_vector ori
 scaling_inverse	transformations/scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 screen	mlx/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar	typeref:typename:int
 search_index	rendering/mouse_select.c	/^static int	search_index(void **array, int count, void *target)$/;"	f	typeref:typename:int	file:
+select_light	rendering/key_pressed.c	/^void	select_light(t_selected_obj selected)$/;"	f	typeref:typename:void
 select_map	new_script_valgrind.pl	/^sub select_map$/;"	s
 selected	minirt.h	/^	t_selected_obj	selected;  \/\/ Now we store the index and type of the selected object.$/;"	m	struct:s_mlx	typeref:typename:t_selected_obj
 set_cylinder_cap	shapes/cylinder.c	/^void	set_cylinder_cap(t_cylinder *cylinder)$/;"	f	typeref:typename:void
@@ -833,6 +835,7 @@ transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_cylinder	typeref:typen
 transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_plane	typeref:typename:double **
 transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_sphere	typeref:typename:double **
 transform_ray	raycasting/transformation_ray.c	/^t_ray	transform_ray(t_ray original, double **matrix)$/;"	f	typeref:typename:t_ray
+translate_object	rendering/translation_handlers.c	/^void	translate_object(t_mlx *data, t_vector delta)$/;"	f	typeref:typename:void
 translations	transformations/translations.c	/^t_vector	translations(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 transposing	matrix/inversing.c	/^double	**transposing(int rows, int cols, double **matrix)$/;"	f	typeref:typename:double **
 transposing_void	matrix/void.c	/^void	transposing_void(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void

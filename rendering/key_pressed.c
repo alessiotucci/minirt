@@ -6,13 +6,20 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/17 17:50:33 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/17 19:39:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 // Key codes are defined in your header.
 // For example: ARROW_LEFT, ARROW_RIGHT, ARROW_UP, ARROW_DOWN, PLUS, MINUS
+
+void	select_light(t_selected_obj selected)
+{
+	printf("%sSELECT light!%s\n", YELLOW, RESET);
+	selected.index = 0;
+	selected.type = T_LIGHT;
+}
 
 //3
 /* This function perfom a clean close and then exit*/
@@ -66,7 +73,9 @@ int key_pressed_gpt(int keycode, void *param)
 		data->setting->camera->orientation = rotation_y(data->setting->camera->orientation, M_PI/36);
 	else if (keycode == 46)
 		data->setting->camera->orientation = rotation_y(data->setting->camera->orientation, -M_PI/36);
-	else if (is_selected_null(data->selected) == 0) // created an helper function to check if null
+	else if (keycode == KEY_L)
+		select_light(data->selected);
+	else if (is_selected_null(&data->selected) == 0) // created an helper function to check if null
 		{
 			printf("object is selected key code to be waited\n");
 			if (keycode == KEY_X)

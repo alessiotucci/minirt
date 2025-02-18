@@ -30,3 +30,5 @@ re_start_image	key_pressed.c	/^void	re_start_image(t_mlx *data)$/;"	f	typeref:ty
 rotate_object_axis_negative	rotation_handlers.c	/^void rotate_object_axis_negative(t_mlx *data)$/;"	f	typeref:typename:void
 rotate_object_axis_positive	rotation_handlers.c	/^void rotate_object_axis_positive(t_mlx *data)$/;"	f	typeref:typename:void
 search_index	mouse_select.c	/^static int	search_index(void **array, int count, void *target)$/;"	f	typeref:typename:int	file:
+select_light	key_pressed.c	/^void	select_light(t_selected_obj selected)$/;"	f	typeref:typename:void
+translate_object	translation_handlers.c	/^void	translate_object(t_mlx *data, t_vector delta)$/;"	f	typeref:typename:void

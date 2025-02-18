@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/14 18:39:09 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/17 19:43:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static char	*camera_info_str(t_camera *cam)
 /* ---------------------- SELECTION STATUS FORMATTING ---------------------- */
 static char	*get_selection_status(t_selected_obj selected)
 {
-	if (is_selected_null(selected))
+	if (is_selected_null(&selected))
 		return (ft_strdup("Selected obj: NULL"));
 
 	const char	*type_str = type_to_string(selected.type);
@@ -144,7 +144,13 @@ int	mouse_click(int button, int x, int y, t_mlx *mlx)
 	if (button == 1)
 		cast_mouse_ray(x, y, mlx, mlx->setting);
 	else if (button == 3)
-		printf("Mouse: left click not yet implemented\n");
+	{
+		printf("Mouse: left click [%d][%d]\n", x, y);
+		if (is_selected_null(&mlx->selected))
+			printf("you haven´t selected an object, cannot translate it\n");
+		else
+			printf("I am trying translate it to the new point\n");
+	}
 	else if (button == 5)
 	{
 		//printf("Mouse: scroll down not yet implemented\n");

@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2025/02/13 14:53:48 by atucci           ###   ########.fr        #
+#    Updated: 2025/02/17 20:24:07 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SOURCE = ./main.c \
 		 ./rendering/key_pressed.c \
 		 ./rendering/mouse_select.c \
 		 ./rendering/rotation_handlers.c \
+		 ./rendering/translation_handlers.c \
 		 ./selected_obj.c \
 
 

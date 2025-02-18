@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/17 17:49:56 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/17 19:38:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define KEY_Q 113
 # define KEY_W 119
 # define KEY_E 101
+# define KEY_L 108
 
 //TODO: CHECK UBUNTU CODES
 # define W 119
@@ -304,7 +305,7 @@ typedef struct s_mlx
 	t_setting 	*setting;
 }		t_mlx;
 
-void		reset_selected_object(t_selected_obj selected);
+void		reset_selected_object(t_selected_obj *selected);
 int			parsing_map(char *map, t_setting *set);
 void		create_setting(char **line, t_setting *set);
 void		count_elements(char **details, t_setting *set);
@@ -659,7 +660,7 @@ char	*type_to_string(t_type type);
 /*********************/
 /*Selected obj utils */
 /*********************/
-int	is_selected_null(t_selected_obj obj);
+int	is_selected_null(t_selected_obj *obj);
 
 
 void	increase_object_diameter(t_mlx *data);

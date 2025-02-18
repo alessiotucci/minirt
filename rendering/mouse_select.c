@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/13 16:14:54 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/17 19:40:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)
 	else
 	{
 		//mlx->selected_object = NULL;
-		reset_selected_object(mlx->selected);
+		reset_selected_object(&mlx->selected);
 		printf("Missed ray :(\n");
 	}
 	free_list(&all_intersections);
