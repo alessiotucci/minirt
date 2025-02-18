@@ -6,12 +6,13 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:45:15 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:54:49 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:21:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 #include <stdio.h>//TODO: printf is forbidden
+
 /* Helper function, I will delete this later on */
 void	struct_status(t_setting *set)
 {
@@ -20,7 +21,6 @@ void	struct_status(t_setting *set)
 	printf("struct has [%d] cylinders  |\n", set->num_cylinders);
 	printf("struct has [%d] spheres \t  |\n", set->num_spheres);
 	printf("struct has [%d] lights\t  |\n", set->num_lights);
-	//printf("struct has [%d] cones bonus|\n", set->num_cones);
 	printf("---------------------------\n\n");
 }
 
@@ -122,6 +122,7 @@ void	print_single_light(t_light *one_light)
 		printf("Brightness of the light: %f \n", one_light->brightness);
 
 }
+
 static void	print_lights(int n_lights, t_light **array)
 {
 	int	i;
@@ -146,6 +147,7 @@ void	print_camera(t_camera *camera)
 	printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 	printf("ViewPoint: ");
 }
+
 static void	print_ambient_light(t_amb_light *amb_light)
 {
 	printf("Ratio of ambient lights: %f\n", amb_light->ratio);
@@ -153,6 +155,7 @@ static void	print_ambient_light(t_amb_light *amb_light)
 	print_color(amb_light->color);
 
 }
+
 void	struct_full_status(t_setting *set)
 {
 	printf("\n\n------STRUCT %sFULL %sSTATUS -------\n", PURPLE, RESET);

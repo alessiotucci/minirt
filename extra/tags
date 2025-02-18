@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/nfs/homes/atucci/Desktop/mioGithubMiniRT/extra/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+check_null_array	utils.c	/^int	check_null_array(char **array)$/;"	f	typeref:typename:int
+comparing_double	comparing.c	/^int	comparing_double(double a, double b)$/;"	f	typeref:typename:int
+comparing_vector	comparing.c	/^int	comparing_vector(t_vector a, t_vector b)$/;"	f	typeref:typename:int
+free_string_array	utils.c	/^int	free_string_array(char **array)$/;"	f	typeref:typename:int
+lenght_string_array	utils.c	/^int	lenght_string_array(char **array)$/;"	f	typeref:typename:int
+my_atof	my_atof.c	/^double	my_atof(const char *str)$/;"	f	typeref:typename:double
+my_strcmp	utils.c	/^int	my_strcmp(const char *str1, const char *str2)$/;"	f	typeref:typename:int
+print_ambient_light	print_debug.c	/^static void	print_ambient_light(t_amb_light *amb_light)$/;"	f	typeref:typename:void	file:
+print_camera	print_debug.c	/^void	print_camera(t_camera *camera)$/;"	f	typeref:typename:void
+print_color	print_debug.c	/^void	print_color(t_color color)$/;"	f	typeref:typename:void
+print_cylinders	print_debug.c	/^static void	print_cylinders(int n_cylinders, t_cylinder **array)$/;"	f	typeref:typename:void	file:
+print_lights	print_debug.c	/^static void	print_lights(int n_lights, t_light **array)$/;"	f	typeref:typename:void	file:
+print_planes	print_debug.c	/^static void	print_planes(int n_planes, t_plane **array)$/;"	f	typeref:typename:void	file:
+print_single_cylinder	print_debug.c	/^void	print_single_cylinder(t_cylinder *one_cylinder)$/;"	f	typeref:typename:void
+print_single_light	print_debug.c	/^void	print_single_light(t_light *one_light)$/;"	f	typeref:typename:void
+print_single_plane	print_debug.c	/^void	print_single_plane(t_plane *one_plane)$/;"	f	typeref:typename:void
+print_single_sphere	print_debug.c	/^void	print_single_sphere(t_sphere *one_sphere)$/;"	f	typeref:typename:void
+print_spheres	print_debug.c	/^static void	print_spheres(int n_spheres, t_sphere **array)$/;"	f	typeref:typename:void	file:
+print_string_array	utils.c	/^void	print_string_array(char **array)$/;"	f	typeref:typename:void
+print_vector	print_debug.c	/^void	print_vector(t_vector vector)$/;"	f	typeref:typename:void
+process_fractional_part	my_atof.c	/^static double	process_fractional_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
+process_integer_part	my_atof.c	/^static double	process_integer_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
+remove_new_line	utils.c	/^void	remove_new_line(char **matrix, char replacement, char to_replace)$/;"	f	typeref:typename:void
+struct_full_status	print_debug.c	/^void	struct_full_status(t_setting *set)$/;"	f	typeref:typename:void
+struct_status	print_debug.c	/^void	struct_status(t_setting *set)$/;"	f	typeref:typename:void

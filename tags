@@ -335,10 +335,10 @@ decrease_cylinder_height	rendering/rotation_handlers.c	/^void decrease_cylinder_
 decrease_object_diameter	rendering/rotation_handlers.c	/^void decrease_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
 decrgb	mlx/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar	typeref:typename:int[6]
 deep_copy_cylinder	intersection/intersection.c	/^t_cylinder	*deep_copy_cylinder(t_cylinder *src)$/;"	f	typeref:typename:t_cylinder *
-deep_copy_plane	intersection/intersection.c	/^t_plane *deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
-deep_copy_sphere	intersection/intersection.c	/^t_sphere *deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
+deep_copy_plane	intersection/intersection.c	/^t_plane	*deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
+deep_copy_sphere	intersection/intersection.c	/^t_sphere	*deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
 default_color	parsing/parsing_numbers.c	/^t_color	default_color(void)$/;"	f	typeref:typename:t_color
-default_cylinder_normal	normal.c	/^t_vector default_cylinder_normal(t_cylinder *cylinder, t_vector point)$/;"	f	typeref:typename:t_vector
+default_cylinder_normal	normal.c	/^t_vector	default_cylinder_normal(t_cylinder *cylinder, t_vector point)$/;"	f	typeref:typename:t_vector
 default_intersection	intersection/intersection_cylinder.c	/^void	default_intersection(t_intersection *i1, t_intersection *i2)$/;"	f	typeref:typename:void
 default_vector	parsing/parsing_numbers.c	/^t_vector	default_vector(void)$/;"	f	typeref:typename:t_vector
 depth	mlx/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar	typeref:typename:int
@@ -457,7 +457,7 @@ get_leak_info	new_script_valgrind.pl	/^sub get_leak_info$/;"	s
 get_length	libft/get_next_line.c	/^static ssize_t	get_length(char *buf, int kind_of_calculation)$/;"	f	typeref:typename:ssize_t	file:
 get_material	computation.c	/^static t_material get_material(t_object obj)$/;"	f	typeref:typename:t_material	file:
 get_next_line	libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
-get_plane_normal	normal.c	/^static t_vector get_plane_normal(t_plane *pl, t_ray ray)$/;"	f	typeref:typename:t_vector	file:
+get_plane_normal	normal.c	/^static t_vector	get_plane_normal(t_plane *pl, t_ray ray)$/;"	f	typeref:typename:t_vector	file:
 get_realloc	libft/get_next_line.c	/^static char	*get_realloc(char **buf, int kind_of_alloc)$/;"	f	typeref:typename:char *	file:
 get_return	libft/get_next_line.c	/^static char	*get_return(char **buf)$/;"	f	typeref:typename:char *	file:
 get_selected_object_position	rendering/translation_handlers.c	/^t_vector	get_selected_object_position(t_mlx *mlx)$/;"	f	typeref:typename:t_vector
@@ -530,7 +530,7 @@ lenght_string_array	extra/utils.c	/^int	lenght_string_array(char **array)$/;"	f	
 lenght_word	libft/ft_split.c	/^int	lenght_word(char const *s, char c)$/;"	f	typeref:typename:int
 lights	minirt.h	/^	t_light			**lights;$/;"	m	struct:s_setting	typeref:typename:t_light **
 local_endian	mlx/test/main.c	/^int	local_endian;$/;"	v	typeref:typename:int
-local_point_in_cylinder	normal.c	/^t_vector local_point_in_cylinder(t_cylinder *cylinder, t_vector point)$/;"	f	typeref:typename:t_vector
+local_point_in_cylinder	normal.c	/^t_vector	local_point_in_cylinder(t_cylinder *cylinder, t_vector point)$/;"	f	typeref:typename:t_vector
 log_error	mlx/configure	/^log_error(){$/;"	f
 log_error	mlx/test/run_tests.sh	/^log_error(){$/;"	f
 log_info	mlx/configure	/^log_info(){$/;"	f
@@ -778,7 +778,7 @@ set_cylinder_size	shapes/cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinde
 set_sphere_transformations	raycasting/transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void
 setback_zero	main_utils.c	/^void	setback_zero(t_setting *set)$/;"	f	typeref:typename:void
 setting	minirt.h	/^	t_setting 	*setting;$/;"	m	struct:s_mlx	typeref:typename:t_setting *
-shade_hit	computation.c	/^t_color shade_hit(t_setting *world, t_computations comps, int flag)$/;"	f	typeref:typename:t_color
+shade_hit	computation.c	/^t_color	shade_hit(t_setting *world, t_computations comps, int flag)$/;"	f	typeref:typename:t_color
 shearing	transformations/shearing.c	/^t_vector	shearing(t_vector origin, double value[6])$/;"	f	typeref:typename:t_vector
 shininess	minirt.h	/^	double	shininess;$/;"	m	struct:s_material	typeref:typename:double
 shm	mlx/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img	typeref:typename:XShmSegmentInfo

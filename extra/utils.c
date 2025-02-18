@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 21:25:59 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/14 21:10:53 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:21:08 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,16 @@ int	free_string_array(char **array)
 	free(array);
 	return (0);
 }
+
 /*1 */
 int	lenght_string_array(char **array)
 {
 	int	count;
+
 	count = 0;
 	if (check_null_array(array))
 		return (-1);
-	while(array[count] != NULL)
+	while (array[count] != NULL)
 		count++;
 	return (count);
 }

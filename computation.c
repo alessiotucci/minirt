@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:30:04 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/10 15:42:59 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:18:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,24 @@ t_computations	prepare_computations(t_intersection i, t_ray r)
 }
 
 //TODO: check wheter you can use multiple light sources
-t_color shade_hit(t_setting *world, t_computations comps, int flag)
+// Use the offset over_point for shadow testing.
+// Compute the final color based on the chosen lighting model.
+t_color	shade_hit(t_setting *world, t_computations comps, int flag)
 {
-    t_color final_color;
-    t_light light = *world->lights[0]; // For example, using the first light.
+	t_color	final_color;
+	t_light	light;
+	int	shadowed;
 
-    // Use the offset over_point for shadow testing.
-    int shadowed = is_shadowed(world, comps.over_point, light);
-
-    // Compute the final color based on the chosen lighting model.
-    if (!shadowed)
-    {
-        if (flag)
-            final_color = phong_lighting(world, comps, light);
-        else
-            final_color = lambert_lighting(world, comps, light);
-    }
-    else
-    {
-        // If in shadow, only ambient contributes.
-        final_color = multiply_color_by_scalar(get_color_intersect(comps.object), world->amb_light->ratio);
-    }
-    return final_color;
+	light = *world->lights[0];
+	shadowed = is_shadowed(world, comps.over_point, light);
+	if (!shadowed)
+	{
+		if (flag)
+			final_color = phong_lighting(world, comps, light);
+		else
+			final_color = lambert_lighting(world, comps, light);
+	}
+	else
+		final_color = multiply_color_by_scalar(get_color_intersect(comps.object), world->amb_light->ratio);
+	return final_color;
 }
-
