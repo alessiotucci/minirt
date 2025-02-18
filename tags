@@ -260,6 +260,7 @@ bpp4	mlx/test/main.c	/^int	bpp4;$/;"	v	typeref:typename:int
 brightness	minirt.h	/^	double		brightness;$/;"	m	struct:s_light	typeref:typename:double
 calculate_sphere_color	shapes/sphere.c	/^int	calculate_sphere_color(t_intersection *intersection)$/;"	f	typeref:typename:int
 calculate_translation_delta	rendering/translation_handlers.c	/^t_vector	calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_y, t_vector curr/;"	f	typeref:typename:t_vector
+calculate_translation_delta_perp_to_camera	rendering/translation_handlers.c	/^t_vector	calculate_translation_delta_perp_to_camera(t_mlx *mlx, int x, int y, t_vector current_p/;"	f	typeref:typename:t_vector
 camera	minirt.h	/^	t_camera		*camera;$/;"	m	struct:s_setting	typeref:typename:t_camera *
 camera_image_plane	draw_scene.c	/^void	camera_image_plane(t_mlx *mlx)$/;"	f	typeref:typename:void
 camera_info_str	manage_mlx.c	/^static char	*camera_info_str(t_camera *cam)$/;"	f	typeref:typename:char *	file:
