@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/17 19:39:43 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 13:34:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int key_pressed_gpt(int keycode, void *param)
 	 // Update the camera based on the key pressed:
 	 if (keycode == ARROW_LEFT)
 	 {
-		  printf("Move camera left (modify the x component of the viewpoint)\n");
+		  printf("\n\nMove camera left (modify the x component of the viewpoint)\n");
 		  data->setting->camera->viewpoint.x -= 2; // adjust step size as needed
 	 }
 	 else if (keycode == ARROW_RIGHT)
@@ -48,7 +48,7 @@ int key_pressed_gpt(int keycode, void *param)
 	 }
 	 else if (keycode == ARROW_UP)
 	 {
-		  printf("Move camera up (modify y component)\n");
+		  printf("\n\nMove camera up (modify y component)\n");
 		  data->setting->camera->viewpoint.y += 2;
 	 }
 	 else if (keycode == ARROW_DOWN)
@@ -57,17 +57,17 @@ int key_pressed_gpt(int keycode, void *param)
 	 }
 	 else if (keycode == MINUS)
 	 {
-		  printf("Zoom in: decrease the FOV to narrow the view\n");
+		  printf("\n\nZoom in: decrease the FOV to narrow the view\n");
 		  data->setting->camera->fov -= 5; // ensure FOV stays within valid range (0, 180)
-		  if (data->setting->camera->fov < 1)
-				data->setting->camera->fov = 1;
+		  if (data->setting->camera->fov <= 5)
+				data->setting->camera->fov = 15;
 	 }
 	 else if (keycode == PLUS)
 	 {
-		  printf("Zoom out: increase the FOV to widen the view\n");
+		  printf("\n\nZoom out: increase the FOV to widen the view\n");
 		  data->setting->camera->fov += 5;
-		  if (data->setting->camera->fov > 180)
-				data->setting->camera->fov = 180;
+		  if (data->setting->camera->fov >= 140)
+				data->setting->camera->fov = 135;
 	 }
 	else if (keycode == 44)
 		data->setting->camera->orientation = rotation_y(data->setting->camera->orientation, M_PI/36);
@@ -77,35 +77,35 @@ int key_pressed_gpt(int keycode, void *param)
 		select_light(data->selected);
 	else if (is_selected_null(&data->selected) == 0) // created an helper function to check if null
 		{
-			printf("object is selected key code to be waited\n");
+			printf("\n\nobject is selected key code to be waited\n");
 			if (keycode == KEY_X)
 			{
-				printf("pressed: X ++increasing radius or diameter (not working with plane)\n");
+				printf("\n\npressed: X ++increasing radius or diameter (not working with plane)\n");
 				increase_object_diameter(data);
 			}
 			else if (keycode == KEY_Y)
 			{
-				printf("pressed: Y --decreasing radius or diameter (not working with plane)\n");
+				printf("\n\npressed: Y --decreasing radius or diameter (not working with plane)\n");
 				decrease_object_diameter(data);
 			}
 			else if (keycode == KEY_Z)
 			{
-				printf("pressed: Z ++increasing height of Cylinder (not compatible with other obj)\n");
+				printf("\n\npressed: Z ++increasing height of Cylinder (not compatible with other obj)\n");
 				increase_cylinder_height(data);
 			}
 			else if (keycode == KEY_Q)
 			{
-				printf("pressed: Q ++increasing height of Cylinder (not compatible with other obj)\n");
+				printf("\n\npressed: Q ++increasing height of Cylinder (not compatible with other obj)\n");
 					decrease_cylinder_height(data);
 			}
 			else if (keycode == KEY_W)
 			{
-				printf("pressed: W inclining the axis (plane or cylinder)\n");
+				printf("\n\npressed: W inclining the axis (plane or cylinder)\n");
 					rotate_object_axis_positive(data);
 			}
 			else if (keycode == KEY_E)
 			{
-				printf("pressed: E inclining the axis (plane or cylinder)\n");
+				printf("\n\npressed: E inclining the axis (plane or cylinder)\n");
 					rotate_object_axis_negative(data);
 			}
 		}

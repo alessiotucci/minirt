@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 16:25:08 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:56:24 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 12:38:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	free_heap_matrix(double **matrix, int rows)
 double	**malloc_matrix(int rows, int col)
 {
 	double	**new_matrix;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	new_matrix = (double **)malloc(rows * sizeof(double *));
@@ -70,8 +70,8 @@ void	print_int_matrix(int rows, int cols, double **matrix)
 			printf(" | %f | ", matrix[i][j]);
 			j++;
 		}
-	printf("\n");
-	i++;
+		printf("\n");
+		i++;
 	}
 	printf("***\n");
 }

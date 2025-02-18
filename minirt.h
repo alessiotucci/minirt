@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/17 19:38:24 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 13:48:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@
 /***************************************/
 # define EPSILON 0.00001
 # define EPSILON_v2 1e-6
+
+/***************************************/
+/* defining this for translation objes */
+/***************************************/
+#define TRANSLATION_SENSITIVITY 0.2
+#define MAX_DELTA 5.0
 
 /*TODO:ADDITIONAL STRUCTS
 * Ray Struct: Represents a ray in the scene.
@@ -673,5 +679,13 @@ void	rotate_object_axis_negative(t_mlx *data);
 void	update_cylinder(t_cylinder *my_cylinder);
 
 void	re_start_image(t_mlx *data);
+
+/*********************************/
+/*This function for translations */
+/*********************************/
 t_ray create_ray_from_camera2(t_mlx *data, int x, int y);
+t_vector	get_selected_object_position(t_mlx *mlx);
+void perform_translation_from_mouse(t_mlx *mlx, int x, int y);
+void	translate_object(t_mlx *data, t_vector delta);
+t_vector	calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_y, t_vector current_position);
 #endif

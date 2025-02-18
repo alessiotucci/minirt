@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/17 19:43:35 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 13:31:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,11 @@ int	mouse_click(int button, int x, int y, t_mlx *mlx)
 		if (is_selected_null(&mlx->selected))
 			printf("you haven´t selected an object, cannot translate it\n");
 		else
+		{
 			printf("I am trying translate it to the new point\n");
+			perform_translation_from_mouse(mlx, x, y);
+			re_start_image(mlx);
+		}
 	}
 	else if (button == 5)
 	{

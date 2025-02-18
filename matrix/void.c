@@ -6,10 +6,9 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:45:36 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 12:14:00 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 12:42:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../minirt.h"
 
@@ -80,7 +79,7 @@ void	inversing_matrix_void(int size, double **source)
 	if (is_matrix_invertible(size, source) == 0)
 	{
 		printf("Cannot reverse it!\n");
-		return;
+		return ;
 	}
 	new = malloc_matrix(4, 4);
 	matrix_of_cofactors_void(size, source, new);

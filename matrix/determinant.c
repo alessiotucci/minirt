@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:39:46 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/06 15:10:42 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 12:41:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 //1
 double	determinant_two(double **matrix)
 {
-	return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
+	return ((matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]));
 }
+
 //5
 double	determinant_n(double **matrix, int size)
 {
@@ -28,7 +29,7 @@ double	determinant_n(double **matrix, int size)
 	result = 0.0;
 	while (i < size)
 	{
-		result += cofactor(0, i , matrix, size) * matrix[0][i];
+		result += cofactor(0, i, matrix, size) * matrix[0][i];
 		i++;
 	}
 	return (result);
@@ -43,13 +44,13 @@ double	determinant(double **matrix, int size)
 		result = (determinant_two(matrix));
 	else
 		result = (determinant_n(matrix, size));
-	return (free_heap_matrix(matrix, size), result); //TODO:
-	//return (result);
+	return (free_heap_matrix(matrix, size), result);
 }
 
 //2
 /* The minor of an element at row i and column j is the determinant of the 
  * submatrix at (i, j). */
+//free_heap_matrix(find, 4);
 double	minor(int row, int col, double **matrix, int size)
 {
 	double	**find;
@@ -57,7 +58,6 @@ double	minor(int row, int col, double **matrix, int size)
 
 	find = submatrix(row, col, matrix, size);
 	result = determinant(find, size - 1);
-	//free_heap_matrix(find, 4);
 	return (result);
 }
 

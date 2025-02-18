@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/17 19:40:09 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/18 13:15:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)
 	(void)all_intersections;
 	(void)hit;
 	(void)mlx;
-	ray = create_ray_from_camera(mlx, x, y);
+	ray = create_ray_from_camera2(mlx, x, y);
 	all_intersections = intersect_world(setting, ray);
 	hit = hit_v2(all_intersections);
 	if (hit != NULL)

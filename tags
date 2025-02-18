@@ -119,6 +119,7 @@ LINKING	mlx/man/man3/mlx.3	/^.SH LINKING MiniLibX$/;"	s	title:MiniLibX
 LOCALHOST	mlx/mlx_int.h	/^# define LOCALHOST /;"	d
 Lectures	README.md	/^#### Lectures$/;"	t	section:minirt""UC davis Computer Graphics course
 Library	libft/Makefile	/^Library		= libft$/;"	m
+MAX_DELTA	minirt.h	/^#define MAX_DELTA /;"	d
 MINIRT_H	minirt.h	/^# define MINIRT_H$/;"	d
 MINUS	minirt.h	/^# define MINUS /;"	d
 MLXFLAG	Makefile	/^MLXFLAG = -L$(MLX_DIR) -lmlx -L\/usr\/lib -lXext -lX11 -lm -lz$/;"	m
@@ -203,6 +204,7 @@ SYNOPSYS	mlx/man/man3/mlx_new_window.3	/^.SH SYNOPSYS$/;"	s	title:MiniLibX
 SYNOPSYS	mlx/man/man3/mlx_pixel_put.3	/^.SH SYNOPSYS$/;"	s	title:MiniLibX
 TEST_OBJ	Makefile	/^TEST_OBJ = $(TEST_SOURCE:.c=.o)$/;"	m
 TEST_SOURCE	Makefile	/^TEST_SOURCE = $(filter-out .\/main.c, $(SOURCE))$/;"	m
+TRANSLATION_SENSITIVITY	minirt.h	/^#define TRANSLATION_SENSITIVITY /;"	d
 T_CAMERA	minirt.h	/^	T_CAMERA,$/;"	e	enum:e_type
 T_CYLINDER	minirt.h	/^	T_CYLINDER,$/;"	e	enum:e_type
 T_LIGHT	minirt.h	/^	T_LIGHT,$/;"	e	enum:e_type
@@ -257,6 +259,7 @@ bpp3	mlx/test/main.c	/^int	bpp3;$/;"	v	typeref:typename:int
 bpp4	mlx/test/main.c	/^int	bpp4;$/;"	v	typeref:typename:int
 brightness	minirt.h	/^	double		brightness;$/;"	m	struct:s_light	typeref:typename:double
 calculate_sphere_color	shapes/sphere.c	/^int	calculate_sphere_color(t_intersection *intersection)$/;"	f	typeref:typename:int
+calculate_translation_delta	rendering/translation_handlers.c	/^t_vector	calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_y, t_vector curr/;"	f	typeref:typename:t_vector
 camera	minirt.h	/^	t_camera		*camera;$/;"	m	struct:s_setting	typeref:typename:t_camera *
 camera_image_plane	draw_scene.c	/^void	camera_image_plane(t_mlx *mlx)$/;"	f	typeref:typename:void
 camera_info_str	manage_mlx.c	/^static char	*camera_info_str(t_camera *cam)$/;"	f	typeref:typename:char *	file:
@@ -269,6 +272,7 @@ check_cap_cylinder	intersection/intersection_cylinder.c	/^int	check_cap_cylinder
 check_null_array	extra/utils.c	/^int	check_null_array(char **array)$/;"	f	typeref:typename:int
 check_sign	libft/ft_num_utils.c	/^int	check_sign(int num)$/;"	f	typeref:typename:int
 check_the_extension	parsing/parsing_map.c	/^static int	check_the_extension(char *filename, char *ext)$/;"	f	typeref:typename:int	file:
+clamp_delta	rendering/translation_handlers.c	/^t_vector clamp_delta(t_vector delta, double max_val)$/;"	f	typeref:typename:t_vector
 clean	Makefile	/^clean:$/;"	t
 clean	libft/Makefile	/^clean:$/;"	t
 clean	mlx/Makefile	/^clean	:$/;"	t
@@ -456,6 +460,7 @@ get_next_line	libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:
 get_plane_normal	normal.c	/^static t_vector get_plane_normal(t_plane *pl, t_ray ray)$/;"	f	typeref:typename:t_vector	file:
 get_realloc	libft/get_next_line.c	/^static char	*get_realloc(char **buf, int kind_of_alloc)$/;"	f	typeref:typename:char *	file:
 get_return	libft/get_next_line.c	/^static char	*get_return(char **buf)$/;"	f	typeref:typename:char *	file:
+get_selected_object_position	rendering/translation_handlers.c	/^t_vector	get_selected_object_position(t_mlx *mlx)$/;"	f	typeref:typename:t_vector
 get_selection_status	manage_mlx.c	/^static char	*get_selection_status(t_selected_obj selected)$/;"	f	typeref:typename:char *	file:
 get_sphere_to_ray	raycasting/intersection_ray.c	/^t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)$/;"	f	typeref:typename:t_vector
 get_timestamp	new_script_valgrind.pl	/^sub get_timestamp$/;"	s
@@ -673,6 +678,7 @@ parse_color	parsing/parsing_numbers.c	/^t_color	parse_color(char *str)$/;"	f	typ
 parse_map	parsing/parsing_map.c	/^static int	parse_map(char *filename, t_setting *set)$/;"	f	typeref:typename:int	file:
 parse_vector	parsing/parsing_numbers.c	/^t_vector	parse_vector(char *str, double flag)$/;"	f	typeref:typename:t_vector
 parsing_map	parsing/parsing_map.c	/^int	parsing_map(char *map, t_setting *set)$/;"	f	typeref:typename:int
+perform_translation_from_mouse	rendering/translation_handlers.c	/^void perform_translation_from_mouse(t_mlx *mlx, int x, int y)$/;"	f	typeref:typename:void
 phold	libft/ft_printf.c	/^static int	phold(va_list *arg, char q, int count)$/;"	f	typeref:typename:int	file:
 phong_lighting	shadows/phong_reflection_model.c	/^t_color phong_lighting(t_setting *world, t_computations comps, t_light light)$/;"	f	typeref:typename:t_color
 pix	mlx/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img	typeref:typename:Pixmap
