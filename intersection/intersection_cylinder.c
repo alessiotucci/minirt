@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 09:28:47 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 12:05:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,73 @@ static t_list_intersect	*intersection_happened(double t[2], t_intersection inter
 		inter2 = intersection(t[1], cylinder->identifier, cylinder);
 		add_intersection_l(&list, &inter2);
 	}
+	return (list);
+}
+
+t_list_intersect	*intersect_cylinder3(t_cylinder *cylinder, t_ray old_ray)
+{
+	double				a;
+	double				b;
+	double				c;
+	double				disc;
+	double				t[2];
+	t_list_intersect	*list;
+	t_intersection		inter1;
+	t_intersection		inter2;
+	t_ray				ray;
+	t_vector			v;         // v = ray.origin - cylinder->center
+	t_vector			D_perp;    // Perpendicular component of ray.direction
+	t_vector			v_perp;    // Perpendicular component of v
+
+	list = NULL;
+	default_intersection(&inter1, &inter2);
+	/* Transform the ray into object space if needed */
+	ray = transform_ray(old_ray, inversing_matrix(4, copy_matrix(4, 4, cylinder->transform)));
+
+	/* Compute the vector from the cylinder's center to the ray origin */
+	v = subtract(ray.origin, cylinder->center);
+
+	/* Instead of using only X and Z components, project onto the plane perpendicular to the cylinder's axis */
+	double DdotA = dot(ray.direction, cylinder->axis);
+	D_perp = subtract(ray.direction, multiplication(cylinder->axis, DdotA));
+
+	double vdotA = dot(v, cylinder->axis);
+	v_perp = subtract(v, multiplication(cylinder->axis, vdotA));
+
+	/* Set up the quadratic coefficients for the lateral surface intersection */
+	a = dot(D_perp, D_perp);
+	if (comparing_double(a, 0.0))
+		return (NULL);
+	b = 2 * dot(D_perp, v_perp);
+	c = dot(v_perp, v_perp) - pow(cylinder->diameter / 2, 2);
+	disc = pow(b, 2) - (4 * a * c);
+	if (disc < 0)
+		return (NULL);
+	else
+	{
+		t[0] = ((-b - sqrt(disc)) / (2 * a));
+		t[1] = ((-b + sqrt(disc)) / (2 * a));
+		// Use projection onto the cylinder axis instead of the Y coordinate:
+		{
+			t_vector p0 = add(ray.origin, multiplication(ray.direction, t[0]));
+			double proj0 = dot(subtract(p0, cylinder->center), cylinder->axis);
+			if (proj0 >= cylinder->min && proj0 <= cylinder->max)
+			{
+				inter1 = intersection(t[0], cylinder->identifier, cylinder);
+				add_intersection_l(&list, &inter1);
+			}
+		}
+		{
+			t_vector p1 = add(ray.origin, multiplication(ray.direction, t[1]));
+			double proj1 = dot(subtract(p1, cylinder->center), cylinder->axis);
+			if (proj1 >= cylinder->min && proj1 <= cylinder->max)
+			{
+				inter2 = intersection(t[1], cylinder->identifier, cylinder);
+				add_intersection_l(&list, &inter2);
+			}
+		}
+	}
+	intersect_caps(*cylinder, ray, &list);
 	return (list);
 }
 

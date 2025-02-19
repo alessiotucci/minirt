@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 10:53:16 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 12:04:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -643,4 +643,5 @@ t_list_intersect	*intersect_cylinder2(t_cylinder *cy, t_ray old_ray);
 void				test_function(t_mlx *info);
 int					check_the_extension(char *filename, char *ext);
 int					open_map(char *filename, t_setting *set);
+t_list_intersect	*intersect_cylinder3(t_cylinder *cylinder, t_ray old_ray);
 #endif
