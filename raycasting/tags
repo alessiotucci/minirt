@@ -9,36 +9,19 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
-aspect_ratio	cast_ray.c	/^    double aspect_ratio;$/;"	m	struct:s_view_params	typeref:typename:double	file:
-calculate_camera_basis	cast_ray.c	/^static t_camera_basis calculate_camera_basis(t_vector orientation)$/;"	f	typeref:typename:t_camera_basis	file:
-calculate_pixel_offsets	cast_ray.c	/^static void calculate_pixel_offsets(t_screen_coords screen, t_view_params view, double *offsets)$/;"	f	typeref:typename:void	file:
-calculate_ray_direction	cast_ray.c	/^static t_vector calculate_ray_direction(t_camera_basis basis, double *offsets, t_vector forward)$/;"	f	typeref:typename:t_vector	file:
-calculate_view_parameters	cast_ray.c	/^static void calculate_view_parameters(t_mlx *mlx, t_camera *camera, t_view_params *view)$/;"	f	typeref:typename:void	file:
 cast_rays	cast_ray.c	/^void	cast_rays(t_mlx *data)$/;"	f	typeref:typename:void
 create_ray	create_ray.c	/^t_ray	create_ray(t_vector origin, t_vector direction)$/;"	f	typeref:typename:t_ray
 create_ray_from_camera	cast_ray.c	/^t_ray	create_ray_from_camera(t_mlx *data, int x, int y)$/;"	f	typeref:typename:t_ray
-create_ray_from_camera2	cast_ray.c	/^t_ray create_ray_from_camera2(t_mlx *mlx_data, int pixel_x, int pixel_y)$/;"	f	typeref:typename:t_ray
+create_ray_from_camera2	cast_ray.c	/^t_ray create_ray_from_camera2(t_mlx *data, int x, int y)$/;"	f	typeref:typename:t_ray
 each_pixel_calculationV2	cast_ray_helper.c	/^void	each_pixel_calculationV2(t_mlx *data, int x, int y)$/;"	f	typeref:typename:void
-fov_scale	cast_ray.c	/^    double fov_scale;$/;"	m	struct:s_view_params	typeref:typename:double	file:
 get_color_intersect	cast_ray_helper.c	/^t_color	get_color_intersect(t_object obj)$/;"	f	typeref:typename:t_color
 get_discriminant	intersection_ray.c	/^double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)$/;"	f	typeref:typename:double
 get_sphere_to_ray	intersection_ray.c	/^t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)$/;"	f	typeref:typename:t_vector
 hit_v2	hit.c	/^t_intersection	*hit_v2(t_list_intersect *list)$/;"	f	typeref:typename:t_intersection *
-mlx_data	cast_ray.c	/^    t_mlx *mlx_data;$/;"	m	struct:s_screen_coords	typeref:typename:t_mlx *	file:
-pixel_x	cast_ray.c	/^    int pixel_x;$/;"	m	struct:s_screen_coords	typeref:typename:int	file:
-pixel_y	cast_ray.c	/^    int pixel_y;$/;"	m	struct:s_screen_coords	typeref:typename:int	file:
 position_ray	create_ray.c	/^t_vector	position_ray(t_ray ray, double t)$/;"	f	typeref:typename:t_vector
 print_light_source	cast_ray.c	/^void	print_light_source(t_mlx *data, int x, int y)$/;"	f	typeref:typename:void
 print_ray	create_ray.c	/^void	print_ray(t_ray ray)$/;"	f	typeref:typename:void
 print_type	utils_obj.c	/^int	print_type(t_object obj)$/;"	f	typeref:typename:int
 project_point_to_2d	cast_ray.c	/^t_vector project_point_to_2d(t_vector point, t_camera *camera, int width, int height)$/;"	f	typeref:typename:t_vector
-right	cast_ray.c	/^    t_vector right;$/;"	m	struct:s_camera_basis	typeref:typename:t_vector	file:
-s_camera_basis	cast_ray.c	/^typedef struct s_camera_basis {$/;"	s	file:
-s_screen_coords	cast_ray.c	/^typedef struct s_screen_coords {$/;"	s	file:
-s_view_params	cast_ray.c	/^typedef struct s_view_params {$/;"	s	file:
 set_sphere_transformations	transformation_ray.c	/^void	set_sphere_transformations(t_sphere *sphere, double **new)$/;"	f	typeref:typename:void
-t_camera_basis	cast_ray.c	/^} t_camera_basis;$/;"	t	typeref:struct:s_camera_basis	file:
-t_screen_coords	cast_ray.c	/^} t_screen_coords;$/;"	t	typeref:struct:s_screen_coords	file:
-t_view_params	cast_ray.c	/^} t_view_params;$/;"	t	typeref:struct:s_view_params	file:
 transform_ray	transformation_ray.c	/^t_ray	transform_ray(t_ray original, double **matrix)$/;"	f	typeref:typename:t_ray
-up	cast_ray.c	/^    t_vector up;$/;"	m	struct:s_camera_basis	typeref:typename:t_vector	file:

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 09:41:01 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/23 14:05:30 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 10:59:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_ray	transform_ray(t_ray original, double **matrix)
 
 	new.origin = matrix_x_vector(matrix, original.origin);
 	new.direction = matrix_x_vector(matrix, original.direction);
-    new.direction = normalization(new.direction); //TODO:
+	new.direction = normalization(new.direction);
 	return (new);
 }
 
@@ -72,7 +72,7 @@ int	main()
 	printf("sphere [a] has default matrix\n");
 	print_int_matrix(4, 4, a.transform);
 
-	printf("\n\n%sSCENARIO:%sChanging a sphere default transformation\n", RED, RESET);
+	printf("\n\n%sSCENARIO:%sChanging a sphere transformation\n", RED, RESET);
 	double **matrix = create_translation_matrix(move1);
 	set_sphere_transformations(&a, matrix);
 	printf("sphere [a] has setted the NEW matrix\n");
@@ -86,7 +86,7 @@ int	main()
 	t_vector move2 = create_vector(2, 2, 2);
 	set_sphere_transformations(&a, (create_scaling_matrix(move2)));
 
-	printf("\n\n%sSCENARIO:%sIntersecting a scaled sphere with a ray\n", RED, RESET);
+	printf("\n\n%sSCENARIO:%sIntersecting a scaled sphere\n", RED, RESET);
 	t_vector	o = create_point(0, 0, -5);
 	t_vector	d = create_vector(0, 0, 1);
 	t_ray		ri = create_ray(o, d);
@@ -96,7 +96,7 @@ int	main()
 	printf("❌ %sTEST FAILED%s❌\n", BG_RED, BG_RESET);
 	//printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
 	
-	printf("\n\n%sSCENARIO:%sIntersecting a translated sphere with a ray\n", RED, RESET);
+	printf("\n\n%sSCENARIO:%sIntersecting a sphere with a ray\n", RED, RESET);
 	t_vector move3 = create_vector(5, 0, 0);
 	set_sphere_transformations(&a, (create_translation_matrix(move3)));
 	printf("Intersection list value ...\n");
