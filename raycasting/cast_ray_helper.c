@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/16 16:36:23 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 09:06:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,87 +20,42 @@ t_color	get_color_intersect(t_object obj)
 
 	if (obj.type == T_SPHERE)
 	{
-		sphere = (t_sphere *)obj.address; // casting
+		sphere = (t_sphere *)obj.address;
 		return (sphere->color);
 	}
 	if (obj.type == T_PLANE)
 	{
-		//printf("ok: color of the plane is ");
-		plane = (t_plane *)obj.address; // casting
-		//print_single_plane(plane);
-		//print_color(plane->color);
+		plane = (t_plane *)obj.address;
 		return (plane->color);
 	}
 	if (obj.type == T_CYLINDER)
 	{
 		cylinder = (t_cylinder *)obj.address;
-		//printf("GET_COLOR: %scylinder%s\n", BG_CYAN, BG_RESET);
 		return (cylinder->color);
 	}
-	printf("Unexpected obj\n"); exit(-42);
+	printf("Unexpected obj: creating standard color!!!\n");
 	return (create_color(1, 1, 1));
 }
 
 void	each_pixel_calculationV2(t_mlx *data, int x, int y)
 {
-	t_ray	ray;
-	t_list_intersect *all_intersections = NULL;
-	t_intersection *closest_intersection;
-	t_list_intersect *sphere_intersections;(void)sphere_intersections;
-	t_list_intersect *cylinder_intersections;(void)cylinder_intersections;
-	int	i;
-
-	//ray = create_ray_from_camera(data, x, y);
-	//TODO: understand why this is not working!!
+	t_ray				ray;
+	t_list_intersect	*all_intersections;
+	t_intersection		*closest_intersection;
+	t_computations		comps;
+	t_color				final_color;
+	
+	all_intersections = NULL;
 	ray = create_ray_from_camera2(data, x, y);
-	i = 0;
-	while (i < data->setting->num_spheres)
-	{
-		sphere_intersections = intersect_sphere(data->setting->spheres[i], ray);
-		if (sphere_intersections)
-			concatenate_lists(&all_intersections, sphere_intersections);
-	i++;
-	}
-	//Starting working here to see a plane on the screen
-	t_list_intersect *plane_intersections;(void)plane_intersections;
-	i = 0;
-	while (i < data->setting->num_planes)
-	{
-		//printf("%sDEBUG%s plane intersection[%d], please wait...\n", RED, RESET, i);
-		plane_intersections = intersect_plane(data->setting->planes[i], ray);//TODO:
-		if (plane_intersections)
-			concatenate_lists(&all_intersections, plane_intersections);
-	i++;
-	}
-	
-	//Starting working here to try see a cylinder on the screen
-	//t_list_intersect *cylinder_intersections;
-	
-	i = 0;
-	while (i < data->setting->num_cylinders)
-	{
-		//printf("%sDEBUG%s cylinder intersection[%d], please wait...\n", RED, RESET, i);
-		cylinder_intersections = intersect_cylinder(data->setting->cylinders[i], ray);//TODO:
-		if (cylinder_intersections)
-			concatenate_lists(&all_intersections, cylinder_intersections);
-		
-	i++;
-	}
-	
-	//TODO: here after checking for all the obj (sphere, cylinder, planes etc.) we check the closest point.
-	//print_intersection_list(all_intersections);
-	//print_list(&all_intersections, 0);
+	all_intersections = intersect_world(data->setting, ray);
 	closest_intersection = hit_v2(all_intersections);
 	if (closest_intersection != NULL)
 	{
-		t_computations comps = prepare_computations(*closest_intersection, ray);
-		t_color final_color = shade_hit(data->setting, comps, 0);
-		(void)final_color;
+		comps = prepare_computations(*closest_intersection, ray);
+		final_color = shade_hit(data->setting, comps, 0);
 			my_mlx_pixel_put(data, x, y, create_trgb(final_color));
-			//my_mlx_pixel_put(data, x, y, create_trgb(phong_color));
-			//my_mlx_pixel_put(data, x, y, create_trgb(std));
-		//return ; //why here there is this return? TODO: check if the return
-	}															 // leakss!!
+			//return ; //why here there is this return? TODO: check if the return
+	}												 // leakss!!
 	else
 		my_mlx_pixel_put(data, x, y, COLOR_BLACK);
 	free_list(&all_intersections);

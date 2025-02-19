@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:52:23 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 09:00:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -691,4 +691,6 @@ t_vector	calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_
 
 void	handle_camera_keys(int keycode, t_mlx *data);
 void	print_camera(t_camera *camera);
+
+t_list_intersect *intersect_cylinder2(t_cylinder *cy, t_ray old_ray);
 #endif

@@ -298,6 +298,7 @@ color_map_2	mlx/test/main.c	/^int	color_map_2(unsigned char *data,int bpp,int sl
 comparing_double	extra/comparing.c	/^int	comparing_double(double a, double b)$/;"	f	typeref:typename:int
 comparing_heap_matrix	matrix/operations_matrix.c	/^int	comparing_heap_matrix(int rows, int cols, double **a, double **b)$/;"	f	typeref:typename:int
 comparing_vector	extra/comparing.c	/^int	comparing_vector(t_vector a, t_vector b)$/;"	f	typeref:typename:int
+compute_cylinder_normal	normal.c	/^t_vector compute_cylinder_normal(t_cylinder *cy, t_vector point)$/;"	f	typeref:typename:t_vector
 concatenate_lists	intersection/real_list.c	/^void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)$/;"	f	typeref:typename:void
 content	libft/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
 convert_color	colors/converting_color.c	/^t_color convert_color(t_color old)$/;"	f	typeref:typename:t_color

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 19:12:50 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 08:52:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_vector	default_cylinder_normal(t_cylinder *cylinder, t_vector point)
 }
 
 /*
+*/
 t_vector compute_cylinder_normal(t_cylinder *cy, t_vector point)
 {
     // Compute vector from cylinder center to the point.
@@ -73,7 +74,8 @@ t_vector compute_cylinder_normal(t_cylinder *cy, t_vector point)
     double half_height = cy->height / 2.0;
 
     // If the cylinder is closed and the point is on a cap, return the cap normal.
-    if (cy->closed) {
+    if (cy->closed)
+	{
          if (fabs(dist - half_height) < EPSILON)
              return cy->axis;  // Top cap
          else if (fabs(dist + half_height) < EPSILON)
@@ -84,7 +86,6 @@ t_vector compute_cylinder_normal(t_cylinder *cy, t_vector point)
     t_vector lateral = subtract(v, multiplication(cy->axis, dist));
     return normalization(lateral);
 }
-*/
 
 /*please rename this function */
 t_vector v2normal_at(t_object obj, t_vector point, t_ray r)
@@ -106,7 +107,8 @@ t_vector v2normal_at(t_object obj, t_vector point, t_ray r)
 	if (obj.type == T_CYLINDER)
 	{
 		cylinder = (t_cylinder *)obj.address;
-		return (default_cylinder_normal(cylinder, point));
+		//return (default_cylinder_normal(cylinder, point));
+		return (compute_cylinder_normal(cylinder, point));
 	}
 	printf("v2normal failure: obj TYPE not found\n");
 	exit(-42);
