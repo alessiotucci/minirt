@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/nfs/homes/atucci/Desktop/mioGithubMiniRT/parsing/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+count_elements_wrap	parsing_map.c	/^static void	count_elements_wrap(char **matrix, t_setting *set)$/;"	f	typeref:typename:void	file:
+create_from_line	parsing_map.c	/^static void	create_from_line(char **matrix, t_setting *set)$/;"	f	typeref:typename:void	file:
+default_color	parsing_numbers.c	/^t_color	default_color(void)$/;"	f	typeref:typename:t_color
+default_vector	parsing_numbers.c	/^t_vector	default_vector(void)$/;"	f	typeref:typename:t_vector
+open_and_count	parsing_map.c	/^static int	open_and_count(char *filename, t_setting *set)$/;"	f	typeref:typename:int	file:
+open_map	parsing_map.c	/^int	open_map(char *filename, t_setting *set)$/;"	f	typeref:typename:int
+parse_color	parsing_numbers.c	/^t_color	parse_color(char *str)$/;"	f	typeref:typename:t_color
+parse_map	parsing_map.c	/^static int	parse_map(char *filename, t_setting *set)$/;"	f	typeref:typename:int	file:
+parse_vector	parsing_numbers.c	/^t_vector	parse_vector(char *str, double flag)$/;"	f	typeref:typename:t_vector

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2024/05/11 11:37:48 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 10:06:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //TODO:clearing up this mess
 //
-void alloc_struct_elem(t_setting *setting)
+void	alloc_struct_elem(t_setting *setting)
 {
 	ft_printf("%s\tallocation%s\n", YELLOW, RESET);
 	setting->lights = malloc(sizeof(t_light *) * setting->num_lights);
@@ -49,17 +49,14 @@ void	count_elements(char **details, t_setting *set)
 	else
 	{
 		if (my_strcmp(details[0], "\n") == 0)
-		//if (details[0][0] == '\n')
 			ft_printf("[%s\\n%s]\n", RED, RESET);
 		else
 			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
-		//error_msg("not a valid identifier");
 	}
 }
 
 void	create_setting(char **details, t_setting *set)
 {
-
 	if (check_null_array(details))
 		return ;
 	if (my_strcmp(details[0], "A") == 0)
@@ -79,10 +76,8 @@ void	create_setting(char **details, t_setting *set)
 	else
 	{
 		if (my_strcmp(details[0], "\n") == 0)
-		//if (details[0][0] == '\n')
 			ft_printf("[%s\\n%s]\n", RED, RESET);
 		else
 			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
-		//error_msg("not a valid identifier");
 	}
 }

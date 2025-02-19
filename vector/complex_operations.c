@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:42:04 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:00:32 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 09:44:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ t_vector	normalization(t_vector vector)
 
 	if (magnitude(vector) == 0)
 	{
+		t_vector zero_vector;
+		zero_vector.x = 0;
+		zero_vector.y = 0;
+		zero_vector.z = 0;
 		ft_printf("%smagnitude is zero!%s\n", RED, RESET);
 		print_vector(vector);
-		exit(-1);
+		return (zero_vector);
 	}
 	new_vector.x = vector.x / magnitude(vector);
 	new_vector.y = vector.y / magnitude(vector);

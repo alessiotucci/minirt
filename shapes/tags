@@ -4,7 +4,7 @@
 !_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
 !_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
 !_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
-!_TAG_PROC_CWD	/home/atucci/Desktop/miniRT/shapes/	//
+!_TAG_PROC_CWD	/nfs/homes/atucci/Desktop/mioGithubMiniRT/shapes/	//
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
@@ -12,3 +12,6 @@
 calculate_sphere_color	sphere.c	/^int	calculate_sphere_color(t_intersection *intersection)$/;"	f	typeref:typename:int
 create_cylinder	cylinder.c	/^t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c)$/;"	f	typeref:typename:t_cylinder
 create_sphere	sphere.c	/^t_sphere	create_sphere(char *id, t_vector center, double d, t_color c)$/;"	f	typeref:typename:t_sphere
+set_cylinder_cap	cylinder.c	/^void	set_cylinder_cap(t_cylinder *cylinder)$/;"	f	typeref:typename:void
+set_cylinder_size	cylinder.c	/^void	set_cylinder_size(t_cylinder *cylinder, double min, double max)$/;"	f	typeref:typename:void
+update_cylinder	cylinder.c	/^void	update_cylinder(t_cylinder *my_cylinder)$/;"	f	typeref:typename:void

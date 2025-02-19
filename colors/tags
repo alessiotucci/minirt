@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/nfs/homes/atucci/Desktop/mioGithubMiniRT/colors/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+add_colors	operation_color.c	/^t_color	add_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color
+convert_color	converting_color.c	/^t_color	convert_color(t_color old)$/;"	f	typeref:typename:t_color
+convert_color_inverse	converting_color.c	/^t_color	convert_color_inverse(t_color color)$/;"	f	typeref:typename:t_color
+convert_component	converting_color.c	/^double	convert_component(double component)$/;"	f	typeref:typename:double
+convert_component_inverse	converting_color.c	/^double	convert_component_inverse(double component)$/;"	f	typeref:typename:double
+create_color	operation_color.c	/^t_color	create_color(double r, double g, double b)$/;"	f	typeref:typename:t_color
+create_trgb	colors.c	/^int	create_trgb(t_color color)$/;"	f	typeref:typename:int
+multiply_color_by_scalar	operation_color.c	/^t_color	multiply_color_by_scalar(t_color c, float scalar)$/;"	f	typeref:typename:t_color
+multiply_colors	operation_color.c	/^t_color	multiply_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color
+my_clamp	clamp.c	/^double	my_clamp(double value, double min_val, double max_val)$/;"	f	typeref:typename:double
+subtract_colors	operation_color.c	/^t_color	subtract_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color

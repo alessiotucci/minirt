@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 18:42:04 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 09:37:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int my_key_pressed(int keycode, void *param)
 		handle_object_keys(keycode, data);
 	else
 		printf("No object selected; camera remains unchanged.\n");
+	test_function(data);
 	re_start_image(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_pointer, 0, 0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 12:43:40 by atucci            #+#    #+#             */
-/*   Updated: 2024/08/01 11:04:10 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 09:48:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,40 @@
 #include <stdio.h>
 
 // Function to convert color components from [0, 1] range to [0, 255] range
-double convert_component(double component)
+double	convert_component(double component)
 {
-	double value;
+	double	value;
 
 	value = component * 255.0;
-	return my_clamp(value, 0, 255);
+	return (my_clamp(value, 0, 255));
 }
 
 // Function to convert a color from [0, 1] range to [0, 255] range
-t_color convert_color(t_color old)
+t_color	convert_color(t_color old)
 {
-	t_color color;
+	t_color	color;
 
 	color.r = convert_component(old.r);
 	color.g = convert_component(old.g);
 	color.b = convert_component(old.b);
-	return color;
+	return (color);
 }
 
 // Function to convert color components from [0, 255] range to [0, 1] range
-double convert_component_inverse(double component)
+double	convert_component_inverse(double component)
 {
-	return my_clamp(component / 255.0, 0, 1);
+	return (my_clamp(component / 255.0, 0, 1));
 }
 
 // Function to convert a color from [0, 255] range to [0, 1] range
-t_color convert_color_inverse(t_color color)
+t_color	convert_color_inverse(t_color color)
 {
-	t_color result;
+	t_color	result;
 
 	result.r = convert_component_inverse(color.r);
 	result.g = convert_component_inverse(color.g);
 	result.b = convert_component_inverse(color.b);
-	return result;
+	return (result);
 }
 
 /*

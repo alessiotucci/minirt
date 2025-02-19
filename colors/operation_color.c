@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:28:35 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/30 13:17:48 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 09:48:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ t_color	create_color(double r, double g, double b)
 int main()
 {
 	printf("%sSCENARIO: Adding Colors%s\n", RED, RESET);
-	t_color c1 = create_color(230, 153, 191);  // (0.9, 0.6, 0.75) scaled to 255
+t_color c1 = create_color(230, 153, 191);  // (0.9, 0.6, 0.75) scaled to 255
 	t_color c2 = create_color(178, 26, 64);	// (0.7, 0.1, 0.25) scaled to 255
 	t_color result = add_colors(c1, c2);
 	print_color(result);
 	printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
-	printf("Expected: \nR: 255 G: 179 B: 255 (1.6, 0.7, 1.0) clamped to 255\n\n");
+printf("Expected:\nR: 255 G: 179 B: 255 (1.6, 0.7, 1.0) clamped to 255\n\n");
 
 	printf("%sSCENARIO: Subtracting Colors%s\n", RED, RESET);
 	c1 = create_color(230, 153, 191);  // (0.9, 0.6, 0.75) scaled to 255
@@ -83,7 +83,7 @@ int main()
 	result = subtract_colors(c1, c2);
 	print_color(result);
 	printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
-	printf("Expected: \nR: 52 G: 127 B: 127 (0.2, 0.5, 0.5) scaled to 255\n\n");
+printf("Expected: \nR: 52 G: 127 B: 127 (0.2, 0.5, 0.5) scaled to 255\n\n");
 
 	printf("%sSCENARIO: Multiplying Color by Scalar%s\n", RED, RESET);
 	t_color c = create_color(51, 76, 102);  // (0.2, 0.3, 0.4) scaled to 255
@@ -91,7 +91,7 @@ int main()
 	result = multiply_color_by_scalar(c, scalar);
 	print_color(result);
 	printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
-	printf("Expected: \nR: 102 G: 153 B: 204 (0.4, 0.6, 0.8) scaled to 255\n\n");
+printf("Expected: \nR: 102 G: 153 B: 204 (0.4, 0.6, 0.8) scaled to 255\n\n");
 
 	printf("%sSCENARIO: Multiplying Colors%s\n", RED, RESET);
 	c1 = create_color(255, 51, 102);  // (1, 0.2, 0.4) scaled to 255
@@ -99,7 +99,7 @@ int main()
 	result = multiply_colors(c1, c2);
 	print_color(result);
 	printf("✅ %sTEST PASSED%s✅\n", BG_GREEN, BG_RESET);
-	printf("Expected: \nR: 230 G: 51 B: 10 (0.9, 0.2, 0.04) scaled to 255\n\n");
+printf("Expected: \nR: 230 G: 51 B: 10 (0.9, 0.2, 0.04) scaled to 255\n\n");
 
 	return 0;
 }

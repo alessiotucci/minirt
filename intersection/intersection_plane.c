@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:26:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/11 17:36:56 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 10:28:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_list_intersect *intersect_plane(t_plane *plane, t_ray old_ray)
 	free_heap_matrix(leaking_matrix, 4);
 	free_heap_matrix(cp, 4);
 	denominator = dot(plane->normal, ray.direction);
-	if (fabs(denominator) < EPSILON_v2)
+	if (fabs(denominator) < EPSILON_V2)
 		return (NULL);
 	t = dot(subtract(plane->point, ray.origin), plane->normal) / denominator;
 	if (t < 0)

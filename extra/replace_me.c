@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clamp.c                                            :+:      :+:    :+:   */
+/*   replace_me.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 09:40:30 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 09:47:02 by atucci           ###   ########.fr       */
+/*   Created: 2025/02/19 09:58:09 by atucci            #+#    #+#             */
+/*   Updated: 2025/02/19 09:58:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
-
-// Helper function to clamp a value within a specified range
-double	my_clamp(double value, double min_val, double max_val)
+/* TODO: let's see if we can get rid of the \n char */
+void	replace_me(char *str, char replacement, char to_replace)
 {
-	if (value < min_val)
-		return (min_val);
-	else if (value > max_val)
-		return (max_val);
-	else
-		return (value);
+	int		i;
+
+	i = 0;
+	if (str == NULL)
+		return ;
+	while (str[i])
+	{
+		if (str[i] == to_replace)
+			str[i] = replacement;
+		i++;
+	}
 }
+

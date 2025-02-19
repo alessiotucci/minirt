@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:46:31 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 09:38:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char	*get_selection_status(t_selected_obj selected)
 }
 
 /* ---------------------- MAIN TEST FUNCTION ---------------------- */
-static void	test_function(t_mlx *info)
+void	test_function(t_mlx *info)
 {
 	// Format camera information
 	char	*cam_info = camera_info_str(info->setting->camera);
@@ -152,6 +152,7 @@ int	mouse_click(int button, int x, int y, t_mlx *mlx)
 	}
 	else if ((button == 5) || (button == 4))
 		handle_camera_keys(button, mlx);
+	test_function(mlx);
 	re_start_image(mlx);
 	return (0);
 }

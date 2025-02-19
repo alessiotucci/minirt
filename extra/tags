@@ -32,5 +32,6 @@ print_vector	print_debug.c	/^void	print_vector(t_vector vector)$/;"	f	typeref:ty
 process_fractional_part	my_atof.c	/^static double	process_fractional_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
 process_integer_part	my_atof.c	/^static double	process_integer_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
 remove_new_line	utils.c	/^void	remove_new_line(char **matrix, char replacement, char to_replace)$/;"	f	typeref:typename:void
+replace_me	replace_me.c	/^void	replace_me(char *str, char replacement, char to_replace)$/;"	f	typeref:typename:void
 struct_full_status	print_debug.c	/^void	struct_full_status(t_setting *set)$/;"	f	typeref:typename:void
 struct_status	print_debug.c	/^void	struct_status(t_setting *set)$/;"	f	typeref:typename:void

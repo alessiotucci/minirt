@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2025/02/17 20:24:07 by atucci           ###   ########.fr        #
+#    Updated: 2025/02/19 09:59:54 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SOURCE = ./main.c \
 		 ./extra/print_debug.c \
 		 ./extra/my_atof.c \
 		 ./extra/comparing.c \
+		 ./extra/replace_me.c \
 		 ./transformations/translations.c \
 		 ./transformations/rotations.c \
 		 ./transformations/matrix_rotations.c \
