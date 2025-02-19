@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 09:01:27 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 09:28:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,57 @@ static t_list_intersect	*intersection_happened(double t[2], t_intersection inter
 	}
 	return (list);
 }
+
+
+t_list_intersect	*intersect_cylinder2(t_cylinder *cylinder, t_ray old_ray)
+{
+	double				a;
+	double				b;
+	double				c;
+	double				disc;
+	double				t[2];
+	t_list_intersect	*list;
+	t_intersection		inter1;
+	t_intersection		inter2;
+	t_ray				ray;
+	t_vector			v;         // v = ray.origin - cylinder->center
+	t_vector			D_perp;    // Perpendicular component of ray.direction
+	t_vector			v_perp;    // Perpendicular component of v
+
+	list = NULL;
+	default_intersection(&inter1, &inter2);
+	/* Transform the ray into object space if needed */
+	ray = transform_ray(old_ray, inversing_matrix(4, copy_matrix(4, 4, cylinder->transform)));
+
+	/* Compute the vector from the cylinder's center to the ray origin */
+	v = subtract(ray.origin, cylinder->center);
+
+	/* Instead of using only X and Z components, project onto the plane perpendicular to the cylinder's axis */
+	double DdotA = dot(ray.direction, cylinder->axis);
+	D_perp = subtract(ray.direction, multiplication(cylinder->axis, DdotA));
+
+	double vdotA = dot(v, cylinder->axis);
+	v_perp = subtract(v, multiplication(cylinder->axis, vdotA));
+
+	/* Now set up the quadratic coefficients for the lateral surface intersection */
+	a = dot(D_perp, D_perp);
+	if (comparing_double(a, 0.0))
+		return (NULL);
+	b = 2 * dot(D_perp, v_perp);
+	c = dot(v_perp, v_perp) - pow(cylinder->diameter / 2, 2);
+	disc = pow(b, 2) - (4 * a * c);
+	if (disc < 0)
+		return (NULL);
+	else
+	{
+		t[0] = ((-b - sqrt(disc)) / (2 * a));
+		t[1] = ((-b + sqrt(disc)) / (2 * a));
+		list = intersection_happened(t, inter1, inter2, ray, cylinder);
+	}
+	intersect_caps(*cylinder, ray, &list);
+	return (list);
+}
+
 
 /* return a list of intersection like usual */
 t_list_intersect	*intersect_cylinder(t_cylinder *cylinder, t_ray old_ray)
