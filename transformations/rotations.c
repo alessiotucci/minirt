@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:16:40 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/20 19:13:27 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 15:10:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 //TODO: leaks!
 t_vector	rotation_x(t_vector origin, double radians)
 {
-	double	**matrix;
+	double		**matrix;
 	t_vector	vector;
 
 	matrix = matrix_rotation_x(radians);
-	//return (matrix_x_vector(matrix, origin));
-
 	vector = matrix_x_vector(matrix, origin);
 	free_heap_matrix(matrix, 4);
 	return (vector);
@@ -28,12 +26,10 @@ t_vector	rotation_x(t_vector origin, double radians)
 
 t_vector	rotation_y(t_vector origin, double radians)
 {
-	double	**matrix;
+	double		**matrix;
 	t_vector	vector;
 
 	matrix = matrix_rotation_y(radians);
-	//return (matrix_x_vector(matrix, origin));
-
 	vector = matrix_x_vector(matrix, origin);
 	free_heap_matrix(matrix, 4);
 	return (vector);
@@ -41,17 +37,14 @@ t_vector	rotation_y(t_vector origin, double radians)
 
 t_vector	rotation_z(t_vector origin, double radians)
 {
-	double	**matrix;
+	double		**matrix;
 	t_vector	vector;
 
 	matrix = matrix_rotation_z(radians);
-	//return (matrix_x_vector(matrix, origin));
-
 	vector = matrix_x_vector(matrix, origin);
 	free_heap_matrix(matrix, 4);
 	return (vector);
 }
-
 
 /*main to test out the function */
 /*
@@ -84,6 +77,5 @@ int	main()
 	return (0);
 }
 */
-// gcc ../matrix/*.c ../vector/*.c rotations.c  ../extra/comparing.c ../extra/print_debug.c  ../libft/libft.a -lm  
 //TODO: CHECK THE LEAKS WITH THIS COMMANDS
 //valgrind   --leak-check=full --show-leak-kinds=all ./a.out

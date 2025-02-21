@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:27:05 by atucci            #+#    #+#             */
-/*   Updated: 2024/10/08 18:21:07 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 15:18:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	print_ray(t_ray ray)
 	print_vector(ray.direction);
 }
 
+// ray.origin + ray.direction * t;
 t_vector	position_ray(t_ray ray, double t)
 {
-	// ray.origin + ray.direction * t;
 	t_vector	result;
 	t_vector	final_result;
 
@@ -72,7 +72,6 @@ int	main()
 	return (0);
 }
 */
-//gcc ../matrix/*.c ../vector/*.c create_ray.c  ../extra/comparing.c ../extra/print_debug.c  ../libft/libft.a -lm
 
 //TODO: CHECK THE LEAKS WITH THIS COMMANDS
 //valgrind   --leak-check=full --show-leak-kinds=all ./a.out

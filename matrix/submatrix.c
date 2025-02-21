@@ -1,41 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace_me.c                                       :+:      :+:    :+:   */
+/*   submatrix.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/19 09:58:09 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 15:11:28 by atucci           ###   ########.fr       */
+/*   Created: 2025/02/19 14:59:42 by atucci            #+#    #+#             */
+/*   Updated: 2025/02/19 15:04:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
-/* TODO: let's see if we can get rid of the \n char */
-void	replace_me(char *str, char replacement, char to_replace)
+
+//5
+
+double	**submatrix(int index_rows, int index_cols, double **matrix, int size)
 {
 	int		i;
+	int		j;
+	int		row;
+	int		col;
+	double	**new;
 
+	new = malloc_matrix(size - 1, size - 1);
+	init_heap_matrix(size - 1, size - 1, new);
 	i = 0;
-	if (str == NULL)
-		return ;
-	while (str[i])
+	row = 0;
+	while (i < size)
 	{
-		if (str[i] == to_replace)
-			str[i] = replacement;
+		if (i != index_rows)
+		{
+			j = 0;
+			col = 0;
+			while (j < size)
+			{
+				if (j != index_cols)
+				{
+					new[row][col] = matrix[i][j];
+					col++;
+				}
+				j++;
+			}
+			row++;
+		}
 		i++;
 	}
-}
-
-//6
-void	remove_new_line(char **matrix, char replacement, char to_replace)
-{
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		replace_me(matrix[i], replacement, to_replace);
-		i++;
-	}
+	return (new);
 }

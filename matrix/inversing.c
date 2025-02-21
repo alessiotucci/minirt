@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:39:34 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/23 15:47:04 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 14:58:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 int	is_matrix_invertible(int s, double **matrix)
 {
 	if (comparing_double(determinant(copy_matrix(s, s, matrix), s), 0.0))
-	//if (comparing_double(determinant(matrix, s), 0.0))
 		return (0);
 	else
 		return (1);
@@ -90,6 +89,10 @@ double	**transposing(int rows, int cols, double **matrix)
 	return (ret);
 }
 
+//	inversed = divide_matrix(s, trans, determinant(src, s));
+//	TODO:
+//	WHY I was creating a copy!?it causing a segfault but unit test do not leak!
+//	inversed = divide_matrix(s, trans, determinant(src, s));
 double	**inversing_matrix(int s, double **src)
 {
 	double	**mat_cofact;
@@ -101,9 +104,6 @@ double	**inversing_matrix(int s, double **src)
 	mat_cofact = matrix_of_cofactors(s, src);
 	trans = transposing(s, s, mat_cofact);
 	inversed = divide_matrix(s, trans, determinant(copy_matrix(s, s, src), s));
-//	inversed = divide_matrix(s, trans, determinant(src, s));
-//	TODO: WHY I was creating a copy!? it causing a segfault but unit test do not leak!
-//	inversed = divide_matrix(s, trans, determinant(src, s));
 	free_heap_matrix(mat_cofact, s);
 	free_heap_matrix(trans, s);
 	return (inversed);

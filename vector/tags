@@ -12,9 +12,12 @@
 add	vector_operations.c	/^t_vector	add(t_vector v1, t_vector v2)$/;"	f	typeref:typename:t_vector
 create_point	utils_vectors.c	/^t_vector	create_point(double x, double y, double z)$/;"	f	typeref:typename:t_vector
 create_vector	utils_vectors.c	/^t_vector	create_vector(double x, double y, double z)$/;"	f	typeref:typename:t_vector
+cross	complex_operations.c	/^t_vector	cross(t_vector a, t_vector b)$/;"	f	typeref:typename:t_vector
 division	vector_operations.c	/^t_vector	division(t_vector v, double scalar)$/;"	f	typeref:typename:t_vector
+dot	complex_operations.c	/^double	dot(t_vector a, t_vector b)$/;"	f	typeref:typename:double
 is_a_point	utils_vectors.c	/^int	is_a_point(t_vector vect)$/;"	f	typeref:typename:int
 is_a_vector	utils_vectors.c	/^int	is_a_vector(t_vector vect)$/;"	f	typeref:typename:int
+magnitude	complex_operations.c	/^double	magnitude(t_vector v)$/;"	f	typeref:typename:double
 multiplication	vector_operations.c	/^t_vector	multiplication(t_vector v, double scalar)$/;"	f	typeref:typename:t_vector
 negate	utils_vectors.c	/^t_vector	negate(t_vector vect)$/;"	f	typeref:typename:t_vector
 normalization	complex_operations.c	/^t_vector	normalization(t_vector vector)$/;"	f	typeref:typename:t_vector

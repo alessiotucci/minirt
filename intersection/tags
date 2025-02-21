@@ -9,28 +9,28 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
-add_intersection_l	real_list.c	/^void	add_intersection_l(t_list_intersect **head, t_intersection *intersection)$/;"	f	typeref:typename:void
+add_intersection_l	real_list.c	/^void	add_intersection_l(t_list_intersect **head, t_intersection *inter)$/;"	f	typeref:typename:void
 check_cap_cylinder	intersection_cylinder.c	/^int	check_cap_cylinder(t_ray ray, double t)$/;"	f	typeref:typename:int
 concatenate_lists	real_list.c	/^void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)$/;"	f	typeref:typename:void
-copy_simple_fields_cylinder	intersection.c	/^static void copy_simple_fields_cylinder(t_cylinder *dest, t_cylinder*src)$/;"	f	typeref:typename:void	file:
-copy_simple_fields_plane	intersection.c	/^static void copy_simple_fields_plane(t_plane *dest, t_plane *src)$/;"	f	typeref:typename:void	file:
-copy_simple_fields_sphere	intersection.c	/^static void copy_simple_fields_sphere(t_sphere *dest, t_sphere *src)$/;"	f	typeref:typename:void	file:
+copy_simple_fields_cylinder	copy_simple_field.c	/^void	copy_simple_fields_cylinder(t_cylinder *dest, t_cylinder*src)$/;"	f	typeref:typename:void
+copy_simple_fields_plane	copy_simple_field.c	/^void	copy_simple_fields_plane(t_plane *dest, t_plane *src)$/;"	f	typeref:typename:void
+copy_simple_fields_sphere	copy_simple_field.c	/^void	copy_simple_fields_sphere(t_sphere *dest, t_sphere *src)$/;"	f	typeref:typename:void
 create_new_node	real_list.c	/^t_list_intersect	*create_new_node(t_intersection *intersection)$/;"	f	typeref:typename:t_list_intersect *
 deep_copy_cylinder	intersection.c	/^t_cylinder	*deep_copy_cylinder(t_cylinder *src)$/;"	f	typeref:typename:t_cylinder *
-deep_copy_plane	intersection.c	/^t_plane *deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
-deep_copy_sphere	intersection.c	/^t_sphere *deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
+deep_copy_plane	intersection.c	/^t_plane	*deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
+deep_copy_sphere	intersection.c	/^t_sphere	*deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
 default_intersection	intersection_cylinder.c	/^void	default_intersection(t_intersection *i1, t_intersection *i2)$/;"	f	typeref:typename:void
 free_intersection	intersection.c	/^void	free_intersection(t_intersection *intersect)$/;"	f	typeref:typename:void
 free_list	real_list.c	/^void	free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 insert_sorted	sort_intersection.c	/^void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)$/;"	f	typeref:typename:void
 intersect_caps	intersection_cylinder.c	/^static void intersect_caps(t_cylinder cylinder, t_ray ray, t_list_intersect **list)$/;"	f	typeref:typename:void	file:
 intersect_cylinder	intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
-intersect_plane	intersection_plane.c	/^t_list_intersect *intersect_plane(t_plane *plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_cylinder2	intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder2(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_cylinder3	intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder3(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_plane	intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane *plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	intersection_sphere.c	/^t_list_intersect	*intersect_sphere(t_sphere *sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersection	intersection.c	/^t_intersection	intersection(double t, char *type, void *obj_address)$/;"	f	typeref:typename:t_intersection
 intersection_happened	intersection_cylinder.c	/^static t_list_intersect	*intersection_happened(double t[2], t_intersection inter1, t_intersectio/;"	f	typeref:typename:t_list_intersect *	file:
 print_intersection	intersection_list.c	/^void	print_intersection(t_intersection i)$/;"	f	typeref:typename:void
 print_list	real_list.c	/^void	print_list(t_list_intersect **head, int debug)$/;"	f	typeref:typename:void
 sort_intersection_list	sort_intersection.c	/^void	sort_intersection_list(t_list_intersect **head)$/;"	f	typeref:typename:void
-string_to_type	intersection.c	/^t_type	string_to_type(char *type)$/;"	f	typeref:typename:t_type
-type_to_string	intersection.c	/^char	*type_to_string(t_type type)$/;"	f	typeref:typename:char *

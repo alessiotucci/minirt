@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:39:46 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 12:41:16 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 15:01:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double	determinant_two(double **matrix)
 	return ((matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]));
 }
 
-//5
+//1
 double	determinant_n(double **matrix, int size)
 {
 	double	result;
@@ -35,6 +35,7 @@ double	determinant_n(double **matrix, int size)
 	return (result);
 }
 
+//2
 /* as you can see, now Determinant() free the matrix! */
 double	determinant(double **matrix, int size)
 {
@@ -47,7 +48,7 @@ double	determinant(double **matrix, int size)
 	return (free_heap_matrix(matrix, size), result);
 }
 
-//2
+//3
 /* The minor of an element at row i and column j is the determinant of the 
  * submatrix at (i, j). */
 //free_heap_matrix(find, 4);
@@ -61,7 +62,7 @@ double	minor(int row, int col, double **matrix, int size)
 	return (result);
 }
 
-//3
+//4
 double	cofactor(int row, int col, double **matrix, int size)
 {
 	double	result;
@@ -71,41 +72,6 @@ double	cofactor(int row, int col, double **matrix, int size)
 		return (result);
 	else
 		return (result * -1);
-}
-
-//4
-double	**submatrix(int index_rows, int index_cols, double **matrix, int size)
-{
-	int		i;
-	int		j;
-	int		row;
-	int		col;
-	double	**new;
-
-	new = malloc_matrix(size - 1, size - 1);
-	init_heap_matrix(size - 1, size - 1, new);
-	i = 0;
-	row = 0;
-	while (i < size)
-	{
-		if (i != index_rows)
-		{
-			j = 0;
-			col = 0;
-			while (j < size)
-			{
-				if (j != index_cols)
-				{
-					new[row][col] = matrix[i][j];
-					col++;
-				}
-				j++;
-			}
-			row++;
-		}
-		i++;
-	}
-	return (new);
 }
 
 /*Main to test out the function

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 10:03:06 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 16:07:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	parsing_map(char *map, t_setting *set)
 	else
 		return (-1);
 }
+
 void	init_scene(t_mlx *info, char *mapname)
 {
 	info->width = DEFAULT_WIDTH;
 	info->height = DEFAULT_HEIGHT;
 	info->map_name = mapname;
-//	info->selected_object = NULL;
 }
 
 //TODO: close the fd, the return of parsing_map();
@@ -61,8 +61,7 @@ int	main(int ac, char **av)
 		if (parsing_map(av[1], &new_setting))
 			return (-1 * ft_printf("%sWrong map: %s%s\n", RED, RESET, av[1]));
 		init_scene(&info_mlx, av[1]);
-		struct_full_status(&new_setting);//TODO: we are testing
-		//free_struct(&new_setting);//TODO: implement the right free
+		struct_full_status(&new_setting);
 		info_mlx.setting = &new_setting;
 		manage_mlx(&info_mlx);
 	}

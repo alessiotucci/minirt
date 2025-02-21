@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 10:06:18 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 15:20:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	create_setting(char **details, t_setting *set)
 		start_planes(set, details);
 	else if (my_strcmp(details[0], "cy") == 0)
 		start_cylinder(set, details);
-	else if (my_strcmp(details[0], "cn") == 0)
-		start_cones(set, details);
 	else
 	{
 		if (my_strcmp(details[0], "\n") == 0)

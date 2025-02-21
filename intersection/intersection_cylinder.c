@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:27:39 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 12:05:10 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 16:00:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,17 +180,13 @@ t_list_intersect	*intersect_cylinder2(t_cylinder *cylinder, t_ray old_ray)
 	default_intersection(&inter1, &inter2);
 	/* Transform the ray into object space if needed */
 	ray = transform_ray(old_ray, inversing_matrix(4, copy_matrix(4, 4, cylinder->transform)));
-
 	/* Compute the vector from the cylinder's center to the ray origin */
 	v = subtract(ray.origin, cylinder->center);
-
 	/* Instead of using only X and Z components, project onto the plane perpendicular to the cylinder's axis */
 	double DdotA = dot(ray.direction, cylinder->axis);
 	D_perp = subtract(ray.direction, multiplication(cylinder->axis, DdotA));
-
 	double vdotA = dot(v, cylinder->axis);
 	v_perp = subtract(v, multiplication(cylinder->axis, vdotA));
-
 	/* Now set up the quadratic coefficients for the lateral surface intersection */
 	a = dot(D_perp, D_perp);
 	if (comparing_double(a, 0.0))

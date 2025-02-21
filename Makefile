@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2025/02/19 09:59:54 by atucci           ###   ########.fr        #
+#    Updated: 2025/02/21 16:16:08 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SOURCE = ./main.c \
 		 ./main_utils.c \
 		 ./manage_mlx.c \
 		 ./freeing.c \
+		 ./freeing2.c \
 		 ./draw_scene.c \
 		 ./centering.c \
 		 ./normal.c \
@@ -33,9 +34,12 @@ SOURCE = ./main.c \
 		 ./starting/start_scenes.c \
 		 ./extra/utils.c \
 		 ./extra/print_debug.c \
+		 ./extra/print_debug2.c \
+		 ./extra/print_single.c \
 		 ./extra/my_atof.c \
 		 ./extra/comparing.c \
 		 ./extra/replace_me.c \
+		 ./extra/type_string.c \
 		 ./transformations/translations.c \
 		 ./transformations/rotations.c \
 		 ./transformations/matrix_rotations.c \
@@ -58,6 +62,7 @@ SOURCE = ./main.c \
 		 ./matrix/determinant.c \
 		 ./matrix/inversing.c \
 		 ./matrix/void.c \
+		 ./matrix/submatrix.c \
 		 ./raycasting/create_ray.c \
 		 ./raycasting/intersection_ray.c \
 		 ./raycasting/utils_obj.c \
@@ -66,12 +71,13 @@ SOURCE = ./main.c \
 		 ./raycasting/cast_ray.c \
 		 ./raycasting/cast_ray_helper.c \
 		 ./intersection/intersection.c \
+		 ./intersection/old_list.c \
 		 ./intersection/intersection_list.c \
-		 ./intersection/real_list.c \
 		 ./intersection/intersection_sphere.c \
 		 ./intersection/intersection_plane.c \
 		 ./intersection/intersection_cylinder.c \
 		 ./intersection/sort_intersection.c \
+		 ./intersection/copy_simple_field.c \
 		 ./shadows/lighting.c \
 		 ./shadows/material.c \
 		 ./shadows/lambert_reflection_model.c \

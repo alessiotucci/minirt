@@ -6,7 +6,7 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:17:11 by atucci            #+#    #+#             */
-/*   Updated: 2024/12/21 17:42:44 by ftroise          ###   ########.fr       */
+/*   Updated: 2025/02/19 15:09:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,8 @@ t_vector	scaling_inverse(t_vector move, t_vector origin)
 
 	matrix = malloc_matrix(4, 4);
 	identity_value_matrix(matrix, move);
-	//printf("scaling matrix \n");
-	//print_int_matrix(4, 4, matrix);
 	inversed = inversing_matrix(4, matrix);
 	free_heap_matrix(matrix, 4);
-	//inversing_matrix_void(4, matrix);
-	//return (matrix_x_vector(matrix, origin));
 	result = matrix_x_vector(inversed, origin);
 	return (free_heap_matrix(inversed, 4), result);
 }
@@ -79,6 +75,5 @@ int	main()
 	return (0);
 }
 */
-//gcc ../matrix/*.c ../vector/*.c scaling.c  ../extra/comparing.c ../extra/print_debug.c  ../libft/libft.a -lm
 //TODO: CHECK THE LEAKS WITH THIS COMMANDS
 //valgrind   --leak-check=full --show-leak-kinds=all ./a.out

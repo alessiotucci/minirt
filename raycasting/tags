@@ -13,13 +13,12 @@ cast_rays	cast_ray.c	/^void	cast_rays(t_mlx *data)$/;"	f	typeref:typename:void
 create_ray	create_ray.c	/^t_ray	create_ray(t_vector origin, t_vector direction)$/;"	f	typeref:typename:t_ray
 create_ray_from_camera	cast_ray.c	/^t_ray	create_ray_from_camera(t_mlx *data, int x, int y)$/;"	f	typeref:typename:t_ray
 create_ray_from_camera2	cast_ray.c	/^t_ray create_ray_from_camera2(t_mlx *data, int x, int y)$/;"	f	typeref:typename:t_ray
-each_pixel_calculationV2	cast_ray_helper.c	/^void	each_pixel_calculationV2(t_mlx *data, int x, int y)$/;"	f	typeref:typename:void
+each_pixel_calculation	cast_ray_helper.c	/^void	each_pixel_calculation(t_mlx *data, int x, int y)$/;"	f	typeref:typename:void
 get_color_intersect	cast_ray_helper.c	/^t_color	get_color_intersect(t_object obj)$/;"	f	typeref:typename:t_color
 get_discriminant	intersection_ray.c	/^double	get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter)$/;"	f	typeref:typename:double
 get_sphere_to_ray	intersection_ray.c	/^t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)$/;"	f	typeref:typename:t_vector
 hit_v2	hit.c	/^t_intersection	*hit_v2(t_list_intersect *list)$/;"	f	typeref:typename:t_intersection *
 position_ray	create_ray.c	/^t_vector	position_ray(t_ray ray, double t)$/;"	f	typeref:typename:t_vector
-print_light_source	cast_ray.c	/^void	print_light_source(t_mlx *data, int x, int y)$/;"	f	typeref:typename:void
 print_ray	create_ray.c	/^void	print_ray(t_ray ray)$/;"	f	typeref:typename:void
 print_type	utils_obj.c	/^int	print_type(t_object obj)$/;"	f	typeref:typename:int
 project_point_to_2d	cast_ray.c	/^t_vector project_point_to_2d(t_vector point, t_camera *camera, int width, int height)$/;"	f	typeref:typename:t_vector

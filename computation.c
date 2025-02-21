@@ -6,25 +6,25 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:30:04 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 18:18:36 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 17:17:54 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minirt.h"
 
 // Helper function to get material from object
-static t_material get_material(t_object obj)
+static t_material	get_material(t_object obj)
 {
 	t_color	d;
 
 	d = create_color(0, 0, 0);
 	if (obj.type == T_SPHERE)
-		return ((t_sphere *)obj.address)->material;
+		return (((t_sphere *)obj.address)->material);
 	if (obj.type == T_PLANE)
-		return ((t_plane *)obj.address)->material;
+		return (((t_plane *)obj.address)->material);
 	if (obj.type == T_CYLINDER)
-		return ((t_cylinder *)obj.address)->material;
-	return (printf("\n\t%sobj type not found!%s\n\n",RED, RESET), material(d));
+		return (((t_cylinder *)obj.address)->material);
+	return (printf("\n\t%sobj type not found!%s\n\n", RED, RESET), material(d));
 }
 
 /*
@@ -53,20 +53,22 @@ t_computations	prepare_computations(t_intersection i, t_ray r)
 // Compute the final color based on the chosen lighting model.
 t_color	shade_hit(t_setting *world, t_computations comps, int flag)
 {
-	t_color	final_color;
+	t_color	final;
 	t_light	light;
-	int	shadowed;
+	int		shadowed;
+	double	r;
 
+	r = world->amb_light->ratio;
 	light = *world->lights[0];
 	shadowed = is_shadowed(world, comps.over_point, light);
 	if (!shadowed)
 	{
 		if (flag)
-			final_color = phong_lighting(world, comps, light);
+			final = phong_lighting(world, comps, light);
 		else
-			final_color = lambert_lighting(world, comps, light);
+			final = lambert_lighting(world, comps, light);
 	}
 	else
-		final_color = multiply_color_by_scalar(get_color_intersect(comps.object), world->amb_light->ratio);
-	return final_color;
+		final = multiply_color_by_scalar(get_color_intersect(comps.object), r);
+	return (final);
 }

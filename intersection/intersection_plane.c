@@ -6,21 +6,21 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:26:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 10:28:31 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 15:59:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-t_list_intersect *intersect_plane(t_plane *plane, t_ray old_ray)
+t_list_intersect	*intersect_plane(t_plane *plane, t_ray old_ray)
 {
-	t_ray	ray;
+	t_ray				ray;
 	t_list_intersect	*list;
-	t_intersection	inter;
-	double	t;
-	double	denominator;
-	double	**leaking_matrix;
-	double	**cp;
+	t_intersection		inter;
+	double				t;
+	double				denominator;
+	double				**leaking_matrix;
+	double				**cp;
 
 	cp = copy_matrix(4, 4, plane->transform);
 	leaking_matrix = inversing_matrix(4, cp);

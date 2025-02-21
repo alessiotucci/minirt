@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 12:04:26 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:21:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@
 /***************************************/
 # define TRANSLATION_SENSITIVITY 0.2
 # define MAX_DELTA 5.0
+# define DIAMETER_DELTA 1.0
+# define HEIGHT_DELTA 2.0
+# define ANGLE_DELTA (M_PI / 36)
 
 /*TODO:ADDITIONAL STRUCTS
 * Ray Struct: Represents a ray in the scene.
@@ -472,7 +475,6 @@ void				cast_rays(t_mlx *data);
 /* Raycasting/cast_ray_helper.c */
 /********************************/
 void				each_pixel_calculation(t_mlx *data, int x, int y);
-void				each_pixel_calculationV2(t_mlx *data, int x, int y);
 /*********************************/
 /* Raycasting/intersection_ray.c */
 /*********************************/
@@ -496,6 +498,10 @@ void				free_struct(t_setting *set);
 void				free_single_sphere(t_sphere *sphere);
 void				free_single_plane(t_plane *plane);
 void				free_single_cylinder(t_cylinder *cylinder);
+void				free_plane_array(t_plane **planes, int num);
+void				free_cylinder_array(t_cylinder **cylinders, int num);
+void				free_sphere_array(t_sphere **spheres, int num);
+void				free_lights_array(t_light **lights, int num);
 /************************/
 /* print debug function */
 /************************/
@@ -644,4 +650,19 @@ void				test_function(t_mlx *info);
 int					check_the_extension(char *filename, char *ext);
 int					open_map(char *filename, t_setting *set);
 t_list_intersect	*intersect_cylinder3(t_cylinder *cylinder, t_ray old_ray);
+/*************************/
+/*This are for deep copy */
+/*************************/
+void				copy_simple_fields_sphere(t_sphere *dest, t_sphere *src);
+void				copy_simple_fields_plane(t_plane *dest, t_plane *src);
+void				copy_simple_fields_cylinder(t_cylinder *dest, t_cylinder*src);
+/****************************/
+/* This are for print debug */
+/****************************/
+void				print_planes(int n_planes, t_plane **array);
+void				print_cylinders(int n_cylinders, t_cylinder **array);
+void				print_spheres(int n_spheres, t_sphere **array);
+void				print_single_light(t_light *one_light);
+void				print_lights(int n_lights, t_light **array);
+
 #endif

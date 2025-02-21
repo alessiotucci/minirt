@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:42:04 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 09:44:59 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 14:56:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 t_vector	normalization(t_vector vector)
 {
 	t_vector	new_vector;
+	t_vector	zero_vector;
 
 	if (magnitude(vector) == 0)
 	{
-		t_vector zero_vector;
 		zero_vector.x = 0;
 		zero_vector.y = 0;
 		zero_vector.z = 0;

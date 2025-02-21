@@ -1,0 +1,26 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/nfs/homes/atucci/Desktop/mioGithubMiniRT/transformations/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+create_scaling_matrix	scaling.c	/^double	**create_scaling_matrix(t_vector move)$/;"	f	typeref:typename:double **
+create_translation_matrix	translations.c	/^double	**create_translation_matrix(t_vector move)$/;"	f	typeref:typename:double **
+identity_value_matrix	scaling.c	/^void	identity_value_matrix(double **matrix, t_vector source)$/;"	f	typeref:typename:void
+inverse_translations	translations.c	/^t_vector	inverse_translations(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
+last_cols_value	translations.c	/^void	last_cols_value(int size, double **matrix, t_vector source)$/;"	f	typeref:typename:void
+matrix_rotation_x	matrix_rotations.c	/^double	**matrix_rotation_x(double radians)$/;"	f	typeref:typename:double **
+matrix_rotation_y	matrix_rotations.c	/^double	**matrix_rotation_y(double radians)$/;"	f	typeref:typename:double **
+matrix_rotation_z	matrix_rotations.c	/^double	**matrix_rotation_z(double radians)$/;"	f	typeref:typename:double **
+rotation_x	rotations.c	/^t_vector	rotation_x(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
+rotation_y	rotations.c	/^t_vector	rotation_y(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
+rotation_z	rotations.c	/^t_vector	rotation_z(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
+scaling	scaling.c	/^t_vector	scaling(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
+scaling_inverse	scaling.c	/^t_vector	scaling_inverse(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
+shearing	shearing.c	/^t_vector	shearing(t_vector origin, double value[6])$/;"	f	typeref:typename:t_vector
+translations	translations.c	/^t_vector	translations(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector

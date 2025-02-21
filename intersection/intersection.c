@@ -6,43 +6,12 @@
 /*   By: ftroise <ftroise@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:50:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 18:43:48 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 15:56:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "../minirt.h"
-
-/* those function are for the deep copy, double check those*/ 
-static void copy_simple_fields_sphere(t_sphere *dest, t_sphere *src)
-{
-	dest->identifier = ft_strdup(src->identifier);
-	dest->center = src->center;
-	dest->diameter = src->diameter;
-	dest->color = src->color;
-	dest->material = src->material;
-}
-
-static void copy_simple_fields_plane(t_plane *dest, t_plane *src)
-{
-	dest->identifier = ft_strdup(src->identifier);
-	dest->point = src->point;
-	dest->color = src->color;
-	dest->material = src->material;
-	dest->normal = src->normal;
-}
-
-//TODO: update this function pls
-static void copy_simple_fields_cylinder(t_cylinder *dest, t_cylinder*src)
-{
-	dest->identifier = ft_strdup(src->identifier);
-	dest->center = src->center;
-	dest->axis = src->axis;
-	dest->height = src->height;
-	dest->diameter = src->diameter;
-	dest->color = src->color;
-}
-
 
 t_sphere	*deep_copy_sphere(t_sphere *src)
 {
@@ -89,39 +58,7 @@ t_cylinder	*deep_copy_cylinder(t_cylinder *src)
 	return (copy);
 }
 
-char	*type_to_string(t_type type)
-{
-	printf("type_to_string: %d\n", type);
-	if (type == T_SPHERE)
-		return (printf("sphere\n"), "sphere\n");
-	if (type == T_PLANE)
-		return (printf("plane\n"), "plane\n");
-	if (type == T_CYLINDER)
-		return (printf("cylinder\n"), "cylinder\n");
-	if (type == T_LIGHT)
-		return (printf("light\n"), "light\n");
-	else
-		return (printf("not found:[%d]\n", type), "NOT FOUND\n");
-}
-
-t_type	string_to_type(char *type)
-{
-	if (my_strcmp(type, "sp") == 0)
-		return (T_SPHERE);
-	if (my_strcmp(type, "pl") == 0)
-		return (T_PLANE);
-	if (my_strcmp(type, "cy") == 0)
-		return (T_CYLINDER);
-	else
-	{
-		printf("Verbose Log: string to type failed, check the string of the obj...\n");
-		exit(-42);
-	}
-		//return (T_SPHERE); // THIS IS TO COMPILE
-}
-
-
-// Function to free a single intersection
+//2 Function to free a single intersection
 void	free_intersection(t_intersection *intersect)
 {
 	if (!intersect)
@@ -136,6 +73,7 @@ void	free_intersection(t_intersection *intersect)
 		return (error_msg("F: free_intersection! obj not FOUND\n"));
 }
 
+//1
 t_intersection	intersection(double t, char *type, void *obj_address)
 {
 	t_intersection	new;

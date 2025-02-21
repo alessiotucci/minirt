@@ -32,7 +32,7 @@ matrix_x_vector	operations_matrix.c	/^t_vector	matrix_x_vector(double **a, t_vec
 minor	determinant.c	/^double	minor(int row, int col, double **matrix, int size)$/;"	f	typeref:typename:double
 multiply_matrix	operations_matrix.c	/^double	**multiply_matrix(int cols_a, int rows_b, double **a, double **b)$/;"	f	typeref:typename:double **
 print_int_matrix	matrix_utils.c	/^void	print_int_matrix(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
-submatrix	determinant.c	/^double	**submatrix(int index_rows, int index_cols, double **matrix, int size)$/;"	f	typeref:typename:double **
+submatrix	submatrix.c	/^double	**submatrix(int index_rows, int index_cols, double **matrix, int size)$/;"	f	typeref:typename:double **
 transposing	inversing.c	/^double	**transposing(int rows, int cols, double **matrix)$/;"	f	typeref:typename:double **
 transposing_void	void.c	/^void	transposing_void(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 value_matrix	initialize_matrix.c	/^double	**value_matrix(double a[4], double b[4], double c[4], double d[4])$/;"	f	typeref:typename:double **

@@ -12,9 +12,8 @@
 assign_material_sphere	material.c	/^void	assign_material_sphere(t_sphere *s, t_material new)$/;"	f	typeref:typename:void
 intersect_world	is_shadowed.c	/^t_list_intersect	*intersect_world(t_setting *world, t_ray ray)$/;"	f	typeref:typename:t_list_intersect *
 is_shadowed	is_shadowed.c	/^int	is_shadowed(t_setting *world, t_vector point, t_light light)$/;"	f	typeref:typename:int
-lambert_formula	lambert_reflection_model.c	/^t_color	lambert_formula(t_intersection *c_i, t_light light, t_vector point, t_vector normal, t_s/;"	f	typeref:typename:t_color
-material	material.c	/^t_material	material(void)$/;"	f	typeref:typename:t_material
-phong_formula	phong_reflection_model.c	/^t_color	phong_formula(t_material mat, t_light light, t_vector point, t_vector eye, t_vector norm/;"	f	typeref:typename:t_color
-phong_lighting	lighting.c	/^t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector nor/;"	f	typeref:typename:t_color
+lambert_lighting	lambert_reflection_model.c	/^t_color	lambert_lighting(t_setting *world, t_computations comps, t_light light)$/;"	f	typeref:typename:t_color
+material	material.c	/^t_material	material(t_color color)$/;"	f	typeref:typename:t_material
+phong_lighting	phong_reflection_model.c	/^t_color phong_lighting(t_setting *world, t_computations comps, t_light light)$/;"	f	typeref:typename:t_color
 point_light	lighting.c	/^t_light	point_light(t_vector pos, t_color c)$/;"	f	typeref:typename:t_light
 print_material	material.c	/^void	print_material(t_material mat)$/;"	f	typeref:typename:void

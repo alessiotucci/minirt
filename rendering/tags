@@ -9,26 +9,31 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
-ANGLE_DELTA	rotation_handlers.c	/^#define ANGLE_DELTA /;"	d	file:
-DIAMETER_DELTA	rotation_handlers.c	/^#define DIAMETER_DELTA /;"	d	file:
-HEIGHT_DELTA	rotation_handlers.c	/^#define HEIGHT_DELTA /;"	d	file:
-cast_mouse_ray	mouse_select.c	/^int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)$/;"	f	typeref:typename:int
+calculate_translation_delta	translation_handlers.c	/^t_vector	calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_y, t_vector curr/;"	f	typeref:typename:t_vector
+calculate_translation_delta_perp_to_camera	translation_handlers.c	/^t_vector	calculate_translation_delta_perp_to_camera(t_mlx *mlx, int x, int y, t_vector current_p/;"	f	typeref:typename:t_vector
+cast_mouse_ray	mouse_select.c	/^int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *set)$/;"	f	typeref:typename:int
+clamp_delta	translation_handlers.c	/^t_vector clamp_delta(t_vector delta, double max_val)$/;"	f	typeref:typename:t_vector
 clean_close	key_pressed.c	/^void	clean_close(t_mlx *project)$/;"	f	typeref:typename:void
-decrease_cylinder_height	rotation_handlers.c	/^void decrease_cylinder_height(t_mlx *data)$/;"	f	typeref:typename:void
-decrease_object_diameter	rotation_handlers.c	/^void decrease_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
-find_original_cylinder	mouse_select.c	/^static t_selected_obj	find_original_cylinder(t_setting *setting, void *original_addr)$/;"	f	typeref:typename:t_selected_obj	file:
-find_original_object_index	mouse_select.c	/^t_selected_obj find_original_object_index(t_setting *setting, void *original_addr, t_type obj_ty/;"	f	typeref:typename:t_selected_obj
-find_original_plane	mouse_select.c	/^static t_selected_obj	find_original_plane(t_setting *setting, void *original_addr)$/;"	f	typeref:typename:t_selected_obj	file:
-find_original_sphere	mouse_select.c	/^static t_selected_obj	find_original_sphere(t_setting *setting, void *original_addr)$/;"	f	typeref:typename:t_selected_obj	file:
+decrease_cylinder_height	rotation_handlers.c	/^void	decrease_cylinder_height(t_mlx *data)$/;"	f	typeref:typename:void
+decrease_object_diameter	rotation_handlers.c	/^void	decrease_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
+find_original	mouse_select.c	/^t_selected_obj	find_original(t_setting *setting, void *orig, t_type obj_type)$/;"	f	typeref:typename:t_selected_obj
+find_original_cylinder	mouse_select.c	/^static t_selected_obj	find_original_cylinder(t_setting *setting, void *o)$/;"	f	typeref:typename:t_selected_obj	file:
+find_original_plane	mouse_select.c	/^static t_selected_obj	find_original_plane(t_setting *setting, void *orig)$/;"	f	typeref:typename:t_selected_obj	file:
+find_original_sphere	mouse_select.c	/^static t_selected_obj	find_original_sphere(t_setting *setting, void *orig)$/;"	f	typeref:typename:t_selected_obj	file:
+get_selected_object_position	translation_handlers.c	/^t_vector	get_selected_object_position(t_mlx *mlx)$/;"	f	typeref:typename:t_vector
+handle_camera_keys	key_pressed.c	/^void	handle_camera_keys(int keycode, t_mlx *data)$/;"	f	typeref:typename:void
+handle_object_keys	key_pressed.c	/^void	handle_object_keys(int keycode, t_mlx *data)$/;"	f	typeref:typename:void
+handle_plus_minus	key_pressed.c	/^void	handle_plus_minus(int keycode, t_mlx *data)$/;"	f	typeref:typename:void
 handle_x_rotation	rotation_handlers.c	/^void	handle_x_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
 handle_y_rotation	rotation_handlers.c	/^void	handle_y_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
 handle_z_rotation	rotation_handlers.c	/^void	handle_z_rotation(t_mlx *data, int direction)$/;"	f	typeref:typename:void
-increase_cylinder_height	rotation_handlers.c	/^void increase_cylinder_height(t_mlx *data)$/;"	f	typeref:typename:void
-increase_object_diameter	rotation_handlers.c	/^void increase_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
-key_pressed_gpt	key_pressed.c	/^int key_pressed_gpt(int keycode, void *param)$/;"	f	typeref:typename:int
+increase_cylinder_height	rotation_handlers.c	/^void	increase_cylinder_height(t_mlx *data)$/;"	f	typeref:typename:void
+increase_object_diameter	rotation_handlers.c	/^void	increase_object_diameter(t_mlx *data)$/;"	f	typeref:typename:void
+my_key_pressed	key_pressed.c	/^int	my_key_pressed(int keycode, void *param)$/;"	f	typeref:typename:int
+perform_translation_from_mouse	translation_handlers.c	/^void perform_translation_from_mouse(t_mlx *mlx, int x, int y)$/;"	f	typeref:typename:void
 re_start_image	key_pressed.c	/^void	re_start_image(t_mlx *data)$/;"	f	typeref:typename:void
-rotate_object_axis_negative	rotation_handlers.c	/^void rotate_object_axis_negative(t_mlx *data)$/;"	f	typeref:typename:void
-rotate_object_axis_positive	rotation_handlers.c	/^void rotate_object_axis_positive(t_mlx *data)$/;"	f	typeref:typename:void
-search_index	mouse_select.c	/^static int	search_index(void **array, int count, void *target)$/;"	f	typeref:typename:int	file:
-select_light	key_pressed.c	/^void	select_light(t_selected_obj selected)$/;"	f	typeref:typename:void
+rotate_object_axis_negative	rotation_handlers.c	/^void	rotate_object_axis_negative(t_mlx *data)$/;"	f	typeref:typename:void
+rotate_object_axis_positive	rotation_handlers.c	/^void	rotate_object_axis_positive(t_mlx *data)$/;"	f	typeref:typename:void
+search_i	mouse_select.c	/^static int	search_i(void **array, int count, void *target)$/;"	f	typeref:typename:int	file:
+select_light	key_pressed.c	/^void	select_light(t_selected_obj *selected)$/;"	f	typeref:typename:void
 translate_object	translation_handlers.c	/^void	translate_object(t_mlx *data, t_vector delta)$/;"	f	typeref:typename:void

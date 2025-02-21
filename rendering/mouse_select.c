@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:22:03 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 17:56:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 #include <stdio.h>
 
-// Searches an array of pointers for a target pointer and returns its index (or -1 if not found).
-static int	search_index(void **array, int count, void *target)
+// Searches an array of pointers for a target pointer
+// and returns its index (or -1 if not found).
+// 1
+static int	search_i(void **array, int count, void *target)
 {
 	int	i;
 
@@ -33,86 +35,84 @@ static int	search_index(void **array, int count, void *target)
 	return (-1);
 }
 
+//2
 // Helper: Search for sphere index.
-static t_selected_obj	find_original_sphere(t_setting *setting, void *original_addr)
+static t_selected_obj	find_original_sphere(t_setting *setting, void *orig)
 {
-	t_selected_obj	sel;
+	t_selected_obj	s;
 
-	sel.index = search_index((void **)setting->spheres, setting->num_spheres, original_addr);
-	if (sel.index != -1)
-		sel.type = T_SPHERE;
+	s.index = search_i((void **)setting->spheres, setting->num_spheres, orig);
+	if (s.index != -1)
+		s.type = T_SPHERE;
 	else
-		sel.type = T_NULL;
-	if (sel.index != -1)
-		printf("Creating selected obj: index:%d, type: %s\n", sel.index, type_to_string(sel.type));
-	return sel;
+		s.type = T_NULL;
+	return (s);
 }
 
+//3
 // Helper: Search for plane index.
-static t_selected_obj	find_original_plane(t_setting *setting, void *original_addr)
+static t_selected_obj	find_original_plane(t_setting *setting, void *orig)
 {
-	t_selected_obj	sel;
+	t_selected_obj	s;
 
-	sel.index = search_index((void **)setting->planes, setting->num_planes, original_addr);
-	if (sel.index != -1)
-		sel.type = T_PLANE;
+	s.index = search_i((void **)setting->planes, setting->num_planes, orig);
+	if (s.index != -1)
+		s.type = T_PLANE;
 	else
-		sel.type = T_NULL;
-	if (sel.index != -1)
-		printf("Creating selected obj: index:%d, type: %s\n", sel.index, type_to_string(sel.type));
-	return (sel);
+		s.type = T_NULL;
+	return (s);
 }
 
+//4
 // Helper: Search for cylinder index.
-static t_selected_obj	find_original_cylinder(t_setting *setting, void *original_addr)
+static t_selected_obj	find_original_cylinder(t_setting *setting, void *o)
 {
-	t_selected_obj	sel;
+	t_selected_obj	s;
 
-	sel.index = search_index((void **)setting->cylinders, setting->num_cylinders, original_addr);
-	if (sel.index != -1)
-		sel.type = T_CYLINDER;
+	s.index = search_i((void **)setting->cylinders, setting->num_cylinders, o);
+	if (s.index != -1)
+		s.type = T_CYLINDER;
 	else
-		sel.type = T_NULL;
-	if (sel.index != -1)
-		printf("Creating selected obj: index:%d, type: %s\n", sel.index, type_to_string(sel.type));
-	return (sel);
+		s.type = T_NULL;
+	return (s);
 }
 
+//5
 // Main function: select the correct helper based on object type.
-t_selected_obj find_original_object_index(t_setting *setting, void *original_addr, t_type obj_type)
+t_selected_obj	find_original(t_setting *setting, void *orig, t_type obj_type)
 {
-	t_selected_obj	sel;
+	t_selected_obj	s;
 
-	sel.index = -1;
-	sel.type = T_NULL;
+	s.index = -1;
+	s.type = T_NULL;
 	if (obj_type == T_SPHERE)
-		sel = find_original_sphere(setting, original_addr);
+		s = find_original_sphere(setting, orig);
 	else if (obj_type == T_PLANE)
-		sel = find_original_plane(setting, original_addr);
+		s = find_original_plane(setting, orig);
 	else if (obj_type == T_CYLINDER)
-		sel = find_original_cylinder(setting, original_addr);
+		s = find_original_cylinder(setting, orig);
 	else
 		printf("Error: Invalid object type!\n");
-	if (sel.index == -1)
+	if (s.index == -1)
 		printf("Error: Original object not found!\n");
-	return (sel);
+	return (s);
 }
 
-
-int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)
+/* 6! move to another file */
+int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *set)
 {
 	t_ray				ray;
 	t_list_intersect	*all_intersections;
-	t_intersection		*hit;
+	t_intersection		*ht;
 
 	printf("CAST_MOUSE_RAY!\n");
 	ray = create_ray_from_camera2(mlx, x, y);
-	all_intersections = intersect_world(setting, ray);
-	hit = hit_v2(all_intersections);
-	if (hit != NULL)
+	all_intersections = intersect_world(set, ray);
+	ht = hit_v2(all_intersections);
+	if (ht != NULL)
 	{
-		mlx->selected = find_original_object_index(setting, hit->obj.original_addr, hit->obj.type);
-		printf("Selected object: %p\n", hit->obj.original_addr);
+		mlx->selected = find_original(set, ht->obj.original_addr, ht->obj.type);
+		printf("Selected object: %p\n", ht->obj.original_addr);
 	}
 	else
 	{
@@ -122,4 +122,3 @@ int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *setting)
 	free_list(&all_intersections);
 	return (0);
 }
-

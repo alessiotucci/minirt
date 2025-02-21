@@ -6,14 +6,15 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 09:37:05 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:10:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
+
+//7
 // Key codes are defined in your header.
 // For example: ARROW_LEFT, ARROW_RIGHT, ARROW_UP, ARROW_DOWN, PLUS, MINUS
-
 void	select_light(t_selected_obj *selected)
 {
 	printf("%sSELECT light!%s\n", YELLOW, RESET);
@@ -21,7 +22,7 @@ void	select_light(t_selected_obj *selected)
 	selected->type = T_LIGHT;
 }
 
-//3
+//6
 /* This function perfom a clean close and then exit*/
 void	clean_close(t_mlx *project)
 {
@@ -31,6 +32,7 @@ void	clean_close(t_mlx *project)
 	exit(0);
 }
 
+//5
 void	handle_plus_minus(int keycode, t_mlx *data)
 {
 	if (keycode == MINUS)
@@ -48,9 +50,13 @@ void	handle_plus_minus(int keycode, t_mlx *data)
 			data->setting->camera->fov = 135;
 	}
 }
-// Handles camera movement, zoom, and tilting.
+
+//4 Handles camera movement, zoom, and tilting.
 void	handle_camera_keys(int keycode, t_mlx *data)
 {
+	t_vector	o;
+
+	o = data->setting->camera->orientation;
 	if (keycode == ARROW_LEFT)
 		data->setting->camera->viewpoint.x -= 2;
 	else if (keycode == ARROW_RIGHT)
@@ -62,18 +68,18 @@ void	handle_camera_keys(int keycode, t_mlx *data)
 	else if (keycode == PLUS || keycode == MINUS)
 		handle_plus_minus(keycode, data);
 	else if (keycode == 44)
-		data->setting->camera->orientation = rotation_y(data->setting->camera->orientation, M_PI/36);
+		data->setting->camera->orientation = rotation_y(o, M_PI / 36);
 	else if (keycode == 46)
-		data->setting->camera->orientation = rotation_y(data->setting->camera->orientation, -M_PI/36);
+		data->setting->camera->orientation = rotation_y(o, -M_PI / 36);
 	else if (keycode == 5)
-		data->setting->camera->orientation = rotation_x(data->setting->camera->orientation, M_PI/36);
+		data->setting->camera->orientation = rotation_x(o, M_PI / 36);
 	else if (keycode == 4)
-		data->setting->camera->orientation = rotation_x(data->setting->camera->orientation, -M_PI/36);
+		data->setting->camera->orientation = rotation_x(o, -M_PI / 36);
 	print_camera(data->setting->camera);
 }
 
-// Handles object-specific transformation keys.
-void handle_object_keys(int keycode, t_mlx *data)
+//3 Handles object-specific transformation keys.
+void	handle_object_keys(int keycode, t_mlx *data)
 {
 	if (keycode == KEY_X)
 		increase_object_diameter(data);
@@ -91,17 +97,17 @@ void handle_object_keys(int keycode, t_mlx *data)
 		select_light(&data->selected);
 }
 
-// Main key press handler.
-int my_key_pressed(int keycode, void *param)
+//2 Main key press handler.
+int	my_key_pressed(int keycode, void *param)
 {
-	t_mlx *data;
+	t_mlx	*data;
 
 	data = (t_mlx *)param;
 	printf("Keycode: [%d]\n", keycode);
-	if (keycode == ARROW_LEFT || keycode == ARROW_RIGHT ||
-		keycode == ARROW_UP || keycode == ARROW_DOWN ||
-		keycode == MINUS || keycode == PLUS ||
-		keycode == 44 || keycode == 46)
+	if (keycode == ARROW_LEFT || keycode == ARROW_RIGHT
+		|| keycode == ARROW_UP || keycode == ARROW_DOWN
+		|| keycode == MINUS || keycode == PLUS
+		|| keycode == 44 || keycode == 46)
 	{
 		handle_camera_keys(keycode, data);
 	}
@@ -115,6 +121,7 @@ int my_key_pressed(int keycode, void *param)
 	return (1);
 }
 
+//1
 void	re_start_image(t_mlx *data)
 {
 	if (data->img_pointer)
@@ -123,4 +130,3 @@ void	re_start_image(t_mlx *data)
 	draw_scene(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_pointer, 0, 0);
 }
-
