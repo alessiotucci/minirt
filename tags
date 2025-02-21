@@ -505,7 +505,7 @@ insert_sorted	intersection/sort_intersection.c	/^void	insert_sorted(t_list_inter
 intersect_caps	intersection/intersection_cylinder.c	/^static void intersect_caps(t_cylinder cylinder, t_ray ray, t_list_intersect **list)$/;"	f	typeref:typename:void	file:
 intersect_cylinder	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_cylinder2	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder2(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
-intersect_cylinder3	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder3(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
+intersect_cylinder3	intersection/intersection_cylinder.c	/^t_list_intersect *intersect_cylinder3(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_plane	intersection/intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane *plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	intersection/intersection_sphere.c	/^t_list_intersect	*intersect_sphere(t_sphere *sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_world	shadows/is_shadowed.c	/^t_list_intersect	*intersect_world(t_setting *world, t_ray ray)$/;"	f	typeref:typename:t_list_intersect *
