@@ -232,7 +232,7 @@ YELLOW	minirt.h	/^# define YELLOW /;"	d
 add	vector/vector_operations.c	/^t_vector	add(t_vector v1, t_vector v2)$/;"	f	typeref:typename:t_vector
 add_colors	colors/operation_color.c	/^t_color	add_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color
 add_cylinder_to_array	add_elem_array.c	/^void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set)$/;"	f	typeref:typename:void
-add_intersection_l	intersection/real_list.c	/^void	add_intersection_l(t_list_intersect **head, t_intersection *inter)$/;"	f	typeref:typename:void
+add_intersection_l	intersection/intersection_list.c	/^void	add_intersection_l(t_list_intersect **head, t_intersection *inter)$/;"	f	typeref:typename:void
 add_light_to_array	add_elem_array.c	/^void	add_light_to_array(t_light *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_plane_to_array	add_elem_array.c	/^void	add_plane_to_array(t_plane *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_sphere_to_array	add_elem_array.c	/^void	add_sphere_to_array(t_sphere *to_add, t_setting *set)$/;"	f	typeref:typename:void
@@ -299,7 +299,7 @@ comparing_double	extra/comparing.c	/^int	comparing_double(double a, double b)$/;
 comparing_heap_matrix	matrix/operations_matrix.c	/^int	comparing_heap_matrix(int rows, int cols, double **a, double **b)$/;"	f	typeref:typename:int
 comparing_vector	extra/comparing.c	/^int	comparing_vector(t_vector a, t_vector b)$/;"	f	typeref:typename:int
 compute_cylinder_normal	normal.c	/^t_vector	compute_cylinder_normal(t_cylinder *cy, t_vector point)$/;"	f	typeref:typename:t_vector
-concatenate_lists	intersection/real_list.c	/^void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)$/;"	f	typeref:typename:void
+concatenate_lists	intersection/intersection_list.c	/^void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)$/;"	f	typeref:typename:void
 content	libft/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
 convert_color	colors/converting_color.c	/^t_color	convert_color(t_color old)$/;"	f	typeref:typename:t_color
 convert_color_inverse	colors/converting_color.c	/^t_color	convert_color_inverse(t_color color)$/;"	f	typeref:typename:t_color
@@ -316,7 +316,7 @@ create_color	colors/operation_color.c	/^t_color	create_color(double r, double g,
 create_cylinder	shapes/cylinder.c	/^t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c)$/;"	f	typeref:typename:t_cylinder
 create_from_line	parsing/parsing_map.c	/^static void	create_from_line(char **matrix, t_setting *set)$/;"	f	typeref:typename:void	file:
 create_identity_matrix	matrix/operations_matrix.c	/^void	create_identity_matrix(double	**ret)$/;"	f	typeref:typename:void
-create_new_node	intersection/real_list.c	/^t_list_intersect	*create_new_node(t_intersection *intersection)$/;"	f	typeref:typename:t_list_intersect *
+create_new_node	intersection/intersection_list.c	/^t_list_intersect	*create_new_node(t_intersection *intersection)$/;"	f	typeref:typename:t_list_intersect *
 create_point	vector/utils_vectors.c	/^t_vector	create_point(double x, double y, double z)$/;"	f	typeref:typename:t_vector
 create_ray	raycasting/create_ray.c	/^t_ray	create_ray(t_vector origin, t_vector direction)$/;"	f	typeref:typename:t_ray
 create_ray_from_camera	raycasting/cast_ray.c	/^t_ray	create_ray_from_camera(t_mlx *data, int x, int y)$/;"	f	typeref:typename:t_ray
@@ -390,7 +390,7 @@ free_cylinder_array	freeing2.c	/^void	free_cylinder_array(t_cylinder **cylinders
 free_heap_matrix	matrix/matrix_utils.c	/^void	free_heap_matrix(double **matrix, int rows)$/;"	f	typeref:typename:void
 free_intersection	intersection/intersection.c	/^void	free_intersection(t_intersection *intersect)$/;"	f	typeref:typename:void
 free_lights_array	freeing.c	/^void	free_lights_array(t_light **lights, int num)$/;"	f	typeref:typename:void
-free_list	intersection/real_list.c	/^void	free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
+free_list	intersection/intersection_list.c	/^void	free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 free_plane_array	freeing2.c	/^void	free_plane_array(t_plane **planes, int num)$/;"	f	typeref:typename:void
 free_single_cylinder	freeing.c	/^void	free_single_cylinder(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 free_single_plane	freeing.c	/^void	free_single_plane(t_plane *plane)$/;"	f	typeref:typename:void
@@ -662,7 +662,7 @@ next	libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_
 next	minirt.h	/^	struct s_list_intersect	*next;$/;"	m	struct:s_list_intersect	typeref:struct:s_list_intersect *
 next	mlx/mlx_int.h	/^	struct s_win_list	*next;$/;"	m	struct:s_win_list	typeref:struct:s_win_list *
 normal	minirt.h	/^	t_vector	normal;$/;"	m	struct:s_plane	typeref:typename:t_vector
-normal_at	normal.c	/^t_vector	normal_at(t_sphere sphere, t_vector world_point)$/;"	f	typeref:typename:t_vector
+normal_at	normal.c	/^t_vector normal_at(t_sphere sphere, t_vector world_point)$/;"	f	typeref:typename:t_vector
 normalization	vector/complex_operations.c	/^t_vector	normalization(t_vector vector)$/;"	f	typeref:typename:t_vector
 normalv	minirt.h	/^	t_vector	normalv;$/;"	m	struct:s_computations	typeref:typename:t_vector
 num_cones	minirt.h	/^	int				num_cones;$/;"	m	struct:s_setting	typeref:typename:int
@@ -703,7 +703,7 @@ print_header	new_script_valgrind.pl	/^sub print_header$/;"	s
 print_int_matrix	matrix/matrix_utils.c	/^void	print_int_matrix(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 print_intersection	intersection/old_list.c	/^void	print_intersection(t_intersection i)$/;"	f	typeref:typename:void
 print_lights	extra/print_debug.c	/^void	print_lights(int n_lights, t_light **array)$/;"	f	typeref:typename:void
-print_list	intersection/real_list.c	/^void	print_list(t_list_intersect **head, int debug)$/;"	f	typeref:typename:void
+print_list	intersection/intersection_list.c	/^void	print_list(t_list_intersect **head, int debug)$/;"	f	typeref:typename:void
 print_material	shadows/material.c	/^void	print_material(t_material mat)$/;"	f	typeref:typename:void
 print_planes	extra/print_debug.c	/^void	print_planes(int n_planes, t_plane **array)$/;"	f	typeref:typename:void
 print_ray	raycasting/create_ray.c	/^void	print_ray(t_ray ray)$/;"	f	typeref:typename:void

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 16:15:09 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/21 16:48:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,18 +117,31 @@ t_vector	reflect(t_vector in, t_vector normal)
 
 // You may assume that the point will always be on the surface of the sphere
 // TODO: leaks, the funciton for matrix allocate the matrix and not free it
-//
-t_vector	normal_at(t_sphere sphere, t_vector world_point)
+/* inline function call is ALWAYS causing memory leaks, especially with matrix
+	matrix_x_vector(inversing_matrix(4, sphere.transform) , world_point);
+	matrix_x_vector(transposing(4, 4, inversing_matrix(4, s.transform)), o);
+*/
+t_vector normal_at(t_sphere sphere, t_vector world_point)
 {
 	t_vector	object_point;
 	t_vector	object_normal;
 	t_vector	world_normal;
-	t_vector	point;
+	t_vector	origin;
+	double		**inv;
+	double		**inv_for_trans;
+	double		**trans;
 
-	object_point = matrix_x_vector(inversing_matrix(4, sphere.transform) , world_point);
-	point = create_point(0, 0, 0);
-	object_normal = subtract(object_point, point);
-	world_normal = matrix_x_vector(transposing(4, 4, inversing_matrix(4, sphere.transform)), object_normal);
+	inv = inversing_matrix(4, sphere.transform);
+	object_point = matrix_x_vector(inv, world_point);
+	origin = create_point(0, 0, 0);
+	object_normal = subtract(object_point, origin);
+	inv_for_trans = inversing_matrix(4, sphere.transform);
+	trans = transposing(4, 4, inv_for_trans);
+	world_normal = matrix_x_vector(trans, object_normal);
 	world_normal.w = 0;
+	free_heap_matrix(inv, 4);
+	free_heap_matrix(inv_for_trans, 4);
+	free_heap_matrix(trans, 4);
 	return (normalization(world_normal));
 }
+
