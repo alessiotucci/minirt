@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2025/02/21 16:16:08 by atucci           ###   ########.fr        #
+#    Updated: 2025/02/21 23:39:16 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,7 @@ FLAG = -Wall -Wextra -Werror -O3 -gdwarf-4
 # ***************************************************************
 # setting up the compiler that will be used for the compilation *
 # ***************************************************************
-CC = gcc
+CC = cc
 
 #********************************************************
 # This variable specifies the path to the libft library *

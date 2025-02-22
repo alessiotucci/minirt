@@ -38,7 +38,7 @@ BG_RESET	minirt.h	/^# define BG_RESET /;"	d
 BG_YELLOW	minirt.h	/^# define BG_YELLOW /;"	d
 BLUE	minirt.h	/^# define BLUE /;"	d
 BUFFER_SIZE	libft/libft.h	/^#  define BUFFER_SIZE /;"	d
-CC	Makefile	/^CC = gcc$/;"	m
+CC	Makefile	/^CC = cc$/;"	m
 CC	mlx/Makefile.mk	/^	CC = clang$/;"	m
 CC	mlx/Makefile.mk	/^CC	= gcc$/;"	m
 CC	mlx/test/Makefile.mk	/^	CC	= gcc$/;"	m
