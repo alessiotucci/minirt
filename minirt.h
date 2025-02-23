@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 18:21:14 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 16:01:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -665,4 +665,5 @@ void				print_spheres(int n_spheres, t_sphere **array);
 void				print_single_light(t_light *one_light);
 void				print_lights(int n_lights, t_light **array);
 
+void				swap_two_doubles(double arr[2]);
 #endif

@@ -233,6 +233,7 @@ add	vector/vector_operations.c	/^t_vector	add(t_vector v1, t_vector v2)$/;"	f	ty
 add_colors	colors/operation_color.c	/^t_color	add_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color
 add_cylinder_to_array	add_elem_array.c	/^void	add_cylinder_to_array(t_cylinder *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_intersection_l	intersection/intersection_list.c	/^void	add_intersection_l(t_list_intersect **head, t_intersection *inter)$/;"	f	typeref:typename:void
+add_lateral_intersection	intersection/intersection_cylinder.c	/^static	void	add_lateral_intersection(t_list_intersect **list, t_cylinder *cylinder, t_ray ray, d/;"	f	typeref:typename:void	file:
 add_light_to_array	add_elem_array.c	/^void	add_light_to_array(t_light *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_plane_to_array	add_elem_array.c	/^void	add_plane_to_array(t_plane *to_add, t_setting *set)$/;"	f	typeref:typename:void
 add_sphere_to_array	add_elem_array.c	/^void	add_sphere_to_array(t_sphere *to_add, t_setting *set)$/;"	f	typeref:typename:void
@@ -299,6 +300,7 @@ comparing_double	extra/comparing.c	/^int	comparing_double(double a, double b)$/;
 comparing_heap_matrix	matrix/operations_matrix.c	/^int	comparing_heap_matrix(int rows, int cols, double **a, double **b)$/;"	f	typeref:typename:int
 comparing_vector	extra/comparing.c	/^int	comparing_vector(t_vector a, t_vector b)$/;"	f	typeref:typename:int
 compute_cylinder_normal	normal.c	/^t_vector	compute_cylinder_normal(t_cylinder *cy, t_vector point)$/;"	f	typeref:typename:t_vector
+compute_cylinder_quadratic_coeff	intersection/intersection_cylinder.c	/^static	void	compute_cylinder_quadratic_coeff(double coeff[3], t_cylinder *cylinder, t_ray ray)$/;"	f	typeref:typename:void	file:
 concatenate_lists	intersection/intersection_list.c	/^void	concatenate_lists(t_list_intersect **list1, t_list_intersect *list2)$/;"	f	typeref:typename:void
 content	libft/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
 convert_color	colors/converting_color.c	/^t_color	convert_color(t_color old)$/;"	f	typeref:typename:t_color
@@ -502,16 +504,13 @@ init_heap_matrix	matrix/matrix_utils.c	/^void	init_heap_matrix(int rows, int col
 init_scene	main.c	/^void	init_scene(t_mlx *info, char *mapname)$/;"	f	typeref:typename:void
 init_zero_matrix	matrix/matrix_utils.c	/^void	init_zero_matrix(int rows, int cols, double matrix[rows][cols])$/;"	f	typeref:typename:void
 insert_sorted	intersection/sort_intersection.c	/^void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)$/;"	f	typeref:typename:void
-intersect_caps	intersection/intersection_cylinder.c	/^static void intersect_caps(t_cylinder cylinder, t_ray ray, t_list_intersect **list)$/;"	f	typeref:typename:void	file:
+intersect_caps	intersection/intersection_cylinder.c	/^static void	intersect_caps(t_cylinder cyl, t_ray ray, t_list_intersect **list)$/;"	f	typeref:typename:void	file:
 intersect_cylinder	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
-intersect_cylinder2	intersection/intersection_cylinder.c	/^t_list_intersect	*intersect_cylinder2(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
-intersect_cylinder3	intersection/intersection_cylinder.c	/^t_list_intersect *intersect_cylinder3(t_cylinder *cylinder, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_plane	intersection/intersection_plane.c	/^t_list_intersect	*intersect_plane(t_plane *plane, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_sphere	intersection/intersection_sphere.c	/^t_list_intersect	*intersect_sphere(t_sphere *sphere, t_ray old_ray)$/;"	f	typeref:typename:t_list_intersect *
 intersect_world	shadows/is_shadowed.c	/^t_list_intersect	*intersect_world(t_setting *world, t_ray ray)$/;"	f	typeref:typename:t_list_intersect *
 intersection	intersection/intersection.c	/^t_intersection	intersection(double t, char *type, void *obj_address)$/;"	f	typeref:typename:t_intersection
 intersection	minirt.h	/^	t_intersection			*intersection;$/;"	m	struct:s_list_intersect	typeref:typename:t_intersection *
-intersection_happened	intersection/intersection_cylinder.c	/^static t_list_intersect	*intersection_happened(double t[2], t_intersection inter1, t_intersectio/;"	f	typeref:typename:t_list_intersect *	file:
 inverse_translations	transformations/translations.c	/^t_vector	inverse_translations(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 inversing_matrix	matrix/inversing.c	/^double	**inversing_matrix(int s, double **src)$/;"	f	typeref:typename:double **
 inversing_matrix_void	matrix/void.c	/^void	inversing_matrix_void(int size, double **source)$/;"	f	typeref:typename:void
@@ -793,6 +792,7 @@ sl1	mlx/test/main.c	/^int	sl1;$/;"	v	typeref:typename:int
 sl2	mlx/test/main.c	/^int	sl2;$/;"	v	typeref:typename:int
 sl3	mlx/test/main.c	/^int	sl3;$/;"	v	typeref:typename:int
 sl4	mlx/test/main.c	/^int	sl4;$/;"	v	typeref:typename:int
+solve_quadratic_equation	intersection/intersection_cylinder.c	/^static	void	solve_quadratic_equation(double a, double b, double c, double roots[3])$/;"	f	typeref:typename:void	file:
 sort_intersection_list	intersection/sort_intersection.c	/^void	sort_intersection_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 specular	minirt.h	/^	double	specular;$/;"	m	struct:s_material	typeref:typename:double
 spheres	minirt.h	/^	t_sphere		**spheres;$/;"	m	struct:s_setting	typeref:typename:t_sphere **
@@ -809,6 +809,7 @@ struct_status	extra/print_debug2.c	/^void	struct_status(t_setting *set)$/;"	f	ty
 submatrix	matrix/submatrix.c	/^double	**submatrix(int index_rows, int index_cols, double **matrix, int size)$/;"	f	typeref:typename:double **
 subtract	vector/vector_operations.c	/^t_vector	subtract(t_vector v1, t_vector v2)$/;"	f	typeref:typename:t_vector
 subtract_colors	colors/operation_color.c	/^t_color	subtract_colors(t_color c1, t_color c2)$/;"	f	typeref:typename:t_color
+swap_two_doubles	extra/comparing.c	/^void	swap_two_doubles(double arr[2])$/;"	f	typeref:typename:void
 t	minirt.h	/^	double		t;$/;"	m	struct:s_computations	typeref:typename:double
 t	minirt.h	/^	double		t;$/;"	m	struct:s_intersection	typeref:typename:double
 t_amb_light	minirt.h	/^}	t_amb_light;$/;"	t	typeref:struct:s_amb_light
@@ -842,6 +843,7 @@ transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_cylinder	typeref:typen
 transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_plane	typeref:typename:double **
 transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_sphere	typeref:typename:double **
 transform_ray	raycasting/transformation_ray.c	/^t_ray	transform_ray(t_ray original, double **matrix)$/;"	f	typeref:typename:t_ray
+transform_ray_to_object_space	intersection/intersection_cylinder.c	/^static	t_ray	transform_ray_to_object_space(t_cylinder *cylinder, t_ray ray)$/;"	f	typeref:typename:t_ray	file:
 translate_object	rendering/translation_handlers.c	/^void	translate_object(t_mlx *data, t_vector delta)$/;"	f	typeref:typename:void
 translations	transformations/translations.c	/^t_vector	translations(t_vector move, t_vector origin)$/;"	f	typeref:typename:t_vector
 transposing	matrix/inversing.c	/^double	**transposing(int rows, int cols, double **matrix)$/;"	f	typeref:typename:double **

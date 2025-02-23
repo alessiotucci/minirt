@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:55:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 12:04:21 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 15:45:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ t_list_intersect	*intersect_world(t_setting *world, t_ray ray)
 	i = 0;
 	while (i < world->num_cylinders)
 	{
-		//current_intersections = intersect_cylinder(world->cylinders[i], ray);
-		//current_intersections = intersect_cylinder2(world->cylinders[i], ray);
-		current_intersections = intersect_cylinder3(world->cylinders[i], ray);
+		current_intersections = intersect_cylinder(world->cylinders[i], ray);
+		//current_intersections = intersect_cylinder3(world->cylinders[i], ray);
 		if (current_intersections)
 			concatenate_lists(&all_intersections, current_intersections);
 		i++;

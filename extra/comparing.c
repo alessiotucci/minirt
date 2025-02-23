@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:57:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 18:20:23 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 16:00:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,13 @@ int	comparing_vector(t_vector a, t_vector b)
 	return (comparing_double(a.x, b.x) && comparing_double(a.y, b.y)
 		&& comparing_double(a.w, b.w));
 }
+
+void	swap_two_doubles(double arr[2])
+{
+	double	tmp;
+
+	tmp = arr[0];
+	arr[0] = arr[1];
+	arr[1] = tmp;
+}
+
