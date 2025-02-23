@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 09:38:10 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 18:12:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,17 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 /* ---------------------- VECTOR FORMATTING ---------------------- */
 static char	*vector_to_str(t_vector vec)
 {
-	char	*x = ft_itoa((int)vec.x);
-	char	*y = ft_itoa((int)vec.y);
-	char	*z = ft_itoa((int)vec.z);
-	char	*temp = ft_strjoin(x, " ");
-	char	*temp2 = ft_strjoin(temp, y);
+	char	*x;
+	char	*y;
+	char	*z;
+	char	*temp;
+	char	*temp2;
+
+	x = ft_itoa((int)vec.x);
+	y = ft_itoa((int)vec.y);
+	z = ft_itoa((int)vec.z);
+	temp = ft_strjoin(x, " ");
+	temp2 = ft_strjoin(temp, y);
 	free(temp);
 	temp = ft_strjoin(temp2, " ");
 	free(temp2);
@@ -54,8 +60,11 @@ static char	*vector_to_str(t_vector vec)
 
 static char	*vector_to_labeled_str(char *label, t_vector vec)
 {
-	char	*vec_str = vector_to_str(vec);
-	char	*full_str = ft_strjoin(label, vec_str);
+	char	*vec_str;
+	char	*full_str;
+
+	vec_str = vector_to_str(vec);
+	full_str = ft_strjoin(label, vec_str);
 	free(vec_str);
 	return (full_str);
 }
@@ -63,49 +72,73 @@ static char	*vector_to_labeled_str(char *label, t_vector vec)
 /* ---------------------- CAMERA INFO FORMATTING ---------------------- */
 static char	*camera_info_str(t_camera *cam)
 {
-	char	*view_str = vector_to_labeled_str("Camera: ", cam->viewpoint);
-	char	*fov_str = ft_strjoin("FOV: ", ft_itoa(cam->fov));
-	char	*orient_str = vector_to_labeled_str("| ", cam->orientation);
+	char	*view_str;
+	char	*fov_str;
+	char	*orient_str;
+	char	*temp;
+	char	*final;
 
-	char	*final = ft_strjoin(view_str, fov_str);
+	view_str = vector_to_labeled_str("Camera: ", cam->viewpoint);
+	fov_str = ft_strjoin("FOV: ", ft_itoa(cam->fov));
+	orient_str = vector_to_labeled_str("| ", cam->orientation);
+	final = ft_strjoin(view_str, fov_str);
 	free(view_str);
 	free(fov_str);
-
-	char	*temp = ft_strjoin(final, orient_str);
+	temp = ft_strjoin(final, orient_str);
 	free(final);
 	free(orient_str);
-
 	return (temp);
+}
+
+void	my_sprintf(char *buffer, char *key, char *old_value, char *new_value)
+{
+	int	bufflen;
+
+	bufflen = ft_strlen(buffer);
+	ft_strlcpy(buffer, key, ft_strlen(key) + 1);
+	ft_strlcat(buffer, "=", bufflen + 2);
+	if (old_value != NULL)
+		ft_strlcat(buffer, old_value, ft_strlen(old_value) + bufflen + 1);
+	ft_strlcat(buffer, new_value, ft_strlen(new_value) + bufflen + 1);
 }
 
 /* ---------------------- SELECTION STATUS FORMATTING ---------------------- */
 static char	*get_selection_status(t_selected_obj selected)
 {
+	const char	*type_str;
+	char		*buffer;
+	char		*full_str;
+
 	if (is_selected_null(&selected))
 		return (ft_strdup("Selected obj: NULL"));
-
-	const char	*type_str = type_to_string(selected.type);
-	char		*buffer = malloc(ft_strlen(type_str) + 15);
-	if (buffer)
-		sprintf(buffer, "Selected: %s", type_str);
-	return (buffer ? buffer : ft_strdup("Selection error"));
+	type_str = type_to_string(selected.type);
+	full_str = ft_strjoin("Selected: ", type_str);
+	if (!full_str)
+		return (ft_strdup("Selection error"));
+	buffer = malloc(ft_strlen(full_str) + 1);
+	if (!buffer)
+		return (free(full_str), ft_strdup("Selection error"));
+	my_sprintf(buffer, full_str, "", "");
+	free(full_str);
+	return (buffer);
 }
 
+
+
 /* ---------------------- MAIN TEST FUNCTION ---------------------- */
+// Format selection status
+// Render to screen
+// Format camera information
 void	test_function(t_mlx *info)
 {
-	// Format camera information
-	char	*cam_info = camera_info_str(info->setting->camera);
+	char	*cam_info;
+	char	*selection_status;
 
-	// Format selection status
-	char	*selection_status = get_selection_status(info->selected);
-
-	// Render to screen
+	cam_info = camera_info_str(info->setting->camera);
+	selection_status = get_selection_status(info->selected);
 	mlx_string_put(info->mlx, info->win, 10, info->height - 10,
 		COLOR_WHITE, cam_info);
 	mlx_string_put(info->mlx, info->win, 10, 10, COLOR_RED, selection_status);
-
-	// Cleanup
 	free(cam_info);
 	free(selection_status);
 }
@@ -170,7 +203,6 @@ void	manage_mlx(t_mlx *obj)
 	mlx_put_image_to_window(obj->mlx, obj->win, obj->img_pointer, 0, 0);
 	mlx_mouse_hook(obj->win, mouse_click, obj);
 	mlx_hook(obj->win, 2, 1, key_pressed, obj);
-//	mlx_hook(obj->win, 2, 1, key_pressed_gpt, obj);
 	mlx_hook(obj->win, 17, 0L, window_close, obj);
 	mlx_loop(obj->mlx);
 	mlx_destroy_display(obj->mlx);

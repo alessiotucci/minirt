@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/22 13:52:22 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 18:03:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	clean_close(t_mlx *project)
 	ft_printf("%sdestroying the windows\n%s\n", RED, RESET);
 	mlx_destroy_image(project->mlx, project->img_pointer);
 	mlx_destroy_window(project->mlx, project->win);
-	// destroy display
 	mlx_destroy_display(project->mlx);
 	free(project->mlx);
 	free_struct(project->setting);
@@ -128,7 +127,6 @@ int	my_key_pressed(int keycode, void *param)
 //1
 void	re_start_image(t_mlx *data)
 {
-//	if (data->img_pointer)
 	mlx_destroy_image(data->mlx, data->img_pointer);
 	my_new_image(data);
 	draw_scene(data);

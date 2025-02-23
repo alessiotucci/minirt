@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 15:23:57 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 18:08:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	each_pixel_calculation(t_mlx *data, int x, int y)
 	if (closest_intersection != NULL)
 	{
 		comps = prepare_computations(*closest_intersection, ray);
-		final_color = shade_hit(data->setting, comps, 0);
+		final_color = shade_hit(data->setting, comps);
 		my_mlx_pixel_put(data, x, y, create_trgb(final_color));
 	}
 	else

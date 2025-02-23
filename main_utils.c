@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:05:38 by atucci            #+#    #+#             */
-/*   Updated: 2024/07/26 09:41:46 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 17:55:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	error_msg(char *str)
 /* function to set the counter of object in the setting to zero */
 void	setback_zero(t_setting *set)
 {
-		set->num_lights = 0;
-		set->num_spheres = 0;
-		set->num_planes = 0;
-		set->num_cylinders = 0;
-		set->num_cones = 0;
+	set->num_lights = 0;
+	set->num_spheres = 0;
+	set->num_planes = 0;
+	set->num_cylinders = 0;
+	set->num_cones = 0;
 }
 
 

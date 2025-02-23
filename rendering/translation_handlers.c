@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:23:32 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 16:09:35 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 17:13:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,9 @@ t_vector	calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_
 void	perform_translation_from_mouse(t_mlx *mlx, int x, int y)
 {
 	t_vector	current_position;
-	double		reference_y;
 	t_vector	delta;
 
 	current_position = get_selected_object_position(mlx);
-	reference_y = current_position.y;
 	delta = calculate_translation_delta_perp_to_camera(mlx, x, y, current_position);
 	translate_object(mlx, delta);
 }

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 16:01:16 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 18:08:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -606,7 +606,7 @@ t_color				default_color(void);
 t_computations		prepare_computations(t_intersection i, t_ray r);
 t_color				lambert_lighting(t_setting *world, t_computations comps, t_light light);
 t_color				phong_lighting(t_setting *world, t_computations comps, t_light light);
-t_color				shade_hit(t_setting *world, t_computations comps, int flag);
+t_color				shade_hit(t_setting *world, t_computations comps);
 t_color				my_shade_hit(t_setting *world, t_computations comps, t_intersection *c_i);
 /*************************/
 /*Experimenting with mlx */

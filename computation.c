@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:30:04 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 17:17:54 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 18:07:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_computations	prepare_computations(t_intersection i, t_ray r)
 //TODO: check wheter you can use multiple light sources
 // Use the offset over_point for shadow testing.
 // Compute the final color based on the chosen lighting model.
-t_color	shade_hit(t_setting *world, t_computations comps, int flag)
+t_color	shade_hit(t_setting *world, t_computations comps)
 {
 	t_color	final;
 	t_light	light;
@@ -62,12 +62,7 @@ t_color	shade_hit(t_setting *world, t_computations comps, int flag)
 	light = *world->lights[0];
 	shadowed = is_shadowed(world, comps.over_point, light);
 	if (!shadowed)
-	{
-		if (flag)
-			final = phong_lighting(world, comps, light);
-		else
-			final = lambert_lighting(world, comps, light);
-	}
+		final = lambert_lighting(world, comps, light);
 	else
 		final = multiply_color_by_scalar(get_color_intersect(comps.object), r);
 	return (final);
