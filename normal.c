@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/21 16:48:06 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 19:08:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,6 @@ t_vector	local_point_in_cylinder(t_cylinder *cylinder, t_vector point)
 	local.z = point.z - cylinder->center.z;
 	local.w = point.w;
 	return (local);
-}
-
-//TODO:
-t_vector	default_cylinder_normal(t_cylinder *cylinder, t_vector point)
-{
-	t_vector	local;
-	double		r_squared;
-	double		dist_xz;
-
-	local = local_point_in_cylinder(cylinder, point);
-	r_squared = pow(cylinder->diameter / 2, 2);
-	dist_xz = pow(local.x, 2) + pow(local.z, 2);
-	if (dist_xz < r_squared)
-	{
-		if (comparing_double(local.y, cylinder->max))
-			return (create_vector(0, 1, 0));
-		else if (comparing_double(local.y, cylinder->min))
-			return (create_vector(0, -1, 0));
-	}
-	return (normalization(create_vector(local.x, 0, local.z)));
 }
 
 /*
@@ -103,7 +83,6 @@ t_vector	v2normal_at(t_object obj, t_vector point, t_ray r)
 	if (obj.type == T_CYLINDER)
 	{
 		cylinder = (t_cylinder *)obj.address;
-		//return (default_cylinder_normal(cylinder, point));
 		return (compute_cylinder_normal(cylinder, point));
 	}
 	printf("v2normal failure: obj TYPE not found\n");

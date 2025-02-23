@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:55:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 15:45:15 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 19:06:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,62 @@
 /* Step 4: Check for the closest hit */
 //TODO: important function useful for refactoring
 
-t_list_intersect	*intersect_world(t_setting *world, t_ray ray)
+static void	loop_over_spheres(t_setting *world, t_ray ray,
+				t_list_intersect **all_intersections)
 {
-	t_list_intersect	*all_intersections;
-	t_list_intersect	*current_intersections;
 	int					i;
+	t_list_intersect	*current_intersections;
 
-	all_intersections = NULL;
 	i = 0;
 	while (i < world->num_spheres)
 	{
 		current_intersections = intersect_sphere(world->spheres[i], ray);
 		if (current_intersections)
-			concatenate_lists(&all_intersections, current_intersections);
+			concatenate_lists(all_intersections, current_intersections);
 		i++;
 	}
+}
+
+static void	loop_over_planes(t_setting *world, t_ray ray,
+				t_list_intersect **all_intersections)
+{
+	int					i;
+	t_list_intersect	*current_intersections;
+
 	i = 0;
 	while (i < world->num_planes)
 	{
 		current_intersections = intersect_plane(world->planes[i], ray);
 		if (current_intersections)
-			concatenate_lists(&all_intersections, current_intersections);
+			concatenate_lists(all_intersections, current_intersections);
 		i++;
 	}
+}
+
+static void	loop_over_cylinders(t_setting *world, t_ray ray,
+				t_list_intersect **all_intersections)
+{
+	int					i;
+	t_list_intersect	*current_intersections;
+
 	i = 0;
 	while (i < world->num_cylinders)
 	{
 		current_intersections = intersect_cylinder(world->cylinders[i], ray);
-		//current_intersections = intersect_cylinder3(world->cylinders[i], ray);
 		if (current_intersections)
-			concatenate_lists(&all_intersections, current_intersections);
+			concatenate_lists(all_intersections, current_intersections);
 		i++;
 	}
+}
+
+t_list_intersect	*intersect_world(t_setting *world, t_ray ray)
+{
+	t_list_intersect	*all_intersections;
+
+	all_intersections = NULL;
+	loop_over_spheres(world, ray, &all_intersections);
+	loop_over_planes(world, ray, &all_intersections);
+	loop_over_cylinders(world, ray, &all_intersections);
 	sort_intersection_list(&all_intersections);
 	return (all_intersections);
 }

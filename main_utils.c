@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:05:38 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 17:55:48 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 18:54:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,3 @@ void	setback_zero(t_setting *set)
 	set->num_cylinders = 0;
 	set->num_cones = 0;
 }
-
-

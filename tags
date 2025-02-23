@@ -260,6 +260,7 @@ bpp3	mlx/test/main.c	/^int	bpp3;$/;"	v	typeref:typename:int
 bpp4	mlx/test/main.c	/^int	bpp4;$/;"	v	typeref:typename:int
 brightness	minirt.h	/^	double		brightness;$/;"	m	struct:s_light	typeref:typename:double
 calculate_sphere_color	shapes/sphere.c	/^int	calculate_sphere_color(t_intersection *intersection)$/;"	f	typeref:typename:int
+calculate_t_values	intersection/intersection_sphere.c	/^static void	calculate_t_values(double *t, t_vector sph_ray, t_ray ray, double r)$/;"	f	typeref:typename:void	file:
 calculate_translation_delta	rendering/translation_handlers.c	/^t_vector	calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_y, t_vector curr/;"	f	typeref:typename:t_vector
 calculate_translation_delta_perp_to_camera	rendering/translation_handlers.c	/^t_vector	calculate_translation_delta_perp_to_camera(t_mlx *mlx, int x, int y, t_vector current_p/;"	f	typeref:typename:t_vector
 camera	minirt.h	/^	t_camera		*camera;$/;"	m	struct:s_setting	typeref:typename:t_camera *
@@ -327,6 +328,7 @@ create_ray_from_camera2	raycasting/cast_ray.c	/^t_ray create_ray_from_camera2(t_
 create_scaling_matrix	transformations/scaling.c	/^double	**create_scaling_matrix(t_vector move)$/;"	f	typeref:typename:double **
 create_setting	create_setting.c	/^void	create_setting(char **details, t_setting *set)$/;"	f	typeref:typename:void
 create_sphere	shapes/sphere.c	/^t_sphere	create_sphere(char *id, t_vector center, double d, t_color c)$/;"	f	typeref:typename:t_sphere
+create_sphere_ray	intersection/intersection_sphere.c	/^static t_ray	create_sphere_ray(t_sphere *sphere, t_ray old_ray)$/;"	f	typeref:typename:t_ray	file:
 create_translation_matrix	transformations/translations.c	/^double	**create_translation_matrix(t_vector move)$/;"	f	typeref:typename:double **
 create_trgb	colors/colors.c	/^int	create_trgb(t_color color)$/;"	f	typeref:typename:int
 create_vector	vector/utils_vectors.c	/^t_vector	create_vector(double x, double y, double z)$/;"	f	typeref:typename:t_vector
@@ -344,7 +346,6 @@ deep_copy_cylinder	intersection/intersection.c	/^t_cylinder	*deep_copy_cylinder(
 deep_copy_plane	intersection/intersection.c	/^t_plane	*deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
 deep_copy_sphere	intersection/intersection.c	/^t_sphere	*deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
 default_color	parsing/parsing_numbers.c	/^t_color	default_color(void)$/;"	f	typeref:typename:t_color
-default_cylinder_normal	normal.c	/^t_vector	default_cylinder_normal(t_cylinder *cylinder, t_vector point)$/;"	f	typeref:typename:t_vector
 default_intersection	intersection/intersection_cylinder.c	/^void	default_intersection(t_intersection *i1, t_intersection *i2)$/;"	f	typeref:typename:void
 default_vector	parsing/parsing_numbers.c	/^t_vector	default_vector(void)$/;"	f	typeref:typename:t_vector
 depth	mlx/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar	typeref:typename:int
@@ -381,6 +382,7 @@ eyev	minirt.h	/^	t_vector	eyev;$/;"	m	struct:s_computations	typeref:typename:t_v
 fclean	Makefile	/^fclean: clean$/;"	t
 fclean	libft/Makefile	/^fclean: clean$/;"	t
 files	libft/Makefile	/^files 	   = ft_strlen \\$/;"	m
+fill_submatrix	matrix/submatrix.c	/^static void	fill_submatrix(double **new, double **matrix, int size, int *idx)$/;"	f	typeref:typename:void	file:
 find_original	rendering/mouse_select.c	/^t_selected_obj	find_original(t_setting *setting, void *orig, t_type obj_type)$/;"	f	typeref:typename:t_selected_obj
 find_original_cylinder	rendering/mouse_select.c	/^static t_selected_obj	find_original_cylinder(t_setting *setting, void *o)$/;"	f	typeref:typename:t_selected_obj	file:
 find_original_plane	rendering/mouse_select.c	/^static t_selected_obj	find_original_plane(t_setting *setting, void *orig)$/;"	f	typeref:typename:t_selected_obj	file:
@@ -472,6 +474,7 @@ get_sphere_to_ray	raycasting/intersection_ray.c	/^t_vector	get_sphere_to_ray(t_s
 get_timestamp	new_script_valgrind.pl	/^sub get_timestamp$/;"	s
 get_xlib_include_path	mlx/configure	/^get_xlib_include_path(){$/;"	f
 handle_camera_keys	rendering/key_pressed.c	/^void	handle_camera_keys(int keycode, t_mlx *data)$/;"	f	typeref:typename:void
+handle_intersections	intersection/intersection_sphere.c	/^static void	handle_intersections(t_list_intersect **lis, double *t, t_sphere *s)$/;"	f	typeref:typename:void	file:
 handle_object_keys	rendering/key_pressed.c	/^void	handle_object_keys(int keycode, t_mlx *data)$/;"	f	typeref:typename:void
 handle_plus_minus	rendering/key_pressed.c	/^void	handle_plus_minus(int keycode, t_mlx *data)$/;"	f	typeref:typename:void
 height	minirt.h	/^	double		height;$/;"	m	struct:s_cylinder	typeref:typename:double
@@ -540,6 +543,9 @@ log_info	mlx/test/run_tests.sh	/^log_info(){$/;"	f
 logging	mlx/configure	/^logging(){$/;"	f
 logging	mlx/test/run_tests.sh	/^logging(){$/;"	f
 loop_hook	mlx/mlx_int.h	/^	int			(*loop_hook)();$/;"	m	struct:s_xvar	typeref:typename:int (*)()
+loop_over_cylinders	shadows/is_shadowed.c	/^static void	loop_over_cylinders(t_setting *world, t_ray ray,$/;"	f	typeref:typename:void	file:
+loop_over_planes	shadows/is_shadowed.c	/^static void	loop_over_planes(t_setting *world, t_ray ray,$/;"	f	typeref:typename:void	file:
+loop_over_spheres	shadows/is_shadowed.c	/^static void	loop_over_spheres(t_setting *world, t_ray ray,$/;"	f	typeref:typename:void	file:
 loop_param	mlx/mlx_int.h	/^	void		*loop_param;$/;"	m	struct:s_xvar	typeref:typename:void *
 lsize	minirt.h	/^	int				lsize;$/;"	m	struct:s_mlx	typeref:typename:int
 magnitude	vector/complex_operations.c	/^double	magnitude(t_vector v)$/;"	f	typeref:typename:double

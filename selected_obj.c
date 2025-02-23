@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:53:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/17 19:37:32 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 18:48:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ void	reset_selected_object(t_selected_obj *selected)
 	selected->index = -1;
 	selected->type = T_NULL;
 }
-

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 18:12:24 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/23 18:55:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,6 @@ static char	*get_selection_status(t_selected_obj selected)
 	free(full_str);
 	return (buffer);
 }
-
-
 
 /* ---------------------- MAIN TEST FUNCTION ---------------------- */
 // Format selection status
