@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:56:13 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 16:04:34 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:22:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_color	lambert_lighting(t_setting *world, t_computations comps, t_light light)
 	t_color		ambient;
 	t_color		diffuse;
 	t_color		base_color;
-	t_color		final_color;
 
 	base_color = get_color_intersect(comps.object);
 	ambient = multiply_color_by_scalar(base_color, world->amb_light->ratio);
@@ -31,7 +30,14 @@ t_color	lambert_lighting(t_setting *world, t_computations comps, t_light light)
 	if (light_dot_normal < 0)
 		diffuse = create_color(0, 0, 0);
 	else
-		diffuse = multiply_color_by_scalar(base_color, light.brightness * light_dot_normal);
-	final_color = add_colors(ambient, diffuse);
-	return (final_color);
+		diffuse = multiply_color_by_scalar(base_color,
+				light.brightness * light_dot_normal);
+	return (add_colors(ambient, diffuse));
 }
+
+/*
+else
+	diffuse = multiply_color_by_scalar(base_color,
+		light.brightness * light_dot_normal);
+final_color = add_colors(ambient, diffuse);
+*/

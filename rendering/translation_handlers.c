@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:23:32 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/24 17:54:44 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:20:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,30 +52,6 @@ t_vector	calculate_translation_delta_perp_to_camera(t_mlx *mlx, int x,
 		return (create_vector(0, 0, 0));
 	t = -dot(subtract(ray.origin, current_position),
 			mlx->setting->camera->orientation) / denom;
-	target = add(ray.origin, multiplication(ray.direction, t));
-	delta = subtract(target, current_position);
-	delta = multiplication(delta, TRANSLATION_SENSITIVITY);
-	delta = clamp_delta(delta, MAX_DELTA);
-	return (delta);
-}
-
-/* Create a ray through the given pixel using the improved camera function.
-Guard against division by zero if the ray is horizontal.
-Find t such that the ray intersects the horizontal plane at y = reference_y.
-Compute the target point on the plane.
-Compute the delta vector from the current object position to the target point.
-// 3*/
-t_vector	calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_y, t_vector current_position)
-{
-	t_ray		ray;
-	double		t;
-	t_vector	target;
-	t_vector	delta;
-
-	ray = create_ray_from_camera2(mlx, x, y);
-	if (fabs(ray.direction.y) < EPSILON)
-		return (create_vector(0, 0, 0));
-	t = (reference_y - ray.origin.y) / ray.direction.y;
 	target = add(ray.origin, multiplication(ray.direction, t));
 	delta = subtract(target, current_position);
 	delta = multiplication(delta, TRANSLATION_SENSITIVITY);

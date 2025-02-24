@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/24 17:44:06 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:22:52 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -637,7 +637,6 @@ t_ray				create_ray_from_camera2(t_mlx *data, int x, int y);
 t_vector			get_selected_object_position(t_mlx *mlx);
 void				perform_translation_from_mouse(t_mlx *mlx, int x, int y);
 void				translate_object(t_mlx *data, t_vector delta);
-t_vector			calculate_translation_delta(t_mlx *mlx, int x, int y, double reference_y, t_vector current_position);
 void				handle_camera_keys(int keycode, t_mlx *data);
 void				print_camera(t_camera *camera);
 t_list_intersect	*intersect_cylinder2(t_cylinder *cy, t_ray old_ray);

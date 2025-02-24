@@ -6,12 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:39:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 18:08:41 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:32:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
+//2
 t_color	get_color_intersect(t_object obj)
 {
 	t_sphere	*sphere;
@@ -37,6 +38,7 @@ t_color	get_color_intersect(t_object obj)
 	return (create_color(1, 1, 1));
 }
 
+//1
 void	each_pixel_calculation(t_mlx *data, int x, int y)
 {
 	t_ray				ray;
