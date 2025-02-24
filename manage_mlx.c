@@ -6,127 +6,18 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 18:55:24 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 17:12:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <time.h>
-//1
-void	my_new_image(t_mlx *data)
-{
-	ft_printf("%sgetting address in img_data%s\n", BG_YELLOW, RESET);
-	data->img_pointer = mlx_new_image(data->mlx, data->width, data->height);
-	data->img_string = mlx_get_data_addr(data->img_pointer, &(data->bits),
-			&(data->lsize), &(data->endian));
-}
-
-//2
-void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->img_string + (y * data->lsize + x * (data->bits / 8));
-	*(unsigned int *)dst = color;
-}
-
-//4
-//TODO: interesting function!
-
-/* ---------------------- VECTOR FORMATTING ---------------------- */
-static char	*vector_to_str(t_vector vec)
-{
-	char	*x;
-	char	*y;
-	char	*z;
-	char	*temp;
-	char	*temp2;
-
-	x = ft_itoa((int)vec.x);
-	y = ft_itoa((int)vec.y);
-	z = ft_itoa((int)vec.z);
-	temp = ft_strjoin(x, " ");
-	temp2 = ft_strjoin(temp, y);
-	free(temp);
-	temp = ft_strjoin(temp2, " ");
-	free(temp2);
-	temp2 = ft_strjoin(temp, z);
-	free(temp);
-	free(x);
-	free(y);
-	free(z);
-	return (temp2);
-}
-
-static char	*vector_to_labeled_str(char *label, t_vector vec)
-{
-	char	*vec_str;
-	char	*full_str;
-
-	vec_str = vector_to_str(vec);
-	full_str = ft_strjoin(label, vec_str);
-	free(vec_str);
-	return (full_str);
-}
-
-/* ---------------------- CAMERA INFO FORMATTING ---------------------- */
-static char	*camera_info_str(t_camera *cam)
-{
-	char	*view_str;
-	char	*fov_str;
-	char	*orient_str;
-	char	*temp;
-	char	*final;
-
-	view_str = vector_to_labeled_str("Camera: ", cam->viewpoint);
-	fov_str = ft_strjoin("FOV: ", ft_itoa(cam->fov));
-	orient_str = vector_to_labeled_str("| ", cam->orientation);
-	final = ft_strjoin(view_str, fov_str);
-	free(view_str);
-	free(fov_str);
-	temp = ft_strjoin(final, orient_str);
-	free(final);
-	free(orient_str);
-	return (temp);
-}
-
-void	my_sprintf(char *buffer, char *key, char *old_value, char *new_value)
-{
-	int	bufflen;
-
-	bufflen = ft_strlen(buffer);
-	ft_strlcpy(buffer, key, ft_strlen(key) + 1);
-	ft_strlcat(buffer, "=", bufflen + 2);
-	if (old_value != NULL)
-		ft_strlcat(buffer, old_value, ft_strlen(old_value) + bufflen + 1);
-	ft_strlcat(buffer, new_value, ft_strlen(new_value) + bufflen + 1);
-}
-
-/* ---------------------- SELECTION STATUS FORMATTING ---------------------- */
-static char	*get_selection_status(t_selected_obj selected)
-{
-	const char	*type_str;
-	char		*buffer;
-	char		*full_str;
-
-	if (is_selected_null(&selected))
-		return (ft_strdup("Selected obj: NULL"));
-	type_str = type_to_string(selected.type);
-	full_str = ft_strjoin("Selected: ", type_str);
-	if (!full_str)
-		return (ft_strdup("Selection error"));
-	buffer = malloc(ft_strlen(full_str) + 1);
-	if (!buffer)
-		return (free(full_str), ft_strdup("Selection error"));
-	my_sprintf(buffer, full_str, "", "");
-	free(full_str);
-	return (buffer);
-}
 
 /* ---------------------- MAIN TEST FUNCTION ---------------------- */
 // Format selection status
 // Render to screen
 // Format camera information
+// 5
 void	test_function(t_mlx *info)
 {
 	char	*cam_info;
@@ -141,6 +32,7 @@ void	test_function(t_mlx *info)
 	free(selection_status);
 }
 
+// 4
 static int	key_pressed(int keycode, void *param)
 {
 	t_mlx	*help;
@@ -155,6 +47,7 @@ static int	key_pressed(int keycode, void *param)
 	return (1);
 }
 
+// 3
 int	window_close(void *param)
 {
 	t_mlx	*help;
@@ -165,6 +58,7 @@ int	window_close(void *param)
 }
 
 /*TODO: cast a ray and see if a obj is being intersected*/
+// 2
 int	mouse_click(int button, int x, int y, t_mlx *mlx)
 {
 	if (button == 1)
@@ -189,6 +83,7 @@ int	mouse_click(int button, int x, int y, t_mlx *mlx)
 }
 
 //TODO: fix the leaks free();
+// 1
 void	manage_mlx(t_mlx *obj)
 {
 	obj->mlx = mlx_init();

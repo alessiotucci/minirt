@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2025/02/21 23:39:16 by atucci           ###   ########.fr        #
+#    Updated: 2025/02/24 17:13:44 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,12 @@ NAME = miniRT
 SOURCE = ./main.c \
 		 ./main_utils.c \
 		 ./manage_mlx.c \
+		 ./mlx_utils.c \
 		 ./freeing.c \
 		 ./freeing2.c \
 		 ./draw_scene.c \
 		 ./centering.c \
+		 ./selection_status.c \
 		 ./normal.c \
 		 ./create_setting.c \
 		 ./add_elem_array.c \
@@ -76,6 +78,7 @@ SOURCE = ./main.c \
 		 ./intersection/intersection_sphere.c \
 		 ./intersection/intersection_plane.c \
 		 ./intersection/intersection_cylinder.c \
+		 ./intersection/cylinder_utils.c \
 		 ./intersection/sort_intersection.c \
 		 ./intersection/copy_simple_field.c \
 		 ./shadows/lighting.c \
@@ -86,6 +89,8 @@ SOURCE = ./main.c \
 		 ./default_setting.c \
 		 ./computation.c \
 		 ./rendering/key_pressed.c \
+		 ./rendering/rendering_utils.c \
+		 ./rendering/change_diameter.c \
 		 ./rendering/mouse_select.c \
 		 ./rendering/rotation_handlers.c \
 		 ./rendering/translation_handlers.c \
@@ -235,3 +240,6 @@ mlx:
 	else \
 	git clone git@github.com:42Paris/minilibx-linux.git \
 	&& mv minilibx-linux mlx; fi
+
+clean_mlx:
+	rm -rf $(MLX_DIR)

@@ -6,34 +6,11 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:56:10 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 18:03:44 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 16:51:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
-
-//7
-// Key codes are defined in your header.
-// For example: ARROW_LEFT, ARROW_RIGHT, ARROW_UP, ARROW_DOWN, PLUS, MINUS
-void	select_light(t_selected_obj *selected)
-{
-	printf("%sSELECT light!%s\n", YELLOW, RESET);
-	selected->index = 0;
-	selected->type = T_LIGHT;
-}
-
-//6
-/* This function perfom a clean close and then exit*/
-void	clean_close(t_mlx *project)
-{
-	ft_printf("%sdestroying the windows\n%s\n", RED, RESET);
-	mlx_destroy_image(project->mlx, project->img_pointer);
-	mlx_destroy_window(project->mlx, project->win);
-	mlx_destroy_display(project->mlx);
-	free(project->mlx);
-	free_struct(project->setting);
-	exit(0);
-}
 
 //5
 void	handle_plus_minus(int keycode, t_mlx *data)
@@ -122,13 +99,4 @@ int	my_key_pressed(int keycode, void *param)
 	re_start_image(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_pointer, 0, 0);
 	return (1);
-}
-
-//1
-void	re_start_image(t_mlx *data)
-{
-	mlx_destroy_image(data->mlx, data->img_pointer);
-	my_new_image(data);
-	draw_scene(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img_pointer, 0, 0);
 }

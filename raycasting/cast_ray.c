@@ -6,13 +6,14 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:23:43 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 15:32:59 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 17:29:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
-t_ray create_ray_from_camera2(t_mlx *data, int x, int y)
+/* new version of the code */
+t_ray	create_ray_from_camera2(t_mlx *data, int x, int y)
 {
 	t_ray		ray;
 	t_camera	*cam;

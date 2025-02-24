@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:24:11 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 19:08:02 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 17:27:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 // If the dot product between the ray's direction and the normal is positive,
 // then the ray is coming from behind the plane.
 // Flip the normal so that it faces the ray.
+// 1
 static t_vector	get_plane_normal(t_plane *pl, t_ray ray)
 {
 	t_vector	normal;
@@ -29,6 +30,7 @@ static t_vector	get_plane_normal(t_plane *pl, t_ray ray)
 
 //reason by gpt
 // Subtract the cylinder’s center (for the XZ coordinates)
+// 2
 t_vector	local_point_in_cylinder(t_cylinder *cylinder, t_vector point)
 {
 	t_vector	local;
@@ -40,8 +42,8 @@ t_vector	local_point_in_cylinder(t_cylinder *cylinder, t_vector point)
 	return (local);
 }
 
-/*
-*/
+/* for the cylinder */
+// 3
 t_vector	compute_cylinder_normal(t_cylinder *cy, t_vector point)
 {
 	double		dist;
@@ -64,6 +66,7 @@ t_vector	compute_cylinder_normal(t_cylinder *cy, t_vector point)
 }
 
 /*please rename this function */
+// 4
 t_vector	v2normal_at(t_object obj, t_vector point, t_ray r)
 {
 	t_sphere	*sphere;
@@ -89,38 +92,8 @@ t_vector	v2normal_at(t_object obj, t_vector point, t_ray r)
 	exit(-42);
 }
 
+//5 
 t_vector	reflect(t_vector in, t_vector normal)
 {
 	return (subtract(in, multiplication(normal, 2 * dot(in, normal))));
 }
-
-// You may assume that the point will always be on the surface of the sphere
-// TODO: leaks, the funciton for matrix allocate the matrix and not free it
-/* inline function call is ALWAYS causing memory leaks, especially with matrix
-	matrix_x_vector(inversing_matrix(4, sphere.transform) , world_point);
-	matrix_x_vector(transposing(4, 4, inversing_matrix(4, s.transform)), o);
-*/
-t_vector normal_at(t_sphere sphere, t_vector world_point)
-{
-	t_vector	object_point;
-	t_vector	object_normal;
-	t_vector	world_normal;
-	t_vector	origin;
-	double		**inv;
-	double		**inv_for_trans;
-	double		**trans;
-
-	inv = inversing_matrix(4, sphere.transform);
-	object_point = matrix_x_vector(inv, world_point);
-	origin = create_point(0, 0, 0);
-	object_normal = subtract(object_point, origin);
-	inv_for_trans = inversing_matrix(4, sphere.transform);
-	trans = transposing(4, 4, inv_for_trans);
-	world_normal = matrix_x_vector(trans, object_normal);
-	world_normal.w = 0;
-	free_heap_matrix(inv, 4);
-	free_heap_matrix(inv_for_trans, 4);
-	free_heap_matrix(trans, 4);
-	return (normalization(world_normal));
-}
-

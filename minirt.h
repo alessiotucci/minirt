@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/23 18:08:23 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 17:44:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@
 # define MAX_DELTA 5.0
 # define DIAMETER_DELTA 1.0
 # define HEIGHT_DELTA 2.0
-# define ANGLE_DELTA (M_PI / 36)
 
 /*TODO:ADDITIONAL STRUCTS
 * Ray Struct: Represents a ray in the scene.
@@ -340,6 +339,7 @@ void				add_cylinder_to_array(t_cylinder *to_add, t_setting *set);
 /***********************/
 int					create_trgb(t_color color);
 double				my_clamp(double value, double min_val, double max_val);
+t_vector			clamp_delta(t_vector delta, double max_val);
 /**********************/
 /*Colors/converting.c */
 /**********************/
@@ -392,13 +392,15 @@ void				print_int_matrix(int rows, int cols, double **matrix);
 /*prolly will need some more */
 /******************************/
 void				copy_row_value(double destination[4], double source[4]);
-double				**value_matrix(double a[4], double b[4], double c[4], double d[4]);
+double				**value_matrix(double a[4], double b[4],
+						double c[4], double d[4]);
 double				**copy_matrix(int rows, int cols, double **source);
 /*************************/
 /* matrix operations pt 2*/
 /*************************/
-int					comparing_heap_matrix(int rows, int cols, double **a, double **b);
-double				**multiply_matrix(int cols_a, int rows_b, double **a, double **b);
+int					comparing_heap_matrix(int r, int c, double **a, double **b);
+double				**multiply_matrix(int cols_a, int rows_b,
+						double **a, double **b);
 t_vector			matrix_x_vector(double **a, t_vector b);
 void				create_identity_matrix(double	**ret);
 double				**transposing(int rows, int cols, double **matrix);
@@ -422,7 +424,7 @@ double				**inversing_matrix(int size, double **source);
 /* VOID! check this stuff */
 /**************************/
 void				divide_matrix_void(int size, double **source, double det);
-void				matrix_of_cofactors_void(int size, double **matrix, double **n);
+void				matrix_of_cofactors_void(int s, double **mat, double **n);
 void				transposing_void(int rows, int cols, double **matrix);
 void				inversing_matrix_void(int size, double **source);
 //TODO: The transformation need to return matrix sometimes!
@@ -479,17 +481,16 @@ void				each_pixel_calculation(t_mlx *data, int x, int y);
 /* Raycasting/intersection_ray.c */
 /*********************************/
 t_vector			get_sphere_to_ray(t_sphere sphere, t_ray ray);
-double				get_discriminant(t_vector sphere_to_ray, t_ray ray, double diameter);
+double				get_discriminant(t_vector s, t_ray ray, double diam);
 t_list_intersect	*intersect_sphere(t_sphere *sphere, t_ray old_ray);
 /***********************************/
 /* Raycasting/transformation_ray.c */
 /***********************************/
 t_ray				transform_ray(t_ray original, double **matrix);
-void				set_sphere_transformations(t_sphere *sphere, double **new);
+void				set_sphere_transformations(t_sphere *sph, double **new);
 /*******************/
 /* shapes/sphear.c */
 /*******************/
-t_sphere			create_sphere(char *id, t_vector center, double d, t_color c);
 int					calculate_sphere_color(t_intersection *intersection);
 /************************/
 /*freeing the function  */
@@ -517,7 +518,8 @@ int					check_null_array(char **array);
 void				print_string_array(char **array);
 int					free_string_array(char **array);
 int					lenght_string_array(char **array);
-void				remove_new_line(char **matrix, char replacement, char to_replace);
+void				remove_new_line(char **mat, char replacement,
+						char to_replace);
 void				replace_me(char *str, char replacement, char to_replace);
 /*********************************/
 /* useful function to manage mlx */
@@ -527,8 +529,8 @@ int					window_close(void *param);
 void				my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void				my_new_image(t_mlx *data);
 void				send_to_centre(t_setting *set);
-void				center_sphere(t_sphere *sphere, int window_width, int window_height);
-int					mouse_click(int button, int x, int y, t_mlx *mlx);//seconda
+void				center_sphere(t_sphere *sphere, int width, int height);
+int					mouse_click(int button, int x, int y, t_mlx *mlx);
 /********************************************************/
 /* started to create complex obj to track intersections */
 /********************************************************/
@@ -545,18 +547,20 @@ t_object			create_object(char *type, void *object);
 t_intersection		intersection(double t, char *type, void *object);
 void				free_intersection(t_intersection *intersect);
 //TODO
-void				concatenate_lists(t_list_intersect **list1, t_list_intersect *list2);
+void				concatenate_lists(t_list_intersect **list1,
+						t_list_intersect *list2);
 /************************************/
 /* intersection/intersection_list.c */
 /************************************/
 t_list_intersect	*create_new_node(t_intersection *intersection);
-void				add_intersection_l(t_list_intersect **head, t_intersection *intersection);
+void				add_intersection_l(t_list_intersect **head,
+						t_intersection *intersection);
 void				free_list(t_list_intersect **head);
 void				print_list(t_list_intersect **head, int debug);
 /************************************/
 /* intersection/sort_intersection.c */
 /************************************/
-void				insert_sorted(t_list_intersect **sorted, t_list_intersect *new);
+void				insert_sorted(t_list_intersect **sort, t_list_intersect *n);
 void				sort_intersection_list(t_list_intersect **head);
 /***************************/
 /* draw_scene/draw_scene.c */
@@ -581,21 +585,14 @@ t_material			material(t_color color);
 /**********************/
 /* Shadows/lighting.c */
 /**********************/
-//TODO norminetted!!
-/*
-t_color	phong_lighting(t_material mat, t_light light, t_vector point, t_vector eye, t_vector normal);
-t_color	phong_lightingV2(t_setting *world, t_computations comps, t_light light);
-t_color	lambert_formula(t_intersection *i, t_light light, t_vector point, t_vector normal, t_setting *world);
-*/
-
 //TODO; planes!
 t_list_intersect	*intersect_plane(t_plane *plane, t_ray old_ray);
 t_color				get_color_intersect(t_object obj);
-int					is_shadowed(t_setting *world, t_vector point, t_light light);
+int					is_shadowed(t_setting *world, t_vector point, t_light l);
 //TODO: after graduations
-t_cylinder			create_cylinder(char *id, t_vector center, double d, t_color c);
+t_cylinder			create_cylinder(char *id, t_vector i, double d, t_color c);
 t_list_intersect	*intersect_cylinder(t_cylinder *cylinder, t_ray old_ray);
-void				set_cylinder_size(t_cylinder *cylinder, double min, double max);
+void				set_cylinder_size(t_cylinder *cyl, double min, double max);
 void				set_cylinder_cap(t_cylinder *cylinder);
 //Fixing leaks with ftroise
 void				my_free_setting(t_setting *set);
@@ -604,10 +601,8 @@ t_vector			default_vector(void);
 t_color				default_color(void);
 //TODO: reasoning by GPT3
 t_computations		prepare_computations(t_intersection i, t_ray r);
-t_color				lambert_lighting(t_setting *world, t_computations comps, t_light light);
-t_color				phong_lighting(t_setting *world, t_computations comps, t_light light);
+t_color				lambert_lighting(t_setting *w, t_computations c, t_light l);
 t_color				shade_hit(t_setting *world, t_computations comps);
-t_color				my_shade_hit(t_setting *world, t_computations comps, t_intersection *c_i);
 /*************************/
 /*Experimenting with mlx */
 /*************************/
@@ -655,7 +650,8 @@ t_list_intersect	*intersect_cylinder3(t_cylinder *cylinder, t_ray old_ray);
 /*************************/
 void				copy_simple_fields_sphere(t_sphere *dest, t_sphere *src);
 void				copy_simple_fields_plane(t_plane *dest, t_plane *src);
-void				copy_simple_fields_cylinder(t_cylinder *dest, t_cylinder*src);
+void				copy_simple_fields_cylinder(t_cylinder *dest,
+						t_cylinder*src);
 /****************************/
 /* This are for print debug */
 /****************************/
@@ -664,6 +660,12 @@ void				print_cylinders(int n_cylinders, t_cylinder **array);
 void				print_spheres(int n_spheres, t_sphere **array);
 void				print_single_light(t_light *one_light);
 void				print_lights(int n_lights, t_light **array);
-
 void				swap_two_doubles(double arr[2]);
+void				intersect_caps(t_cylinder cyl, t_ray ray,
+						t_list_intersect **list);
+void				select_light(t_selected_obj *selected);
+t_selected_obj		find_original(t_setting *setting, void *orig,
+						t_type obj_type);
+char				*get_selection_status(t_selected_obj selected);
+char				*camera_info_str(t_camera *cam);
 #endif

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:26:42 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 17:56:16 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/24 16:57:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,29 +96,4 @@ t_selected_obj	find_original(t_setting *setting, void *orig, t_type obj_type)
 	if (s.index == -1)
 		printf("Error: Original object not found!\n");
 	return (s);
-}
-
-/* 6! move to another file */
-int	cast_mouse_ray(int x, int y, t_mlx *mlx, t_setting *set)
-{
-	t_ray				ray;
-	t_list_intersect	*all_intersections;
-	t_intersection		*ht;
-
-	printf("CAST_MOUSE_RAY!\n");
-	ray = create_ray_from_camera2(mlx, x, y);
-	all_intersections = intersect_world(set, ray);
-	ht = hit_v2(all_intersections);
-	if (ht != NULL)
-	{
-		mlx->selected = find_original(set, ht->obj.original_addr, ht->obj.type);
-		printf("Selected object: %p\n", ht->obj.original_addr);
-	}
-	else
-	{
-		reset_selected_object(&mlx->selected);
-		printf("Missed ray :(\n");
-	}
-	free_list(&all_intersections);
-	return (0);
 }
