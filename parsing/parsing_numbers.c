@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 09:50:21 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 15:44:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_vector	default_vector(void)
 	return (vector);
 }
 
-t_color	parse_color(char *str)
+t_color	parse_color(char *str, t_setting *set)
 {
 	t_color	color;
 	char	**matrix;
@@ -51,8 +51,10 @@ t_color	parse_color(char *str)
 	}
 	else
 	{
-		error_msg("misconfiguration of colors: ");
+		error_msg("func parse_color:\tmisconfiguration of colors: ");
 		ft_printf("%s\n", matrix[lenght_string_array(matrix) - 1]);
+		free_string_array(matrix);
+		free_struct(set);
 	}
 	return (free_string_array(matrix), color);
 }
@@ -60,7 +62,7 @@ t_color	parse_color(char *str)
 /* difference between tuple and vector,
  * w = 0 for vectors	
  * w = 1 for tuple;*/
-t_vector	parse_vector(char *str, double flag)
+t_vector	parse_vector(char *str, double flag, t_setting *set)
 {
 	t_vector	vector;
 	char		**matrix;
@@ -79,6 +81,8 @@ t_vector	parse_vector(char *str, double flag)
 	{
 		error_msg("misconfiguation of vectors: ");
 		ft_printf("%s\n", matrix[lenght_string_array(matrix) - 1]);
+		free_string_array(matrix);
+		free_struct(set);
 	}
 	return (free_string_array(matrix), print_vector(vector), vector);
 }

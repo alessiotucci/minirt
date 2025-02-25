@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 12:40:41 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 16:17:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	alloc_struct_elem(t_setting *setting)
 	struct_status(setting);
 }
 
-void	count_elements(char **details, t_setting *set)
+//TODO: update this function: if in the first read I found an error, just check
+//void	count_elements(char **details, t_setting *set)
+int	count_elements(char **details, t_setting *set)
 {
 	if (my_strcmp(details[0], "L") == 0)
 		set->num_lights++;
@@ -46,22 +48,31 @@ void	count_elements(char **details, t_setting *set)
 		set->num_cylinders++;
 	else if (my_strcmp(details[0], "cn") == 0)
 		set->num_cones++;
+	else if (my_strcmp(details[0], "A") == 0 || my_strcmp(details[0], "C") == 0)
+		;
+	else if (my_strcmp(details[0], "\n") == 0 || my_strcmp(details[0], " ") == 0)
+		;
 	else
 	{
-		if (my_strcmp(details[0], "\n") == 0)
-			ft_printf("[%s\\n%s]\n", RED, RESET);
-		else
-		{
-			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
-			ft_printf("found unexpected identifier, exiting the program!!\n\n");
-		}
+		ft_printf("[%s%s%s]\n", RED, details[0], RESET);
+		ft_printf("found unexpected identifier, in count elements!!\n");
+		ft_printf("returning 1!\n");
+		/*free_string_array(details);
+		exit(EXIT_FAILURE);*/
+		return (1);
 	}
+	return (0);
 }
 
-void	create_setting(char **details, t_setting *set)
+//TODO:
+int	create_setting(char **details, t_setting *set)
+//void	create_setting(char **details, t_setting *set)
 {
+	int	i;
+
+	i = 0;
 	if (check_null_array(details))
-		return ;
+		return (1);;
 	if (my_strcmp(details[0], "A") == 0)
 		start_amb_light(set, details);
 	else if (my_strcmp(details[0], "C") == 0)
@@ -76,12 +87,13 @@ void	create_setting(char **details, t_setting *set)
 		start_cylinder(set, details);
 	else
 	{
-		if (my_strcmp(details[0], "\n") == 0)
+		if (my_strcmp(details[0], "\n") == 0 || my_strcmp(details[0], " ") == 0)
 			ft_printf("[%s\\n%s]\n", RED, RESET);
 		else
 		{
 			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
-			ft_printf("found unexpected identifier, exiting the program!!\n\n");
+			return (1 * ft_printf("found unexpected identifier, exiting the program!!\n\n"));
 		}
 	}
+	return (i);
 }

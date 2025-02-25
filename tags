@@ -285,6 +285,7 @@ clean	mlx/test/Makefile.mk	/^clean:$/;"	t
 clean_close	mlx_utils.c	/^void	clean_close(t_mlx *project)$/;"	f	typeref:typename:void
 clean_mlx	Makefile	/^clean_mlx:$/;"	t
 clean_test	Makefile	/^clean_test: fclean$/;"	t
+clear_gnl_buffer	parsing/parsing_map.c	/^static void	clear_gnl_buffer(int fd)$/;"	f	typeref:typename:void	file:
 closed	minirt.h	/^	int			closed;$/;"	m	struct:s_cylinder	typeref:typename:int
 cmap	mlx/mlx_int.h	/^	Colormap	cmap;$/;"	m	struct:s_xvar	typeref:typename:Colormap
 cofactor	matrix/determinant.c	/^double	cofactor(int row, int col, double **matrix, int size)$/;"	f	typeref:typename:double
@@ -314,8 +315,8 @@ copy_row_value	matrix/initialize_matrix.c	/^void	copy_row_value(double destinati
 copy_simple_fields_cylinder	intersection/copy_simple_field.c	/^void	copy_simple_fields_cylinder(t_cylinder *dest, t_cylinder*src)$/;"	f	typeref:typename:void
 copy_simple_fields_plane	intersection/copy_simple_field.c	/^void	copy_simple_fields_plane(t_plane *dest, t_plane *src)$/;"	f	typeref:typename:void
 copy_simple_fields_sphere	intersection/copy_simple_field.c	/^void	copy_simple_fields_sphere(t_sphere *dest, t_sphere *src)$/;"	f	typeref:typename:void
-count_elements	create_setting.c	/^void	count_elements(char **details, t_setting *set)$/;"	f	typeref:typename:void
-count_elements_wrap	parsing/parsing_map.c	/^static void	count_elements_wrap(char **matrix, t_setting *set)$/;"	f	typeref:typename:void	file:
+count_elements	create_setting.c	/^int	count_elements(char **details, t_setting *set)$/;"	f	typeref:typename:int
+count_elements_wrap	parsing/parsing_map.c	/^static int	count_elements_wrap(char **matrix, t_setting *set)$/;"	f	typeref:typename:int	file:
 create_color	colors/operation_color.c	/^t_color	create_color(double r, double g, double b)$/;"	f	typeref:typename:t_color
 create_cylinder	shapes/cylinder.c	/^t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c)$/;"	f	typeref:typename:t_cylinder
 create_from_line	parsing/parsing_map.c	/^static void	create_from_line(char **matrix, t_setting *set)$/;"	f	typeref:typename:void	file:
@@ -326,7 +327,7 @@ create_point	vector/utils_vectors.c	/^t_vector	create_point(double x, double y, 
 create_ray	raycasting/create_ray.c	/^t_ray	create_ray(t_vector origin, t_vector direction)$/;"	f	typeref:typename:t_ray
 create_ray_from_camera2	raycasting/cast_ray.c	/^t_ray	create_ray_from_camera2(t_mlx *data, int x, int y)$/;"	f	typeref:typename:t_ray
 create_scaling_matrix	transformations/scaling.c	/^double	**create_scaling_matrix(t_vector move)$/;"	f	typeref:typename:double **
-create_setting	create_setting.c	/^void	create_setting(char **details, t_setting *set)$/;"	f	typeref:typename:void
+create_setting	create_setting.c	/^int	create_setting(char **details, t_setting *set)$/;"	f	typeref:typename:int
 create_sphere_ray	intersection/intersection_sphere.c	/^static t_ray	create_sphere_ray(t_sphere *sphere, t_ray old_ray)$/;"	f	typeref:typename:t_ray	file:
 create_translation_matrix	transformations/translations.c	/^double	**create_translation_matrix(t_vector move)$/;"	f	typeref:typename:double **
 create_trgb	colors/colors.c	/^int	create_trgb(t_color color)$/;"	f	typeref:typename:int
@@ -396,6 +397,7 @@ free_intersection	intersection/intersection.c	/^void	free_intersection(t_interse
 free_lights_array	freeing.c	/^void	free_lights_array(t_light **lights, int num)$/;"	f	typeref:typename:void
 free_list	intersection/intersection_list.c	/^void	free_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 free_plane_array	freeing2.c	/^void	free_plane_array(t_plane **planes, int num)$/;"	f	typeref:typename:void
+free_set_exit	starting/start_shapes.c	/^void	free_set_exit(t_setting *set, int exit_code)$/;"	f	typeref:typename:void
 free_single_cylinder	freeing.c	/^void	free_single_cylinder(t_cylinder *cylinder)$/;"	f	typeref:typename:void
 free_single_plane	freeing.c	/^void	free_single_plane(t_plane *plane)$/;"	f	typeref:typename:void
 free_single_sphere	freeing.c	/^void	free_single_sphere(t_sphere *sphere)$/;"	f	typeref:typename:void
@@ -686,9 +688,9 @@ original_addr	minirt.h	/^	void	*original_addr;$/;"	m	struct:s_object	typeref:typ
 over_point	minirt.h	/^	t_vector	over_point;$/;"	m	struct:s_computations	typeref:typename:t_vector
 param	mlx/mlx_int.h	/^	void	*param;$/;"	m	struct:s_event_list	typeref:typename:void *
 parse_args	mlx/configure	/^parse_args(){$/;"	f
-parse_color	parsing/parsing_numbers.c	/^t_color	parse_color(char *str)$/;"	f	typeref:typename:t_color
+parse_color	parsing/parsing_numbers.c	/^t_color	parse_color(char *str, t_setting *set)$/;"	f	typeref:typename:t_color
 parse_map	parsing/parsing_map.c	/^static int	parse_map(char *filename, t_setting *set)$/;"	f	typeref:typename:int	file:
-parse_vector	parsing/parsing_numbers.c	/^t_vector	parse_vector(char *str, double flag)$/;"	f	typeref:typename:t_vector
+parse_vector	parsing/parsing_numbers.c	/^t_vector	parse_vector(char *str, double flag, t_setting *set)$/;"	f	typeref:typename:t_vector
 parsing_map	main.c	/^int	parsing_map(char *map, t_setting *set)$/;"	f	typeref:typename:int
 perform_translation_from_mouse	rendering/translation_handlers.c	/^void	perform_translation_from_mouse(t_mlx *mlx, int x, int y)$/;"	f	typeref:typename:void
 phold	libft/ft_printf.c	/^static int	phold(va_list *arg, char q, int count)$/;"	f	typeref:typename:int	file:

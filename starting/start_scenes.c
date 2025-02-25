@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:16:19 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 15:16:22 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 15:48:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /* as you can see, there is a check on the lenght of the matrix details
  * I need to add a message in other case, were the lenght isn´t right! */
+//TODO: double check ratio and fov
 void	start_amb_light(t_setting *set, char **details)
 {
 	ft_printf("\t*%sSETTING UP AMBIENT LIGHTING%s**\n", YELLOW, RESET);
@@ -24,8 +25,10 @@ void	start_amb_light(t_setting *set, char **details)
 	{
 		set->amb_light->identifier = ft_strdup(details[0]);
 		set->amb_light->ratio = my_atof(details[1]);
-		set->amb_light->color = parse_color(details[2]);
+		set->amb_light->color = parse_color(details[2], set);
 	}
+	else
+		error_msg("func: start_amb_light, misconfiguration of array");
 }
 
 void	start_camera(t_setting *set, char **details)
@@ -37,12 +40,14 @@ void	start_camera(t_setting *set, char **details)
 	if (lenght_string_array(details) == 4)
 	{
 		set->camera->identifier = ft_strdup(details[0]);
-		set->camera->viewpoint = parse_vector(details[1], 1.0);
-		set->camera->orientation = parse_vector(details[2], 0.0);
+		set->camera->viewpoint = parse_vector(details[1], 1.0, set);
+		set->camera->orientation = parse_vector(details[2], 0.0, set);
 		set->camera->fov = ft_atoi(details[3]);
 		set->camera->image_plane_height = 0.0;
 		set->camera->image_plane_width = 0.0;
 	}
+	else
+		error_msg("func: start_camera, misconfiguration of array");
 }
 //DOUBLE CHECK THIS ONE
 
@@ -61,9 +66,11 @@ void	start_lights(t_setting *set, char **details)
 		new_light->identifier = ft_strdup(details[0]);
 		if (new_light->identifier == NULL)
 			return (free(new_light));
-		new_light->position = parse_vector(details[1], 1.0);
+		new_light->position = parse_vector(details[1], 1.0, set);
 		new_light->brightness = my_atof(details[2]);
-		new_light->color = parse_color(details[3]);
+		new_light->color = parse_color(details[3], set);
 		add_light_to_array(new_light, set);
 	}
+	else
+		error_msg("func: start_lights, misconfiguration of array");
 }

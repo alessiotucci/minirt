@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:24:35 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 16:34:42 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 15:19:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void	print_ambient_light(t_amb_light *amb_light)
 /* Helper function, I will delete this later on */
 void	struct_status(t_setting *set)
 {
-	printf("\n\n------STRUCT STATUS -------\n");
-	printf("struct has [%d] planes \t  |\n", set->num_planes);
-	printf("struct has [%d] cylinders  |\n", set->num_cylinders);
-	printf("struct has [%d] spheres \t  |\n", set->num_spheres);
-	printf("struct has [%d] lights\t  |\n", set->num_lights);
-	printf("---------------------------\n\n");
+	ft_printf("\n\n------STRUCT STATUS -------\n");
+	ft_printf("struct has [%d] planes \t  |\n", set->num_planes);
+	ft_printf("struct has [%d] cylinders  |\n", set->num_cylinders);
+	ft_printf("struct has [%d] spheres \t  |\n", set->num_spheres);
+	ft_printf("struct has [%d] lights\t  |\n", set->num_lights);
+	ft_printf("---------------------------\n\n");
 }
 
 //1

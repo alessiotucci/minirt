@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 11:37:24 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 16:15:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,8 +304,10 @@ typedef struct s_mlx
 t_list_intersect	*intersect_world(t_setting *world, t_ray ray);
 void				reset_selected_object(t_selected_obj *selected);
 int					parsing_map(char *map, t_setting *set);
-void				create_setting(char **line, t_setting *set);
-void				count_elements(char **details, t_setting *set);
+//void				create_setting(char **line, t_setting *set);
+int					create_setting(char **line, t_setting *set);
+//void				count_elements(char **details, t_setting *set);
+int					count_elements(char **details, t_setting *set);
 void				setback_zero(t_setting *set);
 void				alloc_struct_elem(t_setting *setting);
 /***************************************************/
@@ -322,8 +324,8 @@ void				start_cones(t_setting *set, char **details);
 /***************************************************/
 /*Those function are going to parse the numbers    */
 /***************************************************/
-t_color				parse_color(char *str);
-t_vector			parse_vector(char *str, double flag);
+t_color				parse_color(char *str, t_setting *set);
+t_vector			parse_vector(char *str, double flag, t_setting *set);
 void				print_color(t_color color);
 void				print_vector(t_vector vector);
 /***************************************************/

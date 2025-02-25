@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:07:24 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 17:13:57 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 15:56:43 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	free_cylinder_array(t_cylinder **cylinders, int num)
 void	free_struct(t_setting *set)
 {
 	printf("%sRemember to free all the memory%s\n", RED, RESET);
-	printf("%sUpdated: the camera not working%s\n", RED, RESET);
 	if (set->amb_light)
 	{
 		free(set->amb_light->identifier);
@@ -59,4 +58,5 @@ void	free_struct(t_setting *set)
 	free_lights_array(set->lights, set->num_lights);
 	free_plane_array(set->planes, set->num_planes);
 	free_cylinder_array(set->cylinders, set->num_cylinders);
+	printf("%sUpdated: the camera not working%s\n", RED, RESET);
 }
