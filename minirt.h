@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 16:15:19 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 17:51:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,7 +270,9 @@ typedef struct s_cylinder
 typedef struct s_setting
 {
 	t_amb_light		*amb_light;
+	int				check_amb_light;
 	t_camera		*camera;
+	int				check_cam;
 	t_light			**lights;
 	int				num_lights;
 	t_sphere		**spheres;
@@ -313,13 +315,13 @@ void				alloc_struct_elem(t_setting *setting);
 /***************************************************/
 /*Those function are going to start the struct     */
 /***************************************************/
-void				start_amb_light(t_setting *set, char **details);
-void				start_camera(t_setting *set, char **details);
-void				start_lights(t_setting *set, char **details);
-void				start_cylinder(t_setting *set, char **details);
-void				start_spheres(t_setting *set, char **details);
-void				start_planes(t_setting *set, char **details);
-void				start_cones(t_setting *set, char **details);
+int					start_amb_light(t_setting *set, char **details);
+int					start_camera(t_setting *set, char **details);
+int					start_lights(t_setting *set, char **details);
+int					start_cylinder(t_setting *set, char **details);
+int					start_spheres(t_setting *set, char **details);
+int					start_planes(t_setting *set, char **details);
+int					start_cones(t_setting *set, char **details);
 
 /***************************************************/
 /*Those function are going to parse the numbers    */
@@ -600,7 +602,7 @@ void				set_cylinder_cap(t_cylinder *cylinder);
 void				my_free_setting(t_setting *set);
 //TODO: after coming back from China (fix compilation issues)
 t_vector			default_vector(void);
-t_color				default_color(void);
+t_color				default_color(int i);
 //TODO: reasoning by GPT3
 t_computations		prepare_computations(t_intersection i, t_ray r);
 t_color				lambert_lighting(t_setting *w, t_computations c, t_light l);
@@ -669,4 +671,5 @@ t_selected_obj		find_original(t_setting *setting, void *orig,
 						t_type obj_type);
 char				*get_selection_status(t_selected_obj selected);
 char				*camera_info_str(t_camera *cam);
+int					missing_elem(t_setting *set);
 #endif

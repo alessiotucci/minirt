@@ -271,6 +271,8 @@ cast_rays	raycasting/cast_ray.c	/^void	cast_rays(t_mlx *data)$/;"	f	typeref:type
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_cylinder	typeref:typename:t_vector
 center	minirt.h	/^	t_vector	center;$/;"	m	struct:s_sphere	typeref:typename:t_vector
 check	mlx/Makefile.mk	/^check: all$/;"	t
+check_amb_light	minirt.h	/^	int				check_amb_light;$/;"	m	struct:s_setting	typeref:typename:int
+check_cam	minirt.h	/^	int				check_cam;$/;"	m	struct:s_setting	typeref:typename:int
 check_cap_cylinder	intersection/cylinder_utils.c	/^static int	check_cap_cylinder(t_ray ray, double t)$/;"	f	typeref:typename:int	file:
 check_null_array	extra/utils.c	/^int	check_null_array(char **array)$/;"	f	typeref:typename:int
 check_sign	libft/ft_num_utils.c	/^int	check_sign(int num)$/;"	f	typeref:typename:int
@@ -345,7 +347,7 @@ decrgb	mlx/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar	typeref:typename:in
 deep_copy_cylinder	intersection/intersection.c	/^t_cylinder	*deep_copy_cylinder(t_cylinder *src)$/;"	f	typeref:typename:t_cylinder *
 deep_copy_plane	intersection/intersection.c	/^t_plane	*deep_copy_plane(t_plane *src)$/;"	f	typeref:typename:t_plane *
 deep_copy_sphere	intersection/intersection.c	/^t_sphere	*deep_copy_sphere(t_sphere *src)$/;"	f	typeref:typename:t_sphere *
-default_color	parsing/parsing_numbers.c	/^t_color	default_color(void)$/;"	f	typeref:typename:t_color
+default_color	parsing/parsing_numbers.c	/^t_color	default_color(int i)$/;"	f	typeref:typename:t_color
 default_intersection	intersection/cylinder_utils.c	/^void	default_intersection(t_intersection *i1, t_intersection *i2)$/;"	f	typeref:typename:void
 default_vector	parsing/parsing_numbers.c	/^t_vector	default_vector(void)$/;"	f	typeref:typename:t_vector
 depth	mlx/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar	typeref:typename:int
@@ -574,6 +576,7 @@ max	minirt.h	/^	double		max;$/;"	m	struct:s_cylinder	typeref:typename:double
 min	minirt.h	/^	double		min;$/;"	m	struct:s_cylinder	typeref:typename:double
 minirt	README.md	/^# minirt$/;"	c
 minor	matrix/determinant.c	/^double	minor(int row, int col, double **matrix, int size)$/;"	f	typeref:typename:double
+missing_elem	main_utils.c	/^int	missing_elem(t_setting *set)$/;"	f	typeref:typename:int
 mlx	Makefile	/^mlx:$/;"	t
 mlx	minirt.h	/^	void			*mlx;$/;"	m	struct:s_mlx	typeref:typename:void *
 mlx	mlx/test/main.c	/^void	*mlx;$/;"	v	typeref:typename:void *
@@ -806,12 +809,12 @@ solve_quadratic_equation	intersection/intersection_cylinder.c	/^static	void	solv
 sort_intersection_list	intersection/sort_intersection.c	/^void	sort_intersection_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 specular	minirt.h	/^	double	specular;$/;"	m	struct:s_material	typeref:typename:double
 spheres	minirt.h	/^	t_sphere		**spheres;$/;"	m	struct:s_setting	typeref:typename:t_sphere **
-start_amb_light	starting/start_scenes.c	/^void	start_amb_light(t_setting *set, char **details)$/;"	f	typeref:typename:void
-start_camera	starting/start_scenes.c	/^void	start_camera(t_setting *set, char **details)$/;"	f	typeref:typename:void
-start_cylinder	starting/start_shapes.c	/^void	start_cylinder(t_setting *set, char **details)$/;"	f	typeref:typename:void
-start_lights	starting/start_scenes.c	/^void	start_lights(t_setting *set, char **details)$/;"	f	typeref:typename:void
-start_planes	starting/start_shapes.c	/^void	start_planes(t_setting *set, char **details)$/;"	f	typeref:typename:void
-start_spheres	starting/start_shapes.c	/^void	start_spheres(t_setting *set, char **details)$/;"	f	typeref:typename:void
+start_amb_light	starting/start_scenes.c	/^int start_amb_light(t_setting *set, char **details)$/;"	f	typeref:typename:int
+start_camera	starting/start_scenes.c	/^int	start_camera(t_setting *set, char **details)$/;"	f	typeref:typename:int
+start_cylinder	starting/start_shapes.c	/^int	start_cylinder(t_setting *set, char **details)$/;"	f	typeref:typename:int
+start_lights	starting/start_scenes.c	/^int	start_lights(t_setting *set, char **details)$/;"	f	typeref:typename:int
+start_planes	starting/start_shapes.c	/^int	start_planes(t_setting *set, char **details)$/;"	f	typeref:typename:int
+start_spheres	starting/start_shapes.c	/^int	start_spheres(t_setting *set, char **details)$/;"	f	typeref:typename:int
 string_to_type	extra/type_string.c	/^t_type	string_to_type(char *type)$/;"	f	typeref:typename:t_type
 strlcpy_is_not_posix	mlx/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char *src, unsigned int size)$/;"	f	typeref:typename:unsigned int
 struct_full_status	extra/print_debug2.c	/^void	struct_full_status(t_setting *set)$/;"	f	typeref:typename:void

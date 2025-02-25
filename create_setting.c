@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 16:17:40 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 18:16:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,52 +48,53 @@ int	count_elements(char **details, t_setting *set)
 		set->num_cylinders++;
 	else if (my_strcmp(details[0], "cn") == 0)
 		set->num_cones++;
-	else if (my_strcmp(details[0], "A") == 0 || my_strcmp(details[0], "C") == 0)
-		;
+	else if (my_strcmp(details[0], "A") == 0)
+		set->check_amb_light++;
+	else if (my_strcmp(details[0], "C") == 0)
+		set->check_cam++;
 	else if (my_strcmp(details[0], "\n") == 0 || my_strcmp(details[0], " ") == 0)
 		;
 	else
 	{
+		ft_printf("count_elements() ERROR!!\n");
 		ft_printf("[%s%s%s]\n", RED, details[0], RESET);
-		ft_printf("found unexpected identifier, in count elements!!\n");
-		ft_printf("returning 1!\n");
-		/*free_string_array(details);
-		exit(EXIT_FAILURE);*/
 		return (1);
 	}
 	return (0);
 }
 
-//TODO:
+//TODO: need to be implemented
 int	create_setting(char **details, t_setting *set)
-//void	create_setting(char **details, t_setting *set)
 {
-	int	i;
+	int	result;
 
-	i = 0;
 	if (check_null_array(details))
-		return (1);;
+	{
+		ft_printf("create_setting: check null array\nreturn -1\n");
+		return (-1);
+	}
 	if (my_strcmp(details[0], "A") == 0)
-		start_amb_light(set, details);
+		result = start_amb_light(set, details);
 	else if (my_strcmp(details[0], "C") == 0)
-		start_camera(set, details);
+		result = start_camera(set, details);
 	else if (my_strcmp(details[0], "L") == 0)
-		start_lights(set, details);
+		result = start_lights(set, details);
 	else if (my_strcmp(details[0], "sp") == 0)
-		start_spheres(set, details);
+		result = start_spheres(set, details);
 	else if (my_strcmp(details[0], "pl") == 0)
-		start_planes(set, details);
+		result = start_planes(set, details);
 	else if (my_strcmp(details[0], "cy") == 0)
-		start_cylinder(set, details);
+		result = start_cylinder(set, details);
 	else
 	{
-		if (my_strcmp(details[0], "\n") == 0 || my_strcmp(details[0], " ") == 0)
-			ft_printf("[%s\\n%s]\n", RED, RESET);
-		else
-		{
-			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
-			return (1 * ft_printf("found unexpected identifier, exiting the program!!\n\n"));
-		}
+		if (my_strcmp(details[0], "\n") != 0 && my_strcmp(details[0], " ") != 0)
+			ft_printf("%sError: Unknown identifier '%s'%s\nreturn -1", RED, details[0], RESET);
+		return (-1);
 	}
-	return (i);
+	if (result != 0)
+	{
+		printf("create_setting: RESULT [%d]\n return -1", result);
+		return (-1);
+	}
+	return (0);
 }

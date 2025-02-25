@@ -1,12 +1,10 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 17:02:25 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 17:19:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +47,7 @@ static int	open_and_count(char *filename, t_setting *set)
 			break ;
 		if (count_elements_wrap(ft_split(line, ' '), set) == 1)
 		{
-			printf("count_elements_wrap: returned 1\n");
 			i = -42;
-	//		free(line);
 			clear_gnl_buffer(fd);
 			break ;
 		}
@@ -61,18 +57,18 @@ static int	open_and_count(char *filename, t_setting *set)
 	return (close(fd), i);
 }
 
-//5
+//5 TODO: Need to handle create_setting failure
 static void	create_from_line(char **matrix, t_setting *set)
 {
 	remove_new_line(matrix, ' ', '\n');
-	if (create_setting(matrix, set))
+	if (create_setting(matrix, set) == -1)
 	{
-		ft_printf("%screate_from_line FAILED:%s\n", RED, RESET);
-		ft_printf("%screate_setting FAILED%s\n", RED, RESET);
-		free_string_array(matrix);
-		free_struct(set);
-		return ;
-		//exit(-42);
+		ft_printf("%screate_from_line FAILED:%s\t", RED, RESET);
+		ft_printf("create_setting(matrix, set) == [%d]\n", create_setting(matrix, set));
+		//ft_printf("%screate_setting FAILED%s\n", RED, RESET);
+		//free_string_array(matrix);
+		//free_struct(set);
+		exit(-42);
 	}
 	free_string_array(matrix);
 }
@@ -87,7 +83,9 @@ static int	parse_map(char *filename, t_setting *set)
 	if (open_and_count(filename, set) == -42)
 		return (-42);
 	ft_printf("%sfinished%s READING THE MAP 1 TIME\n", BG_GREEN, BG_RESET);
-	//struct_status(set);
+	struct_status(set);
+	if (missing_elem(set) == -42)
+		return (-42);
 	alloc_struct_elem(set);
 	fd = open(filename, O_RDONLY);
 	while (1)

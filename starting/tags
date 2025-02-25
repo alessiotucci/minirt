@@ -9,6 +9,7 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
+free_set_exit	start_shapes.c	/^void	free_set_exit(t_setting *set, int exit_code)$/;"	f	typeref:typename:void
 start_amb_light	start_scenes.c	/^void	start_amb_light(t_setting *set, char **details)$/;"	f	typeref:typename:void
 start_camera	start_scenes.c	/^void	start_camera(t_setting *set, char **details)$/;"	f	typeref:typename:void
 start_cylinder	start_shapes.c	/^void	start_cylinder(t_setting *set, char **details)$/;"	f	typeref:typename:void

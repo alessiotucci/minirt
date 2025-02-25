@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:24:35 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 15:19:09 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 17:25:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	print_ambient_light(t_amb_light *amb_light)
 
 //2
 /* Helper function, I will delete this later on */
+//TODO: implement the check afterwards
 void	struct_status(t_setting *set)
 {
 	ft_printf("\n\n------STRUCT STATUS -------\n");
