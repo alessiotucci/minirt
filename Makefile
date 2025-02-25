@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2025/02/24 17:13:44 by atucci           ###   ########.fr        #
+#    Updated: 2025/02/25 12:30:39 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -233,13 +233,25 @@ hidden:
 #***********************************************************************
 # Download and install the MLX library if it is not already installed. *
 #***********************************************************************
+#*****************************************************************************
+# Download and install the MLX library if it is not already installed.
+#*****************************************************************************
 mlx:
-	if [ -e $(MLX_DIR) ]; \
-	then \
-	echo "MiniLibX's directory detected"; \
+	@if [ -e $(MLX_DIR) ]; then \
+		echo "$(GREEN)MiniLibX directory detected.$(RESET)"; \
 	else \
-	git clone git@github.com:42Paris/minilibx-linux.git \
-	&& mv minilibx-linux mlx; fi
+		echo "$(YELLOW)Cloning MiniLibX repository...$(RESET)"; \
+		git clone git@github.com:42Paris/minilibx-linux.git; \
+		mv minilibx-linux mlx; \
+		echo "$(GREEN)MiniLibX has been successfully cloned.$(RESET)"; \
+	fi
+
 
 clean_mlx:
+	@echo "$(RED)Deleting mlx to norm check $(RESET)"
 	rm -rf $(MLX_DIR)
+
+norminette: clean_mlx
+	@echo "$(GREEN) Running norminette without mlx $(RESET)"
+	@norminette
+	@make mlx

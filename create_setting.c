@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 15:20:11 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/25 12:40:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	count_elements(char **details, t_setting *set)
 		if (my_strcmp(details[0], "\n") == 0)
 			ft_printf("[%s\\n%s]\n", RED, RESET);
 		else
+		{
 			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
+			ft_printf("found unexpected identifier, exiting the program!!\n\n");
+		}
 	}
 }
 
@@ -76,6 +79,9 @@ void	create_setting(char **details, t_setting *set)
 		if (my_strcmp(details[0], "\n") == 0)
 			ft_printf("[%s\\n%s]\n", RED, RESET);
 		else
+		{
 			ft_printf("[%s%s%s]\n", RED, details[0], RESET);
+			ft_printf("found unexpected identifier, exiting the program!!\n\n");
+		}
 	}
 }
