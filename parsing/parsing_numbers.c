@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 09:02:34 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:41:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_color	parse_color(char *str, t_setting *set)
 	t_color	color;
 	char	**matrix;
 
+	(void)set;
 	color = default_color(0);
 	ft_printf("Parsing color (%s)\n", str);
 	matrix = ft_split(str, ',');
@@ -49,14 +50,6 @@ t_color	parse_color(char *str, t_setting *set)
 		color.r = ft_atoi(matrix[0]);
 		color.g = ft_atoi(matrix[1]);
 		color.b = ft_atoi(matrix[2]);
-	}
-	else
-	{
-		error_msg("func parse_color:\tmisconfiguration of colors: ");
-		ft_printf("%s\n", matrix[lenght_string_array(matrix) - 1]);
-		free_struct(set);
-		return (free_string_array(matrix), default_color(-42));
-	//	exit(-42); I cannot exit here otherwise it will leak
 	}
 	return (free_string_array(matrix), color);
 }
@@ -69,6 +62,7 @@ t_vector	parse_vector(char *str, double flag, t_setting *set)
 	t_vector	vector;
 	char		**matrix;
 
+	(void)set;
 	vector = default_vector();
 	ft_printf("Parsing vector (%s)\n", str);
 	matrix = ft_split(str, ',');
@@ -78,14 +72,6 @@ t_vector	parse_vector(char *str, double flag, t_setting *set)
 		vector.y = my_atof(matrix[1]);
 		vector.z = my_atof(matrix[2]);
 		vector.w = flag;
-	}
-	else
-	{
-		error_msg("misconfiguation of vectors: ");
-		ft_printf("%s\n", matrix[lenght_string_array(matrix) - 1]);
-		free_string_array(matrix);
-		free_struct(set);
-	//	exit(-42); I cannot exit here otherwise it will leak
 	}
 	return (free_string_array(matrix), print_vector(vector), vector);
 }

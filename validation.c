@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:08:09 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 12:58:25 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 13:41:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	validate_camera(char **details)
 		return (error_msg("VALIDATE CAMERA: Invalid viewpoint\n"), -1);
 	if (valid_vector(details[2]))
 		return (error_msg("VALIDATE CAMERA: Invalid orientation\n"), -1);
-	if (valid_fov_atoi(details[2]))
+	if (valid_fov_atoi(details[3]))
 		return (error_msg("VALIDATE CAMERA: Invalid FOV\n"), -1);
 
 	return (0);

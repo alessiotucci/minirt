@@ -82,6 +82,7 @@ EPSILON_V2	minirt.h	/^# define EPSILON_V2 /;"	d
 ERR_NO_TRUECOLOR	mlx/mlx_int.h	/^# define ERR_NO_TRUECOLOR /;"	d
 ESC	minirt.h	/^# define ESC /;"	d
 ESCAPE	minirt.h	/^# define ESCAPE /;"	d
+FAIL	minirt.h	/^# define FAIL /;"	d
 FLAG	Makefile	/^FLAG = -Wall -Wextra -Werror -O3 -gdwarf-4$/;"	m
 GOING	mlx/man/man1/mlx_loop.1	/^.SH GOING FURTHER WITH EVENTS$/;"	s	title:MiniLibX
 GOING	mlx/man/man3/mlx_loop.3	/^.SH GOING FURTHER WITH EVENTS$/;"	s	title:MiniLibX
@@ -160,6 +161,7 @@ OBJ	mlx/Makefile.mk	/^OBJ	= $(addprefix $(OBJ_DIR)\/,$(SRC:%.c=%.o))$/;"	m
 OBJ	mlx/test/Makefile.mk	/^OBJ = $(SRC:%.c=%.o)$/;"	m
 OBJ_DIR	mlx/Makefile.mk	/^OBJ_DIR = obj$/;"	m
 OFILES	libft/Makefile	/^OFILES	= $(files:%=%.o)$/;"	m
+OK	minirt.h	/^# define OK /;"	d
 OUTN	libft/Makefile	/^OUTN	= $(Library).a$/;"	m
 PLUS	minirt.h	/^# define PLUS /;"	d
 PURPLE	minirt.h	/^# define PURPLE /;"	d
@@ -246,6 +248,7 @@ all	mlx/test/Makefile.mk	/^all: $(NAME)$/;"	t
 alloc_struct_elem	create_setting.c	/^void	alloc_struct_elem(t_setting *setting)$/;"	f	typeref:typename:void
 amb_light	minirt.h	/^	t_amb_light		*amb_light;$/;"	m	struct:s_setting	typeref:typename:t_amb_light *
 ambient	minirt.h	/^	double	ambient;$/;"	m	struct:s_material	typeref:typename:double
+apply_to_each	validation_utils.c	/^static int	apply_to_each(char **matrix, int (*func)(char *))$/;"	f	typeref:typename:int	file:
 aspect_ratio	draw_scene.c	/^void	aspect_ratio(t_mlx *mlx, double *aspect_ratio)$/;"	f	typeref:typename:void
 assign_material_sphere	shadows/material.c	/^void	assign_material_sphere(t_sphere *s, t_material new)$/;"	f	typeref:typename:void
 at_exit	mlx/test/run_tests.sh	/^at_exit() {$/;"	f
@@ -526,6 +529,7 @@ is_a_vector	vector/utils_vectors.c	/^int	is_a_vector(t_vector vect)$/;"	f	typere
 is_matrix_invertible	matrix/inversing.c	/^int	is_matrix_invertible(int s, double **matrix)$/;"	f	typeref:typename:int
 is_selected_null	selected_obj.c	/^int	is_selected_null(t_selected_obj *obj)$/;"	f	typeref:typename:int
 is_shadowed	shadows/is_shadowed.c	/^int	is_shadowed(t_setting *world, t_vector point, t_light light)$/;"	f	typeref:typename:int
+is_valid_float_char	validation_utils.c	/^static int	is_valid_float_char(char c)$/;"	f	typeref:typename:int	file:
 key_hook	mlx/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list	typeref:typename:int (*)()
 key_param	mlx/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list	typeref:typename:void *
 key_pressed	manage_mlx.c	/^static int	key_pressed(int keycode, void *param)$/;"	f	typeref:typename:int	file:
@@ -706,6 +710,7 @@ position	minirt.h	/^	t_vector	position;$/;"	m	struct:s_light	typeref:typename:t_
 position_ray	raycasting/create_ray.c	/^t_vector	position_ray(t_ray ray, double t)$/;"	f	typeref:typename:t_vector
 prepare_computations	computation.c	/^t_computations	prepare_computations(t_intersection i, t_ray r)$/;"	f	typeref:typename:t_computations
 print_ambient_light	extra/print_debug2.c	/^void	print_ambient_light(t_amb_light *amb_light)$/;"	f	typeref:typename:void
+print_ascii_box	my_tester.pl	/^sub print_ascii_box {$/;"	s
 print_camera	extra/print_debug2.c	/^void	print_camera(t_camera *camera)$/;"	f	typeref:typename:void
 print_color	extra/print_debug2.c	/^void	print_color(t_color color)$/;"	f	typeref:typename:void
 print_cylinders	extra/print_debug.c	/^void	print_cylinders(int n_cylinders, t_cylinder **array)$/;"	f	typeref:typename:void
@@ -868,7 +873,9 @@ type_to_string	extra/type_string.c	/^char	*type_to_string(t_type type)$/;"	f	typ
 update_cylinder	shapes/cylinder.c	/^void	update_cylinder(t_cylinder *my_cylinder)$/;"	f	typeref:typename:void
 use_xshm	mlx/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
 v2normal_at	normal.c	/^t_vector	v2normal_at(t_object obj, t_vector point, t_ray r)$/;"	f	typeref:typename:t_vector
+valid_color_component	validation_utils.c	/^static int	valid_color_component(char *token)$/;"	f	typeref:typename:int	file:
 valid_color_string	validation_utils.c	/^int	valid_color_string(char *str)$/;"	f	typeref:typename:int
+valid_float_token	validation_utils.c	/^static int	valid_float_token(char *token)$/;"	f	typeref:typename:int	file:
 valid_for_atof	validation_utils.c	/^int	valid_for_atof(char *str)$/;"	f	typeref:typename:int
 valid_fov_atoi	validation_utils.c	/^int	valid_fov_atoi(char *str)$/;"	f	typeref:typename:int
 valid_vector	validation_utils.c	/^int	valid_vector(char *str)$/;"	f	typeref:typename:int

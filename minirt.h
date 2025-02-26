@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 12:57:14 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 13:50:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # include <math.h>
 //TODO: delete all printf
 # include <stdio.h>
+
+# define OK 0
+# define FAIL 1
 /************************/
 /* Define keyboard code */ //TODO: check with Ubuntu codes
 /************************/
