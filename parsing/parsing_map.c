@@ -1,10 +1,12 @@
 /* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroise <ftroise@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 15:39:13 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 17:19:11 by atucci           ###   ########.fr       */
+/*   Created: 2025/02/26 21:36:34 by atucci            #+#    #+#             */
+/*   Updated: 2025/02/26 21:38:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +90,10 @@ static int	parse_map(char *filename, t_setting *set)
 	int		i;
 
 	i = 0;
-	if (open_and_count(filename, set) == -42)
+	if (open_and_count(filename, set) == -42 || missing_elem(set) == -42)
 		return (-42);
 	ft_printf("%sfinished%s READING THE MAP 1 TIME\n", BG_GREEN, BG_RESET);
 	struct_status(set);
-	if (missing_elem(set) == -42)
-		return (-42);
 	alloc_struct_elem(set);
 	fd = open(filename, O_RDONLY);
 	while (1)
@@ -109,8 +109,7 @@ static int	parse_map(char *filename, t_setting *set)
 		}
 		free(line);
 	}
-	free(line);
-	return (close(fd), i);
+	return (free(line), close(fd), i);
 }
 
 //3 

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 15:38:42 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 21:35:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	free_set_exit(t_setting *set, int exit_code)
 {
 	free_struct(set);
 	(void)exit_code;
-	//exit(exit_code);
 }
 
 //1

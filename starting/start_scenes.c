@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:16:19 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 15:36:48 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 21:36:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* as you can see, there is a check on the lenght of the matrix details
  * I need to add a message in other case, were the lenght isn´t right! */
 //TODO: double check ratio and fov
-int start_amb_light(t_setting *set, char **details)
+int	start_amb_light(t_setting *set, char **details)
 {
 	if (validate_amb_light(details) == -1)
 		return (-1);
@@ -45,6 +45,7 @@ int	start_camera(t_setting *set, char **details)
 	set->camera->image_plane_width = 0.0;
 	return (0);
 }
+
 //DOUBLE CHECK THIS ONE
 int	start_lights(t_setting *set, char **details)
 {
