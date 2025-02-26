@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:40:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 18:11:24 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 09:02:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_color	parse_color(char *str, t_setting *set)
 	color = default_color(0);
 	ft_printf("Parsing color (%s)\n", str);
 	matrix = ft_split(str, ',');
-	printf("lenght_string_array: [%d]", lenght_string_array(matrix));
+	ft_printf("lenght_string_array: [%d]\n", lenght_string_array(matrix));
 	if (lenght_string_array(matrix) == 3)
 	{
 		color.r = ft_atoi(matrix[0]);

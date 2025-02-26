@@ -321,7 +321,7 @@ count_elements	create_setting.c	/^int	count_elements(char **details, t_setting *
 count_elements_wrap	parsing/parsing_map.c	/^static int	count_elements_wrap(char **matrix, t_setting *set)$/;"	f	typeref:typename:int	file:
 create_color	colors/operation_color.c	/^t_color	create_color(double r, double g, double b)$/;"	f	typeref:typename:t_color
 create_cylinder	shapes/cylinder.c	/^t_cylinder	create_cylinder(char *id, t_vector center, double d, t_color c)$/;"	f	typeref:typename:t_cylinder
-create_from_line	parsing/parsing_map.c	/^static void	create_from_line(char **matrix, t_setting *set)$/;"	f	typeref:typename:void	file:
+create_from_line	parsing/parsing_map.c	/^static int	create_from_line(char **matrix, t_setting *set)$/;"	f	typeref:typename:int	file:
 create_identity_matrix	matrix/operations_matrix.c	/^void	create_identity_matrix(double	**ret)$/;"	f	typeref:typename:void
 create_new_node	intersection/intersection_list.c	/^t_list_intersect	*create_new_node(t_intersection *intersection)$/;"	f	typeref:typename:t_list_intersect *
 create_plane_ray	intersection/intersection_plane.c	/^static t_ray	create_plane_ray(t_plane *plane, t_ray old_ray)$/;"	f	typeref:typename:t_ray	file:

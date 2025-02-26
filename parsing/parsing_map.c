@@ -57,29 +57,37 @@ static int	open_and_count(char *filename, t_setting *set)
 	return (close(fd), i);
 }
 
-//5 TODO: Need to handle create_setting failure
-static void	create_from_line(char **matrix, t_setting *set)
+static int	create_from_line(char **matrix, t_setting *set)
 {
+	int	result;
+
 	remove_new_line(matrix, ' ', '\n');
-	if (create_setting(matrix, set) == -1)
+	result = create_setting(matrix, set);
+	free_string_array(matrix);
+	if (result == -1)
 	{
 		ft_printf("%screate_from_line FAILED:%s\t", RED, RESET);
-		ft_printf("create_setting(matrix, set) == [%d]\n", create_setting(matrix, set));
-		//ft_printf("%screate_setting FAILED%s\n", RED, RESET);
-		//free_string_array(matrix);
-		//free_struct(set);
-		exit(-42);
+		free_struct(set);
+		return (-42);
 	}
-	free_string_array(matrix);
+	return (0);
 }
 
 //4
 //free bc there is get_next_line
+/*		if (count_elements_wrap(ft_split(line, ' '), set) == 1)
+		{
+			i = -42;
+			clear_gnl_buffer(fd);
+			break ;
+*/
 static int	parse_map(char *filename, t_setting *set)
 {
 	char	*line;
 	int		fd;
+	int		i;
 
+	i = 0;
 	if (open_and_count(filename, set) == -42)
 		return (-42);
 	ft_printf("%sfinished%s READING THE MAP 1 TIME\n", BG_GREEN, BG_RESET);
@@ -93,11 +101,16 @@ static int	parse_map(char *filename, t_setting *set)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		create_from_line(ft_split(line, ' '), set);
+		if (create_from_line(ft_split(line, ' '), set) == -42)
+		{
+			i = -42;
+			clear_gnl_buffer(fd);
+			break ;
+		}
 		free(line);
 	}
 	free(line);
-	return (close(fd));
+	return (close(fd), i);
 }
 
 //3 

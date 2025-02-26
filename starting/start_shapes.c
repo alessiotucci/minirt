@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 17:54:01 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 10:22:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ int	start_spheres(t_setting *set, char **details)
 {
 	t_sphere	*new_sphere;
 	double		**def;
-	int			i;
 
-	i = 0;
 	ft_printf("\n\t%s*SETTING UP SPHERES*%s\n", RED, RESET);
 	def = malloc_matrix(4, 4);
 	create_identity_matrix(def);
@@ -62,15 +60,15 @@ int	start_spheres(t_setting *set, char **details)
 	if (!new_sphere)
 		return (-1);
 	if (lenght_string_array(details) != 4)
-		return (error_msg("func: start_sphere, misconfig of array\n"), free_set_exit(set, -1), -1);
+		return (error_msg("start_sphere: misconfig of array\n"), free_heap_matrix(def, 4), free(new_sphere), -1);
 	new_sphere->identifier = ft_strdup(details[0]);
 	new_sphere->center = parse_vector(details[1], 1.0, set);
 	new_sphere->diameter = my_atof(details[2]);
 	new_sphere->color = parse_color(details[3], set);
-	new_sphere->transform = def;
 	new_sphere->material = material(new_sphere->color);
+	new_sphere->transform = def;
 	add_sphere_to_array(new_sphere, set);
-	return (i);
+	return (0);
 }
 
 //TODO: return 

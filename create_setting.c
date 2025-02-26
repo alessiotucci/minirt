@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:33:48 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 18:16:57 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 09:38:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,10 @@ int	create_setting(char **details, t_setting *set)
 	else
 	{
 		if (my_strcmp(details[0], "\n") != 0 && my_strcmp(details[0], " ") != 0)
-			ft_printf("%sError: Unknown identifier '%s'%s\nreturn -1", RED, details[0], RESET);
-		return (-1);
+			return (ft_printf("create_setting: Unknown identifier -1\n"), -1);
+		return (0);
 	}
 	if (result != 0)
-	{
-		printf("create_setting: RESULT [%d]\n return -1", result);
-		return (-1);
-	}
-	return (0);
+		return (ft_printf("create_setting: RESULT [%d]\n return -1\n", result), -1);
+	return (ft_printf("create_setting: %sSUCCESS!%s\n", GREEN, RESET), 0);
 }
