@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 21:25:59 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 08:56:49 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 12:47:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	check_null_array(char **array)
 	return (0);
 }
 
-//3
+//3) might add a parameter for clarity
 void	print_string_array(char **array)
 {
 	int	i;
@@ -48,9 +48,10 @@ void	print_string_array(char **array)
 	i = 0;
 	if (check_null_array(array))
 		return ;
+	ft_printf("[i] [string]\n");
 	while (array[i] != NULL)
 	{
-		ft_printf("[%d][%s]   ", i, array[i]);
+		ft_printf("[%s%d%s][%s]   ", GREEN, i, RESET,  array[i]);
 		i++;
 	}
 	ft_printf("\n");

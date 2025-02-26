@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:59:44 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 10:22:51 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 12:15:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	free_set_exit(t_setting *set, int exit_code)
 	//exit(exit_code);
 }
 
+//1
 int	start_cylinder(t_setting *set, char **details)
 {
 	t_cylinder	*new_cylinder;
@@ -33,7 +34,7 @@ int	start_cylinder(t_setting *set, char **details)
 	if (!new_cylinder)
 		return (-1);
 	if (lenght_string_array(details) != 6)
-		return (error_msg("start_cylinder ERROR\n"), free_set_exit(set, -1), -1);
+		return (error_msg("start_cylinder ERROR\n"), free_heap_matrix(def, 4), free(new_cylinder), -1);
 	new_cylinder->identifier = ft_strdup(details[0]);
 	new_cylinder->center = parse_vector(details[1], 1.0, set);
 	new_cylinder->axis = parse_vector(details[2], 0.0, set);
@@ -48,6 +49,7 @@ int	start_cylinder(t_setting *set, char **details)
 	return (i);
 }
 
+//2
 int	start_spheres(t_setting *set, char **details)
 {
 	t_sphere	*new_sphere;
@@ -72,6 +74,7 @@ int	start_spheres(t_setting *set, char **details)
 }
 
 //TODO: return 
+//3
 int	start_planes(t_setting *set, char **details)
 {
 	t_plane		*new_plane;
@@ -86,7 +89,7 @@ int	start_planes(t_setting *set, char **details)
 	if (!new_plane)
 		return (-1);
 	if (lenght_string_array(details) != 4)
-		return (error_msg("func: start_sphere, misconfig of array\n"), free_set_exit(set, -1), -1);
+		return (error_msg("func: start_plane, misconfig of array\n"), free_heap_matrix(def, 4), free(new_plane), -1);
 	new_plane->identifier = ft_strdup(details[0]);
 	new_plane->point = parse_vector(details[1], 1.0, set);
 	new_plane->normal = parse_vector(details[2], 0.0, set);

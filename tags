@@ -868,6 +868,16 @@ type_to_string	extra/type_string.c	/^char	*type_to_string(t_type type)$/;"	f	typ
 update_cylinder	shapes/cylinder.c	/^void	update_cylinder(t_cylinder *my_cylinder)$/;"	f	typeref:typename:void
 use_xshm	mlx/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar	typeref:typename:int
 v2normal_at	normal.c	/^t_vector	v2normal_at(t_object obj, t_vector point, t_ray r)$/;"	f	typeref:typename:t_vector
+valid_color_string	validation_utils.c	/^int	valid_color_string(char *str)$/;"	f	typeref:typename:int
+valid_for_atof	validation_utils.c	/^int	valid_for_atof(char *str)$/;"	f	typeref:typename:int
+valid_fov_atoi	validation_utils.c	/^int	valid_fov_atoi(char *str)$/;"	f	typeref:typename:int
+valid_vector	validation_utils.c	/^int	valid_vector(char *str)$/;"	f	typeref:typename:int
+validate_amb_light	validation.c	/^int	validate_amb_light(char **details)$/;"	f	typeref:typename:int
+validate_camera	validation.c	/^int	validate_camera(char **details)$/;"	f	typeref:typename:int
+validate_cylinder	validation.c	/^int	validate_cylinder(char **details)$/;"	f	typeref:typename:int
+validate_light	validation.c	/^int	validate_light(char **details)$/;"	f	typeref:typename:int
+validate_plane	validation.c	/^int	validate_plane(char **details)$/;"	f	typeref:typename:int
+validate_sphere	validation.c	/^int	validate_sphere(char **details)$/;"	f	typeref:typename:int
 value_matrix	matrix/initialize_matrix.c	/^double	**value_matrix(double a[4], double b[4], double c[4], double d[4])$/;"	f	typeref:typename:double **
 vector_to_labeled_str	selection_status.c	/^static char	*vector_to_labeled_str(char *label, t_vector vec)$/;"	f	typeref:typename:char *	file:
 vector_to_str	selection_status.c	/^static char	*vector_to_str(t_vector vec)$/;"	f	typeref:typename:char *	file:

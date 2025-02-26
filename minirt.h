@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/25 17:51:50 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 12:57:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -672,4 +672,21 @@ t_selected_obj		find_original(t_setting *setting, void *orig,
 char				*get_selection_status(t_selected_obj selected);
 char				*camera_info_str(t_camera *cam);
 int					missing_elem(t_setting *set);
+
+/***************************************/
+/*Validation of the parsing of the map */
+/***************************************/
+int					validate_sphere(char **details);
+int					validate_plane(char **details);
+int					validate_cylinder(char **details);
+int					validate_camera(char **details);
+int					validate_light(char **details);
+int					validate_amb_light(char **details);
+/**************************/
+/*utils of the validation */
+/**************************/
+int					valid_vector(char *str);
+int					valid_for_atof(char *str);
+int					valid_color_string(char *str);
+int					valid_fov_atoi(char *str);
 #endif
