@@ -8,7 +8,8 @@ use Symbol 'gensym';
 # Global variables
 my %test_results;
 my @map_files;
-my $wrong_dir = '/nfs/homes/atucci/Desktop/mioGithubMiniRT/wrong_maps';
+# Change based on local machine
+my $wrong_dir = '/home/atucci/Desktop/miniRT/wrong_maps';
 my $miniRT = './miniRT';
 
 sub run_command {
@@ -28,8 +29,8 @@ sub run_command {
         alarm($timeout);
         {
             local $/;
-            $output .= <$out> if $out;
-            $output .= <$err> if $err;
+            $output .= defined $out ? <$out> : '';
+            $output .= defined $err ? <$err> : '';
         }
         alarm(0);
     };
@@ -51,9 +52,10 @@ sub get_signal_name {
     }->{$sig_num} || "UNKNOWN";
 }
 
-sub format_test_result {
+sub format_test_result
+{
     my ($passed) = @_;
-    $passed ? colored("PASS", 'green') : colored("FAIL", 'red');
+    return $passed ? colored("PASS", 'green') : colored("FAIL", 'red');
 }
 
 sub print_summary_table {
@@ -64,13 +66,13 @@ sub print_summary_table {
     } keys %test_results;
 
     # Header
-    print colored("╔══════════════════════════════╦════════╦════════╦════════╗\n", 'white');
-    print colored("║ ", 'white') . colored(sprintf("%-28s", "MAP NAME"), 'white on_black')
+    print colored("╔═════════════════════════════════════════════════════════╗\n", 'white');
+    print colored("║ ", 'white') . colored(sprintf("%-20s", "MAP NAME"), 'white on_black')
           . colored("║ ", 'white') . colored(sprintf("%6s", "NORM"), 'white on_black')
           . colored("║ ", 'white') . colored(sprintf("%6s", "LEAKS"), 'white on_black')
           . colored("║ ", 'white') . colored(sprintf("%6s", "ERRORS"), 'white on_black')
           . colored("║\n", 'white');
-    print colored("╠══════════════════════════════╬════════╬════════╬════════╣\n", 'white');
+    print colored("╠═════════════════════════════════════════════════════════╣\n", 'white');
 
     # Body
     for my $map (@sorted_maps) {
@@ -78,20 +80,21 @@ sub print_summary_table {
         printf colored("║ ", 'white')
               . colored(sprintf("%-28s", $map), 'white')
               . colored("║ ", 'white')
-              . colored(sprintf("%6s", format_test_result($res->{normal})))
+              . colored(sprintf("%6s", format_test_result($res->{normal})), 'white')
               . colored("║ ", 'white')
-              . colored(sprintf("%6s", format_test_result($res->{leaks})))
+              . colored(sprintf("%6s", format_test_result($res->{leaks})), 'white')
               . colored("║ ", 'white')
-              . colored(sprintf("%6s", format_test_result($res->{errors})))
+              . colored(sprintf("%6s", format_test_result($res->{errors})), 'white')
               . colored("║\n", 'white');
     }
 
     # Footer
-    print colored("╚══════════════════════════════╩════════╩════════╩════════╝\n", 'white');
+    print colored("╚═════════════════════════════════════════════════════════╝\n", 'white');
 }
 
 # Build executable if missing
-if (!-e $miniRT && system('make') != 0) {
+if (!-e $miniRT && system('make') != 0)
+{
     die colored("Failed to build miniRT\n", 'red');
 }
 
@@ -108,7 +111,8 @@ closedir $dh;
 
 # Main testing logic
 foreach my $map_file (@map_files) {
-    my ($output, $timed_out, $exit_code, $signal) = run_command("$miniRT $map_file", 2);
+    my ($output, $timed_out, $exit_code, $signal) = run_command("$miniRT $map_file", 1);
+	print("$miniRT $map_file\n");
     my $map_name = (split('/', $map_file))[-1];
     $map_name =~ s/\.rt$//;
 
@@ -122,7 +126,7 @@ foreach my $map_file (@map_files) {
 
     # Store results
     $test_results{$map_name} = {
-        normal => !$signal && !$timed_out && $exit_code != 0,
+        normal => !$signal && !$timed_out && $exit_code == 214,
         leaks => $vg_leaks,
         errors => $vg_errors
     };
@@ -130,3 +134,5 @@ foreach my $map_file (@map_files) {
 
 # Display final results
 print_summary_table();
+
+
