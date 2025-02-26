@@ -107,9 +107,11 @@ opendir my $dh, $wrong_dir or die colored("tester: Could not open '$wrong_dir': 
 closedir $dh;
 
 @map_files = sort {
-    my ($num_a) = $a =~ /^(\d+)_/;
-    my ($num_b) = $b =~ /^(\d+)_/;
-    ($num_a || 0) <=> ($num_b || 0)
+    my ($num_a) = $a =~ /^(\d+)/;
+    my ($num_b) = $b =~ /^(\d+)/;
+    $num_a //= 9999;  # Se non c'è numero, mettilo in fondo alla lista
+    $num_b //= 9999;
+    $num_a <=> $num_b || $a cmp $b;
 } @map_files;
 
 # Main test loop
