@@ -394,6 +394,7 @@ find_original_plane	rendering/mouse_select.c	/^static t_selected_obj	find_origin
 find_original_sphere	rendering/mouse_select.c	/^static t_selected_obj	find_original_sphere(t_setting *setting, void *orig)$/;"	f	typeref:typename:t_selected_obj	file:
 find_previous_log	new_script_valgrind.pl	/^sub find_previous_log$/;"	s
 format	mlx/mlx_int.h	/^	int				format;$/;"	m	struct:s_img	typeref:typename:int
+format_test_result	my_tester.pl	/^sub format_test_result {$/;"	s
 fov	minirt.h	/^	int			fov;$/;"	m	struct:s_camera	typeref:typename:int
 fov_calculation	draw_scene.c	/^void	fov_calculation(t_camera *cam, double *image_plane_width)$/;"	f	typeref:typename:void
 free_cylinder_array	freeing2.c	/^void	free_cylinder_array(t_cylinder **cylinders, int num)$/;"	f	typeref:typename:void
@@ -711,11 +712,9 @@ position	minirt.h	/^	t_vector	position;$/;"	m	struct:s_light	typeref:typename:t_
 position_ray	raycasting/create_ray.c	/^t_vector	position_ray(t_ray ray, double t)$/;"	f	typeref:typename:t_vector
 prepare_computations	computation.c	/^t_computations	prepare_computations(t_intersection i, t_ray r)$/;"	f	typeref:typename:t_computations
 print_ambient_light	extra/print_debug2.c	/^void	print_ambient_light(t_amb_light *amb_light)$/;"	f	typeref:typename:void
-print_ascii_box	my_tester.pl	/^sub print_ascii_box {$/;"	s
 print_camera	extra/print_debug2.c	/^void	print_camera(t_camera *camera)$/;"	f	typeref:typename:void
 print_color	extra/print_debug2.c	/^void	print_color(t_color color)$/;"	f	typeref:typename:void
 print_cylinders	extra/print_debug.c	/^void	print_cylinders(int n_cylinders, t_cylinder **array)$/;"	f	typeref:typename:void
-print_header	my_tester.pl	/^sub print_header$/;"	s
 print_header	new_script_valgrind.pl	/^sub print_header$/;"	s
 print_int_matrix	matrix/matrix_utils.c	/^void	print_int_matrix(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 print_intersection	intersection/old_list.c	/^void	print_intersection(t_intersection i)$/;"	f	typeref:typename:void
@@ -730,13 +729,12 @@ print_single_plane	extra/print_single.c	/^void	print_single_plane(t_plane *one_p
 print_single_sphere	extra/print_single.c	/^void	print_single_sphere(t_sphere *one_sphere)$/;"	f	typeref:typename:void
 print_spheres	extra/print_debug.c	/^void	print_spheres(int n_spheres, t_sphere **array)$/;"	f	typeref:typename:void
 print_string_array	extra/utils.c	/^void	print_string_array(char **array)$/;"	f	typeref:typename:void
-print_test_result	my_tester.pl	/^sub print_test_result$/;"	s
+print_summary_table	my_tester.pl	/^sub print_summary_table {$/;"	s
 print_type	raycasting/utils_obj.c	/^int	print_type(t_object obj)$/;"	f	typeref:typename:int
 print_vector	extra/print_single.c	/^void	print_vector(t_vector vector)$/;"	f	typeref:typename:void
 private_cmap	mlx/mlx_int.h	/^	int			private_cmap;$/;"	m	struct:s_xvar	typeref:typename:int
 process_fractional_part	extra/my_atof.c	/^static double	process_fractional_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
 process_integer_part	extra/my_atof.c	/^static double	process_integer_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
-prompt_user	my_tester.pl	/^sub prompt_user$/;"	s
 pshm_format	mlx/mlx_int.h	/^	int			pshm_format;$/;"	m	struct:s_xvar	typeref:typename:int
 pt_putchar	libft/ft_printf_utils.c	/^int	pt_putchar(char c)$/;"	f	typeref:typename:int
 pt_putstr	libft/ft_printf_utils.c	/^int	pt_putstr(char *str)$/;"	f	typeref:typename:int
