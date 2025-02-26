@@ -120,7 +120,7 @@ int	open_map(char *filename, t_setting *set)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (ft_printf("%sError map: %s%s\n", RED, filename, RESET));
+		return (ft_printf("%sError map: %s%s\n", RED, filename, RESET), -1);
 	else
 	{
 		if (parse_map(filename, set) == -42)

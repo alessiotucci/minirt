@@ -476,6 +476,7 @@ get_realloc	libft/get_next_line.c	/^static char	*get_realloc(char **buf, int kin
 get_return	libft/get_next_line.c	/^static char	*get_return(char **buf)$/;"	f	typeref:typename:char *	file:
 get_selected_object_position	rendering/translation_handlers.c	/^t_vector	get_selected_object_position(t_mlx *mlx)$/;"	f	typeref:typename:t_vector
 get_selection_status	selection_status.c	/^char	*get_selection_status(t_selected_obj selected)$/;"	f	typeref:typename:char *
+get_signal_name	my_tester.pl	/^sub get_signal_name {$/;"	s
 get_sphere_to_ray	raycasting/intersection_ray.c	/^t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)$/;"	f	typeref:typename:t_vector
 get_timestamp	new_script_valgrind.pl	/^sub get_timestamp$/;"	s
 get_xlib_include_path	mlx/configure	/^get_xlib_include_path(){$/;"	f
@@ -714,7 +715,7 @@ print_ascii_box	my_tester.pl	/^sub print_ascii_box {$/;"	s
 print_camera	extra/print_debug2.c	/^void	print_camera(t_camera *camera)$/;"	f	typeref:typename:void
 print_color	extra/print_debug2.c	/^void	print_color(t_color color)$/;"	f	typeref:typename:void
 print_cylinders	extra/print_debug.c	/^void	print_cylinders(int n_cylinders, t_cylinder **array)$/;"	f	typeref:typename:void
-print_header	my_tester.pl	/^sub print_header {$/;"	s
+print_header	my_tester.pl	/^sub print_header$/;"	s
 print_header	new_script_valgrind.pl	/^sub print_header$/;"	s
 print_int_matrix	matrix/matrix_utils.c	/^void	print_int_matrix(int rows, int cols, double **matrix)$/;"	f	typeref:typename:void
 print_intersection	intersection/old_list.c	/^void	print_intersection(t_intersection i)$/;"	f	typeref:typename:void
@@ -729,11 +730,13 @@ print_single_plane	extra/print_single.c	/^void	print_single_plane(t_plane *one_p
 print_single_sphere	extra/print_single.c	/^void	print_single_sphere(t_sphere *one_sphere)$/;"	f	typeref:typename:void
 print_spheres	extra/print_debug.c	/^void	print_spheres(int n_spheres, t_sphere **array)$/;"	f	typeref:typename:void
 print_string_array	extra/utils.c	/^void	print_string_array(char **array)$/;"	f	typeref:typename:void
+print_test_result	my_tester.pl	/^sub print_test_result$/;"	s
 print_type	raycasting/utils_obj.c	/^int	print_type(t_object obj)$/;"	f	typeref:typename:int
 print_vector	extra/print_single.c	/^void	print_vector(t_vector vector)$/;"	f	typeref:typename:void
 private_cmap	mlx/mlx_int.h	/^	int			private_cmap;$/;"	m	struct:s_xvar	typeref:typename:int
 process_fractional_part	extra/my_atof.c	/^static double	process_fractional_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
 process_integer_part	extra/my_atof.c	/^static double	process_integer_part(const char *str, int *i)$/;"	f	typeref:typename:double	file:
+prompt_user	my_tester.pl	/^sub prompt_user$/;"	s
 pshm_format	mlx/mlx_int.h	/^	int			pshm_format;$/;"	m	struct:s_xvar	typeref:typename:int
 pt_putchar	libft/ft_printf_utils.c	/^int	pt_putchar(char c)$/;"	f	typeref:typename:int
 pt_putstr	libft/ft_printf_utils.c	/^int	pt_putstr(char *str)$/;"	f	typeref:typename:int

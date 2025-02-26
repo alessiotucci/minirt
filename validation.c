@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:08:09 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 13:41:38 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 17:17:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	validate_cylinder(char **details)
 }
 
 //4) for validate the camera, validating the field
+//TODO: implement additional check
 int	validate_camera(char **details)
 {
 	if (lenght_string_array(details) != 4)
@@ -83,6 +84,7 @@ int	validate_camera(char **details)
 }
 
 //5) for validate the light
+//TODO: implement additional check
 int	validate_light(char **details)
 {
 	if (lenght_string_array(details) != 4)
@@ -100,6 +102,7 @@ int	validate_light(char **details)
 }
 
 //6) for validate the amb_light
+//TODO: implement additional check
 int	validate_amb_light(char **details)
 {
 	if (lenght_string_array(details) != 3)

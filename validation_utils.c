@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:22:13 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 16:24:20 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/26 17:24:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ int	valid_fov_atoi(char *str)
 	while (str[i] && str[i] != ' ') // this
 	{
 		if (!ft_isdigit(str[i]))
-			return (error_msg("Invalid FOV characters\n"), ft_printf("[%s]", str), FAIL);
+			return (error_msg("Invalid FOV char\n"), FAIL);
 		num = num * 10 + (str[i] - '0');
 		if (num > 180)
 			return (error_msg("FOV exceeds 180\n"), FAIL);
@@ -168,3 +168,4 @@ int	valid_fov_atoi(char *str)
 	return (error_msg("Invalid FOV range\n"), FAIL);
 }
 
+//EXTRA CHECK FOR RATIO OF CAMERA
