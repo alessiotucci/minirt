@@ -6,10 +6,11 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:14:44 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/18 16:05:57 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 15:35:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../minirt.h"
 #include "../minirt.h"
 
 void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)
@@ -32,6 +33,7 @@ void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)
 	}
 }
 
+//THIS function is causing segfault
 void	sort_intersection_list(t_list_intersect **head)
 {
 	t_list_intersect	*sorted_list;
