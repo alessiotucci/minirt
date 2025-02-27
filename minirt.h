@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:43:02 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 13:50:36 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 13:25:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -692,4 +692,7 @@ int					valid_vector(char *str);
 int					valid_for_atof(char *str);
 int					valid_color_string(char *str);
 int					valid_fov_atoi(char *str);
+int					valid_fov(char *str);
+int					valid_ratio(char *str);
+int					valid_normal_vector(char *str);
 #endif

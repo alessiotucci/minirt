@@ -394,7 +394,7 @@ find_original_plane	rendering/mouse_select.c	/^static t_selected_obj	find_origin
 find_original_sphere	rendering/mouse_select.c	/^static t_selected_obj	find_original_sphere(t_setting *setting, void *orig)$/;"	f	typeref:typename:t_selected_obj	file:
 find_previous_log	new_script_valgrind.pl	/^sub find_previous_log$/;"	s
 format	mlx/mlx_int.h	/^	int				format;$/;"	m	struct:s_img	typeref:typename:int
-format_test_result	my_tester.pl	/^sub format_test_result {$/;"	s
+format_test_result	my_tester.pl	/^sub format_test_result$/;"	s
 fov	minirt.h	/^	int			fov;$/;"	m	struct:s_camera	typeref:typename:int
 fov_calculation	draw_scene.c	/^void	fov_calculation(t_camera *cam, double *image_plane_width)$/;"	f	typeref:typename:void
 free_cylinder_array	freeing2.c	/^void	free_cylinder_array(t_cylinder **cylinders, int num)$/;"	f	typeref:typename:void
@@ -478,6 +478,7 @@ get_return	libft/get_next_line.c	/^static char	*get_return(char **buf)$/;"	f	typ
 get_selected_object_position	rendering/translation_handlers.c	/^t_vector	get_selected_object_position(t_mlx *mlx)$/;"	f	typeref:typename:t_vector
 get_selection_status	selection_status.c	/^char	*get_selection_status(t_selected_obj selected)$/;"	f	typeref:typename:char *
 get_signal_name	my_tester.pl	/^sub get_signal_name {$/;"	s
+get_signal_name	test.pl	/^sub get_signal_name {$/;"	s
 get_sphere_to_ray	raycasting/intersection_ray.c	/^t_vector	get_sphere_to_ray(t_sphere sphere, t_ray ray)$/;"	f	typeref:typename:t_vector
 get_timestamp	new_script_valgrind.pl	/^sub get_timestamp$/;"	s
 get_xlib_include_path	mlx/configure	/^get_xlib_include_path(){$/;"	f
@@ -679,6 +680,7 @@ next	libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_
 next	minirt.h	/^	struct s_list_intersect	*next;$/;"	m	struct:s_list_intersect	typeref:struct:s_list_intersect *
 next	mlx/mlx_int.h	/^	struct s_win_list	*next;$/;"	m	struct:s_win_list	typeref:struct:s_win_list *
 normal	minirt.h	/^	t_vector	normal;$/;"	m	struct:s_plane	typeref:typename:t_vector
+normal_emoji	test.pl	/^sub normal_emoji {$/;"	s
 normalization	vector/complex_operations.c	/^t_vector	normalization(t_vector vector)$/;"	f	typeref:typename:t_vector
 normalv	minirt.h	/^	t_vector	normalv;$/;"	m	struct:s_computations	typeref:typename:t_vector
 norminette	Makefile	/^norminette: clean_mlx$/;"	t
@@ -730,6 +732,7 @@ print_single_sphere	extra/print_single.c	/^void	print_single_sphere(t_sphere *on
 print_spheres	extra/print_debug.c	/^void	print_spheres(int n_spheres, t_sphere **array)$/;"	f	typeref:typename:void
 print_string_array	extra/utils.c	/^void	print_string_array(char **array)$/;"	f	typeref:typename:void
 print_summary_table	my_tester.pl	/^sub print_summary_table {$/;"	s
+print_summary_table	test.pl	/^sub print_summary_table {$/;"	s
 print_type	raycasting/utils_obj.c	/^int	print_type(t_object obj)$/;"	f	typeref:typename:int
 print_vector	extra/print_single.c	/^void	print_vector(t_vector vector)$/;"	f	typeref:typename:void
 private_cmap	mlx/mlx_int.h	/^	int			private_cmap;$/;"	m	struct:s_xvar	typeref:typename:int
@@ -759,6 +762,7 @@ rotation_x	transformations/rotations.c	/^t_vector	rotation_x(t_vector origin, do
 rotation_y	transformations/rotations.c	/^t_vector	rotation_y(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
 rotation_z	transformations/rotations.c	/^t_vector	rotation_z(t_vector origin, double radians)$/;"	f	typeref:typename:t_vector
 run_command	my_tester.pl	/^sub run_command {$/;"	s
+run_command	test.pl	/^sub run_command {$/;"	s
 run_valgrind	new_script_valgrind.pl	/^sub run_valgrind$/;"	s
 s_amb_light	minirt.h	/^typedef struct s_amb_light$/;"	s
 s_camera	minirt.h	/^typedef struct s_camera$/;"	s
@@ -806,6 +810,7 @@ show	mlx/Makefile.mk	/^show:$/;"	t
 show	mlx/test/Makefile.mk	/^show:$/;"	t
 show_help	mlx/configure	/^show_help(){$/;"	f
 sigint_handler	mlx/test/run_tests.sh	/^sigint_handler(){$/;"	f
+simple_emoji	test.pl	/^sub simple_emoji {$/;"	s
 size_line	mlx/mlx_int.h	/^	int				size_line;$/;"	m	struct:s_img	typeref:typename:int
 sl1	mlx/test/main.c	/^int	sl1;$/;"	v	typeref:typename:int
 sl2	mlx/test/main.c	/^int	sl2;$/;"	v	typeref:typename:int
@@ -815,7 +820,7 @@ solve_quadratic_equation	intersection/intersection_cylinder.c	/^static	void	solv
 sort_intersection_list	intersection/sort_intersection.c	/^void	sort_intersection_list(t_list_intersect **head)$/;"	f	typeref:typename:void
 specular	minirt.h	/^	double	specular;$/;"	m	struct:s_material	typeref:typename:double
 spheres	minirt.h	/^	t_sphere		**spheres;$/;"	m	struct:s_setting	typeref:typename:t_sphere **
-start_amb_light	starting/start_scenes.c	/^int start_amb_light(t_setting *set, char **details)$/;"	f	typeref:typename:int
+start_amb_light	starting/start_scenes.c	/^int	start_amb_light(t_setting *set, char **details)$/;"	f	typeref:typename:int
 start_camera	starting/start_scenes.c	/^int	start_camera(t_setting *set, char **details)$/;"	f	typeref:typename:int
 start_cylinder	starting/start_shapes.c	/^int	start_cylinder(t_setting *set, char **details)$/;"	f	typeref:typename:int
 start_lights	starting/start_scenes.c	/^int	start_lights(t_setting *set, char **details)$/;"	f	typeref:typename:int
@@ -858,6 +863,7 @@ t_xvar	mlx/mlx_int.h	/^}				t_xvar;$/;"	t	typeref:struct:s_xvar
 test	Makefile	/^test: $(TEST_OBJ)$/;"	t
 test_default_main	mlx/test/run_tests.sh	/^test_default_main(){$/;"	f
 test_function	manage_mlx.c	/^void	test_function(t_mlx *info)$/;"	f	typeref:typename:void
+thirty	test.pl	/^sub thirty { return 30; }$/;"	s
 transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_cylinder	typeref:typename:double **
 transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_plane	typeref:typename:double **
 transform	minirt.h	/^	double		**transform;$/;"	m	struct:s_sphere	typeref:typename:double **
@@ -878,7 +884,10 @@ valid_color_component	validation_utils.c	/^static int	valid_color_component(char
 valid_color_string	validation_utils.c	/^int	valid_color_string(char *str)$/;"	f	typeref:typename:int
 valid_float_token	validation_utils.c	/^static int	valid_float_token(char *token)$/;"	f	typeref:typename:int	file:
 valid_for_atof	validation_utils.c	/^int	valid_for_atof(char *str)$/;"	f	typeref:typename:int
+valid_fov	validation_extra.c	/^int	valid_fov(char *str)$/;"	f	typeref:typename:int
 valid_fov_atoi	validation_utils.c	/^int	valid_fov_atoi(char *str)$/;"	f	typeref:typename:int
+valid_normal_vector	validation_extra.c	/^int	valid_normal_vector(char *str)$/;"	f	typeref:typename:int
+valid_ratio	validation_extra.c	/^int	valid_ratio(char *str)$/;"	f	typeref:typename:int
 valid_vector	validation_utils.c	/^int	valid_vector(char *str)$/;"	f	typeref:typename:int
 validate_amb_light	validation.c	/^int	validate_amb_light(char **details)$/;"	f	typeref:typename:int
 validate_camera	validation.c	/^int	validate_camera(char **details)$/;"	f	typeref:typename:int

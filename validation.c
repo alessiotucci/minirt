@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:08:09 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 21:35:02 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 13:35:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	validate_camera(char **details)
 	}
 	if (valid_vector(details[1]))
 		return (error_msg("VALIDATE CAMERA: Invalid viewpoint\n"), -1);
-	if (valid_vector(details[2]))
+	if (valid_vector(details[2]) || valid_normal_vector(details[2]))
 		return (error_msg("VALIDATE CAMERA: Invalid orientation\n"), -1);
 	if (valid_fov_atoi(details[3]) && valid_fov(details[3]))
 		return (error_msg("VALIDATE CAMERA: Invalid FOV\n"), -1);
@@ -94,7 +94,7 @@ int	validate_light(char **details)
 	}
 	if (valid_vector(details[1]))
 		return (error_msg("VALIDATE LIGHT: Invalid light position\n"), -1);
-	if (valid_for_atof(details[2]) && valid_ratio(details[2]))
+	if (valid_for_atof(details[2]) || valid_ratio(details[2]))
 		return (error_msg("VALIDATE LIGHT: Invalid light brightness\n"), -1);
 	if (valid_color_string(details[3]))
 		return (error_msg("VALIDATE LIGHT: Invalid light color\n"), -1);
@@ -110,7 +110,7 @@ int	validate_amb_light(char **details)
 		print_string_array(details);
 		return (error_msg("VALIDATE AMB_LIGHT: needs 3 parameters\n"), -1);
 	}
-	if (valid_for_atof(details[1]) && valid_ratio(details[1]))
+	if (valid_for_atof(details[1]) || valid_ratio(details[1]))
 		return (error_msg("VALIDATE AMB_LIGHT: Invalid amb_light ratio\n"), -1);
 	if (valid_color_string(details[2]))
 		return (error_msg("VALIDATE AMB_LIGHT: Invalid amb_light color\n"), -1);
