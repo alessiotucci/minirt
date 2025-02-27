@@ -6,11 +6,11 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:12:26 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/27 13:30:32 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 15:16:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 /**
  * valid_normal_vector
@@ -34,7 +34,7 @@ int	valid_normal_vector(char *str)
 	free_string_array(matrix);
 	magnitude = sqrt(x * x + y * y + z * z);
 	if (fabs(magnitude - 1.0) > 0.001)
-		return (error_msg("valid_normal_vector not normalized\n"), FAIL);
+		return (error_msg("valid_normal_vector: not normalized\n"), FAIL);
 	return (OK);
 }
 

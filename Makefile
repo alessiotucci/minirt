@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 17:46:19 by atucci            #+#    #+#              #
-#    Updated: 2025/02/27 13:14:26 by atucci           ###   ########.fr        #
+#    Updated: 2025/02/27 15:15:55 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,9 @@ SOURCE = ./main.c \
 		 ./draw_scene.c \
 		 ./centering.c \
 		 ./selection_status.c \
-		 ./validation.c \
-		 ./validation_utils.c \
-		 ./validation_extra.c \
+		 ./validation/validation.c \
+		 ./validation/validation_utils.c \
+		 ./validation/validation_extra.c \
 		 ./normal.c \
 		 ./create_setting.c \
 		 ./add_elem_array.c \

@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/nfs/homes/atucci/Desktop/mioGithubMiniRT/validation/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+apply_to_each	validation_utils.c	/^static int	apply_to_each(char **matrix, int (*func)(char *))$/;"	f	typeref:typename:int	file:
+is_valid_float_char	validation_utils.c	/^static int	is_valid_float_char(char c)$/;"	f	typeref:typename:int	file:
+valid_color_component	validation_utils.c	/^static int	valid_color_component(char *token)$/;"	f	typeref:typename:int	file:
+valid_color_string	validation_utils.c	/^int	valid_color_string(char *str)$/;"	f	typeref:typename:int
+valid_float_token	validation_utils.c	/^static int	valid_float_token(char *token)$/;"	f	typeref:typename:int	file:
+valid_for_atof	validation_utils.c	/^int	valid_for_atof(char *str)$/;"	f	typeref:typename:int
+valid_fov	validation_extra.c	/^int	valid_fov(char *str)$/;"	f	typeref:typename:int
+valid_fov_atoi	validation_utils.c	/^int	valid_fov_atoi(char *str)$/;"	f	typeref:typename:int
+valid_normal_vector	validation_extra.c	/^int	valid_normal_vector(char *str)$/;"	f	typeref:typename:int
+valid_ratio	validation_extra.c	/^int	valid_ratio(char *str)$/;"	f	typeref:typename:int
+valid_vector	validation_utils.c	/^int	valid_vector(char *str)$/;"	f	typeref:typename:int
+validate_amb_light	validation.c	/^int	validate_amb_light(char **details)$/;"	f	typeref:typename:int
+validate_camera	validation.c	/^int	validate_camera(char **details)$/;"	f	typeref:typename:int
+validate_cylinder	validation.c	/^int	validate_cylinder(char **details)$/;"	f	typeref:typename:int
+validate_light	validation.c	/^int	validate_light(char **details)$/;"	f	typeref:typename:int
+validate_plane	validation.c	/^int	validate_plane(char **details)$/;"	f	typeref:typename:int
+validate_sphere	validation.c	/^int	validate_sphere(char **details)$/;"	f	typeref:typename:int

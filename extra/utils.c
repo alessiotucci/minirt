@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 21:25:59 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 12:47:21 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 15:13:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_string_array(char **array)
 	ft_printf("[i] [string]\n");
 	while (array[i] != NULL)
 	{
-		ft_printf("[%s%d%s][%s]   ", GREEN, i, RESET,  array[i]);
+		ft_printf("[%s%d%s][%s]   ", GREEN, i, RESET, array[i]);
 		i++;
 	}
 	ft_printf("\n");

@@ -6,14 +6,14 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:18:53 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 16:18:21 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:51:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
 
-//2
+//5
 int	check_the_extension(char *filename, char *ext)
 {
 	int	i;
@@ -33,7 +33,7 @@ int	check_the_extension(char *filename, char *ext)
 	return (0 * ft_printf("%scorrect extension%s\n", GREEN, RESET));
 }
 
-//1
+//4
 int	parsing_map(char *map, t_setting *set)
 {
 	if (check_the_extension(map, ".rt") == 0)
@@ -42,6 +42,7 @@ int	parsing_map(char *map, t_setting *set)
 		return (-1);
 }
 
+//3
 void	init_scene(t_mlx *info, char *mapname)
 {
 	info->width = DEFAULT_WIDTH;
@@ -49,13 +50,29 @@ void	init_scene(t_mlx *info, char *mapname)
 	info->map_name = mapname;
 }
 
+//2
+/* Call existing counter reset function */
+/* Initialize all pointers to NULL */
+static void	init_setting(t_setting *set)
+{
+	set->amb_light = NULL;
+	set->camera = NULL;
+	set->spheres = NULL;
+	set->lights = NULL;
+	set->planes = NULL;
+	set->cylinders = NULL;
+	setback_zero(set);
+}
+
+//1
 //TODO: close the fd, the return of parsing_map();
 int	main(int ac, char **av)
 {
 	t_mlx		info_mlx;
 	t_setting	new_setting;
 
-	setback_zero(&new_setting);
+	//setback_zero(&new_setting);
+	init_setting(&new_setting);
 	if (ac == 2)
 	{
 		if (parsing_map(av[1], &new_setting))

@@ -6,27 +6,22 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:42:04 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/19 14:56:19 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 15:08:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
-#include <math.h>
-//TODO; Should I check first if the param is a vector and not a point
+
 // 2. Normalization
 t_vector	normalization(t_vector vector)
 {
 	t_vector	new_vector;
-	t_vector	zero_vector;
 
+	new_vector = default_vector();
 	if (magnitude(vector) == 0)
 	{
-		zero_vector.x = 0;
-		zero_vector.y = 0;
-		zero_vector.z = 0;
 		ft_printf("%smagnitude is zero!%s\n", RED, RESET);
-		print_vector(vector);
-		return (zero_vector);
+		return (new_vector);
 	}
 	new_vector.x = vector.x / magnitude(vector);
 	new_vector.y = vector.y / magnitude(vector);

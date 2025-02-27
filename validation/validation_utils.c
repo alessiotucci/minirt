@@ -6,11 +6,11 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:22:13 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 17:24:17 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 15:19:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 /* 
  * return 0 == 0k!
@@ -154,7 +154,7 @@ int	valid_fov_atoi(char *str)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		return (error_msg("FOV cannot be negative\n"), FAIL);
-	while (str[i] && str[i] != ' ') // this
+	while (str[i] && str[i] != ' ')
 	{
 		if (!ft_isdigit(str[i]))
 			return (error_msg("Invalid FOV char\n"), FAIL);
@@ -167,5 +167,3 @@ int	valid_fov_atoi(char *str)
 		return (OK);
 	return (error_msg("Invalid FOV range\n"), FAIL);
 }
-
-//EXTRA CHECK FOR RATIO OF CAMERA

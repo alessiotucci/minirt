@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:07:24 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/26 10:18:20 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:57:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,17 @@ void	free_cylinder_array(t_cylinder **cylinders, int num)
 //1
 void	free_struct(t_setting *set)
 {
-	printf("\n\n%sRemember to free all the memory%s\n", RED, RESET);
+	ft_printf("\n\n%sRemember to free all the memory%s\n", RED, RESET);
 	if (set->amb_light)
 	{
-		free(set->amb_light->identifier);
+		if (set->amb_light->identifier)
+			free(set->amb_light->identifier);
 		free(set->amb_light);
 	}
 	if (set->camera)
 	{
-		free(set->camera->identifier);
+		if (set->camera->identifier)
+			free(set->camera->identifier);
 		free(set->camera);
 	}
 	free_sphere_array(set->spheres, set->num_spheres);
