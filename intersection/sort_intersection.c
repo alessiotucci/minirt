@@ -6,18 +6,22 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:14:44 by atucci            #+#    #+#             */
-/*   Updated: 2025/02/27 15:35:51 by atucci           ###   ########.fr       */
+/*   Updated: 2025/02/27 16:51:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
 #include "../minirt.h"
 
 void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)
 {
 	t_list_intersect	*current;
 
-	if (*sorted == NULL || (*sorted)->intersection->t > new->intersection->t)
+	// Null guard: ensure new node and its intersection exist
+	if (!new || !new->intersection)
+		return ;
+
+	// Handle empty list or insert at head
+	if (*sorted == NULL || ((*sorted)->intersection && (*sorted)->intersection->t > new->intersection->t))
 	{
 		new->next = *sorted;
 		*sorted = new;
@@ -25,26 +29,32 @@ void	insert_sorted(t_list_intersect **sorted, t_list_intersect *new)
 	else
 	{
 		current = *sorted;
-		while (current->next != NULL
-			&& current->next->intersection->t < new->intersection->t)
+		// Traverse while checking for valid intersections
+		while (current->next && current->next->intersection &&
+			current->next->intersection->t < new->intersection->t)
+		{
 			current = current->next;
+		}
 		new->next = current->next;
 		current->next = new;
 	}
 }
 
-//THIS function is causing segfault
 void	sort_intersection_list(t_list_intersect **head)
 {
 	t_list_intersect	*sorted_list;
 	t_list_intersect	*current;
 	t_list_intersect	*next_node;
 
+	if (!head || !*head) // Null-check input
+		return ;
+
 	sorted_list = NULL;
 	current = *head;
-	while (current != NULL)
+	while (current)
 	{
 		next_node = current->next;
+		current->next = NULL; // Detach node before insertion
 		insert_sorted(&sorted_list, current);
 		current = next_node;
 	}
